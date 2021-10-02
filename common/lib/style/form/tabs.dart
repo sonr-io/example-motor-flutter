@@ -1,4 +1,5 @@
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// Form Field to Display List of Strings as Gradient Tab View
 class GradientTabs extends StatelessWidget {

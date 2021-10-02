@@ -1,24 +1,8 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/data/data.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
-
-// ** ─── BuildMode Arguments ────────────────────────────────────────────────────────
-/// Build Mode Enum
-enum BuildMode { Release, Debug }
-
-extension BuildModeUtil on BuildMode {
-  /// Returns Current BuildMode from Foundation
-  static BuildMode mode() {
-    if (kReleaseMode) {
-      return BuildMode.Release;
-    } else {
-      return BuildMode.Debug;
-    }
-  }
-}
 
 // ** ─── Snackbar Arguments ────────────────────────────────────────────────────────
 /// Class to Provide Snackbar Properties to AppRoute
@@ -307,20 +291,6 @@ class ErrorPageArgs {
       AppRoute.close();
     }
   }
-}
-
-class PostsPageArgs {
-  final PostItemType type;
-  final ScrollController? scrollController;
-  PostsPageArgs(this.type, {this.scrollController});
-
-  factory PostsPageArgs.contacts({ScrollController? scrollController}) => PostsPageArgs(PostItemType.Contacts, scrollController: scrollController);
-
-  factory PostsPageArgs.files({ScrollController? scrollController}) => PostsPageArgs(PostItemType.Files, scrollController: scrollController);
-
-  factory PostsPageArgs.links({ScrollController? scrollController}) => PostsPageArgs(PostItemType.Links, scrollController: scrollController);
-
-  factory PostsPageArgs.media({ScrollController? scrollController}) => PostsPageArgs(PostItemType.Media, scrollController: scrollController);
 }
 
 // ** ─── Activity Arguments ────────────────────────────────────────────────────────

@@ -3,15 +3,19 @@ import 'package:get/get.dart';
 import 'package:showcaseview/showcaseview.dart';
 import 'package:sonr_app/pages/details/details.dart';
 import 'package:sonr_app/pages/home/home.dart';
+import 'package:sonr_app/pages/register/onboarding.dart';
 import 'package:sonr_app/pages/register/register.dart';
 import 'package:sonr_app/style/style.dart';
-
 
 /// #### Enum Values for App Page
 enum AppPage {
   /// ### Home `Off`
   /// Dashboard, Search, Personal
   Home,
+
+  /// ### Onboarding `Off`
+  /// App Intro, Onboarding
+  Onboarding,
 
   /// ### Register `Off`
   /// New User
@@ -63,7 +67,6 @@ extension AppRoute on AppPage {
   /// Returns Animation Curve
   Curve get curve => Curves.easeIn;
 
-
   /// Returns Middleware for Page
   List<GetMiddleware> get middlewares => this == AppPage.Home ? [GetMiddleware()] : [];
 
@@ -81,19 +84,12 @@ extension AppRoute on AppPage {
   }
 
   /// If this Page is Full Screen Dialog
-  bool get isDialog =>
-      this == AppPage.Detail ||
-      this == AppPage.Error ||
-      this == AppPage.Settings;
+  bool get isDialog => this == AppPage.Detail || this == AppPage.Error || this == AppPage.Settings;
 
   /// Returns Page Name
   String get name {
-    switch (this) {
-      case AppPage.Register:
-        return "/register";
-      default:
-        return "/home";
-    }
+    final name = this.toString().split('.').last;
+    return "/" + name.toLowerCase();
   }
 
   /// Returns Onboarding Items for This Page
@@ -120,6 +116,8 @@ extension AppRoute on AppPage {
         return () => DetailPage();
       case AppPage.Error:
         return () => ErrorPage();
+      case AppPage.Onboarding:
+        return () => OnboardingPage();
       default:
         return () {
           return ShowCaseWidget(
@@ -463,6 +461,5 @@ class RegisterBinding implements Bindings {
 /// #### Transfer Screen Bindings
 class TransferBinding implements Bindings {
   @override
-  void dependencies() {
-  }
+  void dependencies() {}
 }

@@ -52,6 +52,7 @@ dependencies:
   rive: ^0.7.28
   showcaseview: ^1.1.0
   supercharged: ^2.0.0
+  onboarding: ^2.1.0
 
 # ** -- DEV Dependencies -- **
 dev_dependencies:
@@ -113,9 +114,7 @@ flutter:
 
   # -- Media --
   assets:
-    - assets/animations/lottie/
-    - assets/animations/rive/
-    - assets/data/
+    - assets/animations/
     - assets/fonts/
     - assets/icons/Chart/
     - assets/icons/Communication/

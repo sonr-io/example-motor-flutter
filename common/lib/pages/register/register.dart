@@ -6,7 +6,6 @@ export 'models/type.dart';
 
 // Imports
 import 'package:sonr_app/pages/register/views/perm_view.dart';
-import 'package:sonr_app/pages/register/views/start_view.dart';
 import 'package:sonr_app/style/style.dart';
 import 'models/field.dart';
 import 'models/type.dart';
@@ -31,10 +30,8 @@ class RegisterPage extends GetView<RegisterController> {
     // Return View
     if (status.isPermissions) {
       return PermissionsView();
-    } else if (status.isSetup) {
-      return SetupView();
     } else {
-      return StartView(key: RegisterPageType.Intro.key);
+      return SetupView();
     }
   }
 }

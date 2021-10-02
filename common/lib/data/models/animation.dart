@@ -1,5 +1,8 @@
+import 'package:animate_do/animate_do.dart';
+import 'package:get/get_utils/src/extensions/num_extensions.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:lottie/lottie.dart';
+import 'package:sonr_plugin/sonr_plugin.dart';
 
 enum AnimatedStatusType { Initial, Loading, Error, Success }
 

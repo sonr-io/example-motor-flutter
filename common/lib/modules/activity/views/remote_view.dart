@@ -1,4 +1,5 @@
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_plugin/sonr_plugin.dart';
 
 class RemoteView extends StatelessWidget {
   @override
@@ -11,7 +12,7 @@ class RemoteView extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
-          
+
         ],
       ),
     );

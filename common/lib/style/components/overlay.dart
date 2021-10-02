@@ -1,4 +1,6 @@
+import 'package:sonr_app/data/models/animation.dart';
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// #### Class Builds Alert View Widget for Overlay ** //
 class AlertOverlay extends StatelessWidget {

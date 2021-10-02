@@ -1,7 +1,7 @@
-export 'view.dart';
+export 'views/views.dart';
 import 'dart:async';
 import 'package:sonr_app/style/style.dart';
-import 'view.dart';
+import 'views/views.dart';
 
 class HomeController extends GetxController with SingleGetTickerProviderMixin {
   // Properties

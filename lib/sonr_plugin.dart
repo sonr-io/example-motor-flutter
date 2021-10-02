@@ -9,7 +9,12 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:grpc/grpc.dart';
+import 'src/models.dart';
 import 'src/proto/proto.dart';
+export 'src/models.dart';
+export 'package:path/path.dart';
+export 'package:path_provider/path_provider.dart';
+export 'package:open_file/open_file.dart';
 export 'package:get/get.dart';
 export 'src/proto/proto.dart';
 export 'src/extensions/extensions.dart';
@@ -22,21 +27,6 @@ const RPC_SERVER_PORT = 52006;
 
 /// [_actionChannel] is the Method channel to interact with Java/Swift proxy
 const _actionChannel = MethodChannel('io.sonr.plugin/action');
-
-/// [Status] is the current condition of Sonr RPC Server
-enum Status {
-  /// [Status.IDLE] - Initial status before host start
-  IDLE,
-
-  /// [Status.ACTIVE] - App is running normally
-  ACTIVE,
-
-  /// [Status.PAUSED] - App is running in background, refresh operations permitted
-  PAUSED,
-
-  /// [Status.STOPPED] - Host is offline and requires restart to continue
-  STOPPED
-}
 
 /// [SonrService] manages entire Sonr Client/Server node with GetX interface
 ///
@@ -229,10 +219,10 @@ class SonrService extends GetxService {
 
   /// [pick()] Presents a native dialog for selecting files
   /// Optionally can be supplied after pick
-  Future<List<String>> pick({bool supplyAfterPick = false}) async {
+  Future<List<String>> pick({bool supplyAfterPick = false, FileType type = FileType.any}) async {
     // Initialize
     List<String> adjPaths = [];
-    FilePickerResult? result = await FilePicker.platform.pickFiles(allowMultiple: true);
+    FilePickerResult? result = await FilePicker.platform.pickFiles(allowMultiple: true, type: type);
 
     // Check if the result is valid
     if (result != null) {

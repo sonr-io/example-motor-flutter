@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:sonr_plugin/sonr_plugin.dart';
 import 'package:get/get.dart';
 import 'package:sonr_app/style/style.dart';
@@ -30,6 +31,7 @@ class SplashPage extends StatelessWidget {
       getPages: [
         AppPage.Home.config(),
         AppPage.Register.config(),
+        AppPage.Onboarding.config(),
       ],
       navigatorKey: Get.key,
       navigatorObservers: [
@@ -68,7 +70,7 @@ class SplashPage extends StatelessWidget {
     // # Check for User
     if (SonrService.to.connection.value.isOnline) {
       if (Get.isPlatformDarkMode) {
-        AppPage.Register.off();
+        AppPage.Onboarding.off();
       }
       // # Handle Returning
       else {

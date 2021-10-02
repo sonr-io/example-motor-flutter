@@ -26,17 +26,6 @@ extension HomeViewUtils on HomeView {
   /// #### Method Returns this Views Name
   String get name => this.toString().substring(this.toString().indexOf('.') + 1);
 
-  ShowcaseType? get showcaseType {
-    switch (this) {
-      case HomeView.Dashboard:
-        return ShowcaseType.Dashboard;
-      case HomeView.Personal:
-        return ShowcaseType.Personal;
-      default:
-        return null;
-    }
-  }
-
   /// #### Get Title From View Type
   String get title => this.isDashboard ? "Welcome" : this.name;
 
@@ -78,15 +67,9 @@ extension HomeViewUtils on HomeView {
   /// - Method Builds ShowcaseItem by View Type
   Widget showcaseItem() {
     if (this.isDashboard) {
-      return ShowcaseItem.fromType(
-        type: ShowcaseType.Dashboard,
-        child: this.tabButton(),
-      );
+      return this.tabButton();
     } else if (this.isPersonal) {
-      return ShowcaseItem.fromType(
-        type: ShowcaseType.Personal,
-        child: this.tabButton(),
-      );
+      return this.tabButton();
     } else {
       return this.tabButton();
     }

@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'package:share_plus/share_plus.dart';
 import 'package:sonr_app/style/style.dart';
-import 'models/intro.dart';
+
 import 'models/type.dart';
 
 class RegisterController extends GetxController {
@@ -63,16 +63,6 @@ class RegisterController extends GetxController {
       await file.writeAsString(mnemonic.value);
       Share.shareFiles([path], text: 'Sonr Backup Code');
     }
-  }
-
-  /// #### Next Info Panel
-  void nextPanel(IntroPageType type) {
-    panelNotifier.value = type.page;
-    introPageController.animateToPage(
-      type.index,
-      duration: 400.milliseconds,
-      curve: Curves.easeIn,
-    );
   }
 
   /// #### Next Page

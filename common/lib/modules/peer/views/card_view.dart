@@ -49,7 +49,7 @@ class _PeerMainCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         alignment: Alignment.center,
-        child: [
+        child: Column(mainAxisSize: MainAxisSize.min, children: [
           // Align Platform
           Align(
               alignment: Alignment.topRight,
@@ -73,7 +73,7 @@ class _PeerMainCard extends StatelessWidget {
           // Username
           _buildModel(),
           Padding(padding: EdgeInsets.all(4))
-        ].column(mainAxisSize: MainAxisSize.min));
+        ]));
   }
 
   Widget _buildName() {

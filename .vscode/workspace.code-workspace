@@ -1,0 +1,43 @@
+{
+  "folders": [
+    {
+      "name": "👨‍💻  App",
+      "path": "../common"
+    },
+    {
+      "name": "🏛  Framework",
+      "path": ".."
+    }
+  ],
+  "settings": {
+      "files.exclude": {
+          "**/package-lock.json": true,
+          "**/plasmic.lock": true,
+          ".dart_tool": true,
+          "**/**.pb.go": true,
+          "**/.classpath": true,
+          "**/.factorypath": true,
+          "**/.flutter-plugins": true,
+          "**/.flutter-plugins-dependencies": true,
+          "**/.packages": true,
+          "**/.project": true,
+          "**/.settings": true,
+          "**/go.sum": true,
+          "**/pubspec.lock": true,
+          "**pubspec.lock": true,
+          "**/node_modules": true,
+          "app.iml": true,
+          "Contents.json": true,
+          ".devcontainer": true,
+        "analysis_options.yaml": true,
+        "**/*.pb.dart": true,
+        "**/*.pbgrpc.dart": true,
+        "**/*.pbjson.dart": true,
+        "**/*.pbenum.dart": true,
+        "**/*.pbserver.dart": true,
+        "**/dartdoc_options.yaml": true,
+        "**/common": true,
+      },
+    "github-actions.workflows.pinned.workflows": [".github/workflows/main.yml"]
+  }
+}

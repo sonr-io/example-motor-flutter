@@ -1,15 +1,15 @@
-export 'controllers/home_controller.dart';
-export 'controllers/view.dart';
+export 'home_controller.dart';
+export 'views/views.dart';
 export 'widgets/bottom_bar.dart';
 export 'widgets/top_button.dart';
 
 import 'package:sonr_app/pages/home/widgets/app_bar.dart';
 
-import 'controllers/home_controller.dart';
+import 'home_controller.dart';
 import 'package:sonr_app/style/style.dart';
-import 'controllers/view.dart';
-import 'package:sonr_app/pages/home/controllers/home_controller.dart';
-import 'package:sonr_app/pages/home/controllers/view.dart';
+import 'views/views.dart';
+import 'package:sonr_app/pages/home/home_controller.dart';
+import 'package:sonr_app/pages/home/views/views.dart';
 import 'widgets/bottom_bar.dart';
 
 class HomePage extends StatefulWidget {

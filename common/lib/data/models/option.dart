@@ -1,17 +1,5 @@
 import 'package:intercom_flutter/intercom_flutter.dart';
 
-/// Option for Share Choice
-enum ChooseOption { Camera, Contact, Media, File }
-
-/// #### Extension for (General) Choose Option
-extension ChooseOptionUtils on ChooseOption {
-  /// Reference to LogController
-  static String LOG_CONTROLLER = "ShareController";
-
-  /// Returns Option Name without Prefix
-  String get name => this.toString().substring(this.toString().indexOf('.') + 1);
-}
-
 /// #### Asset Sound Types
 enum Sound {
   Confirmed,

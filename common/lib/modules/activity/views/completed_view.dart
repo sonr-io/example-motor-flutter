@@ -1,6 +1,9 @@
+import 'package:sonr_app/data/models/animation.dart';
+import 'package:sonr_app/modules/payload/views/content/file_content.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 import 'package:sonr_app/modules/peer/peer.dart';
+import 'package:supercharged_dart/supercharged_dart.dart';
 
 /// #### Completed Transfer Popup View
 class CompletedPopup extends StatelessWidget {

@@ -12,7 +12,12 @@ class AppServices {
   /// #### Application Services
   static Future<void> init() async {
     // Initialize Services
-    await dotenv.load(fileName: ".env");
+    try {
+      await dotenv.load(fileName: ".env");
+    } catch (e) {
+      print(e);
+    }
+
     await Get.putAsync(() => SonrService().init(), permanent: true);
   }
 

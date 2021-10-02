@@ -1,4 +1,5 @@
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// Option Displayed in Checklist
 class ChecklistOption {
@@ -75,7 +76,7 @@ class Checklist extends StatelessWidget {
                         child: Container(
                           constraints: BoxConstraints(maxWidth: 160, minWidth: 40),
                           child: Column(children: [
-                            Padding(padding: EdgeWith.top(4)),
+                            Padding(padding: EdgeInsets.only(top: 4)),
                             Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
                               options[index].icon(),
                               Padding(

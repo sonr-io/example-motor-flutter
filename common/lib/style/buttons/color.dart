@@ -42,7 +42,6 @@ class ColorButton extends StatelessWidget {
     double? gradientRadius,
     String? text,
     double? width,
-    WidgetPosition iconPosition = WidgetPosition.Left,
   }) {
     // Build Child
     return ColorButton(
@@ -51,7 +50,7 @@ class ColorButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
             boxShadow: AppTheme.RectBoxShadow),
         onPressed: onPressed,
-        child: ButtonUtility.buildChild(iconPosition, icon, text, child ),
+        child: ButtonUtility.buildChild( icon, text, child ),
         tooltip: tooltip,
         width: width,
         margin: margin,
@@ -72,7 +71,6 @@ class ColorButton extends StatelessWidget {
     double? width,
     IconData? icon,
     String? text,
-    WidgetPosition iconPosition = WidgetPosition.Left,
   }) {
     // Build Child
     return ColorButton(
@@ -82,7 +80,7 @@ class ColorButton extends StatelessWidget {
         ),
         onPressed: onPressed,
         width: width,
-        child: ButtonUtility.buildChild(iconPosition, icon, text, child),
+        child: ButtonUtility.buildChild( icon, text, child),
         tooltip: tooltip,
         margin: margin,
         onLongPressed: onLongPressed,
@@ -99,7 +97,6 @@ class ColorButton extends StatelessWidget {
     EdgeInsets? margin,
     double? width,
     required String text,
-    WidgetPosition iconPosition = WidgetPosition.Left,
   }) {
     // Build Child
     return ColorButton(

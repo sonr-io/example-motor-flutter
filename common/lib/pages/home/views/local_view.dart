@@ -42,7 +42,7 @@ class LocalView extends StatelessWidget {
         Padding(padding: EdgeInsets.only(top: 4)),
 
         // Scroll View
-        Obx(() => _buildView(SonrService.to.localPeers.length, true, true))//controller.phonesEnabled.value, controller.desktopsEnabled.value)),
+        Obx(() => _buildView(SonrService.to.localPeers.length, true, true)) //controller.phonesEnabled.value, controller.desktopsEnabled.value)),
       ],
     );
   }
@@ -76,7 +76,7 @@ class _LocalEmptyView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Container(
-        child: [
+        child: Column(children: [
           Padding(padding: EdgeInsets.only(top: 24)),
           Image.asset(
             'assets/images/illustrations/EmptyLobby.png',
@@ -85,7 +85,7 @@ class _LocalEmptyView extends StatelessWidget {
           ),
           Padding(padding: EdgeInsets.only(top: 8)),
           "Nobody Here..".subheading(color: Get.theme.hintColor, fontSize: 20)
-        ].column(),
+        ]),
         padding: EdgeInsets.zero,
       ),
     );

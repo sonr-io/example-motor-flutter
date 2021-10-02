@@ -210,7 +210,6 @@ class ConfirmButton extends StatelessWidget {
     EdgeInsets? padding,
     EdgeInsets? margin,
     double width = 200,
-    WidgetPosition iconPosition = WidgetPosition.Left,
   }) {
     // Default Decoration
     BoxDecoration defaultDecoration = BoxDecoration(
@@ -240,8 +239,8 @@ class ConfirmButton extends StatelessWidget {
       confirmDecoration: confirmDecoration,
       completeDecoration: completeDecoration,
       onConfirmed: onConfirmed,
-      defaultChild: ButtonUtility.buildChild(iconPosition, defaultIcon, defaultText, defaultChild),
-      confirmChild: ButtonUtility.buildChild(iconPosition, confirmIcon, confirmText, confirmChild),
+      defaultChild: ButtonUtility.buildChild(defaultIcon, defaultText, defaultChild),
+      confirmChild: ButtonUtility.buildChild(confirmIcon, confirmText, confirmChild),
       completeChild: ButtonUtility.buildCompleteChild(SimpleIcons.CheckShield, "Saved!"),
       width: width,
       padding: padding,
@@ -272,7 +271,6 @@ class ConfirmButton extends StatelessWidget {
     EdgeInsets? padding,
     EdgeInsets? margin,
     double width = 200,
-    WidgetPosition iconPosition = WidgetPosition.Left,
   }) {
     // Default Decoration
     BoxDecoration defaultDecoration = BoxDecoration(
@@ -302,8 +300,8 @@ class ConfirmButton extends StatelessWidget {
       confirmDecoration: confirmDecoration,
       completeDecoration: completeDecoration,
       onConfirmed: onConfirmed,
-      defaultChild: ButtonUtility.buildChild(iconPosition, defaultIcon, defaultText, defaultChild),
-      confirmChild: ButtonUtility.buildChild(iconPosition, confirmIcon, confirmText, confirmChild),
+      defaultChild: ButtonUtility.buildChild(defaultIcon, defaultText, defaultChild),
+      confirmChild: ButtonUtility.buildChild(confirmIcon, confirmText, confirmChild),
       completeChild: ButtonUtility.buildCompleteChild(SimpleIcons.Trash, "Deleted."),
       width: width,
       padding: padding,

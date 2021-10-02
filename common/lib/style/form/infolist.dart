@@ -72,7 +72,7 @@ class Infolist extends StatelessWidget {
               child: Container(
                 constraints: options.boxConstraints,
                 child: Column(children: [
-                  Padding(padding: EdgeWith.top(4)),
+                  Padding(padding: EdgeInsets.only(top: 4)),
                   Row(
                     mainAxisAlignment: options[index].isHeader ? MainAxisAlignment.center : MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,

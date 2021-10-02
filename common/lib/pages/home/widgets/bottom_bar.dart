@@ -35,10 +35,7 @@ class HomeFloatingBar extends GetWidget<HomeController> {
             ],
           ),
         ),
-        ShowcaseItem.fromType(
-          type: ShowcaseType.ShareStart,
-          child: ShareButton(),
-        ),
+        ShareButton(),
       ]),
     );
   }

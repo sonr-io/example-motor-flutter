@@ -30,15 +30,12 @@ class HomeActionButton extends GetView<HomeController> {
         ),
       );
     } else {
-      return ShowcaseItem.fromType(
-        type: ShowcaseType.Alerts,
-        child: Padding(
-          padding: const EdgeInsets.only(bottom: 108.0, right: 8),
-          child: ActionButton(
-            key: ValueKey<HomeView>(HomeView.Dashboard),
-            iconData: SimpleIcons.Alerts,
-            onPressed: () => SonrService.to.fetch(key: FetchRequest_Key.ALL),
-          ),
+      return Padding(
+        padding: const EdgeInsets.only(bottom: 108.0, right: 8),
+        child: ActionButton(
+          key: ValueKey<HomeView>(HomeView.Dashboard),
+          iconData: SimpleIcons.Alerts,
+          onPressed: () => SonrService.to.fetch(key: FetchRequest_Key.ALL),
         ),
       );
     }
