@@ -29,7 +29,7 @@ class ActionButton extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _ActionIconButton(onPressed, iconData),
-            label!.light(color: Get.theme.hintColor, fontSize: 16),
+            Text(label!, style: AppTextStyles.componentHairlineSmall),
           ],
         ),
       );
@@ -147,7 +147,7 @@ class ActionBanner {
 
   /// Helper: Builds Text from Banner Data
   Widget text() {
-    return value.toString().subheading(fontSize: 14, color: Colors.white, align: TextAlign.center);
+    return Text(value.toString(), style: AppTextStyles.body3Bold);
   }
 }
 
@@ -238,7 +238,7 @@ class ArrowButton extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      title.toUpperCase().light(fontSize: 20, color: Get.theme.focusColor),
+                      Text(title.toUpperCase(), style: AppTextStyles.componentButtonLarge),
                       Padding(
                         padding: const EdgeInsets.only(top: 6.0, left: 4),
                         child: SimpleIcons.Down.icon(size: 16, color: Get.theme.focusColor),

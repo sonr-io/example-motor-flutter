@@ -1,3 +1,0 @@
-class AppDimensions {
-  AppDimensions._();
-}

@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 import '../style.dart';
@@ -135,7 +136,10 @@ class DetailAppBar extends StatelessWidget implements PreferredSizeWidget {
               iconData: isClose ? SimpleIcons.Close : SimpleIcons.Back,
             ),
             trailing: _buildTrailing(),
-            middle: title.toUpperCase().section(color: Get.theme.focusColor, fontSize: 20),
+            middle: Text(
+              title,
+              style: AppTextStyles.headline04,
+            ),
           ),
         ),
       ),

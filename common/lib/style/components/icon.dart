@@ -204,7 +204,7 @@ class PlatformIcon {
       case "android":
         return AppColors.otherPlatformsAndroid;
       case "ios":
-        return AppColors.otherPlatformsIOS;
+        return AppColors.otherPlatformsIOs;
       case "darwin":
         return AppColors.otherPlatformsMacOs;
       case "windows":

@@ -26,12 +26,6 @@ class InfolistOption {
     );
   }
 
-  /// Returns this Widgets Size
-  Size get size => this.title.size(
-        isHeader ? DisplayTextStyle.Subheading : DisplayTextStyle.Light,
-        fontSize: isHeader ? 26 : 24,
-      );
-
   /// Returns Text for Checklist Option based on State
   Widget text() {
     if (isHeader) {

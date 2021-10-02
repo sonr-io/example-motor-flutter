@@ -1,5 +1,6 @@
 import 'package:sonr_app/data/models/animation.dart';
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// #### Class Builds Alert View Widget for Overlay ** //
@@ -22,10 +23,13 @@ class AlertOverlay extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 12),
                 margin: EdgeInsets.symmetric(horizontal: 16, vertical: 220),
                 child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  title.heading(),
+                  Text(title, style: AppTextStyles.headline01),
                   Padding(
                     padding: EdgeInsets.only(left: 10.0),
-                    child: description.paragraph(),
+                    child: Text(
+                      description,
+                      style: AppTextStyles.bodyNormalRegular,
+                    ),
                   ),
                   Padding(padding: EdgeInsets.all(4)),
                   Divider(),
@@ -151,10 +155,13 @@ class QuestionOverlay extends StatelessWidget {
                 margin: EdgeInsets.symmetric(horizontal: 16, vertical: 256),
                 child: Container(
                   child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: [
-                    title.heading(),
+                    Text(title, style: AppTextStyles.headline01),
                     Padding(
                       padding: EdgeInsets.only(left: 8.0),
-                      child: description.paragraph(color: Get.theme.focusColor),
+                      child: Text(
+                        description,
+                        style: AppTextStyles.bodyNormalRegular,
+                      ),
                     ),
                     Padding(padding: EdgeInsets.all(4)),
                     Divider(),
