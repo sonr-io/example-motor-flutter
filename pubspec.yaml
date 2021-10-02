@@ -1,0 +1,46 @@
+name: sonr_plugin
+description: Plugin that creates bindings for Sonr-Core
+version: 0.5.46
+homepage: https://sonr.io
+publish_to: none
+
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # -- Management --
+  app_settings: ^4.1.1
+  bip39: ^1.0.6
+  get: ^4.3.8
+  grpc: ^3.0.2
+
+  # -- Device --
+  connectivity_plus: ^1.1.0
+  device_info_plus: ^2.1.0
+  geolocator: ^7.6.2
+  permission_handler: ^8.1.4+2
+  url_launcher: ^6.0.9
+
+  # -- Data --
+  file_picker: ^4.0.0
+  geocoding: ^2.0.0
+  open_file: ^3.2.1
+  path: ^1.8.0
+  path_provider: ^2.0.2
+  protobuf: ^2.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: io.sonr.core
+        pluginClass: SonrCorePlugin
+      ios:
+        pluginClass: SonrCorePlugin

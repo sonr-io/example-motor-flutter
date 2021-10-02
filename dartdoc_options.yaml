@@ -1,0 +1,3 @@
+dartdoc:
+  nodoc: ['lib/models/protobuf/*.pb.dart', 'lib/models/protobuf/*.pbenum.dart', 'lib/models/protobuf/*.pbjson.dart', 'lib/models/protobuf/*.pbserver.dart']
+  exclude: ['lib/models/protobuf/*.pb.dart', 'lib/models/protobuf/*.pbenum.dart', 'lib/models/protobuf/*.pbjson.dart', 'lib/models/protobuf/*.pbserver.dart']
