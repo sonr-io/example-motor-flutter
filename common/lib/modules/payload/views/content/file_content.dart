@@ -306,7 +306,6 @@ class FilePayloadText extends StatelessWidget {
   final Color? color;
   final double fontSize;
   final FontStyle fontStyle;
-  final DisplayTextStyle textStyle;
   final bool withCount;
 
   const FilePayloadText({
@@ -316,18 +315,13 @@ class FilePayloadText extends StatelessWidget {
     this.withCount = true,
     this.fontSize = 20,
     this.fontStyle = FontStyle.normal,
-    this.textStyle = DisplayTextStyle.Subheading,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       _buildType(),
-      style: textStyle.style(
-        color: color ?? Get.theme.focusColor,
-        fontSize: fontSize,
-        fontStyle: fontStyle,
-      ),
+      style: AppTextStyles.bodySmallBold,
     );
   }
 

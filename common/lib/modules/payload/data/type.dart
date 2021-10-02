@@ -6,15 +6,15 @@ enum PostItemType { Media, Files, Contacts, Links }
 extension PostItemTypeUtils on PostItemType {
   /// Returns `name()` as H3 Text
   Widget title() {
-    return name().subheading();
+    return Text(name(), style: AppTextStyles.headline05);
   }
 
   /// Returns `name()` for Button Label
   Widget label() {
     if (Get.isDarkMode) {
-      return this.name().light(color: AppColors.neutrals8.withOpacity(0.8));
+      return Text(this.name(), style: AppTextStyles.bodyNormalBold);
     } else {
-      return this.name().light(color: AppColors.neutrals1.withOpacity(0.8));
+      return Text(this.name(), style: AppTextStyles.bodyNormalBold);
     }
   }
 
@@ -39,7 +39,7 @@ extension PostItemTypeUtils on PostItemType {
 
   /// Returns Gradient Icon for Type
   Gradient gradient() {
-    if(Get.isDarkMode) {
+    if (Get.isDarkMode) {
       return AppGradients.gradientCommon06;
     } else {
       return AppGradients.gradientCommon05;

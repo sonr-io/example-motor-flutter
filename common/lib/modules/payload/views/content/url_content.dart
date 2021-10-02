@@ -34,7 +34,7 @@ class URLAuthView extends StatelessWidget {
           // From Information
           Column(mainAxisSize: MainAxisSize.min, children: [
             ProfileFullName(profile: invite.from.profile, isHeader: true),
-            Center(child: "Website Link".gradient(value: AppGradients.gradientCommon02, size: 22)),
+            Center(child: Text("Website Link", style: AppTextStyles.bodyNormalBold)),
           ]),
         ]),
         Divider(),

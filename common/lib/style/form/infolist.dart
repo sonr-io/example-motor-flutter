@@ -1,4 +1,5 @@
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 
 /// Option Displayed in Checklist
 class InfolistOption {
@@ -29,13 +30,9 @@ class InfolistOption {
   /// Returns Text for Checklist Option based on State
   Widget text() {
     if (isHeader) {
-      return title.subheading(
-        color: textColor ?? Get.theme.hintColor,
-        fontSize: 26,
-        align: TextAlign.center,
-      );
+      return Text(title, style: AppTextStyles.bodySmallBold);
     }
-    return title.light(color: textColor ?? Get.theme.focusColor, fontSize: 24);
+    return Text(title, style: AppTextStyles.bodySmallRegular);
   }
 }
 
@@ -110,7 +107,7 @@ extension InfolistOptionUtils on List<InfolistOption> {
 
     // Iterate Over Text
     this.forEach((o) {
-      maxTextWidth += o.size.width;
+      // maxTextWidth += o.size.width;
     });
 
     return BoxConstraints(maxWidth: maxTextWidth + maxIconWidth + adjustedPaddingWidth);
