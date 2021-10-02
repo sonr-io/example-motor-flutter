@@ -1,4 +1,5 @@
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 
 enum PostItemType { Media, Files, Contacts, Links }
 
@@ -11,9 +12,9 @@ extension PostItemTypeUtils on PostItemType {
   /// Returns `name()` for Button Label
   Widget label() {
     if (Get.isDarkMode) {
-      return this.name().light(color: AppColor.White.withOpacity(0.8));
+      return this.name().light(color: AppColors.neutrals8.withOpacity(0.8));
     } else {
-      return this.name().light(color: AppColor.Black.withOpacity(0.8));
+      return this.name().light(color: AppColors.neutrals1.withOpacity(0.8));
     }
   }
 
@@ -38,15 +39,10 @@ extension PostItemTypeUtils on PostItemType {
 
   /// Returns Gradient Icon for Type
   Gradient gradient() {
-    switch (this) {
-      case PostItemType.Media:
-        return DesignGradients.PerfectBlue;
-      case PostItemType.Files:
-        return DesignGradients.ItmeoBranding;
-      case PostItemType.Contacts:
-        return DesignGradients.AmourAmour;
-      case PostItemType.Links:
-        return DesignGradients.FrozenHeat;
+    if(Get.isDarkMode) {
+      return AppGradients.gradientCommon06;
+    } else {
+      return AppGradients.gradientCommon05;
     }
   }
 

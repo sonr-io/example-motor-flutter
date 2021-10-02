@@ -25,7 +25,7 @@ class LocalView extends StatelessWidget {
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 24),
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            "Around Me".section(align: TextAlign.start, color: AppTheme.ItemColor),
+            "Around Me".section(align: TextAlign.start, color: Get.theme.focusColor),
             Obx(() => ArrowButton.checkList(
                   title: _buildArrowTitle(true, true), //controller.phonesEnabled.value, controller.desktopsEnabled.value),
                   onSelectedOption: (index) {

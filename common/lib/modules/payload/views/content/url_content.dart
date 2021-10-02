@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 import 'package:sonr_app/modules/peer/peer.dart';
 
@@ -25,7 +26,7 @@ class URLAuthView extends StatelessWidget {
                   : Icon(
                       Icons.insert_emoticon,
                       size: 60,
-                      color: AppColor.Black.withOpacity(0.5),
+                      color: AppColors.neutrals1.withOpacity(0.5),
                     ),
             ),
           ),
@@ -33,7 +34,7 @@ class URLAuthView extends StatelessWidget {
           // From Information
           Column(mainAxisSize: MainAxisSize.min, children: [
             ProfileFullName(profile: invite.from.profile, isHeader: true),
-            Center(child: "Website Link".gradient(value: DesignGradients.PlumBath, size: 22)),
+            Center(child: "Website Link".gradient(value: AppGradients.gradientCommon02, size: 22)),
           ]),
         ]),
         Divider(),

@@ -22,13 +22,13 @@ class ChecklistOption {
         clipBehavior: Clip.none,
         alignment: Alignment.center,
         children: [
-          SimpleIcons.CheckboxActive.icon(color: AppTheme.ItemColor, size: 24),
-          SimpleIcons.Check.icon(color: AppTheme.ItemColorInversed, size: 32)
+          SimpleIcons.CheckboxActive.icon(color: Get.theme.focusColor, size: 24),
+          SimpleIcons.Check.icon(color: Get.theme.cardColor, size: 32)
         ],
       );
     } else {
       return SimpleIcons.CheckboxInactive.icon(
-        color: AppTheme.ItemColor,
+        color: Get.theme.focusColor,
         size: 32,
       );
     }
@@ -39,7 +39,7 @@ class ChecklistOption {
     return AnimatedScale(
       scale: isEnabled.value ? 1.05 : 1.0,
       duration: 300.milliseconds,
-      child: title.light(color: AppTheme.ItemColor, fontSize: 24),
+      child: title.light(color: Get.theme.focusColor, fontSize: 24),
     );
   }
 }
@@ -59,9 +59,9 @@ class Checklist extends StatelessWidget {
         (currentIdx) => Container(
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(24),
-                color: AppTheme.BackgroundColor,
+                color: Get.theme.backgroundColor,
                 border: Border.all(
-                  color: AppTheme.ForegroundColor,
+                  color: Get.theme.canvasColor,
                   width: 1.5,
                 )),
             constraints: options.boxConstraints,
@@ -86,7 +86,7 @@ class Checklist extends StatelessWidget {
                             ]),
                             index + 1 != options.length
                                 ? Divider(
-                                    color: AppTheme.GreyColor.withOpacity(0.25),
+                                    color: Get.theme.dividerColor,
                                     endIndent: 8,
                                     indent: 8,
                                   )

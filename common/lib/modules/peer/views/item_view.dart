@@ -1,5 +1,6 @@
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/modules/peer/peer.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// #### PeerListItem for Remote View
@@ -24,7 +25,7 @@ class PeerListItem extends StatelessWidget {
               ),
               Spacer(),
               DynamicSolidButton(
-                data: DynamicSolidButtonData("Invite", AppColor.White, AppColor.Purple).obs,
+                data: DynamicSolidButtonData("Invite", AppColors.neutrals8, AppColors.primary2).obs,
                 onPressed: () => SonrService.to.share(member),
               )
             ],
@@ -32,7 +33,7 @@ class PeerListItem extends StatelessWidget {
           Divider(
             indent: 8,
             endIndent: 8,
-            color: AppTheme.DividerColor,
+            color: Get.theme.dividerColor,
           ),
         ]));
   }
@@ -58,7 +59,7 @@ class PeerListItem extends StatelessWidget {
         ),
         Positioned.directional(
           textDirection: TextDirection.rtl,
-          child: PlatformIcon(member.device.os).icon(color: AppTheme.ItemColor.withOpacity(0.75), size: 26),
+          child: PlatformIcon(member.device.os).icon(color: Get.theme.focusColor.withOpacity(0.75), size: 26),
           start: 14,
           bottom: 4,
         )
@@ -66,3 +67,7 @@ class PeerListItem extends StatelessWidget {
     );
   }
 }
+
+class Purple {}
+
+class AppColor {}

@@ -8,9 +8,7 @@ export 'buttons/solid.dart';
 export 'icons/icons.dart';
 
 // Theme Components
-export 'theme/color.dart' hide NoSplash;
 export 'components/container.dart';
-export 'theme/gradient.dart';
 export 'components/icon.dart';
 export 'components/overlay.dart';
 export 'components/text.dart';
@@ -28,5 +26,4 @@ export 'form/textfield.dart';
 export 'form/tabs.dart';
 
 // Theme Data
-export 'theme/theme.dart';
-export 'theme/utils.dart';
+export '../theme/utils.dart';

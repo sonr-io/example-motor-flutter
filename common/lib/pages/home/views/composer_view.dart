@@ -46,12 +46,12 @@ class InviteComposer extends GetView<HomeController> {
               children: [
                 "Remote Invite".heading(
                   fontSize: 32,
-                  color: AppTheme.ItemColor,
+                  color: Get.theme.focusColor,
                   align: TextAlign.start,
                 ),
                 "Type the SName of the User you want to Share with.".light(
                   fontSize: 20,
-                  color: AppTheme.GreyColor,
+                  color: Get.theme.hintColor,
                 ),
                 Container(
                   padding: EdgeInsets.only(top: 16, left: 8, right: 16),
@@ -61,7 +61,7 @@ class InviteComposer extends GetView<HomeController> {
                       CircleContainer(
                           padding: EdgeInsets.all(4),
                           child: SimpleIcons.ATSign.icon(
-                            color: AppTheme.ItemColor,
+                            color: Get.theme.focusColor,
                             size: 24,
                           )),
                       Stack(
@@ -120,9 +120,9 @@ class InviteComposer extends GetView<HomeController> {
 //       case ComposeStatus.Checking:
 //         return CircleLoader();
 //       case ComposeStatus.NonExisting:
-//         return SimpleIcons.Close.icon(color: AppColor.Red, size: 36);
+//         return SimpleIcons.Close.icon(color: AppColors.primary3, size: 36);
 //       case ComposeStatus.Existing:
-//         return SimpleIcons.Check.icon(color: AppColor.Red, size: 36);
+//         return SimpleIcons.Check.icon(color: AppColors.primary3, size: 36);
 //     }
 //   }
 // }

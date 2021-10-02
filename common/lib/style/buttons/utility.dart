@@ -1,3 +1,5 @@
+import 'package:sonr_app/theme/theme.dart';
+
 import '../style.dart';
 
 class ButtonUtility {
@@ -37,7 +39,7 @@ class ButtonUtility {
   }
 
   static Widget buildUiIcon(UIIcons ico) {
-    return ico.line(width: 24, height: 24, color: AppTheme.ItemColorInversed);
+    return ico.line(width: 24, height: 24, color: Get.theme.focusColor);
   }
 
   static Widget buildIcon(IconData data) {
@@ -45,10 +47,10 @@ class ButtonUtility {
   }
 
   static Widget buildPrimaryText(String text) {
-    return Container(child: text.heading(color: AppColor.White, fontSize: 22));
+    return Container(child: text.heading(color: AppColors.neutrals8, fontSize: 22));
   }
 
   static Widget buildNeutralText(String text, Color? textColor) {
-    return Container(child: text.heading(color: textColor ?? AppTheme.ItemColor, fontSize: 22));
+    return Container(child: text.heading(color: textColor ?? Get.theme.focusColor, fontSize: 22));
   }
 }

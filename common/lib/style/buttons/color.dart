@@ -1,3 +1,5 @@
+import 'package:sonr_app/theme/theme.dart';
+
 import '../style.dart';
 import 'utility.dart';
 
@@ -46,11 +48,11 @@ class ColorButton extends StatelessWidget {
     // Build Child
     return ColorButton(
         decoration: BoxDecoration(
-            gradient: AppGradients.Primary(radius: gradientRadius ?? 2.5),
+            gradient: Get.isDarkMode ? AppGradients.gradientCommon04 : AppGradients.gradientCommon05,
             borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
-            boxShadow: AppTheme.RectBoxShadow),
+            boxShadow: [AppShadows.depth3]),
         onPressed: onPressed,
-        child: ButtonUtility.buildChild( icon, text, child ),
+        child: ButtonUtility.buildChild(icon, text, child),
         tooltip: tooltip,
         width: width,
         margin: margin,
@@ -75,12 +77,12 @@ class ColorButton extends StatelessWidget {
     // Build Child
     return ColorButton(
         decoration: BoxDecoration(
-          color: color != null ? color : AppColor.AccentPurple,
+          color: color != null ? color : AppColors.secondary1,
           borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
         ),
         onPressed: onPressed,
         width: width,
-        child: ButtonUtility.buildChild( icon, text, child),
+        child: ButtonUtility.buildChild(icon, text, child),
         tooltip: tooltip,
         margin: margin,
         onLongPressed: onLongPressed,

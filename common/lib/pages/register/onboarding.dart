@@ -3,7 +3,7 @@ import 'package:onboarding/onboarding.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sonr_app/style/components/text.dart';
-import 'package:sonr_app/style/theme/color.dart';
+import 'package:sonr_app/theme/theme.dart';
 
 class OnboardingPage extends StatelessWidget {
   @override
@@ -55,7 +55,7 @@ extension OnboardPageTypeUtil on OnboardPageType {
 
   /// Returns this Panels Title as Heading Widget
   Widget title() {
-    final color = AppColor.Black;
+    final color = AppColors.neutrals1;
     switch (this) {
       case OnboardPageType.Welcome:
         return 'Welcome'.heading(color: color, fontSize: 36);
@@ -70,7 +70,7 @@ extension OnboardPageTypeUtil on OnboardPageType {
 
   /// Returns this Panels Description as Rich Text
   Widget description() {
-    final color = AppColor.DarkGrey;
+    final color = Get.theme.hintColor;
     final size = 20.0;
     switch (this) {
       case OnboardPageType.Welcome:

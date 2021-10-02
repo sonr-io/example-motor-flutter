@@ -9,8 +9,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xff8c79f1),
-    Color(0xffffbde9),
+      Color(0xff8c79f1),
+      Color(0xffffbde9),
     ],
   );
 
@@ -22,8 +22,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xff434343),
-    Color(0xff000000),
+      Color(0xff434343),
+      Color(0xff000000),
     ],
   );
 
@@ -35,12 +35,12 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xfffafafa),
-    Color(0xffffffff),
+      Color(0xfffafafa),
+      Color(0xffffffff),
     ],
   );
 
-  static const gradientCommon03 = LinearGradient(
+  static const gradientCommon04 = LinearGradient(
     begin: Alignment(1, 1),
     end: Alignment(-1, -1),
     stops: [
@@ -48,8 +48,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xfffd4df6),
-    Color(0xfffda14d),
+      Color(0xfffd4df6),
+      Color(0xfffda14d),
     ],
   );
 
@@ -62,9 +62,9 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xff4d74fd),
-    Color(0xff4daef8),
-    Color(0xff4dfdf2),
+      Color(0xff4d74fd),
+      Color(0xff4daef8),
+      Color(0xff4dfdf2),
     ],
   );
 
@@ -76,8 +76,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xfffa709a),
-    Color(0xfffee140),
+      Color(0xfffa709a),
+      Color(0xfffee140),
     ],
   );
 
@@ -89,8 +89,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xffe2e3ff),
-    Color(0xffeadeff),
+      Color(0xffe2e3ff),
+      Color(0xffeadeff),
     ],
   );
 
@@ -102,8 +102,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xfff0d8ff),
-    Color(0xffdefdff),
+      Color(0xfff0d8ff),
+      Color(0xffdefdff),
     ],
   );
 
@@ -115,8 +115,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xffe5eff5),
-    Color(0xffffecde),
+      Color(0xffe5eff5),
+      Color(0xffffecde),
     ],
   );
 
@@ -128,8 +128,8 @@ class AppGradients {
       0.7881540060043335,
     ],
     colors: [
-    Color(0xff1c1c3b),
-    Color(0xff272752),
+      Color(0xff1c1c3b),
+      Color(0xff272752),
     ],
   );
 
@@ -141,8 +141,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xff232042),
-    Color(0xff282442),
+      Color(0xff232042),
+      Color(0xff282442),
     ],
   );
 
@@ -155,9 +155,9 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xff22e1ff),
-    Color(0xff1792ff),
-    Color(0xff9665fd),
+      Color(0xff22e1ff),
+      Color(0xff1792ff),
+      Color(0xff9665fd),
     ],
   );
 
@@ -169,8 +169,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xfffafafa),
-    Color(0xffcfcfcf),
+      Color(0xfffafafa),
+      Color(0xffcfcfcf),
     ],
   );
 
@@ -183,9 +183,9 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xffffc444),
-    Color(0xfff46692),
-    Color(0xfffa5853),
+      Color(0xffffc444),
+      Color(0xfff46692),
+      Color(0xfffa5853),
     ],
   );
 
@@ -198,9 +198,9 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xffffc444),
-    Color(0xfff46692),
-    Color(0xfffa5853),
+      Color(0xffffc444),
+      Color(0xfff46692),
+      Color(0xfffa5853),
     ],
   );
 
@@ -213,9 +213,9 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xffffc444),
-    Color(0xfff46692),
-    Color(0xfffa5853),
+      Color(0xffffc444),
+      Color(0xfff46692),
+      Color(0xfffa5853),
     ],
   );
 
@@ -228,9 +228,9 @@ class AppGradients {
       0.3100000023841858,
     ],
     colors: [
-    Color(0xffd5d4d0),
-    Color(0xffd5d4d0),
-    Color(0xffeeeeec),
+      Color(0xffd5d4d0),
+      Color(0xffd5d4d0),
+      Color(0xffeeeeec),
     ],
   );
 
@@ -242,8 +242,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xffc7c7c7),
-    Color(0xffa7a6a6),
+      Color(0xffc7c7c7),
+      Color(0xffa7a6a6),
     ],
   );
 
@@ -255,8 +255,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xff141416),
-    Color(0xb2141416),
+      Color(0xff141416),
+      Color(0xb2141416),
     ],
   );
 

@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// Builds Header Style text from [Profile] data
@@ -13,7 +14,7 @@ class ProfileFullName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (this.isHeader) {
-      return profile.fullName.gradient(value: DesignGradients.SolidStone);
+      return profile.fullName.gradient(value: AppGradients.gradientDark01);
     } else {
       return Row(children: [
         "${profile.firstName.capitalizeFirst} ".paragraph(),
@@ -48,7 +49,7 @@ class ProfileAvatar extends StatelessWidget {
           margin: EdgeInsets.all(8),
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: backgroundColor ?? AppTheme.ForegroundColor,
+            color: backgroundColor ?? Get.theme.canvasColor,
             shape: BoxShape.circle,
           ),
           child: profile.profileImage(
@@ -73,8 +74,8 @@ class ProfileOwnerRow extends StatelessWidget {
           children: [
             Container(
                 margin: EdgeInsets.only(top: 8, left: 8),
-                decoration: BoxDecoration(color: AppColor.White, shape: BoxShape.circle, boxShadow: [
-                  BoxShadow(offset: Offset(2, 2), blurRadius: 8, color: AppColor.Black.withOpacity(0.2)),
+                decoration: BoxDecoration(color: AppColors.neutrals8, shape: BoxShape.circle, boxShadow: [
+                  BoxShadow(offset: Offset(2, 2), blurRadius: 8, color: AppColors.neutrals1.withOpacity(0.2)),
                 ]),
                 padding: EdgeInsets.all(4),
                 child: Container(

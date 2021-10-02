@@ -1,3 +1,5 @@
+import 'package:sonr_app/theme/theme.dart';
+
 import 'icons.dart';
 
 enum UIIcons {
@@ -148,7 +150,7 @@ extension UIUtils on UIIcons {
   }) {
     return SvgPicture.asset(
       this.path(IconFill.Line),
-      color: AppTheme.ItemColorInversed,
+      color: Get.isDarkMode ? AppColors.neutrals7 : AppColors.neutrals2,
       bundle: rootBundle,
       key: key,
       clipBehavior: clipBehavior,

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/data/data.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 // ** ─── Snackbar Arguments ────────────────────────────────────────────────────────
@@ -31,7 +32,7 @@ class SnackArgs {
       required this.message,
       required this.icon,
       this.backgroundColor,
-      this.textColor = AppColor.White,
+      this.textColor = AppColors.neutrals8,
       this.backgroundGradient,
       this.snackStyle,
       this.mainButton,
@@ -103,7 +104,7 @@ class SnackArgs {
       title: isLast ? "Almost There!" : ['Wait!', 'Hold Up!', "Uh Oh!"].random(),
       message: message,
       icon: SimpleIcons.Warning.white,
-      backgroundColor: AppColor.Red,
+      backgroundColor: AppColors.primary3,
       duration: 2600.milliseconds,
       shouldIconPulse: false,
       position: position,
@@ -222,7 +223,7 @@ class ErrorPageArgs {
       case ErrorPageType.EmptyMedia:
         return Color.fromRGBO(240, 244, 244, 1.0);
       default:
-        return AppTheme.BackgroundColor;
+        return Get.theme.backgroundColor;
     }
   }
 
@@ -266,11 +267,11 @@ class ErrorPageArgs {
   Color get textColor {
     switch (this.type) {
       case ErrorPageType.EmptyLinks:
-        return AppColor.White;
+        return AppColors.neutrals8;
       case ErrorPageType.NoNetwork:
-        return AppColor.White;
+        return AppColors.neutrals8;
       default:
-        return AppColor.Black;
+        return AppColors.neutrals1;
     }
   }
 

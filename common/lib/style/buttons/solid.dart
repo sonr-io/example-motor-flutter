@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sonr_app/theme/theme.dart';
 
 import '../style.dart';
 import 'utility.dart';
@@ -36,7 +37,7 @@ class SolidButton extends StatelessWidget {
   factory SolidButton.grey({required String title, required void Function() onPressed}) {
     return SolidButton(
       title: title,
-      color: AppTheme.GreyColor,
+      color: Get.theme.hintColor,
       onPressed: onPressed,
       textColor: Color(0xff000000),
     );
@@ -124,25 +125,25 @@ class DynamicSolidButtonData {
   factory DynamicSolidButtonData.invite() => DynamicSolidButtonData(
         "Invite",
         Color(0xff000000),
-        AppTheme.GreyColor,
+        Get.theme.hintColor,
       );
 
   factory DynamicSolidButtonData.pending() => DynamicSolidButtonData(
         "Pending",
-        AppTheme.GreyColor,
+        Get.theme.hintColor,
         Colors.orange,
       );
 
   factory DynamicSolidButtonData.inProgress() => DynamicSolidButtonData(
         "In Progress",
-        AppTheme.GreyColor,
-        AppColor.Blue,
+        Get.theme.hintColor,
+        AppColors.primary1,
       );
 
   factory DynamicSolidButtonData.complete() => DynamicSolidButtonData(
         "Sent!",
-        AppTheme.GreyColor,
-        AppColor.Green,
+        Get.theme.hintColor,
+        AppColors.primary4,
       );
 
   Widget build() {
@@ -213,23 +214,23 @@ class ConfirmButton extends StatelessWidget {
   }) {
     // Default Decoration
     BoxDecoration defaultDecoration = BoxDecoration(
-      color: CGUtility.hex("#a2a2a2"),
+      color: AppColors.primary1,
       borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
-      boxShadow: AppTheme.RectBoxShadow,
+      boxShadow: [AppShadows.depth3],
     );
 
     // Confirm Decoration
     BoxDecoration confirmDecoration = BoxDecoration(
-      gradient: DesignGradients.MalibuBeach,
+      color: AppColors.primary4,
       borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
-      boxShadow: AppTheme.RectBoxShadow,
+      boxShadow: [AppShadows.depth3],
     );
 
     // Complete Decoration
     BoxDecoration completeDecoration = BoxDecoration(
-      gradient: DesignGradients.ItmeoBranding,
+      color: AppColors.primary2,
       borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
-      boxShadow: AppTheme.RectBoxShadow,
+      boxShadow: [AppShadows.depth3],
     );
 
     // Build Child
@@ -274,23 +275,23 @@ class ConfirmButton extends StatelessWidget {
   }) {
     // Default Decoration
     BoxDecoration defaultDecoration = BoxDecoration(
-      color: CGUtility.hex("#a2a2a2"),
+      color: AppColors.primary1,
       borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
-      boxShadow: AppTheme.RectBoxShadow,
+      boxShadow: [AppShadows.depth3],
     );
 
     // Confirm Decoration
     BoxDecoration confirmDecoration = BoxDecoration(
-      gradient: DesignGradients.MalibuBeach,
+      color: AppColors.primary4,
       borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
-      boxShadow: AppTheme.RectBoxShadow,
+      boxShadow: [AppShadows.depth3],
     );
 
     // Complete Decoration
     BoxDecoration completeDecoration = BoxDecoration(
-      gradient: DesignGradients.ItmeoBranding,
+      color: AppColors.primary2,
       borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
-      boxShadow: AppTheme.RectBoxShadow,
+      boxShadow: [AppShadows.depth3],
     );
 
     // Build Child
@@ -484,7 +485,7 @@ class ComplexButton extends StatelessWidget {
                           width: size,
                           height: size,
                           decoration: BoxDecoration(
-                            gradient: AppGradients.Foreground,
+                            gradient: Get.isDarkMode ? AppGradients.gradientLight01 : AppGradients.gradientDark01,
                             shape: BoxShape.circle,
                           ),
                           padding: EdgeInsets.all(24),
@@ -505,11 +506,11 @@ class ComplexButton extends StatelessWidget {
           // Build Label
           Get.isDarkMode
               ? label.light(
-                  color: textColor ?? AppColor.White.withOpacity(0.8),
+                  color: textColor ?? AppColors.neutrals8.withOpacity(0.8),
                   fontSize: fontSize,
                 )
               : label.light(
-                  color: textColor ?? AppColor.Black.withOpacity(0.8),
+                  color: textColor ?? AppColors.neutrals1.withOpacity(0.8),
                   fontSize: fontSize,
                 ),
         ],

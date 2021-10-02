@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:sonr_app/pages/home/home.dart';
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 class IntelHeader extends StatelessWidget {
@@ -36,7 +37,7 @@ class IntelHeader extends StatelessWidget {
               baseline: TextBaseline.alphabetic,
               child: SimpleIcons.Location.icon(
                 size: 22,
-                color: AppTheme.ItemColor,
+                color: Get.theme.focusColor,
               )),
           (" " + title).headingSpan(
             color: Get.theme.focusColor,
@@ -133,7 +134,7 @@ class _IntelFooterState extends State<IntelFooter> {
             animate: true,
             duration: 300.milliseconds,
             child: SimpleIcons.Up.icon(
-              color: AppColor.Blue,
+              color: AppColors.primary1,
               size: 14,
             ),
           ),
@@ -145,7 +146,7 @@ class _IntelFooterState extends State<IntelFooter> {
             from: 40,
             duration: 300.milliseconds,
             child: SimpleIcons.Down.icon(
-              color: AppColor.Red,
+              color: AppColors.primary3,
               size: 14,
             ),
           ),
@@ -163,7 +164,7 @@ class _IntelFooterState extends State<IntelFooter> {
       return FadeIn(
         animate: true,
         child: difference.toString().light(
-              color: prevCount < count ? AppColor.Green : AppColor.Red,
+              color: prevCount < count ? AppColors.primary4 : AppColors.primary3,
             ),
       );
     }
@@ -198,10 +199,10 @@ class _NearbyPeersRow extends StatelessWidget {
                 height: 36,
                 child: "${SonrService.to.localPeers.length}+".light(
                   fontSize: 16,
-                  color: AppTheme.GreyColor,
+                  color: Get.theme.hintColor,
                 ),
                 decoration: BoxDecoration(
-                  color: AppColor.AccentBlue,
+                  color: AppColors.secondary1,
                   shape: BoxShape.circle,
                 ),
               ),
@@ -257,7 +258,7 @@ class HomeAppBar extends GetView<HomeController> implements PreferredSizeWidget 
                   : Padding(
                       padding: EdgeInsets.only(top: 32),
                       child: controller.view.value.title.heading(
-                        color: AppTheme.ItemColor,
+                        color: Get.theme.focusColor,
                         align: TextAlign.start,
                       ),
                     ),

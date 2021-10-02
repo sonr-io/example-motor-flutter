@@ -1,4 +1,5 @@
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// ### BoxContainer
@@ -71,10 +72,9 @@ class BoxContainer extends StatelessWidget {
       clipBehavior: clipBehavior,
       child: child,
       decoration: BoxDecoration(
-        border: AppTheme.BoxBorder,
-        gradient: AppGradients.Foreground,
+        gradient: Get.isDarkMode ? AppGradients.glassDark : AppGradients.gradientLight02,
         borderRadius: BorderRadius.circular(radius),
-        boxShadow: AppTheme.RectBoxShadow,
+        boxShadow: [AppShadows.depth3],
       ),
     );
   }
@@ -125,10 +125,10 @@ class CircleContainer extends StatelessWidget {
       clipBehavior: clipBehavior,
       child: child,
       decoration: BoxDecoration(
-        border: Get.isDarkMode ? null : Border.all(color: AppTheme.BackgroundColor, width: 1),
-        gradient: AppGradients.Foreground,
+        border: Get.isDarkMode ? null : Border.all(color: Get.theme.backgroundColor, width: 1),
+        gradient: Get.isDarkMode ? AppGradients.glassDark : AppGradients.gradientLight02,
         shape: BoxShape.circle,
-        boxShadow: AppTheme.CircleBoxShadow,
+        boxShadow: [AppShadows.depth3],
       ),
     );
   }
@@ -183,13 +183,12 @@ class PolyContainer extends StatelessWidget {
     return ClipPolygon(
       borderRadius: radius,
       rotate: rotate,
-      boxShadows: AppTheme.PolyBoxShadow,
       sides: sides,
       child: Container(
         decoration: BoxDecoration(
-          gradient: gradient ?? AppGradients.Primary(),
-          boxShadow: AppTheme.RectBoxShadow,
-          border: Get.isDarkMode ? null : Border.all(color: AppTheme.BackgroundColor, width: 1),
+          gradient: gradient ?? AppGradients.gradientBrand01,
+          boxShadow: [AppShadows.depth3],
+          border: Get.isDarkMode ? null : Border.all(color: Get.theme.backgroundColor, width: 1),
         ),
         key: key,
         width: width,

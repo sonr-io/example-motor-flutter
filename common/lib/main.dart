@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:sonr_app/style/style.dart';
 
 import 'data/services/services.dart';
+import 'theme/theme.dart';
 
 /// #### Main Method
 Future<void> main() async {

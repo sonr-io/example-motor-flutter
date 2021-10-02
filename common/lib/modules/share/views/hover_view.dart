@@ -12,9 +12,9 @@ class ShareHoverView extends StatelessWidget {
     return AnimatedContainer(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24),
-            color: AppTheme.BackgroundColor,
+            color: Get.theme.backgroundColor,
             border: Border.all(
-              color: AppTheme.ForegroundColor,
+              color: Get.theme.canvasColor,
               width: 1.5,
             )),
         constraints: BoxConstraints(maxWidth: 200, maxHeight: 314),
@@ -56,9 +56,9 @@ class _ShareHoverPeerInfo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        PlatformIcon(peer.device.os).icon(color: AppTheme.ItemColor.withOpacity(0.75), size: 26),
+        PlatformIcon(peer.device.os).icon(color: Get.theme.focusColor.withOpacity(0.75), size: 26),
         Padding(padding: EdgeInsets.only(left: 8)),
-        peer.profile.firstName.subheading(fontSize: 28, color: AppTheme.ItemColor),
+        peer.profile.firstName.subheading(fontSize: 28, color: Get.theme.focusColor),
       ],
     );
   }

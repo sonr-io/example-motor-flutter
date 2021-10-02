@@ -1,5 +1,6 @@
 import 'package:sonr_app/pages/register/register_controller.dart';
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 
 enum RegisterPageType {
   Intro,
@@ -105,9 +106,9 @@ extension RegisterPageTypeUtils on RegisterPageType {
   /// Returns Button Text Color for Permissions
   Color permissionsButtonColor() {
     if (this.indexGroup == 0) {
-      return AppColor.Black;
+      return AppColors.neutrals1;
     }
-    return AppColor.White;
+    return AppColors.neutrals8;
   }
 
   /// Returns Image Path for Permissions

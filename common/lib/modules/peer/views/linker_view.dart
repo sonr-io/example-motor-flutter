@@ -18,7 +18,7 @@ class PeerLinkerItem extends StatelessWidget {
                   child: RichText(
                       text: TextSpan(children: [
                     "${peer.device.hostName} \n".subheadingSpan(fontSize: 24),
-                    WidgetSpan(child: PlatformIcon(peer.device.os).icon(size: 18, color: AppTheme.ItemColor.withOpacity(0.75))),
+                    WidgetSpan(child: PlatformIcon(peer.device.os).icon(size: 18, color: Get.theme.focusColor.withOpacity(0.75))),
                     " ${peer.device.os}".paragraphSpan(fontSize: 18),
                   ]))),
               Spacer(),
@@ -32,7 +32,7 @@ class PeerLinkerItem extends StatelessWidget {
           Divider(
             indent: 8,
             endIndent: 8,
-            color: AppTheme.DividerColor,
+            color: Get.theme.dividerColor,
           ),
         ]));
   }

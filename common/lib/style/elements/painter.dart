@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 import '../style.dart';
 
@@ -80,7 +81,7 @@ class CirclePainter extends CustomPainter {
     final double size = rect.width / 2;
     final double area = size * size;
     final double radius = sqrt(area * value / 2);
-    final Paint paint = Paint()..color = AppColor.Red.withOpacity(opacity);
+    final Paint paint = Paint()..color = AppColors.primary3.withOpacity(opacity);
     // paint.style = PaintingStyle.stroke;
     // paint.strokeWidth = 20;
     canvas.drawCircle(rect.center, radius, paint);

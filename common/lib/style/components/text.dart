@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 import 'package:sonr_app/style/style.dart';
 
@@ -63,7 +64,7 @@ extension DisplayTextStyleUtils on DisplayTextStyle {
         fontFamily: this.fontFamily,
         fontWeight: this.fontWeight,
         fontSize: fontSize ?? this.fontSize,
-        color: color ?? AppTheme.ItemColor,
+        color: color ?? Get.theme.focusColor,
         fontFeatures: [
           FontFeature.tabularFigures(),
         ],
@@ -105,7 +106,7 @@ extension TextSpanListUtils on List<TextSpan> {
 extension DisplayTextUtils on String {
   /// Hero
   DisplayText hero({
-    Color color = AppColor.White,
+    Color color = AppColors.neutrals8,
     TextAlign align = TextAlign.start,
     FontStyle fontStyle = FontStyle.normal,
     double? fontSize,
@@ -114,7 +115,7 @@ extension DisplayTextUtils on String {
 
   /// Heading - Default Size = 32, FontWeight.w700
   DisplayText heading({
-    Color color = AppColor.Black,
+    Color color = AppColors.neutrals1,
     TextAlign align = TextAlign.start,
     FontStyle fontStyle = FontStyle.normal,
     double? fontSize,
@@ -123,7 +124,7 @@ extension DisplayTextUtils on String {
 
   /// Heading **Span** - Default Size = 32, FontWeight.w700
   TextSpan headingSpan({
-    Color color = AppColor.Black,
+    Color color = AppColors.neutrals1,
     FontStyle fontStyle = FontStyle.normal,
     double? fontSize,
   }) =>
@@ -134,7 +135,7 @@ extension DisplayTextUtils on String {
 
   /// Subheading - Default Size = 26, FontWeight.w500
   DisplayText subheading({
-    Color color = AppColor.Black,
+    Color color = AppColors.neutrals1,
     TextAlign align = TextAlign.start,
     FontStyle fontStyle = FontStyle.normal,
     double? fontSize,
@@ -143,7 +144,7 @@ extension DisplayTextUtils on String {
 
   /// Subheading **Span** - Default Size = 26, FontWeight.w500
   TextSpan subheadingSpan({
-    Color color = AppColor.Black,
+    Color color = AppColors.neutrals1,
     FontStyle fontStyle = FontStyle.normal,
     double? fontSize,
   }) =>
@@ -154,7 +155,7 @@ extension DisplayTextUtils on String {
 
   /// Section - Default Size = 20, FontWeight.w700
   DisplayText section({
-    Color color = AppColor.Black,
+    Color color = AppColors.neutrals1,
     TextAlign align = TextAlign.start,
     FontStyle fontStyle = FontStyle.normal,
     double? fontSize,
@@ -163,7 +164,7 @@ extension DisplayTextUtils on String {
 
   /// Section **Span** - Default Size = 20, FontWeight.w700
   TextSpan sectionSpan({
-    Color color = AppColor.Black,
+    Color color = AppColors.neutrals1,
     FontStyle fontStyle = FontStyle.normal,
     double? fontSize,
   }) =>
@@ -174,7 +175,7 @@ extension DisplayTextUtils on String {
 
   /// Paragraph - Default Size = 20, FontWeight.w100
   DisplayText paragraph({
-    Color color = AppColor.Black,
+    Color color = AppColors.neutrals1,
     TextAlign align = TextAlign.start,
     FontStyle fontStyle = FontStyle.normal,
     double? fontSize,
@@ -183,7 +184,7 @@ extension DisplayTextUtils on String {
 
   /// Paragraph **Span** - Default Size = 20, FontWeight.w100
   TextSpan paragraphSpan({
-    Color color = AppColor.Black,
+    Color color = AppColors.neutrals1,
     FontStyle fontStyle = FontStyle.normal,
     double? fontSize,
   }) =>
@@ -194,7 +195,7 @@ extension DisplayTextUtils on String {
 
   /// Light - Default Size = 20,  FontWeight.w300
   DisplayText light({
-    Color color = AppColor.Black,
+    Color color = AppColors.neutrals1,
     TextAlign align = TextAlign.start,
     FontStyle fontStyle = FontStyle.normal,
     double? fontSize,
@@ -203,7 +204,7 @@ extension DisplayTextUtils on String {
 
   /// Light **Span** - Default Size = 20, FontWeight.w300
   TextSpan lightSpan({
-    Color color = AppColor.Black,
+    Color color = AppColors.neutrals1,
     FontStyle fontStyle = FontStyle.normal,
     double? fontSize,
   }) =>
@@ -300,7 +301,7 @@ class DisplayText extends StatelessWidget {
     if (style == DisplayTextStyle.Hero) {
       return Center(
         child: ShaderMask(
-            shaderCallback: (bounds) => DesignGradients.CrystalRiver.createShader(
+            shaderCallback: (bounds) => AppGradients.gradientCommon05.createShader(
                   Rect.fromLTWH(0, 0, bounds.width, bounds.height),
                 ),
             child: _buildText(context, TextAlign.center)),

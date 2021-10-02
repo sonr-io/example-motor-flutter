@@ -1,4 +1,5 @@
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// Form Field to Display List of Strings as Gradient Tab View
@@ -10,7 +11,7 @@ class GradientTabs extends StatelessWidget {
   Widget build(BuildContext context) {
     return ObxValue<RxInt>(
         (currentIdx) => Container(
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: Get.isDarkMode ? AppTheme.ForegroundColor : Color(0xffF8F8F9)),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(32), color: Get.isDarkMode ? Get.theme.canvasColor : Color(0xffF8F8F9)),
             height: 64,
             margin: EdgeInsets.symmetric(horizontal: 24),
             padding: EdgeInsets.all(8),
@@ -44,7 +45,7 @@ class GradientTabs extends StatelessWidget {
                     )),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24),
-                    gradient: currentIndex.value == index ? AppGradients.Primary() : null,
+                    gradient: currentIndex.value == index ? (Get.isDarkMode ? AppGradients.gradientLight01 : AppGradients.gradientDark01) : null,
                     color: currentIndex.value == index ? null : Colors.transparent),
                 duration: 150.milliseconds,
               ),
@@ -53,9 +54,9 @@ class GradientTabs extends StatelessWidget {
 
   Color _buildTextColor(bool isCurrent) {
     if (isCurrent) {
-      return AppColor.White;
+      return Get.theme.focusColor;
     } else {
-      return Get.isDarkMode ? AppTheme.GreyColor : AppColor.Black;
+      return Get.theme.hintColor;
     }
   }
 }

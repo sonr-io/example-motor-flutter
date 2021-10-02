@@ -1,5 +1,6 @@
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/pages/register/register.dart';
+import 'package:sonr_app/theme/theme.dart';
 
 class SetupView extends GetView<RegisterController> {
   @override
@@ -7,7 +8,7 @@ class SetupView extends GetView<RegisterController> {
     return Obx(() => Scaffold(
         extendBody: true,
         resizeToAvoidBottomInset: false,
-        backgroundColor: AppTheme.ForegroundColor,
+        backgroundColor: Get.theme.canvasColor,
         appBar: RegisterSetupTitleBar(
           title: controller.status.value.title,
           instruction: controller.status.value.instruction,
@@ -56,7 +57,7 @@ class _NamePage extends GetView<RegisterController> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 "Sonr Name".toUpperCase().light(
-                      color: AppTheme.GreyColor,
+                      color: Get.theme.hintColor,
                       fontSize: 20,
                     ),
                 Obx(() => Container(
@@ -72,7 +73,7 @@ class _NamePage extends GetView<RegisterController> {
               ],
             )),
         Container(
-            decoration: BoxDecoration(color: AppTheme.BackgroundColor, borderRadius: BorderRadius.circular(22)),
+            decoration: BoxDecoration(color: Get.theme.backgroundColor, borderRadius: BorderRadius.circular(22)),
             margin: EdgeInsets.only(left: 16, right: 16, top: 6, bottom: 6),
             padding: EdgeInsets.symmetric(vertical: 24, horizontal: 24),
             child: ObxValue<RxDouble>(
@@ -81,7 +82,7 @@ class _NamePage extends GetView<RegisterController> {
                         inputFormatters: [
                           FilteringTextInputFormatter.allow(RegExp("[a-z]")),
                         ],
-                        style: DisplayTextStyle.Paragraph.style(color: AppTheme.ItemColor, fontSize: 24),
+                        style: DisplayTextStyle.Paragraph.style(color: Get.theme.focusColor, fontSize: 24),
                         autofocus: true,
                         textInputAction: TextInputAction.go,
                         autocorrect: false,
@@ -103,7 +104,7 @@ class _NamePage extends GetView<RegisterController> {
                         padding: EdgeInsets.only(left: leftPadding.value),
                         child: Text(
                           ".snr/",
-                          style: DisplayTextStyle.Subheading.style(color: AppTheme.ItemColor, fontSize: 24),
+                          style: DisplayTextStyle.Subheading.style(color: Get.theme.focusColor, fontSize: 24),
                         ),
                       ),
                     ]),
@@ -126,15 +127,15 @@ class _NamePage extends GetView<RegisterController> {
 //             children: [
 //               "- Must be more than 3 characters".light(
 //                 fontSize: 14,
-//                 color: AppTheme.GreyColor,
+//                 color: Get.theme.hintColor,
 //               ),
 //               "- No Numbers, Spaces, and Special Characters.".light(
 //                 fontSize: 14,
-//                 color: AppTheme.GreyColor,
+//                 color: Get.theme.hintColor,
 //               ),
 //               "- Ideally a Combo of First & Last Name.".light(
 //                 fontSize: 14,
-//                 color: AppTheme.GreyColor,
+//                 color: Get.theme.hintColor,
 //               ),
 //             ],
 //           ))
@@ -145,7 +146,7 @@ class _NamePage extends GetView<RegisterController> {
 //               child: Center(
 //                 child: DashedBox(
 //                   strokeWidth: 1,
-//                   color: AppTheme.GreyColor,
+//                   color: Get.theme.hintColor,
 //                   child: Padding(
 //                     padding: const EdgeInsets.all(8.0),
 //                     child: Row(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
@@ -196,11 +197,11 @@ class _BackupCodeView extends GetView<RegisterController> {
                         ),
                       ),
                       Divider(
-                        color: AppTheme.DividerColor,
+                        color: Get.theme.dividerColor,
                       ),
                       Container(
                         padding: EdgeInsets.only(bottom: 24),
-                        child: controller.mnemonic.value.gradient(value: DesignGradients.CrystalRiver, size: 32),
+                        child: controller.mnemonic.value.gradient(value: AppGradients.gradientCommon05, size: 32),
                       ),
                     ],
                   ),

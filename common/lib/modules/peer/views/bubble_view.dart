@@ -37,7 +37,7 @@ class PeerBubbleView extends StatelessWidget {
       );
     } else {
       return BoxDecoration(
-        color: AppTheme.ForegroundColor,
+        color: Get.theme.canvasColor,
         shape: BoxShape.circle,
       );
     }
@@ -46,7 +46,7 @@ class PeerBubbleView extends StatelessWidget {
   Widget _buildPeerInitials() {
     return peer.profile.initials.light(
       fontSize: 18,
-      color: AppTheme.GreyColor,
+      color: Get.theme.hintColor,
     );
   }
 }
