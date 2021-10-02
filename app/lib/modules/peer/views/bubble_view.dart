@@ -3,9 +3,9 @@ import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/modules/peer/peer.dart';
 
 class PeerBubbleView extends GetView<PeerController> {
-  final Member member;
+  final Peer member;
   final GlobalKey peerKey = GlobalKey();
-  PeerBubbleView(this.member) : super(key: ValueKey(member.active.id.peer));
+  PeerBubbleView(this.member) : super(key: ValueKey(member.id.peer));
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

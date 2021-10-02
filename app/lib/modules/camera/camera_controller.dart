@@ -19,7 +19,7 @@ class CameraController extends GetxController {
   final videoInProgress = false.obs;
   final zoomLevel = 0.0.obs;
   final hasCaptured = false.obs;
-  final result = SFile().obs;
+  final result = RxString("");
   final status = CameraViewStatus.Default.obs;
 
   // Notifiers
@@ -33,7 +33,7 @@ class CameraController extends GetxController {
   // Controllers
   final PictureController pictureController = PictureController();
   final VideoController videoController = VideoController();
-  final Function(SFile file) selected;
+  final Function(String file) selected;
 
   // Video Duration Handling
   Stopwatch _stopwatch = Stopwatch();
@@ -59,7 +59,7 @@ class CameraController extends GetxController {
 
     // Capture Photo
     await pictureController.takePicture(photoCapturePath);
-    result(SFileItemUtil.newItem(path: photoCapturePath).toSFile());
+    result(photoCapturePath);
     hasCaptured(true);
     status(CameraViewStatus.Preview);
   }
@@ -86,7 +86,7 @@ class CameraController extends GetxController {
     // Capture Photo
     captureMode.value = CaptureModes.VIDEO;
     await videoController.recordVideo(videoCapturePath);
-    result(SFileItemUtil.newItem(path: videoCapturePath).toSFile());
+    result(videoCapturePath);
     videoInProgress(true);
 
     _stopwatch.start();
@@ -100,11 +100,6 @@ class CameraController extends GetxController {
   stopCaptureVideo() async {
     // Save Video
     await videoController.stopRecordingVideo();
-    result.update((val) {
-      if (val != null) {
-        val.single.properties.duration = videoDuration.value;
-      }
-    });
 
     // Reset Duration Management
     _stopwatch.reset();

@@ -4,7 +4,7 @@ import 'package:sonr_app/modules/peer/peer.dart';
 
 /// #### Completed Transfer Popup View
 class CompletedPopup extends GetView<ActivityController> {
-  final Transfer transfer;
+  final Payload transfer;
   CompletedPopup({Key? key, required this.transfer}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class CompletedPopup extends GetView<ActivityController> {
       Container(
         margin: EdgeInsets.only(top: 356),
         child: ColorButton.primary(
-          onPressed: () => controller.exportTransfer(transfer),
+          onPressed: () {},
           text: "Export",
           icon: SimpleIcons.ShareOutside,
         ),
@@ -30,7 +30,7 @@ class CompletedPopup extends GetView<ActivityController> {
 
 /// #### TransferCard as List item View
 class _PostTransferItem extends StatelessWidget {
-  final Transfer transfer;
+  final Payload transfer;
 
   const _PostTransferItem({Key? key, required this.transfer}) : super(key: key);
   @override
@@ -61,8 +61,8 @@ class _PostTransferItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  FilePayloadText(payload: transfer.payload, file: transfer.file),
-                  DateText.fromMilliseconds(transfer.received * 1000),
+                  FilePayloadText(payload: transfer.m, file: transfer.items[0]),
+                  DateText.fromMilliseconds(transfer.createdAt.toInt() * 1000),
                 ],
               ),
             ),

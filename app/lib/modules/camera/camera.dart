@@ -9,7 +9,7 @@ import 'camera_controller.dart';
 
 class CameraView extends StatelessWidget {
   // Properties
-  final Function(SFile file) onMediaSelected;
+  final Function(String file) onMediaSelected;
   CameraView({required this.onMediaSelected});
   @override
   Widget build(BuildContext context) {

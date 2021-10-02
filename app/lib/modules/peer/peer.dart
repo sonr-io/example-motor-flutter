@@ -6,6 +6,8 @@ export 'data/peer_controller.dart';
 export 'data/profile_utils.dart';
 export 'data/session_utils.dart';
 
+import 'package:sonr_plugin/sonr_plugin.dart';
+
 import 'views/linker_view.dart';
 import 'views/card_view.dart';
 import 'views/item_view.dart';
@@ -14,15 +16,15 @@ import 'views/bubble_view.dart';
 import 'package:sonr_app/style/style.dart';
 
 class PeerItem {
-  static Widget bubble(Member member) {
+  static Widget bubble(Peer member) {
     return PeerBubbleView(member);
   }
 
-  static Widget card(Member member) {
+  static Widget card(Peer member) {
     return PeerCardView(member);
   }
 
-  static Widget list({required Member member, required int index}) {
+  static Widget list({required Peer member, required int index}) {
     return PeerListItem(member: member, index: index);
   }
 

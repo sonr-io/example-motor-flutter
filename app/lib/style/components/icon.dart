@@ -150,14 +150,7 @@ extension MimeIcon on MIME_Type {
       case MIME_Type.VIDEO:
         return SimpleIcons.Video;
       default:
-        if (this == MIME_Type.PDF) {
-          return SimpleIcons.PDF;
-        } else if (this == MIME_Type.SPREADSHEET) {
-          return SimpleIcons.Spreadsheet;
-        } else if (this == MIME_Type.PRESENTATION) {
-          return SimpleIcons.Presentation;
-        }
-        return SimpleIcons.Unknown;
+        return SimpleIcons.Document;
     }
   }
 
@@ -172,73 +165,13 @@ extension MimeIcon on MIME_Type {
       case MIME_Type.VIDEO:
         return DesignGradients.NightCall;
       default:
-        if (this == MIME_Type.PDF) {
-          return DesignGradients.RoyalGarden;
-        } else if (this == MIME_Type.SPREADSHEET) {
-          return DesignGradients.ItmeoBranding;
-        } else if (this == MIME_Type.PRESENTATION) {
-          return DesignGradients.OrangeJuice;
-        }
         return DesignGradients.SolidStone;
     }
   }
 }
 
-extension PayloadIcon on Payload {
-  Widget gradient({double size = 32, Gradient? gradient}) {
-    return this.iconData.gradient(value: gradient ?? this.defaultIconGradient, size: size);
-  }
 
-  Icon icon({double size = 32, Color color = AppColor.White}) {
-    return this.iconData.icon(size: size, color: color) as Icon;
-  }
-
-  Icon black({double size = 32}) {
-    return this.iconData.blackWith(size: size) as Icon;
-  }
-
-  Icon grey({double size = 32}) {
-    return this.iconData.greyWith(size: size) as Icon;
-  }
-
-  Icon white({double size = 32}) {
-    return this.iconData.whiteWith(size: size) as Icon;
-  }
-
-  IconData get iconData {
-    if (this == Payload.CONTACT) {
-      return SimpleIcons.Avatar;
-    } else if (this == Payload.URL) {
-      return SimpleIcons.Discover;
-    } else if (this == Payload.FILE) {
-      return SimpleIcons.Document;
-    } else if (this == Payload.MEDIA) {
-      return SimpleIcons.Photos;
-    } else if (this == Payload.FILES) {
-      return SimpleIcons.Files;
-    } else {
-      return SimpleIcons.Unknown;
-    }
-  }
-
-  Gradient get defaultIconGradient {
-    if (this == Payload.CONTACT) {
-      return DesignGradients.SunnyMorning;
-    } else if (this == Payload.URL) {
-      return DesignGradients.Lollipop;
-    } else if (this == Payload.FILE) {
-      return DesignGradients.FarawayRiver;
-    } else if (this == Payload.MEDIA) {
-      return DesignGradients.FarawayRiver;
-    } else if (this == Payload.FILES) {
-      return DesignGradients.FarawayRiver;
-    } else {
-      return DesignGradients.SolidStone;
-    }
-  }
-}
-
-extension PlatformIcon on Platform {
+class PlatformIcon {
   ///-- Returns Icon Widget -- //
   Widget gradient({double size = 32, Gradient? gradient}) {
     return this.iconData.gradient(value: gradient ?? DesignGradients.PremiumWhite, size: size);
@@ -304,143 +237,6 @@ extension PlatformIcon on Platform {
       default:
         return DesignGradients.SolidStone;
     }
-  }
-}
-
-extension SocialIconUtils on Contact_Social_Media {
-  Widget gradient({double size = 32, Gradient? gradient}) {
-    return this.iconData.gradient(value: gradient ?? this.defaultIconGradient, size: size);
-  }
-
-  Icon icon({double size = 32, Color color = AppColor.White}) {
-    return this.iconData.icon(size: size, color: color) as Icon;
-  }
-
-  Icon black({double size = 32}) {
-    return this.iconData.blackWith(size: size) as Icon;
-  }
-
-  Icon grey({double size = 32}) {
-    return this.iconData.greyWith(size: size) as Icon;
-  }
-
-  Icon white({double size = 32}) {
-    return this.iconData.whiteWith(size: size) as Icon;
-  }
-
-  IconData get iconData {
-    switch (this) {
-      case Contact_Social_Media.Snapchat:
-        return SimpleIcons.Snapchat;
-      case Contact_Social_Media.Github:
-        return SimpleIcons.Github;
-      case Contact_Social_Media.Facebook:
-        return SimpleIcons.Facebook;
-      case Contact_Social_Media.Medium:
-        return SimpleIcons.Medium;
-      case Contact_Social_Media.YouTube:
-        return SimpleIcons.YouTube;
-      case Contact_Social_Media.Twitter:
-        return SimpleIcons.Twitter;
-      case Contact_Social_Media.Instagram:
-        return SimpleIcons.Instagram;
-      case Contact_Social_Media.TikTok:
-        return SimpleIcons.Tiktok;
-      default:
-        return SimpleIcons.Spotify;
-    }
-  }
-
-  Gradient get defaultIconGradient {
-    switch (this) {
-      case Contact_Social_Media.Snapchat:
-        return DesignGradients.SunnyMorning;
-      case Contact_Social_Media.Github:
-        return DesignGradients.SolidStone;
-      case Contact_Social_Media.Facebook:
-        return DesignGradients.PerfectBlue;
-      case Contact_Social_Media.Medium:
-        return DesignGradients.SolidStone;
-      case Contact_Social_Media.YouTube:
-        return DesignGradients.LoveKiss;
-      case Contact_Social_Media.Twitter:
-        return DesignGradients.MalibuBeach;
-      case Contact_Social_Media.Instagram:
-        return DesignGradients.AmourAmour;
-      case Contact_Social_Media.TikTok:
-        return DesignGradients.PremiumDark;
-      default:
-        return DesignGradients.SummerGames;
-    }
-  }
-}
-
-extension DesignIcon on IconData {
-  Icon get black {
-    return Icon(
-      this,
-      size: 24,
-      color: AppColor.Black,
-    );
-  }
-
-  Widget blackWith({double size = 24}) {
-    return Icon(
-      this,
-      size: size,
-      color: AppColor.Black,
-    );
-  }
-
-  Icon get grey {
-    return Icon(
-      this,
-      size: 24,
-      color: AppColor.DarkGrey,
-    );
-  }
-
-  Widget greyWith({double size = 24}) {
-    return Icon(
-      this,
-      size: size,
-      color: AppColor.DarkGrey,
-    );
-  }
-
-  Icon get white {
-    return Icon(
-      this,
-      size: 24,
-      color: AppColor.White,
-    );
-  }
-
-  Widget whiteWith({double size = 24}) {
-    return Icon(
-      this,
-      size: size,
-      color: AppColor.White,
-    );
-  }
-
-  Widget icon({double size = 24, Color color = AppColor.White}) {
-    return Icon(this, size: size, color: color);
-  }
-
-  Widget gradient({Gradient? value, double size = 32}) {
-    return ShaderMask(
-      blendMode: BlendMode.modulate,
-      shaderCallback: (bounds) {
-        var grad = value ?? AppGradients.Primary();
-        return grad.createShader(bounds);
-      },
-      child: Icon(
-        this,
-        size: size,
-        color: Colors.white,
-      ),
-    );
   }
 }
 

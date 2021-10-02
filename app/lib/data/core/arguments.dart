@@ -18,31 +18,6 @@ extension BuildModeUtil on BuildMode {
       return BuildMode.Debug;
     }
   }
-
-  /// Returns Current BuildMode from Foundation and
-  /// Wraps into InitializeRequest_LogLevel
-  static InitializeRequest_LogLevel logLevel() => mode().toLogLevel();
-
-  /// Checks if Build Mode is Debug
-  bool get isDebug => this == BuildMode.Debug && !kReleaseMode;
-
-  /// Checks if Build Mode is Release
-  bool get isRelease => this == BuildMode.Release && kReleaseMode;
-
-  /// Converts BuildMode from Foundation into InitializeRequest_LogLevel
-  InitializeRequest_LogLevel toLogLevel() {
-    // Check if Test Device is connected
-    if (Logger.isTestDevice) {
-      return InitializeRequest_LogLevel.INFO;
-    }
-
-    // Check for Debug Mode
-    if (this.isDebug) {
-      return InitializeRequest_LogLevel.DEBUG;
-    } else {
-      return InitializeRequest_LogLevel.WARNING;
-    }
-  }
 }
 
 // ** ─── Snackbar Arguments ────────────────────────────────────────────────────────
@@ -111,63 +86,17 @@ class SnackArgs {
   }
 
   /// #### Error on Operation
-  factory SnackArgs.error(String message, {ErrorEvent? error}) {
-    // @ Internal Error
-    if (error != null) {
-      switch (error.severity) {
-        // Orange - Title Failed
-        case ErrorEvent_Severity.CRITICAL:
-          Sound.Critical.play();
-          return SnackArgs(
-            title: "Failed",
-            message: error.message,
-            icon: Icon(Icons.sms_failed_outlined),
-            backgroundColor: Colors.orange,
-            duration: 2600.milliseconds,
-            shouldIconPulse: false,
-            position: SnackPosition.BOTTOM,
-          );
-
-        // Red - Title Error
-        case ErrorEvent_Severity.FATAL:
-          Sound.Fatal.play();
-          return SnackArgs(
-            title: "Error",
-            message: error.message,
-            icon: SimpleIcons.Caution.white,
-            backgroundColor: Colors.red,
-            duration: 2600.milliseconds,
-            shouldIconPulse: false,
-            position: SnackPosition.BOTTOM,
-          );
-
-        // Yellow - Title Warning
-        default:
-          Sound.Warning.play();
-          return SnackArgs(
-            title: "Warning",
-            message: error.message,
-            icon: SimpleIcons.Caution.white,
-            backgroundColor: Colors.yellow,
-            duration: 2600.milliseconds,
-            shouldIconPulse: false,
-            position: SnackPosition.BOTTOM,
-          );
-      }
-    }
-    // @ App Error
-    else {
-      Sound.Warning.play();
-      return SnackArgs(
-        title: "Error",
-        message: message,
-        icon: SimpleIcons.Caution.white,
-        backgroundColor: Colors.red,
-        duration: 2600.milliseconds,
-        shouldIconPulse: false,
-        position: SnackPosition.BOTTOM,
-      );
-    }
+  factory SnackArgs.error(String message) {
+    Sound.Warning.play();
+    return SnackArgs(
+      title: "Error",
+      message: message,
+      icon: SimpleIcons.Caution.white,
+      backgroundColor: Colors.red,
+      duration: 2600.milliseconds,
+      shouldIconPulse: false,
+      position: SnackPosition.BOTTOM,
+    );
   }
 
   /// #### Invalid Operation
@@ -203,14 +132,11 @@ class SnackArgs {
         HapticFeedback.heavyImpact();
 
         // Place Controller
-        if (inv.payload == Payload.CONTACT) {
-          AppRoute.popup(ContactAuthView(false, invite: inv), dismissible: false);
-        } else {
-          AppRoute.sheet(InviteRequestSheet(invite: inv), key: ValueKey(inv), dismissible: true, onDismissed: (direction) {
-            NodeService.instance.respond(inv.newDeclineResponse());
-            AppRoute.close();
-          });
-        }
+
+        AppRoute.sheet(InviteRequestSheet(invite: inv), key: ValueKey(inv), dismissible: true, onDismissed: (direction) {
+          NodeService.instance.respond(inv.newDeclineResponse());
+          AppRoute.close();
+        });
       },
     );
   }
@@ -226,26 +152,6 @@ class SnackArgs {
       duration: 2600.milliseconds,
       shouldIconPulse: false,
       position: position,
-    );
-  }
-
-  /// #### RemoteNotification Operation
-  factory SnackArgs.notification(
-    RemoteNotification notification,
-  ) {
-    return SnackArgs(
-      title: notification.title,
-      message: notification.body ?? "",
-      icon: SimpleIcons.Alerts.white,
-      backgroundColor: AppTheme.AccentColor,
-      duration: 4000.milliseconds,
-      shouldIconPulse: true,
-      position: SnackPosition.TOP,
-      dismissDirection: SnackDismissDirection.HORIZONTAL,
-      isDismissible: true,
-      onTap: (_) {
-        AppPage.Activity.to();
-      },
     );
   }
 

@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'package:geolocator/geolocator.dart' as geo;
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:sonr_app/data/data.dart';
 import 'package:sonr_app/style/style.dart';
@@ -46,45 +45,5 @@ extension NumUtils on int {
       }
     });
     return contains;
-  }
-}
-
-extension ConnectivityResultUtils on ConnectivityResult {
-  /// Convert Package Enum to ConnectionRequest_InternetType enum
-  ConnectionRequest_InternetType toInternetType() {
-    switch (this) {
-      case ConnectivityResult.wifi:
-        return ConnectionRequest_InternetType.WIFI;
-      case ConnectivityResult.mobile:
-        return ConnectionRequest_InternetType.MOBILE;
-      case ConnectivityResult.none:
-        return ConnectionRequest_InternetType.OFFLINE;
-      case ConnectivityResult.ethernet:
-        return ConnectionRequest_InternetType.WIFI;
-    }
-  }
-
-  bool get hasInternet => this != ConnectivityResult.none;
-}
-
-extension DNSRecordUtils on DNSRecord {
-  /// Convert this DNSRecord to Sonr Proto Peer
-  Future<Peer> toPeer() async {
-    return Peer(
-        sName: this.name,
-        id: Peer_ID(
-          publicKey: this.publicKey
-        ));
-  }
-}
-
-extension GeoLocaterPosition on geo.Position {
-  /// Convert this Position to Sonr Proto Location
-  Location toSonrLocation() {
-    // Return Location
-    return Location(
-      longitude: this.longitude,
-      latitude: this.latitude,
-    );
   }
 }

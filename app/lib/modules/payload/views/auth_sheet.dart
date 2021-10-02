@@ -5,7 +5,7 @@ import 'package:sonr_app/style/style.dart';
 
 /// #### TransferView: Builds Invite View based on InviteRequest Payload Type
 class InviteRequestSheet extends StatelessWidget {
-  final InviteRequest invite;
+  final InviteEvent invite;
 
   const InviteRequestSheet({Key? key, required this.invite}) : super(key: key);
   @override

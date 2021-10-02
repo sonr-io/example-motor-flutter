@@ -7,7 +7,6 @@ export 'package:flutter/services.dart';
 export 'package:showcaseview/showcaseview.dart';
 export 'dart:typed_data';
 export 'package:path_provider/path_provider.dart';
-export 'package:flutter_compass/flutter_compass.dart';
 export 'package:open_file/open_file.dart';
 export 'package:animate_do/animate_do.dart';
 export 'package:sonr_app/modules/camera/camera.dart';

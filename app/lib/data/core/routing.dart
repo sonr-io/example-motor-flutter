@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:showcaseview/showcaseview.dart';
 import 'package:sonr_app/modules/activity/activity.dart';
 import 'package:sonr_app/modules/share/views/popup_view.dart';

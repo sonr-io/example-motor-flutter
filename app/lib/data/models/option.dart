@@ -31,9 +31,6 @@ enum Sound {
 
 // @ Asset Sound Type Utility
 extension Sounds on Sound {
-  /// Checks if Platform can play Sounds
-  static bool get isCompatible => (PlatformUtils.find().isMobile || PlatformUtils.find().isWeb || PlatformUtils.find().isMacOS);
-
   /// Constant Soundpool Reference
   //static late Soundpool _pool;
 
@@ -42,23 +39,23 @@ extension Sounds on Sound {
 
   /// Initialize Soundpool
   static Future<void> init() async {
-    if (isCompatible) {
-      // Init Pool
-     // _pool = Soundpool.fromOptions(options: SoundpoolOptions(streamType: StreamType.notification));
+    // if (isCompatible) {
+    // Init Pool
+    // _pool = Soundpool.fromOptions(options: SoundpoolOptions(streamType: StreamType.notification));
 
-      // Add Sounds
-      // for (Sound s in Sound.values) {
-      //   int soundId = await rootBundle.load(s.path).then((ByteData soundData) {
-      //  //   return _pool.load(soundData);
-      //   });
-      //   _soundIds[s] = soundId;
-      // }
-    }
+    // Add Sounds
+    // for (Sound s in Sound.values) {
+    //   int soundId = await rootBundle.load(s.path).then((ByteData soundData) {
+    //  //   return _pool.load(soundData);
+    //   });
+    //   _soundIds[s] = soundId;
+    // }
+    // }
   }
 
   /// Play this Current Sound
   Future<void> play() async {
-    if (isCompatible && _soundIds[this] != null) {
+    if (_soundIds[this] != null) {
       // await _pool.play(_soundIds[this]!);
       // await _pool.release();
     }

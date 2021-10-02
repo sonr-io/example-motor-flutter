@@ -6,21 +6,21 @@ class PreviewView extends StatelessWidget {
   const PreviewView({Key? key, required this.controller}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return controller.result.value.single.mime.isVideo
+    return controller.result.value == null
         // Video Player View
         ? Container(
             margin: EdgeInsets.only(left: 10, right: 10),
             child: AspectRatio(
                 aspectRatio: 9 / 16,
                 child: FileItemVideoBox(
-                  fileItem: controller.result.value.single,
+                  fileItem: controller.result.value,
                 )))
 
         // Photo View
         : Container(
             margin: EdgeInsets.only(left: 10, right: 10),
             decoration: BoxDecoration(
-              image: DecorationImage(image: FileImage(controller.result.value.single.file), fit: BoxFit.fill),
+              image: DecorationImage(image: FileImage(File(controller.result.value)), fit: BoxFit.fill),
               borderRadius: BorderRadius.circular(30),
             ),
           );

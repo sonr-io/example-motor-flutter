@@ -83,12 +83,12 @@ class AppEvent {
 
   /// ### AnalyticsEvent`.invited()`
   /// - Creates Analytics Transfer Invite Shared Event
-  factory AppEvent.invited(InviteRequest request) =>
+  factory AppEvent.invited(InviteEvent request) =>
       AppEvent(name: request.eventName, parameters: _buildMetadata(request.eventMetadata, addPlatform: false));
 
   /// ### AnalyticsEvent`.responded()`
   /// - Creates Analytics Transfer Invite Response Event
-  factory AppEvent.responded(InviteResponse response) =>
+  factory AppEvent.responded(DecisionEvent response) =>
       AppEvent(name: response.eventName, parameters: _buildMetadata(response.eventMetadata, addPlatform: false));
 
   /// ### AnalyticsEvent`.user()`
