@@ -1,0 +1,17 @@
+{
+  "files.exclude": {
+    "example/Plugin.code-workspace": true,
+    "example/.dart_tool": true,
+
+    "analysis_options.yaml" : true,
+    "**/*.pb.dart": true,
+    "**/*.pbgrpc.dart": true,
+    "**/*.pbjson.dart": true,
+    "**/*.pbenum.dart": true,
+    "**/*.pbserver.dart": true,
+    "**/dartdoc_options.yaml" : true,
+  },
+  "github-actions.workflows.pinned.workflows": [
+    ".github/workflows/main.yml"
+  ]
+}

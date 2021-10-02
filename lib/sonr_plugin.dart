@@ -12,6 +12,7 @@ import 'package:grpc/grpc.dart';
 import 'src/proto/proto.dart';
 export 'package:get/get.dart';
 export 'src/proto/proto.dart';
+export 'src/extensions/extensions.dart';
 
 /// [RPC_HOST] is the address for Sonr RPC Node
 const RPC_HOST = 'localhost';

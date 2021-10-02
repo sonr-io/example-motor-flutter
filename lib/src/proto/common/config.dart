@@ -224,3 +224,14 @@ extension PermissionsUtil on Permissions {
     }
   }
 }
+
+extension ConnectionUtil on Connection {
+  /// Returns Connection Enum as Name
+  String get name => this.toString().substring(this.toString().indexOf('.') + 1);
+
+  /// Returns True if Connection is Offline
+  bool get isOffline => this == Connection.OFFLINE;
+
+  /// Returns True if Connection is Online
+  bool get isOnline => this != Connection.OFFLINE;
+}

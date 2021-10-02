@@ -1,0 +1,29 @@
+name: CD Flutter Workflow
+
+# Controls when the action will run.
+on:
+  workflow_run:
+    workflows: ["CI Flutter Workflow"]
+    types:
+      - completed
+
+# Handle Succesful build by semver version and status
+jobs:
+  notify-result:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Discord Success Notification
+        if: ${{ github.event.workflow_run.conclusion == 'success' }}
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'Flutter build succeeded!.'
+
+      - name: Discord Failed Notification
+        if: ${{ github.event.workflow_run.conclusion == 'failure' }}
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        uses: Ilshidur/action-discord@master
+        with:
+          args: 'Failed to build Flutter App.'
