@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 enum TextInputValidStatus { None, Valid, Invalid }
@@ -85,7 +86,7 @@ class DesignTextField extends StatelessWidget {
                   isError
                       ? Text(
                           " *Error",
-                          style: TextStyle(fontWeight: FontWeight.w500, color: AppColor.Red),
+                          style: TextStyle(fontWeight: FontWeight.w500, color: AppColors.primary3),
                         )
                       : Container(),
                 ]))
@@ -97,7 +98,7 @@ class DesignTextField extends StatelessWidget {
             style: TextStyle(
               fontFamily: 'R-Flex',
               fontWeight: FontWeight.w500,
-              color: AppTheme.ItemColor,
+              color: Get.theme.focusColor,
             ),
             controller: controller,
             autofocus: autoFocus,
@@ -114,7 +115,7 @@ class DesignTextField extends StatelessWidget {
                     hintStyle: TextStyle(
                       fontFamily: 'R-Flex',
                       fontWeight: FontWeight.w300,
-                      color: AppTheme.ItemColor,
+                      color: Get.theme.focusColor,
                     )),
           ),
         )
@@ -136,14 +137,14 @@ class DesignTextField extends StatelessWidget {
           decoration: InputDecoration.collapsed(
               border: UnderlineInputBorder(
                   borderSide: BorderSide(
-                color: AppColor.Red,
+                color: AppColors.primary3,
                 width: 2,
               )),
               hintText: hint,
               hintStyle: TextStyle(
                 fontFamily: 'R-Flex',
                 fontWeight: FontWeight.w300,
-                color: AppTheme.ItemColor,
+                color: Get.theme.focusColor,
               ))),
     );
   }
@@ -178,7 +179,7 @@ class SNameTextField extends StatelessWidget {
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),
                           ],
-                          style: DisplayTextStyle.Light.style(color: AppTheme.ItemColor, fontSize: 24),
+                          style: AppTextStyles.componentHairlineSmall,
                           autofocus: true,
                           textInputAction: TextInputAction.go,
                           autocorrect: false,
@@ -190,17 +191,6 @@ class SNameTextField extends StatelessWidget {
                           onChanged: (val) {
                             // Update Value
                             value(val);
-
-                            // Find Size
-                            final size = val.size(DisplayTextStyle.Light, fontSize: 24);
-                            final length = size.width;
-
-                            // Update Padding
-                            if (length > 0) {
-                              leftPadding(length);
-                            } else {
-                              leftPadding(hint.item1.size(DisplayTextStyle.Light, fontSize: 24).width + 1);
-                            }
 
                             // Callback
                             if (onChanged != null) {
@@ -217,7 +207,7 @@ class SNameTextField extends StatelessWidget {
                   padding: EdgeInsets.only(left: leftPadding.value),
                   child: Text(
                     ".snr/",
-                    style: DisplayTextStyle.Paragraph.style(color: AppTheme.ItemColor, fontSize: 24),
+                    style: AppTextStyles.componentHairlineLarge,
                   ),
                 ),
               ]),

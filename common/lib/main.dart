@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:sonr_app/style/style.dart';
 
 import 'data/services/services.dart';
+import 'theme/theme.dart';
 
 /// #### Main Method
 Future<void> main() async {
@@ -58,7 +59,12 @@ class SplashPage extends StatelessWidget {
             // @ Fade Animation of Text
             Positioned(
               bottom: 100,
-              child: FadeInUp(delay: 2222.milliseconds, child: "Sonr".hero()),
+              child: FadeInUp(
+                  delay: 2222.milliseconds,
+                  child: Text(
+                    "Sonr",
+                    style: AppTextStyles.headlineHero,
+                  )),
             ),
           ],
         ));

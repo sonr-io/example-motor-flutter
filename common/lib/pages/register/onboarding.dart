@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:onboarding/onboarding.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:flutter/widgets.dart';
-import 'package:sonr_app/style/components/text.dart';
-import 'package:sonr_app/style/theme/color.dart';
+import 'package:sonr_app/theme/theme.dart';
 
 class OnboardingPage extends StatelessWidget {
   @override
@@ -55,39 +54,29 @@ extension OnboardPageTypeUtil on OnboardPageType {
 
   /// Returns this Panels Title as Heading Widget
   Widget title() {
-    final color = AppColor.Black;
     switch (this) {
       case OnboardPageType.Welcome:
-        return 'Welcome'.heading(color: color, fontSize: 36);
+        return Text('Welcome', style: AppTextStyles.headline05);
       case OnboardPageType.Universal:
-        return 'Universal'.heading(color: color, fontSize: 36);
+        return Text('Universal', style: AppTextStyles.headline05);
       case OnboardPageType.Secure:
-        return 'Security First'.heading(color: color, fontSize: 36);
+        return Text('Security First', style: AppTextStyles.headline05);
       case OnboardPageType.Start:
-        return 'Get Started'.heading(color: color, fontSize: 36);
+        return Text('Get Started', style: AppTextStyles.headline05);
     }
   }
 
   /// Returns this Panels Description as Rich Text
   Widget description() {
-    final color = AppColor.DarkGrey;
-    final size = 20.0;
     switch (this) {
       case OnboardPageType.Welcome:
-        return [
-          'Sonr has '.lightSpan(fontSize: size, color: color),
-          'NO '.subheadingSpan(fontSize: size, color: color),
-          'File Size Limits. Works like Airdrop Nearby and like Email when nobody is around.'.lightSpan(
-            fontSize: size,
-            color: color,
-          )
-        ].rich();
+        return Text("Sonr has NO file size limits. Works like Airdrop Nearby and Email when it needs to.", style: AppTextStyles.bodySmallRegular);
       case OnboardPageType.Universal:
-        return 'Runs Natively on iOS, Android, MacOS, Windows and Linux.'.light(fontSize: size, color: color);
+        return Text('Runs Natively on iOS, Android, MacOS, Windows and Linux.', style: AppTextStyles.bodySmallRegular);
       case OnboardPageType.Secure:
-        return 'Completely Encrypted Communication. All data is verified and signed.'.light(fontSize: size, color: color);
+        return Text('Completely Encrypted Communication. All data is verified and signed.', style: AppTextStyles.bodySmallRegular);
       case OnboardPageType.Start:
-        return 'Lets Continue by selecting your Sonr Name.'.light(fontSize: size, color: color);
+        return Text('Lets Continue by selecting your Sonr Name.', style: AppTextStyles.bodySmallRegular);
     }
   }
 

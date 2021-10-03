@@ -1,4 +1,5 @@
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 
 import 'utility.dart';
 
@@ -28,7 +29,7 @@ class ActionButton extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _ActionIconButton(onPressed, iconData),
-            label!.light(color: Get.theme.hintColor, fontSize: 16),
+            Text(label!, style: AppTextStyles.componentHairlineSmall),
           ],
         ),
       );
@@ -92,12 +93,12 @@ class _ActionIconButton extends StatelessWidget {
                     height: 40,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      gradient: AppGradients.Foreground,
+                      gradient: Get.isDarkMode ? AppGradients.glassDark : AppGradients.gradientLight03,
                       borderRadius: BorderRadius.circular(14),
                     ),
                     child: Icon(
                       iconData,
-                      color: AppTheme.ItemColor,
+                      color: Get.theme.focusColor,
                       size: 24,
                     ),
                   ),
@@ -146,7 +147,7 @@ class ActionBanner {
 
   /// Helper: Builds Text from Banner Data
   Widget text() {
-    return value.toString().subheading(fontSize: 14, color: Colors.white, align: TextAlign.center);
+    return Text(value.toString(), style: AppTextStyles.body3Bold);
   }
 }
 
@@ -237,10 +238,10 @@ class ArrowButton extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      title.toUpperCase().light(fontSize: 20, color: AppTheme.ItemColor),
+                      Text(title.toUpperCase(), style: AppTextStyles.componentButtonLarge),
                       Padding(
                         padding: const EdgeInsets.only(top: 6.0, left: 4),
-                        child: SimpleIcons.Down.icon(size: 16, color: AppTheme.ItemColor),
+                        child: SimpleIcons.Down.icon(size: 16, color: Get.theme.focusColor),
                       ),
                     ],
                   ),
@@ -282,8 +283,8 @@ class InfoButton extends StatelessWidget {
                 child: Container(
                   height: 40,
                   width: 40,
-                  decoration: BoxDecoration(color: AppTheme.ForegroundColor, borderRadius: BorderRadius.circular(12)),
-                  child: UIIcons.Bell.line(width: 28, height: 28, color: AppTheme.GreyColor),
+                  decoration: BoxDecoration(color: Get.theme.canvasColor, borderRadius: BorderRadius.circular(12)),
+                  child: UIIcons.Bell.line(width: 28, height: 28, color: Get.theme.hintColor),
                 ),
               ),
             ),

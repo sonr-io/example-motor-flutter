@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 class PeerBubbleView extends StatelessWidget {
@@ -37,16 +38,16 @@ class PeerBubbleView extends StatelessWidget {
       );
     } else {
       return BoxDecoration(
-        color: AppTheme.ForegroundColor,
+        color: Get.theme.canvasColor,
         shape: BoxShape.circle,
       );
     }
   }
 
   Widget _buildPeerInitials() {
-    return peer.profile.initials.light(
-      fontSize: 18,
-      color: AppTheme.GreyColor,
+    return Text(
+      peer.profile.initials,
+      style: AppTextStyles.body3Bold,
     );
   }
 }

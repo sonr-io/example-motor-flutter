@@ -7,6 +7,7 @@ export 'models/type.dart';
 // Imports
 import 'package:sonr_app/pages/register/views/perm_view.dart';
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'models/field.dart';
 import 'models/type.dart';
 import 'register_controller.dart';
@@ -55,8 +56,16 @@ class RegisterSetupTitleBar extends StatelessWidget implements PreferredSizeWidg
             crossAxisAlignment: instruction != null ? CrossAxisAlignment.center : CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              instruction != null ? instruction!.light(fontSize: 42, color: AppTheme.ItemColor) : Container(),
-              isGradient ? title.gradient(value: AppGradients.Primary(), size: 48) : title.heading(fontSize: 42, color: AppTheme.ItemColor),
+              instruction != null
+                  ? Text(
+                      instruction!,
+                      style: AppTextStyles.bodyLargeRegular,
+                    )
+                  : Container(),
+              Text(
+                instruction!,
+                style: AppTextStyles.headline03,
+              ),
             ],
           ),
         ),
@@ -82,8 +91,8 @@ class RegisterBottomSheet extends StatelessWidget {
         width: Get.width,
         height: 120,
         decoration: BoxDecoration(
-            boxShadow: AppTheme.RectBoxShadow,
-            color: AppTheme.BackgroundColor,
+            boxShadow: [AppShadows.depth3],
+            color: Get.theme.backgroundColor,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(37),
               topRight: Radius.circular(37),
@@ -132,29 +141,14 @@ class RegisterTextField extends GetView<RegisterController> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
-              margin: EdgeInsets.only(left: 24),
-              alignment: Alignment.centerLeft,
-              child: [
-                type.label.toUpperCase().lightSpan(
-                      color: AppTheme.GreyColor,
-                      fontSize: 20,
-                    ),
-                isError
-                    ? " Error".sectionSpan(
-                        color: AppColor.Red,
-                        fontSize: 20,
-                      )
-                    : "".lightSpan(),
-              ].rich()),
-          Container(
             decoration: BoxDecoration(
-              color: AppTheme.BackgroundColor,
+              color: Get.theme.backgroundColor,
               borderRadius: BorderRadius.circular(22),
             ),
             margin: EdgeInsets.only(left: 16, right: 16, top: 8),
             padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
             child: TextField(
-              style: DisplayTextStyle.Light.style(color: AppTheme.ItemColor, fontSize: 20),
+              style: AppTextStyles.componentHairlineSmall,
               keyboardType: type.textInputType,
               autofocus: type.autoFocus,
               textInputAction: type.textInputAction,
@@ -171,7 +165,7 @@ class RegisterTextField extends GetView<RegisterController> {
                   ? decoration
                   : InputDecoration.collapsed(
                       hintText: hint,
-                      hintStyle: DisplayTextStyle.Paragraph.style(color: AppTheme.GreyColor, fontSize: 20),
+                      hintStyle: AppTextStyles.componentHairlineSmall,
                     ),
             ),
           )
@@ -192,9 +186,9 @@ class RegisterTextField extends GetView<RegisterController> {
       child: buildDefault(context,
           isError: true,
           decoration: InputDecoration.collapsed(
-              border: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Red, width: 4)),
+              border: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.primary3, width: 4)),
               hintText: hint,
-              hintStyle: DisplayTextStyle.Paragraph.style(color: AppTheme.ItemColor.withOpacity(0.75), fontSize: 20))),
+              hintStyle: AppTextStyles.bodyNormalBold)),
     );
   }
 

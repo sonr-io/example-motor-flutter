@@ -63,7 +63,9 @@ class _PostTransferItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   //FilePayloadText(payload: transfer, file: transfer.items[0]),
-                  DateText.fromMilliseconds(transfer.createdAt.toInt() * 1000),
+                  //DateText.fromMilliseconds(transfer.createdAt.toInt() * 1000)
+                  //,
+                  Text("Text Test display Date here")
                 ],
               ),
             ),

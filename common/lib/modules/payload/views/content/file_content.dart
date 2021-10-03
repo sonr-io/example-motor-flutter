@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:get/get.dart';
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 import 'package:video_player/video_player.dart';
 
@@ -119,7 +120,7 @@ class FileAlbumBox extends StatelessWidget {
                   margin: EdgeInsets.only(bottom: 24),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: AppColor.Black.withOpacity(0.75),
+                      color: AppColors.neutrals1.withOpacity(0.75),
                       borderRadius: BorderRadius.circular(22),
                     ),
                     padding: EdgeInsets.all(8),
@@ -227,7 +228,7 @@ class _FileItemImageBoxState extends State<FileItemImageBox> {
           fit: BoxFit.fitHeight,
         );
       } else {
-        return SimpleIcons.Unknown.icon(color: AppTheme.ItemColor);
+        return SimpleIcons.Unknown.icon(color: Get.theme.focusColor);
       }
     }
   }
@@ -305,7 +306,6 @@ class FilePayloadText extends StatelessWidget {
   final Color? color;
   final double fontSize;
   final FontStyle fontStyle;
-  final DisplayTextStyle textStyle;
   final bool withCount;
 
   const FilePayloadText({
@@ -315,18 +315,13 @@ class FilePayloadText extends StatelessWidget {
     this.withCount = true,
     this.fontSize = 20,
     this.fontStyle = FontStyle.normal,
-    this.textStyle = DisplayTextStyle.Subheading,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
       _buildType(),
-      style: textStyle.style(
-        color: color ?? AppTheme.ItemColor,
-        fontSize: fontSize,
-        fontStyle: fontStyle,
-      ),
+      style: AppTextStyles.bodySmallBold,
     );
   }
 

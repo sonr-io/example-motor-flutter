@@ -1,8 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
-import '../theme/color.dart';
-import '../theme/gradient.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sonr_app/style/style.dart';
 
@@ -123,7 +122,7 @@ extension MimeIcon on MIME_Type {
     return this.iconData.gradient(value: gradient ?? this.defaultIconGradient, size: size);
   }
 
-  Icon icon({double size = 32, Color color = AppColor.White}) {
+  Icon icon({double size = 32, Color color = AppColors.neutrals8}) {
     return this.iconData.icon(size: size, color: color) as Icon;
   }
 
@@ -155,18 +154,7 @@ extension MimeIcon on MIME_Type {
   }
 
   Gradient get defaultIconGradient {
-    switch (this) {
-      case MIME_Type.AUDIO:
-        return DesignGradients.FlyingLemon;
-      case MIME_Type.IMAGE:
-        return DesignGradients.JuicyCake;
-      case MIME_Type.TEXT:
-        return DesignGradients.FarawayRiver;
-      case MIME_Type.VIDEO:
-        return DesignGradients.NightCall;
-      default:
-        return DesignGradients.SolidStone;
-    }
+    return Get.isDarkMode ? AppGradients.gradientBrand03 : AppGradients.gradientBrand01;
   }
 }
 
@@ -176,10 +164,10 @@ class PlatformIcon {
 
   ///-- Returns Icon Widget -- //
   Widget gradient({double size = 32, Gradient? gradient}) {
-    return this.iconData.gradient(value: gradient ?? DesignGradients.PremiumWhite, size: size);
+    return this.iconData.gradient(value: gradient ?? AppGradients.gradientLight02, size: size);
   }
 
-  Icon icon({double size = 32, Color color = AppColor.White}) {
+  Icon icon({double size = 32, Color color = AppColors.neutrals8}) {
     return this.iconData.icon(size: size, color: color) as Icon;
   }
 
@@ -214,30 +202,15 @@ class PlatformIcon {
   Color get defaultIconColor {
     switch (this.platform) {
       case "android":
-        return Colors.greenAccent.shade400;
+        return AppColors.otherPlatformsAndroid;
       case "ios":
-        return Colors.lightBlueAccent.shade400;
+        return AppColors.otherPlatformsIOs;
       case "darwin":
-        return Colors.lightBlueAccent;
+        return AppColors.otherPlatformsMacOs;
       case "windows":
-        return Colors.blueAccent.shade700;
+        return AppColors.otherPlatformsWindows;
       default:
         return Colors.black87;
-    }
-  }
-
-  Gradient get defaultIconGradient {
-    switch (this.platform) {
-      case "android":
-        return DesignGradients.ItmeoBranding;
-      case "ios":
-        return DesignGradients.PerfectBlue;
-      case "darwin":
-        return DesignGradients.PlumBath;
-      case "windows":
-        return DesignGradients.CrystalRiver;
-      default:
-        return DesignGradients.SolidStone;
     }
   }
 }
@@ -247,7 +220,7 @@ extension DesignIcon on IconData {
     return Icon(
       this,
       size: 24,
-      color: AppColor.Black,
+      color: AppColors.neutrals1,
     );
   }
 
@@ -255,7 +228,7 @@ extension DesignIcon on IconData {
     return Icon(
       this,
       size: size,
-      color: AppColor.Black,
+      color: AppColors.neutrals1,
     );
   }
 
@@ -263,7 +236,7 @@ extension DesignIcon on IconData {
     return Icon(
       this,
       size: 24,
-      color: AppColor.DarkGrey,
+      color: Get.theme.cardColor,
     );
   }
 
@@ -271,7 +244,7 @@ extension DesignIcon on IconData {
     return Icon(
       this,
       size: size,
-      color: AppColor.DarkGrey,
+      color: Get.theme.cardColor,
     );
   }
 
@@ -279,7 +252,7 @@ extension DesignIcon on IconData {
     return Icon(
       this,
       size: 24,
-      color: AppColor.White,
+      color: AppColors.neutrals8,
     );
   }
 
@@ -287,11 +260,11 @@ extension DesignIcon on IconData {
     return Icon(
       this,
       size: size,
-      color: AppColor.White,
+      color: AppColors.neutrals8,
     );
   }
 
-  Widget icon({double size = 24, Color color = AppColor.White}) {
+  Widget icon({double size = 24, Color color = AppColors.neutrals8}) {
     return Icon(this, size: size, color: color);
   }
 
@@ -299,7 +272,7 @@ extension DesignIcon on IconData {
     return ShaderMask(
       blendMode: BlendMode.modulate,
       shaderCallback: (bounds) {
-        var grad = value ?? AppGradients.Primary();
+        var grad = value ?? AppGradients.gradientBrand01;
         return grad.createShader(bounds);
       },
       child: Icon(

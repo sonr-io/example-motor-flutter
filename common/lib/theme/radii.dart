@@ -12,6 +12,5 @@ class AppRadii {
 
   /// Radius for Card Header and Hero Expanded View
   static const cardOverlayRadius = BorderRadius.all(Radius.circular(16));
-
   AppRadii._();
 }

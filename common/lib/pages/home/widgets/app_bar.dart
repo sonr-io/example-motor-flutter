@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:sonr_app/pages/home/home.dart';
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 class IntelHeader extends StatelessWidget {
@@ -36,12 +37,9 @@ class IntelHeader extends StatelessWidget {
               baseline: TextBaseline.alphabetic,
               child: SimpleIcons.Location.icon(
                 size: 22,
-                color: AppTheme.ItemColor,
+                color: Get.theme.focusColor,
               )),
-          (" " + title).headingSpan(
-            color: Get.theme.focusColor,
-            fontSize: 32,
-          ),
+          TextSpan(text: " " + title, style: AppTextStyles.headline04)
         ]),
       );
 }
@@ -133,7 +131,7 @@ class _IntelFooterState extends State<IntelFooter> {
             animate: true,
             duration: 300.milliseconds,
             child: SimpleIcons.Up.icon(
-              color: AppColor.Blue,
+              color: AppColors.primary1,
               size: 14,
             ),
           ),
@@ -145,7 +143,7 @@ class _IntelFooterState extends State<IntelFooter> {
             from: 40,
             duration: 300.milliseconds,
             child: SimpleIcons.Down.icon(
-              color: AppColor.Red,
+              color: AppColors.primary3,
               size: 14,
             ),
           ),
@@ -162,9 +160,7 @@ class _IntelFooterState extends State<IntelFooter> {
     if (countChanged) {
       return FadeIn(
         animate: true,
-        child: difference.toString().light(
-              color: prevCount < count ? AppColor.Green : AppColor.Red,
-            ),
+        child: Text(difference.toString(), style: AppTextStyles.bodySmallBold),
       );
     }
     return Container();
@@ -196,12 +192,9 @@ class _NearbyPeersRow extends StatelessWidget {
                 key: moreKey,
                 width: 36,
                 height: 36,
-                child: "${SonrService.to.localPeers.length}+".light(
-                  fontSize: 16,
-                  color: AppTheme.GreyColor,
-                ),
+                child: Text(SonrService.to.localPeers.length.toString() + "+", style: AppTextStyles.bodySmallBold),
                 decoration: BoxDecoration(
-                  color: AppColor.AccentBlue,
+                  color: AppColors.secondary1,
                   shape: BoxShape.circle,
                 ),
               ),
@@ -256,10 +249,7 @@ class HomeAppBar extends GetView<HomeController> implements PreferredSizeWidget 
                   ? IntelHeader()
                   : Padding(
                       padding: EdgeInsets.only(top: 32),
-                      child: controller.view.value.title.heading(
-                        color: AppTheme.ItemColor,
-                        align: TextAlign.start,
-                      ),
+                      child: Text(controller.view.value.title, style: AppTextStyles.componentHairlineLarge),
                     ),
               footer: controller.view.value.isDashboard ? IntelFooter() : null,
             ),
@@ -270,16 +260,11 @@ class HomeAppBar extends GetView<HomeController> implements PreferredSizeWidget 
   // # Helper: Builds Subtitle
   Widget _buildSubtitle(bool isOnline) {
     if (isOnline) {
-      return "Offline".subheading(
-        fontSize: 22,
-        color: Get.theme.focusColor.withOpacity(0.7),
-        align: TextAlign.start,
-      );
+      return Text("Offline", style: AppTextStyles.componentHairlineSmall);
     }
-    return "Hi ${SonrService.to.profile.value.firstName.capitalizeFirst}".subheading(
-      fontSize: 22,
-      color: Get.theme.focusColor.withOpacity(0.7),
-      align: TextAlign.start,
+    return Text(
+      "Hi ${SonrService.to.profile.value.firstName.capitalizeFirst}",
+      style: AppTextStyles.componentHairlineLarge,
     );
   }
 

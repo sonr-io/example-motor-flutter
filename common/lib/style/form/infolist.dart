@@ -1,4 +1,5 @@
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 
 /// Option Displayed in Checklist
 class InfolistOption {
@@ -21,27 +22,17 @@ class InfolistOption {
   /// Returns Icon for Checklist Option based on State
   Widget icon() {
     return iconData.icon(
-      color: iconColor ?? AppTheme.ItemColor,
+      color: iconColor ?? Get.theme.focusColor,
       size: 32,
     );
   }
 
-  /// Returns this Widgets Size
-  Size get size => this.title.size(
-        isHeader ? DisplayTextStyle.Subheading : DisplayTextStyle.Light,
-        fontSize: isHeader ? 26 : 24,
-      );
-
   /// Returns Text for Checklist Option based on State
   Widget text() {
     if (isHeader) {
-      return title.subheading(
-        color: textColor ?? AppTheme.ItemColor,
-        fontSize: 26,
-        align: TextAlign.center,
-      );
+      return Text(title, style: AppTextStyles.bodySmallBold);
     }
-    return title.light(color: textColor ?? AppTheme.ItemColor, fontSize: 24);
+    return Text(title, style: AppTextStyles.bodySmallRegular);
   }
 }
 
@@ -54,9 +45,9 @@ class Infolist extends StatelessWidget {
     return Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24),
-            color: AppTheme.BackgroundColor,
+            color: Get.theme.backgroundColor,
             border: Border.all(
-              color: AppTheme.ForegroundColor,
+              color: Get.theme.cardColor,
               width: 1.5,
             )),
         constraints: options.boxConstraints,
@@ -96,7 +87,7 @@ class Infolist extends StatelessWidget {
       return Padding(padding: EdgeInsets.only(top: 16));
     } else if (index + 1 != options.length) {
       return Divider(
-        color: AppTheme.GreyColor.withOpacity(0.25),
+        color: Get.theme.dividerColor,
         endIndent: 8,
         indent: 8,
       );
@@ -116,7 +107,7 @@ extension InfolistOptionUtils on List<InfolistOption> {
 
     // Iterate Over Text
     this.forEach((o) {
-      maxTextWidth += o.size.width;
+      // maxTextWidth += o.size.width;
     });
 
     return BoxConstraints(maxWidth: maxTextWidth + maxIconWidth + adjustedPaddingWidth);

@@ -1,5 +1,6 @@
 import 'package:sonr_app/pages/home/home.dart';
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// #### Home Tab Bar Navigation
@@ -64,7 +65,7 @@ class ShareButton extends StatelessWidget {
                     radius: 24,
                     rotate: 30,
                     sides: 6,
-                    child: SimpleIcons.Share.gradient(size: 34, value: DesignGradients.PremiumWhite),
+                    child: SimpleIcons.Share.gradient(size: 34, value: AppGradients.gradientCommon03),
                   ),
                 ),
               )),
@@ -106,7 +107,7 @@ class HomeBottomTabButton extends GetView<HomeController> {
                       child: Icon(
                         view.iconData(idx.value.index == view.index),
                         size: K_ICON_SIZE,
-                        color: AppTheme.ItemColor,
+                        color: Get.theme.focusColor,
                       ),
                     ),
                     scale: idx.value.iconScale(idx.value.index == view.index),
