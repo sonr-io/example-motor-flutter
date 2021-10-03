@@ -131,7 +131,7 @@ class _IntelFooterState extends State<IntelFooter> {
             animate: true,
             duration: 300.milliseconds,
             child: SimpleIcons.Up.icon(
-              color: AppColors.primary1,
+              color: AppColors.primary4,
               size: 14,
             ),
           ),
@@ -160,7 +160,7 @@ class _IntelFooterState extends State<IntelFooter> {
     if (countChanged) {
       return FadeIn(
         animate: true,
-        child: Text(difference.toString(), style: AppTextStyles.bodySmallBold),
+        child: Text(difference.toString(), style: AppTextStyles.bodyCaptionRegular),
       );
     }
     return Container();
@@ -192,7 +192,7 @@ class _NearbyPeersRow extends StatelessWidget {
                 key: moreKey,
                 width: 36,
                 height: 36,
-                child: Text(SonrService.to.localPeers.length.toString() + "+", style: AppTextStyles.bodySmallBold),
+                child: Text(SonrService.to.localPeers.length.toString() + "+", style: AppTextStyles.bodyCaptionRegular),
                 decoration: BoxDecoration(
                   color: AppColors.secondary1,
                   shape: BoxShape.circle,
@@ -249,7 +249,7 @@ class HomeAppBar extends GetView<HomeController> implements PreferredSizeWidget 
                   ? IntelHeader()
                   : Padding(
                       padding: EdgeInsets.only(top: 32),
-                      child: Text(controller.view.value.title, style: AppTextStyles.componentHairlineLarge),
+                      child: Text(controller.view.value.title, style: AppTextStyles.bodyCaptionRegular),
                     ),
               footer: controller.view.value.isDashboard ? IntelFooter() : null,
             ),
@@ -260,11 +260,11 @@ class HomeAppBar extends GetView<HomeController> implements PreferredSizeWidget 
   // # Helper: Builds Subtitle
   Widget _buildSubtitle(bool isOnline) {
     if (isOnline) {
-      return Text("Offline", style: AppTextStyles.componentHairlineSmall);
+      return Text("Offline", style: AppTextStyles.bodyCaptionBold);
     }
     return Text(
       "Hi ${SonrService.to.profile.value.firstName.capitalizeFirst}",
-      style: AppTextStyles.componentHairlineLarge,
+      style: AppTextStyles.bodyCaptionRegular,
     );
   }
 

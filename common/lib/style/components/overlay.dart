@@ -23,12 +23,12 @@ class AlertOverlay extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 12),
                 margin: EdgeInsets.symmetric(horizontal: 16, vertical: 220),
                 child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Text(title, style: AppTextStyles.headline01),
+                  Text(title, style: AppTextStyles.headingTitleBold),
                   Padding(
                     padding: EdgeInsets.only(left: 10.0),
                     child: Text(
                       description,
-                      style: AppTextStyles.bodyNormalRegular,
+                      style: AppTextStyles.bodyParagraphRegular
                     ),
                   ),
                   Padding(padding: EdgeInsets.all(4)),
@@ -155,12 +155,12 @@ class QuestionOverlay extends StatelessWidget {
                 margin: EdgeInsets.symmetric(horizontal: 16, vertical: 256),
                 child: Container(
                   child: Column(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Text(title, style: AppTextStyles.headline01),
+                    Text(title, style: AppTextStyles.headingTitleBold),
                     Padding(
                       padding: EdgeInsets.only(left: 8.0),
                       child: Text(
                         description,
-                        style: AppTextStyles.bodyNormalRegular,
+                        style: AppTextStyles.bodyParagraphRegular,
                       ),
                     ),
                     Padding(padding: EdgeInsets.all(4)),

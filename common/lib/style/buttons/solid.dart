@@ -137,7 +137,7 @@ class DynamicSolidButtonData {
   factory DynamicSolidButtonData.inProgress() => DynamicSolidButtonData(
         "In Progress",
         Get.theme.hintColor,
-        AppColors.primary1,
+        Get.theme.primaryColor,
       );
 
   factory DynamicSolidButtonData.complete() => DynamicSolidButtonData(
@@ -214,7 +214,7 @@ class ConfirmButton extends StatelessWidget {
   }) {
     // Default Decoration
     BoxDecoration defaultDecoration = BoxDecoration(
-      color: AppColors.primary1,
+      color: Get.theme.primaryColor,
       borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
       boxShadow: [AppShadows.depth3],
     );
@@ -275,7 +275,7 @@ class ConfirmButton extends StatelessWidget {
   }) {
     // Default Decoration
     BoxDecoration defaultDecoration = BoxDecoration(
-      color: AppColors.primary1,
+      color: Get.theme.primaryColor,
       borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
       boxShadow: [AppShadows.depth3],
     );
@@ -504,7 +504,7 @@ class ComplexButton extends StatelessWidget {
               false.obs),
 
           // Build Label
-          Text(label, style: AppTextStyles.componentButtonSmall)
+          Text(label, style: AppTextStyles.buttonDefault)
         ],
       ),
     );

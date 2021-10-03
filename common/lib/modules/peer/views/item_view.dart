@@ -41,9 +41,9 @@ class PeerListItem extends StatelessWidget {
   Widget _buildTitle() {
     return RichText(
         text: TextSpan(children: [
-      TextSpan(text: "${member.device.hostName} \n", style: AppTextStyles.bodyNormalBold),
+      TextSpan(text: "${member.device.hostName} \n", style: AppTextStyles.bodyParagraphBold),
       WidgetSpan(child: PlatformIcon(member.device.os).icon(size: 18, color: Get.theme.focusColor.withOpacity(0.75))),
-      TextSpan(text: " ${member.device.os}", style: AppTextStyles.bodyNormalRegular)
+      TextSpan(text: " ${member.device.os}", style: AppTextStyles.bodyCaptionRegular)
     ]));
   }
 
@@ -69,7 +69,3 @@ class PeerListItem extends StatelessWidget {
     );
   }
 }
-
-class Purple {}
-
-class AppColor {}

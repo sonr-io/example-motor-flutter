@@ -3,7 +3,6 @@ import 'dart:typed_data';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
-import 'package:sonr_app/modules/peer/peer.dart';
 
 /// #### URL Invite from InviteRequest Proftobuf
 class URLAuthView extends StatelessWidget {
@@ -33,8 +32,8 @@ class URLAuthView extends StatelessWidget {
 
           // From Information
           Column(mainAxisSize: MainAxisSize.min, children: [
-            ProfileFullName(profile: invite.from.profile, isHeader: true),
-            Center(child: Text("Website Link", style: AppTextStyles.bodyNormalBold)),
+            Text(invite.from.profile.fullName, style: AppTextStyles.headingSubtitleBold),
+            Center(child: Text("Website Link", style: AppTextStyles.bodyParagraphRegular)),
           ]),
         ]),
         Divider(),

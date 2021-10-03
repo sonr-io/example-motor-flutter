@@ -40,7 +40,7 @@ class ChecklistOption {
     return AnimatedScale(
       scale: isEnabled.value ? 1.05 : 1.0,
       duration: 300.milliseconds,
-      child: Text(title, style: AppTextStyles.bodyNormalRegular),
+      child: Text(title, style: AppTextStyles.bodyCaptionRegular),
     );
   }
 }

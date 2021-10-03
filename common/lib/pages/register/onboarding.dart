@@ -11,6 +11,9 @@ class OnboardingPage extends StatelessWidget {
       type: MaterialType.transparency,
       child: Onboarding(
         proceedButtonStyle: ProceedButtonStyle(
+          proceedButtonBorderRadius: AppRadii.buttonRadius,
+          proceedpButtonText: Text("Register", style: AppTextStyles.buttonDefault),
+          proceedButtonColor: AppColors.primary,
           proceedButtonRoute: (context) {
             return AppPage.Register.off();
           },
@@ -56,13 +59,13 @@ extension OnboardPageTypeUtil on OnboardPageType {
   Widget title() {
     switch (this) {
       case OnboardPageType.Welcome:
-        return Text('Welcome', style: AppTextStyles.headline05);
+        return Text('Welcome', style: AppTextStyles.headline03);
       case OnboardPageType.Universal:
-        return Text('Universal', style: AppTextStyles.headline05);
+        return Text('Universal', style: AppTextStyles.headline03);
       case OnboardPageType.Secure:
-        return Text('Security First', style: AppTextStyles.headline05);
+        return Text('Security First', style: AppTextStyles.headline03);
       case OnboardPageType.Start:
-        return Text('Get Started', style: AppTextStyles.headline05);
+        return Text('Get Started', style: AppTextStyles.headline03);
     }
   }
 
@@ -70,13 +73,13 @@ extension OnboardPageTypeUtil on OnboardPageType {
   Widget description() {
     switch (this) {
       case OnboardPageType.Welcome:
-        return Text("Sonr has NO file size limits. Works like Airdrop Nearby and Email when it needs to.", style: AppTextStyles.bodySmallRegular);
+        return Text("Sonr has NO file size limits. Works like Airdrop Nearby and Email when it needs to.", style: AppTextStyles.bodyParagraphRegular);
       case OnboardPageType.Universal:
-        return Text('Runs Natively on iOS, Android, MacOS, Windows and Linux.', style: AppTextStyles.bodySmallRegular);
+        return Text('Runs Natively on iOS, Android, MacOS, Windows and Linux.', style: AppTextStyles.bodyParagraphRegular);
       case OnboardPageType.Secure:
-        return Text('Completely Encrypted Communication. All data is verified and signed.', style: AppTextStyles.bodySmallRegular);
+        return Text('Completely Encrypted Communication. All data is verified and signed.', style: AppTextStyles.bodyParagraphRegular);
       case OnboardPageType.Start:
-        return Text('Lets Continue by selecting your Sonr Name.', style: AppTextStyles.bodySmallRegular);
+        return Text('Lets Continue by selecting your Sonr Name.', style: AppTextStyles.bodyParagraphRegular);
     }
   }
 
@@ -85,21 +88,26 @@ extension OnboardPageTypeUtil on OnboardPageType {
     return PageModel(
         widget: Column(
       children: [
-        Container(
-          padding: EdgeInsets.only(bottom: 45.0, top: 45.0),
-          child: Image.asset(
-            this.imagePath,
-            color: pageImageColor,
+        Expanded(
+          child: Container(
+            child: Image.asset(
+              this.imagePath,
+              color: pageImageColor,
+            ),
           ),
         ),
         Container(
           width: double.infinity,
           child: this.title(),
+          padding: EdgeInsets.only(bottom: 8),
         ),
         Container(
           width: double.infinity,
           child: this.description(),
         ),
+        Container(
+          height: 72,
+        )
       ],
     ));
   }

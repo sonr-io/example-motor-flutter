@@ -1,6 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:sonr_plugin/sonr_plugin.dart';
 
 class AppGradients {
+  /// Returns Primary gradient by theme mode - Red or Blue
+  static LinearGradient get gradientPrimary => Get.isDarkMode ? gradientPrimaryDark : gradientPrimaryLight;
+
+  /// Returns Secondary gradient by theme mode - Black or White
+  static LinearGradient get gradientSecondary => Get.isDarkMode ? glassDark : gradientCommon03;
+
+  /// Returns Teritary gradient by theme mode - Inverse of Secondary
+  static LinearGradient get gradientTeritary => Get.isDarkMode ? gradientCommon03 : glassDark;
+
   static const gradientPrimaryDark = LinearGradient(
     begin: Alignment(1, 1),
     end: Alignment(-1, -1),
@@ -9,8 +19,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xfffd4df6),
-    Color(0xfffda14d),
+      Color(0xfffd4df6),
+      Color(0xfffda14d),
     ],
   );
 
@@ -23,9 +33,9 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xff4d74fd),
-    Color(0xff4daef8),
-    Color(0xff4dfdf2),
+      Color(0xff4d74fd),
+      Color(0xff4daef8),
+      Color(0xff4dfdf2),
     ],
   );
 
@@ -38,8 +48,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xff8c79f1),
-    Color(0xffffbde9),
+      Color(0xff8c79f1),
+      Color(0xffffbde9),
     ],
   );
 
@@ -52,8 +62,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xff434343),
-    Color(0xff000000),
+      Color(0xff434343),
+      Color(0xff000000),
     ],
   );
 
@@ -66,8 +76,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xfffafafa),
-    Color(0xffffffff),
+      Color(0xfffafafa),
+      Color(0xffffffff),
     ],
   );
 
@@ -80,8 +90,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xfffa709a),
-    Color(0xfffee140),
+      Color(0xfffa709a),
+      Color(0xfffee140),
     ],
   );
 
@@ -93,8 +103,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xffe2e3ff),
-    Color(0xffeadeff),
+      Color(0xffe2e3ff),
+      Color(0xffeadeff),
     ],
   );
 
@@ -106,8 +116,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xfff0d8ff),
-    Color(0xffdefdff),
+      Color(0xfff0d8ff),
+      Color(0xffdefdff),
     ],
   );
 
@@ -119,8 +129,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xffe5eff5),
-    Color(0xffffecde),
+      Color(0xffe5eff5),
+      Color(0xffffecde),
     ],
   );
 
@@ -132,8 +142,8 @@ class AppGradients {
       0.7881540060043335,
     ],
     colors: [
-    Color(0xff1c1c3b),
-    Color(0xff272752),
+      Color(0xff1c1c3b),
+      Color(0xff272752),
     ],
   );
 
@@ -145,8 +155,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xff232042),
-    Color(0xff282442),
+      Color(0xff232042),
+      Color(0xff282442),
     ],
   );
 
@@ -158,8 +168,8 @@ class AppGradients {
       1,
     ],
     colors: [
-    Color(0xff141416),
-    Color(0xb2141416),
+      Color(0xff141416),
+      Color(0xb2141416),
     ],
   );
 

@@ -59,12 +59,12 @@ class RegisterSetupTitleBar extends StatelessWidget implements PreferredSizeWidg
               instruction != null
                   ? Text(
                       instruction!,
-                      style: AppTextStyles.bodyLargeRegular,
+                      style: AppTextStyles.headingTitleBold,
                     )
                   : Container(),
               Text(
-                instruction!,
-                style: AppTextStyles.headline03,
+                title,
+                style: AppTextStyles.headline02,
               ),
             ],
           ),
@@ -148,7 +148,7 @@ class RegisterTextField extends GetView<RegisterController> {
             margin: EdgeInsets.only(left: 16, right: 16, top: 8),
             padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
             child: TextField(
-              style: AppTextStyles.componentHairlineSmall,
+              style: AppTextStyles.bodyParagraphRegular,
               keyboardType: type.textInputType,
               autofocus: type.autoFocus,
               textInputAction: type.textInputAction,
@@ -165,7 +165,7 @@ class RegisterTextField extends GetView<RegisterController> {
                   ? decoration
                   : InputDecoration.collapsed(
                       hintText: hint,
-                      hintStyle: AppTextStyles.componentHairlineSmall,
+                      hintStyle: AppTextStyles.bodyParagraphRegular,
                     ),
             ),
           )
@@ -188,7 +188,7 @@ class RegisterTextField extends GetView<RegisterController> {
           decoration: InputDecoration.collapsed(
               border: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.primary3, width: 4)),
               hintText: hint,
-              hintStyle: AppTextStyles.bodyNormalBold)),
+              hintStyle: AppTextStyles.bodyParagraphRegular)),
     );
   }
 
