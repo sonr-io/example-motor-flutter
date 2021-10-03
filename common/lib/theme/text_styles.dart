@@ -1,130 +1,49 @@
 import 'package:flutter/material.dart';
 
 class AppTextStyles {
-  static const body3Bold = TextStyle(
-    fontFamily: "Poppins",
-    fontWeight: FontWeight.w600,
-    fontStyle: FontStyle.normal,
-    fontSize: 18,
-    decoration: TextDecoration.none,
-    letterSpacing: 0,
-  );
-
-  static const bodyLargeRegular = TextStyle(
-    fontFamily: "Poppins",
-    fontWeight: FontWeight.w400,
-    fontStyle: FontStyle.normal,
-    fontSize: 24,
-    decoration: TextDecoration.none,
-    letterSpacing: -0.24,
-  );
-
-  static const bodyLargeBold = TextStyle(
-    fontFamily: "Poppins",
-    fontWeight: FontWeight.w600,
-    fontStyle: FontStyle.normal,
-    fontSize: 24,
-    decoration: TextDecoration.none,
-    letterSpacing: 0,
-  );
-
-  static const bodyNormalBold = TextStyle(
-    fontFamily: "Poppins",
-    fontWeight: FontWeight.w500,
-    fontStyle: FontStyle.normal,
-    fontSize: 16,
-    decoration: TextDecoration.none,
-    letterSpacing: 0,
-  );
-
-  static const bodyNormalRegular = TextStyle(
-    fontFamily: "Poppins",
-    fontWeight: FontWeight.w400,
-    fontStyle: FontStyle.normal,
-    fontSize: 16,
-    decoration: TextDecoration.none,
-    letterSpacing: 0,
-  );
-
-  static const bodySmallRegular = TextStyle(
-    fontFamily: "Poppins",
-    fontWeight: FontWeight.w400,
-    fontStyle: FontStyle.normal,
-    fontSize: 14,
-    decoration: TextDecoration.none,
-    letterSpacing: 0,
-  );
-
-  static const bodySmallBold = TextStyle(
-    fontFamily: "Poppins",
-    fontWeight: FontWeight.w500,
-    fontStyle: FontStyle.normal,
-    fontSize: 14,
-    decoration: TextDecoration.none,
-    letterSpacing: 0,
-  );
-
-  static const bodyTinyRegular = TextStyle(
-    fontFamily: "Poppins",
-    fontWeight: FontWeight.w400,
-    fontStyle: FontStyle.normal,
-    fontSize: 12,
-    decoration: TextDecoration.none,
-    letterSpacing: 0,
-  );
-
-  static const bodyTinyBold = TextStyle(
-    fontFamily: "Poppins",
-    fontWeight: FontWeight.w600,
-    fontStyle: FontStyle.normal,
-    fontSize: 12,
-    decoration: TextDecoration.none,
-    letterSpacing: 0,
-  );
-
-  static const componentButtonLarge = TextStyle(
-    fontFamily: "Montserrat",
-    fontWeight: FontWeight.w700,
-    fontStyle: FontStyle.normal,
-    fontSize: 16,
-    decoration: TextDecoration.none,
-    letterSpacing: 0.16,
-  );
-
-  static const componentButtonSmall = TextStyle(
-    fontFamily: "Montserrat",
-    fontWeight: FontWeight.w700,
-    fontStyle: FontStyle.normal,
-    fontSize: 14,
-    decoration: TextDecoration.none,
-    letterSpacing: 0.14,
-  );
-
-  static const componentHairlineLarge = TextStyle(
-    fontFamily: "Montserrat",
-    fontWeight: FontWeight.w700,
-    fontStyle: FontStyle.normal,
-    fontSize: 16,
-    decoration: TextDecoration.none,
-    letterSpacing: 0.16,
-  );
-
-  static const componentHairlineSmall = TextStyle(
-    fontFamily: "Montserrat",
-    fontWeight: FontWeight.w700,
-    fontStyle: FontStyle.normal,
-    fontSize: 12,
-    decoration: TextDecoration.none,
-    letterSpacing: 0.12,
-  );
-
-  static const headlineHero = TextStyle(
+  static const hero = TextStyle(
     fontFamily: "Montserrat",
     fontWeight: FontWeight.w700,
     fontStyle: FontStyle.normal,
     fontSize: 104,
     decoration: TextDecoration.none,
     letterSpacing: 1.04,
+  );
+
+  static const bodyParagraphRegular = TextStyle(
+    fontFamily: "Poppins",
+    fontWeight: FontWeight.w400,
+    fontStyle: FontStyle.normal,
+    fontSize: 14,
+    decoration: TextDecoration.none,
+    letterSpacing: 0,
+  );
+
+  static const bodyParagraphBold = TextStyle(
+    fontFamily: "Poppins",
+    fontWeight: FontWeight.w500,
+    fontStyle: FontStyle.normal,
+    fontSize: 14,
+    decoration: TextDecoration.none,
+    letterSpacing: 0,
+  );
+
+  static const bodyCaptionRegular = TextStyle(
+    fontFamily: "Poppins",
+    fontWeight: FontWeight.w400,
+    fontStyle: FontStyle.normal,
+    fontSize: 12,
+    decoration: TextDecoration.none,
+    letterSpacing: 0,
+  );
+
+  static const bodyCaptionBold = TextStyle(
+    fontFamily: "Poppins",
+    fontWeight: FontWeight.w600,
+    fontStyle: FontStyle.normal,
+    fontSize: 12,
+    decoration: TextDecoration.none,
+    letterSpacing: 0,
   );
 
   static const headline01 = TextStyle(
@@ -154,6 +73,7 @@ class AppTextStyles {
     letterSpacing: 0.4,
   );
 
+  /// App Page Title Default
   static const headline04 = TextStyle(
     fontFamily: "Montserrat",
     fontWeight: FontWeight.w700,
@@ -163,6 +83,7 @@ class AppTextStyles {
     letterSpacing: 0.32,
   );
 
+  /// Used for App Bar Titles
   static const headline05 = TextStyle(
     fontFamily: "Montserrat",
     fontWeight: FontWeight.w700,
@@ -170,6 +91,79 @@ class AppTextStyles {
     fontSize: 24,
     decoration: TextDecoration.none,
     letterSpacing: 0.24,
+  );
+
+  /// Button Default Text
+  static const buttonDefault = TextStyle(
+    fontFamily: "Montserrat",
+    fontWeight: FontWeight.w700,
+    fontStyle: FontStyle.normal,
+    fontSize: 16,
+    decoration: TextDecoration.none,
+    letterSpacing: 0.16,
+  );
+
+  static const buttonSmall = TextStyle(
+    fontFamily: "Montserrat",
+    fontWeight: FontWeight.w700,
+    fontStyle: FontStyle.normal,
+    fontSize: 14,
+    decoration: TextDecoration.none,
+    letterSpacing: 0.14,
+  );
+
+  static const headingTitleBold = TextStyle(
+    fontFamily: "Poppins",
+    fontWeight: FontWeight.w600,
+    fontStyle: FontStyle.normal,
+    fontSize: 24,
+    decoration: TextDecoration.none,
+    letterSpacing: 0,
+  );
+
+  static const headingTitleRegular = TextStyle(
+    fontFamily: "Poppins",
+    fontWeight: FontWeight.w400,
+    fontStyle: FontStyle.normal,
+    fontSize: 24,
+    decoration: TextDecoration.none,
+    letterSpacing: -0.24,
+  );
+
+  static const headingSubtitleBold = TextStyle(
+    fontFamily: "Poppins",
+    fontWeight: FontWeight.w500,
+    fontStyle: FontStyle.normal,
+    fontSize: 16,
+    decoration: TextDecoration.none,
+    letterSpacing: 0,
+  );
+
+  static const headingSubtitleRegular = TextStyle(
+    fontFamily: "Poppins",
+    fontWeight: FontWeight.w400,
+    fontStyle: FontStyle.normal,
+    fontSize: 16,
+    decoration: TextDecoration.none,
+    letterSpacing: 0,
+  );
+
+  static const hairlineDefault = TextStyle(
+    fontFamily: "Montserrat",
+    fontWeight: FontWeight.w700,
+    fontStyle: FontStyle.normal,
+    fontSize: 16,
+    decoration: TextDecoration.none,
+    letterSpacing: 0.16,
+  );
+
+  static const hairlineSmall = TextStyle(
+    fontFamily: "Montserrat",
+    fontWeight: FontWeight.w700,
+    fontStyle: FontStyle.normal,
+    fontSize: 12,
+    decoration: TextDecoration.none,
+    letterSpacing: 0.12,
   );
 
   AppTextStyles._();
