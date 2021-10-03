@@ -102,7 +102,14 @@ class RegisterController extends GetxController {
     }
   }
 
-  void registerProfile() {}
+  void registerProfile() {
+    SonrService.to.profile(Profile(
+      firstName: firstName.value,
+      lastName: lastName.value,
+      bio: bio.value,
+      sName: sName.value,
+    ));
+  }
 
   // @ Helper: Handle Scroll
   void _onPanelScroll() {

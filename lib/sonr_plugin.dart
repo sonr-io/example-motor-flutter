@@ -120,6 +120,7 @@ class SonrService extends GetxService {
       if (resp.hasProfile()) {
         this.profile(resp.profile);
         this.profile.refresh();
+        print('Profile: ${this.profile.value.toString()}');
       }
 
       // Add Recent Profiles from Memory
