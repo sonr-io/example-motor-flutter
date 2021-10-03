@@ -29,11 +29,12 @@ class AppColors {
   static const primaryLight = Color(0xff1792ff);
 
   /// Primary Color Dark
-  static const primaryDark = Color(0xff046DE8);
-
-  static const primary2 = Color(0xff9665fd);
-
-  /// Red Colo
+  static const primaryDark = Color(0xff046de8); 
+  
+  /// Purple Color
+  static const primary2 = Color(0xff9665fd); 
+  
+  /// Red Color
   static const primary3 = Color(0xffff2866);
 
   /// Success Color
