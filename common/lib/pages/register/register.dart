@@ -62,9 +62,13 @@ class RegisterSetupTitleBar extends StatelessWidget implements PreferredSizeWidg
                       style: AppTextStyles.headingTitleBold,
                     )
                   : Container(),
-              Text(
-                title,
-                style: AppTextStyles.headline02,
+              GradientText(
+                text: Text(
+                  title,
+                  style: AppTextStyles.headline02,
+                  textAlign: TextAlign.center,
+                ),
+                gradient: AppGradients.gradientPrimary,
               ),
             ],
           ),
@@ -87,16 +91,15 @@ class RegisterBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     if (leftButton != null && rightButton != null) {
       return Container(
+        margin: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8),
         padding: EdgeInsets.all(8),
         width: Get.width,
         height: 120,
         decoration: BoxDecoration(
-            boxShadow: [AppShadows.depth3],
-            color: Get.theme.backgroundColor,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(37),
-              topRight: Radius.circular(37),
-            )),
+          boxShadow: [AppShadows.depth3],
+          gradient: AppGradients.glassDark,
+          borderRadius: AppRadii.cardOverlayRadius,
+        ),
         child: Row(
           children: [leftButton!, rightButton!],
           crossAxisAlignment: CrossAxisAlignment.center,

@@ -10,6 +10,7 @@ class OnboardingPage extends StatelessWidget {
     return Material(
       type: MaterialType.transparency,
       child: Onboarding(
+        pagesContentPadding: EdgeInsets.only(top: 45),
         proceedButtonStyle: ProceedButtonStyle(
           proceedButtonBorderRadius: AppRadii.buttonRadius,
           proceedpButtonText: Text("Register", style: AppTextStyles.buttonDefault),
@@ -42,17 +43,8 @@ enum OnboardPageType {
 extension OnboardPageTypeUtil on OnboardPageType {
   /// Return Image Path for Type
   String get imagePath {
-    final basePath = "assets/images/illustrations/";
-    switch (this) {
-      case OnboardPageType.Welcome:
-        return basePath + "Welcome.png";
-      case OnboardPageType.Universal:
-        return basePath + "Universal.png";
-      case OnboardPageType.Secure:
-        return basePath + "Secure.png";
-      case OnboardPageType.Start:
-        return basePath + "Start.png";
-    }
+    final index = this.index + 1;
+    return Get.isDarkMode ? "assets/images/onboarding/$index-dark.png" : "assets/images/onboarding/$index-light.png";
   }
 
   /// Returns this Panels Title as Heading Widget
@@ -90,18 +82,21 @@ extension OnboardPageTypeUtil on OnboardPageType {
       children: [
         Expanded(
           child: Container(
+            margin: this.index == 0 ? EdgeInsets.all(0) : EdgeInsets.symmetric(horizontal: 24),
             child: Image.asset(
               this.imagePath,
-              color: pageImageColor,
+              fit: this.index == 0 ? BoxFit.cover : BoxFit.fitWidth,
             ),
           ),
         ),
         Container(
+          margin: EdgeInsets.symmetric(horizontal: 45),
           width: double.infinity,
           child: this.title(),
           padding: EdgeInsets.only(bottom: 8),
         ),
         Container(
+          margin: EdgeInsets.symmetric(horizontal: 45),
           width: double.infinity,
           child: this.description(),
         ),

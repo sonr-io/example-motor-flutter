@@ -11,7 +11,8 @@ class RegisterController extends GetxController {
   final sName = "".obs;
   final firstName = "".obs;
   final lastName = "".obs;
-  final status = Rx<RegisterPageType>(RegisterPageType.Intro);
+  final bio = "".obs;
+  final status = Rx<RegisterPageType>(RegisterPageType.Name);
 
   // Error Status
   final firstNameStatus = Rx<TextInputValidStatus>(TextInputValidStatus.None);
@@ -84,6 +85,12 @@ class RegisterController extends GetxController {
 
     // Permissions Page
     if (type.isPermissions) {
+      SonrService.to.profile(Profile(
+        firstName: firstName.value,
+        lastName: lastName.value,
+        bio: bio.value,
+        sName: sName.value,
+      ));
       // Validate Not Last
       if (!type.isFirst) {
         permissionsPageController.animateToPage(
@@ -94,6 +101,8 @@ class RegisterController extends GetxController {
       }
     }
   }
+
+  void registerProfile() {}
 
   // @ Helper: Handle Scroll
   void _onPanelScroll() {

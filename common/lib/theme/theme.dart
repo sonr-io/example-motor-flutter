@@ -9,7 +9,6 @@ export 'text_styles.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 
-
 /// Class Handles Theme Data and General Dark Mode Features
 class AppTheme {
   /// Method sets [DarkMode] for Device and Updates [ThemeData]
@@ -43,9 +42,9 @@ class AppTheme {
         errorColor: AppColors.primary3,
         focusColor: AppColors.neutrals1,
         hintColor: AppColors.neutrals2,
-        cardColor: AppColors.neutrals6,
-        canvasColor: AppColors.neutrals6,
-        shadowColor: AppColors.neutrals3,
+        cardColor: AppColors.neutrals7,
+        canvasColor: AppColors.neutrals7,
+        shadowColor: AppColors.neutrals6,
       );
 
   /// Returns Dark Theme for App
@@ -53,14 +52,14 @@ class AppTheme {
         brightness: Brightness.dark,
         dividerColor: AppColors.neutrals3,
         primaryColor: AppColors.primaryDark,
-        backgroundColor: Color(0xff15162D),
+        backgroundColor: AppColors.neutrals1,
         scaffoldBackgroundColor: AppColors.neutrals1,
         splashColor: Colors.transparent,
         errorColor: AppColors.primary3,
         focusColor: AppColors.neutrals7,
         hintColor: AppColors.neutrals5,
-        cardColor: AppColors.neutrals1,
-        canvasColor: AppColors.neutrals1,
+        cardColor: AppColors.neutrals2,
+        canvasColor: AppColors.neutrals2,
         shadowColor: AppColors.neutrals2,
       );
 }

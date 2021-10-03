@@ -72,7 +72,7 @@ flutter:
       fonts:
         - asset: assets/fonts/Montserrat-Bold.ttf
           weight: 700
-  
+
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf
@@ -93,6 +93,7 @@ flutter:
   # -- Media --
   assets:
     - assets/animations/
+    - assets/animations/permissions/
     - assets/fonts/
     - assets/icons/Chart/
     - assets/icons/Communication/
@@ -111,7 +112,8 @@ flutter:
     - assets/icons/SocialMedia/
     - assets/icons/Sports/
     - assets/icons/UI/
+    - assets/images/onboarding/
     - assets/images/illustrations/
     - assets/images/svg/
-    - assets/images/utility/
+    - assets/images/placeholders/
     - assets/sounds/
