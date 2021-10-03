@@ -5,6 +5,9 @@ class AppColors {
   /// Returns Primary Color by Theme Mode
   static Color get primary => Get.isDarkMode ? primaryDark : primaryLight;
 
+  /// Returns Primary Dark Color
+  static Color get accent => Get.isDarkMode ? neutrals4 : neutrals5;
+
   /// Black
   static const neutrals1 = Color(0xff1a1a1a);
 
@@ -26,7 +29,7 @@ class AppColors {
   static const primaryLight = Color(0xff1792ff);
 
   /// Primary Color Dark
-  static const primaryDark = Color(0xff1330e3);
+  static const primaryDark = Color(0xff046DE8);
 
   static const primary2 = Color(0xff9665fd);
 

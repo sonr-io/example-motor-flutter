@@ -1,5 +1,7 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
+
 extension ListUtils<T> on List<T> {
   random() {
     final rand = Random();
@@ -42,5 +44,33 @@ extension NumUtils on int {
       }
     });
     return contains;
+  }
+}
+
+extension TextStyleStringUtils on String {
+  /// Returns Text height in pixels given the text style and font size
+  double textHeight(TextStyle style, double textWidth) {
+    final TextPainter textPainter = TextPainter(
+      text: TextSpan(text: this, style: style),
+      textDirection: TextDirection.ltr,
+      maxLines: 1,
+    )..layout(minWidth: 0, maxWidth: double.infinity);
+
+    final countLines = (textPainter.size.width / textWidth).ceil();
+    final height = countLines * textPainter.size.height;
+    return height;
+  }
+
+  /// Returns the Width of the Text given the TextStyle and the Height
+  double textWidth(TextStyle style, double textHeight) {
+    final TextPainter textPainter = TextPainter(
+      text: TextSpan(text: this, style: style),
+      textDirection: TextDirection.ltr,
+      maxLines: 1,
+    )..layout(minWidth: 0, maxWidth: double.infinity);
+
+    final countLines = (textPainter.size.height / textHeight).ceil();
+    final width = countLines * textPainter.size.width;
+    return width;
   }
 }

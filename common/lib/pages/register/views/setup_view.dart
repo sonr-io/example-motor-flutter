@@ -10,9 +10,9 @@ class SetupView extends GetView<RegisterController> {
         resizeToAvoidBottomInset: false,
         backgroundColor: Get.theme.canvasColor,
         appBar: RegisterSetupTitleBar(
-          title: controller.status.value.title,
-          instruction: controller.status.value.instruction,
-          isGradient: controller.status.value.isGradient,
+          title: RegisterPageType.Name.title,
+          instruction: RegisterPageType.Name.instruction,
+          isGradient: RegisterPageType.Name.isGradient,
         ),
         body: Stack(
           children: [
@@ -56,7 +56,7 @@ class _NamePage extends GetView<RegisterController> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Sonr Name", style: AppTextStyles.headline04),
+                Text("User ID Name".toUpperCase(), style: AppTextStyles.hairlineDefault),
                 Obx(() => Container(
                       child: controller.sName.value.length > 0
                           ? ActionButton(
@@ -70,7 +70,7 @@ class _NamePage extends GetView<RegisterController> {
               ],
             )),
         Container(
-            decoration: BoxDecoration(color: Get.theme.backgroundColor, borderRadius: BorderRadius.circular(22)),
+            decoration: BoxDecoration(gradient: AppGradients.gradientSecondary, borderRadius: BorderRadius.circular(22)),
             margin: EdgeInsets.only(left: 16, right: 16, top: 6, bottom: 6),
             padding: EdgeInsets.symmetric(vertical: 24, horizontal: 24),
             child: ObxValue<RxDouble>(
@@ -84,6 +84,11 @@ class _NamePage extends GetView<RegisterController> {
                         textInputAction: TextInputAction.go,
                         autocorrect: false,
                         showCursor: false,
+                        onChanged: (val) {
+                          final width = controller.onSNameUpdated(val);
+                          leftPadding(width);
+                          leftPadding.refresh();
+                        },
                         textCapitalization: TextCapitalization.none,
                         // onEditingComplete: controller.setName,
                         decoration: InputDecoration.collapsed(hintText: hint),
@@ -93,63 +98,17 @@ class _NamePage extends GetView<RegisterController> {
                         padding: EdgeInsets.only(left: leftPadding.value),
                         child: Text(
                           ".snr/",
-                          style: AppTextStyles.bodyParagraphRegular,
+                          style: AppTextStyles.bodyParagraphBold,
                         ),
                       ),
                     ]),
                 (hint.length * 12.0).obs)),
         Padding(padding: EdgeInsets.all(8)),
-        // _NameStatus(),
         Padding(padding: EdgeInsets.all(200))
       ]),
     );
   }
 }
-
-// class _NameStatus extends GetView<RegisterController> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Obx(() => controller.nameStatus.value == NameStatus.Default || controller.sName.value.length == 0
-//         ? Container(
-//             child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               "- Must be more than 3 characters".light(
-//                 fontSize: 14,
-//                 color: Get.theme.hintColor,
-//               ),
-//               "- No Numbers, Spaces, and Special Characters.".light(
-//                 fontSize: 14,
-//                 color: Get.theme.hintColor,
-//               ),
-//               "- Ideally a Combo of First & Last Name.".light(
-//                 fontSize: 14,
-//                 color: Get.theme.hintColor,
-//               ),
-//             ],
-//           ))
-//         : Container(
-//             padding: EdgeInsets.all(12),
-//             constraints: BoxConstraints(minWidth: 140, maxWidth: 285),
-//             child: Container(
-//               child: Center(
-//                 child: DashedBox(
-//                   strokeWidth: 1,
-//                   color: Get.theme.hintColor,
-//                   child: Padding(
-//                     padding: const EdgeInsets.all(8.0),
-//                     child: Row(mainAxisSize: MainAxisSize.min, mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-//                       // controller.nameStatus.value.icon(),
-//                       Padding(padding: EdgeInsets.only(left: 4)),
-//                       //controller.nameStatus.value.label(),
-//                     ]),
-//                   ),
-//                 ),
-//               ),
-//             ),
-//           ));
-//   }
-// }
 
 class _BackupCodeView extends GetView<RegisterController> {
   _BackupCodeView({Key? key}) : super(key: key);

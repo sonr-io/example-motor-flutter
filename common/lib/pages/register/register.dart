@@ -59,12 +59,12 @@ class RegisterSetupTitleBar extends StatelessWidget implements PreferredSizeWidg
               instruction != null
                   ? Text(
                       instruction!,
-                      style: AppTextStyles.headline05,
+                      style: AppTextStyles.headingTitleBold,
                     )
                   : Container(),
               Text(
-                instruction!,
-                style: AppTextStyles.bodyParagraphRegular,
+                title,
+                style: AppTextStyles.headline02,
               ),
             ],
           ),

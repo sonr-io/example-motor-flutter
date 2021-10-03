@@ -93,12 +93,14 @@ class _ActionIconButton extends StatelessWidget {
                     height: 40,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      gradient: Get.isDarkMode ? AppGradients.glassDark : AppGradients.gradientLight03,
-                      borderRadius: BorderRadius.circular(14),
+                      gradient: AppGradients.gradientSecondary,
+                      borderRadius: AppRadii.buttonRadius,
+                      boxShadow: [AppShadows.depth1],
+                      // border:
                     ),
                     child: Icon(
                       iconData,
-                      color: Get.theme.focusColor,
+                      color: Get.isDarkMode ? AppColors.neutrals8 : AppColors.neutrals2,
                       size: 24,
                     ),
                   ),

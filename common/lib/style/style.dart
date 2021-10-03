@@ -11,7 +11,6 @@ export 'icons/icons.dart';
 export 'components/container.dart';
 export 'components/icon.dart';
 export 'components/overlay.dart';
-export 'components/text.dart';
 
 // Custom Theme Elements
 export 'elements/painter.dart';

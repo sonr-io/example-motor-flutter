@@ -8,6 +8,9 @@ class AppGradients {
   /// Returns Secondary gradient by theme mode - Black or White
   static LinearGradient get gradientSecondary => Get.isDarkMode ? glassDark : gradientCommon03;
 
+  /// Returns Teritary gradient by theme mode - Inverse of Secondary
+  static LinearGradient get gradientTeritary => Get.isDarkMode ? gradientCommon03 : glassDark;
+
   static const gradientPrimaryDark = LinearGradient(
     begin: Alignment(1, 1),
     end: Alignment(-1, -1),
