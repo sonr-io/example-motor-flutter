@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:share_plus/share_plus.dart';
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 
 import 'models/type.dart';
 
@@ -46,6 +47,12 @@ class RegisterController extends GetxController {
       viewportFraction: 1.0,
     );
     super.onInit();
+  }
+
+  double onSNameUpdated(String text) {
+    sName(text);
+    final fullWidth = text.textWidth(AppTextStyles.bodyParagraphRegular, 16);
+    return fullWidth / 2;
   }
 
   void exportCode() async {

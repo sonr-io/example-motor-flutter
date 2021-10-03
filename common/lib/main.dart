@@ -63,7 +63,7 @@ class SplashPage extends StatelessWidget {
                   delay: 2222.milliseconds,
                   child: Text(
                     "Sonr",
-                    style: AppTextStyles.headlineHero,
+                    style: AppTextStyles.hero,
                   )),
             ),
           ],

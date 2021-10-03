@@ -29,7 +29,7 @@ class ActionButton extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _ActionIconButton(onPressed, iconData),
-            Text(label!, style: AppTextStyles.componentHairlineSmall),
+            Text(label!, style: AppTextStyles.buttonSmall),
           ],
         ),
       );
@@ -93,12 +93,14 @@ class _ActionIconButton extends StatelessWidget {
                     height: 40,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
-                      gradient: Get.isDarkMode ? AppGradients.glassDark : AppGradients.gradientLight03,
-                      borderRadius: BorderRadius.circular(14),
+                      gradient: AppGradients.gradientSecondary,
+                      borderRadius: AppRadii.buttonRadius,
+                      boxShadow: [AppShadows.depth1],
+                      // border:
                     ),
                     child: Icon(
                       iconData,
-                      color: Get.theme.focusColor,
+                      color: Get.isDarkMode ? AppColors.neutrals8 : AppColors.neutrals2,
                       size: 24,
                     ),
                   ),
@@ -147,7 +149,7 @@ class ActionBanner {
 
   /// Helper: Builds Text from Banner Data
   Widget text() {
-    return Text(value.toString(), style: AppTextStyles.body3Bold);
+    return Text(value.toString(), style: AppTextStyles.buttonSmall);
   }
 }
 
@@ -238,7 +240,7 @@ class ArrowButton extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(title.toUpperCase(), style: AppTextStyles.componentButtonLarge),
+                      Text(title.toUpperCase(), style: AppTextStyles.buttonSmall),
                       Padding(
                         padding: const EdgeInsets.only(top: 6.0, left: 4),
                         child: SimpleIcons.Down.icon(size: 16, color: Get.theme.focusColor),

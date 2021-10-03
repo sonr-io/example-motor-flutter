@@ -79,13 +79,13 @@ class _PeerMainCard extends StatelessWidget {
 
   Widget _buildName() {
     if (peer.profile.firstName.toLowerCase().contains('anonymous')) {
-      return Text("${peer.profile.firstName.capitalizeFirst}", style: AppTextStyles.componentHairlineLarge);
+      return Text("${peer.profile.firstName.capitalizeFirst}", style: AppTextStyles.bodyParagraphBold);
     } else {
-      return Text("${peer.profile.firstName.capitalizeFirst}", style: AppTextStyles.componentHairlineLarge);
+      return Text("${peer.profile.firstName.capitalizeFirst}", style: AppTextStyles.bodyParagraphBold);
     }
   }
 
   Widget _buildModel() {
-    return Text("${peer.device.model}", style: AppTextStyles.componentHairlineSmall);
+    return Text("${peer.device.model}", style: AppTextStyles.bodyCaptionRegular);
   }
 }

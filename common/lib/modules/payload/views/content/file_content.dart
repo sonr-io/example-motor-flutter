@@ -321,7 +321,7 @@ class FilePayloadText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       _buildType(),
-      style: AppTextStyles.bodySmallBold,
+      style: AppTextStyles.bodyCaptionRegular,
     );
   }
 

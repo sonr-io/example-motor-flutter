@@ -47,10 +47,10 @@ class ButtonUtility {
   }
 
   static Widget buildPrimaryText(String text) {
-    return Container(child: Text(text, style: AppTextStyles.componentButtonLarge));
+    return Container(child: Text(text, style: AppTextStyles.buttonDefault));
   }
 
   static Widget buildNeutralText(String text, Color? textColor) {
-    return Container(child: Text(text, style: AppTextStyles.componentButtonLarge));
+    return Container(child: Text(text, style: AppTextStyles.buttonDefault));
   }
 }

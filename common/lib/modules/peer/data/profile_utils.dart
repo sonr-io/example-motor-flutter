@@ -4,26 +4,6 @@ import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
-/// Builds Header Style text from [Profile] data
-class ProfileFullName extends StatelessWidget {
-  final Profile profile;
-
-  /// If true Widget will use Gradient Text
-  final bool isHeader;
-  const ProfileFullName({Key? key, required this.profile, required this.isHeader}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    if (this.isHeader) {
-      return Text(
-        profile.fullName,
-        style: AppTextStyles.headline05,
-      );
-    } else {
-      return Text(profile.fullName, style: AppTextStyles.componentHairlineLarge);
-    }
-  }
-}
-
 /// Builds Avatar Image from [Profile] data
 class ProfileAvatar extends StatelessWidget {
   final Profile profile;

@@ -45,10 +45,10 @@ class InviteComposer extends GetView<HomeController> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Remote Invite", style: AppTextStyles.headline04),
+                Text("Remote Invite", style: AppTextStyles.headingTitleBold),
                 Text(
                   "Type the SName of the User you want to Share with.",
-                  style: AppTextStyles.componentHairlineSmall,
+                  style: AppTextStyles.bodyParagraphRegular,
                 ),
                 Container(
                   padding: EdgeInsets.only(top: 16, left: 8, right: 16),

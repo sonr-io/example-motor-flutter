@@ -72,12 +72,15 @@ class _InviteRequestFileHeader extends StatelessWidget {
                 padding: EdgeInsets.only(top: 4, left: 4),
                 child: Tooltip(
                   message: profile.sName + ".snr/",
-                  child: Text("View SName", style: AppTextStyles.bodyTinyBold,),
+                  child: Text(
+                    "View SName",
+                    style: AppTextStyles.bodyCaptionRegular,
+                  ),
                   height: 50,
                   decoration: BoxDecoration(color: Get.theme.focusColor.withOpacity(0.9), borderRadius: BorderRadius.circular(22)),
                   padding: const EdgeInsets.all(16.0),
                   preferBelow: false,
-                  textStyle: AppTextStyles.bodyTinyBold,
+                  textStyle: AppTextStyles.bodyParagraphBold,
                   showDuration: 1800.milliseconds,
                   waitDuration: 0.milliseconds,
                 ),
