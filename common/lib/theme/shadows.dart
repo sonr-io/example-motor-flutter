@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sonr_plugin/sonr_plugin.dart';
 
 class AppShadows {
+  /// Returns Primary Shadow by Theme Mode
+  static BoxShadow get primaryDepth => Get.isDarkMode ? depth3 : depth2;
+
   static const depth1 = BoxShadow(
     color: Color(0x330f0f0f),
     offset: Offset(0, 8),

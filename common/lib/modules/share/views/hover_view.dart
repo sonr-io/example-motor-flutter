@@ -59,7 +59,7 @@ class _ShareHoverPeerInfo extends StatelessWidget {
       children: [
         PlatformIcon(peer.device.os).icon(color: Get.theme.focusColor.withOpacity(0.75), size: 26),
         Padding(padding: EdgeInsets.only(left: 8)),
-        Text(peer.profile.firstName, style: AppTextStyles.body3Bold),
+        Text(peer.profile.firstName, style: AppTextStyles.bodyParagraphBold),
       ],
     );
   }

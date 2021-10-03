@@ -119,7 +119,7 @@ extension IntricateIconUtils on ComplexIcons {
 
 extension MimeIcon on MIME_Type {
   Widget gradient({double size = 32, Gradient? gradient}) {
-    return this.iconData.gradient(value: gradient ?? this.defaultIconGradient, size: size);
+    return this.iconData.gradient(value: gradient ?? AppGradients.gradientSecondary, size: size);
   }
 
   Icon icon({double size = 32, Color color = AppColors.neutrals8}) {
@@ -152,10 +152,6 @@ extension MimeIcon on MIME_Type {
         return SimpleIcons.Document;
     }
   }
-
-  Gradient get defaultIconGradient {
-    return Get.isDarkMode ? AppGradients.gradientBrand03 : AppGradients.gradientBrand01;
-  }
 }
 
 class PlatformIcon {
@@ -164,7 +160,7 @@ class PlatformIcon {
 
   ///-- Returns Icon Widget -- //
   Widget gradient({double size = 32, Gradient? gradient}) {
-    return this.iconData.gradient(value: gradient ?? AppGradients.gradientLight02, size: size);
+    return this.iconData.gradient(value: gradient ?? AppGradients.gradientSecondary, size: size);
   }
 
   Icon icon({double size = 32, Color color = AppColors.neutrals8}) {
@@ -192,6 +188,8 @@ class PlatformIcon {
         return SimpleIcons.IPhone;
       case "darwin":
         return SimpleIcons.IMac;
+      case "linux":
+        return SimpleIcons.LinuxDesktop;
       case "windows":
         return SimpleIcons.Windows;
       default:
@@ -202,13 +200,15 @@ class PlatformIcon {
   Color get defaultIconColor {
     switch (this.platform) {
       case "android":
-        return AppColors.otherPlatformsAndroid;
+        return AppColors.platformsAndroid;
       case "ios":
-        return AppColors.otherPlatformsIOs;
+        return AppColors.platformsIOs;
       case "darwin":
-        return AppColors.otherPlatformsMacOs;
+        return AppColors.platformsMacOs;
+      case "linux":
+        return AppColors.platformsLinux;
       case "windows":
-        return AppColors.otherPlatformsWindows;
+        return AppColors.platformsMacOs;
       default:
         return Colors.black87;
     }
@@ -272,7 +272,7 @@ extension DesignIcon on IconData {
     return ShaderMask(
       blendMode: BlendMode.modulate,
       shaderCallback: (bounds) {
-        var grad = value ?? AppGradients.gradientBrand01;
+        var grad = value ?? AppGradients.gradientSecondary;
         return grad.createShader(bounds);
       },
       child: Icon(

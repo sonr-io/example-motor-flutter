@@ -41,7 +41,7 @@ class GradientTabs extends StatelessWidget {
                     duration: 300.milliseconds,
                     child: Text(
                       tabs[index],
-                      style: AppTextStyles.bodyNormalBold,
+                      style: AppTextStyles.headline05,
                     )),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24),

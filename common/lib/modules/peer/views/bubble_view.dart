@@ -47,7 +47,7 @@ class PeerBubbleView extends StatelessWidget {
   Widget _buildPeerInitials() {
     return Text(
       peer.profile.initials,
-      style: AppTextStyles.body3Bold,
+      style: AppTextStyles.bodyCaptionBold,
     );
   }
 }

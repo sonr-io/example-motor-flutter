@@ -35,7 +35,7 @@ class AppTheme {
   /// Returns Light Theme for App
   static ThemeData get LightTheme => ThemeData(
         brightness: Brightness.light,
-        primaryColor: AppColors.primary1,
+        primaryColor: AppColors.primaryLight,
         backgroundColor: AppColors.neutrals8,
         dividerColor: AppColors.neutrals4,
         scaffoldBackgroundColor: AppColors.neutrals7,
@@ -52,7 +52,7 @@ class AppTheme {
   static ThemeData get DarkTheme => ThemeData(
         brightness: Brightness.dark,
         dividerColor: AppColors.neutrals3,
-        primaryColor: AppColors.primary1,
+        primaryColor: AppColors.primaryDark,
         backgroundColor: Color(0xff15162D),
         scaffoldBackgroundColor: AppColors.neutrals1,
         splashColor: Colors.transparent,

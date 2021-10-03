@@ -30,9 +30,9 @@ class InfolistOption {
   /// Returns Text for Checklist Option based on State
   Widget text() {
     if (isHeader) {
-      return Text(title, style: AppTextStyles.bodySmallBold);
+      return Text(title, style: AppTextStyles.headingSubtitleBold);
     }
-    return Text(title, style: AppTextStyles.bodySmallRegular);
+    return Text(title, style: AppTextStyles.bodyCaptionRegular);
   }
 }
 

@@ -48,7 +48,7 @@ class ColorButton extends StatelessWidget {
     // Build Child
     return ColorButton(
         decoration: BoxDecoration(
-            gradient: Get.isDarkMode ? AppGradients.gradientCommon04 : AppGradients.gradientCommon05,
+            gradient: Get.isDarkMode ? AppGradients.gradientPrimaryDark : AppGradients.gradientPrimaryLight,
             borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
             boxShadow: [AppShadows.depth3]),
         onPressed: onPressed,

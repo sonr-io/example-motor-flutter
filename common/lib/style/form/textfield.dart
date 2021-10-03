@@ -179,7 +179,7 @@ class SNameTextField extends StatelessWidget {
                           inputFormatters: [
                             FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),
                           ],
-                          style: AppTextStyles.componentHairlineSmall,
+                          style: AppTextStyles.bodyParagraphRegular,
                           autofocus: true,
                           textInputAction: TextInputAction.go,
                           autocorrect: false,
@@ -207,7 +207,7 @@ class SNameTextField extends StatelessWidget {
                   padding: EdgeInsets.only(left: leftPadding.value),
                   child: Text(
                     ".snr/",
-                    style: AppTextStyles.componentHairlineLarge,
+                    style: AppTextStyles.bodyParagraphRegular,
                   ),
                 ),
               ]),

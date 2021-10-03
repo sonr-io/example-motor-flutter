@@ -79,7 +79,7 @@ class _NamePage extends GetView<RegisterController> {
                         inputFormatters: [
                           FilteringTextInputFormatter.allow(RegExp("[a-z]")),
                         ],
-                        style: AppTextStyles.bodyLargeRegular,
+                        style: AppTextStyles.bodyParagraphRegular,
                         autofocus: true,
                         textInputAction: TextInputAction.go,
                         autocorrect: false,
@@ -93,7 +93,7 @@ class _NamePage extends GetView<RegisterController> {
                         padding: EdgeInsets.only(left: leftPadding.value),
                         child: Text(
                           ".snr/",
-                          style: AppTextStyles.componentHairlineLarge,
+                          style: AppTextStyles.bodyParagraphRegular,
                         ),
                       ),
                     ]),
@@ -190,7 +190,7 @@ class _BackupCodeView extends GetView<RegisterController> {
                       ),
                       Container(
                         padding: EdgeInsets.only(bottom: 24),
-                        child: Text(controller.mnemonic.value, style: AppTextStyles.bodyLargeRegular),
+                        child: Text(controller.mnemonic.value, style: AppTextStyles.headline05),
                       ),
                     ],
                   ),
