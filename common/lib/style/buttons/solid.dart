@@ -504,15 +504,7 @@ class ComplexButton extends StatelessWidget {
               false.obs),
 
           // Build Label
-          Get.isDarkMode
-              ? label.light(
-                  color: textColor ?? AppColors.neutrals8.withOpacity(0.8),
-                  fontSize: fontSize,
-                )
-              : label.light(
-                  color: textColor ?? AppColors.neutrals1.withOpacity(0.8),
-                  fontSize: fontSize,
-                ),
+          Text(label, style: AppTextStyles.componentButtonSmall)
         ],
       ),
     );

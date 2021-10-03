@@ -14,12 +14,12 @@ class ProfileFullName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (this.isHeader) {
-      return profile.fullName.gradient(value: AppGradients.gradientDark01);
+      return Text(
+        profile.fullName,
+        style: AppTextStyles.headline05,
+      );
     } else {
-      return Row(children: [
-        "${profile.firstName.capitalizeFirst} ".paragraph(),
-        profile.lastName.capitalizeFirst!.light(),
-      ]);
+      return Text(profile.fullName, style: AppTextStyles.componentHairlineLarge);
     }
   }
 }

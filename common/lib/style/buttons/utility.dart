@@ -47,10 +47,10 @@ class ButtonUtility {
   }
 
   static Widget buildPrimaryText(String text) {
-    return Container(child: text.heading(color: AppColors.neutrals8, fontSize: 22));
+    return Container(child: Text(text, style: AppTextStyles.componentButtonLarge));
   }
 
   static Widget buildNeutralText(String text, Color? textColor) {
-    return Container(child: text.heading(color: textColor ?? Get.theme.focusColor, fontSize: 22));
+    return Container(child: Text(text, style: AppTextStyles.componentButtonLarge));
   }
 }

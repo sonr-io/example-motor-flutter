@@ -2,7 +2,7 @@
 import 'dart:typed_data';
 
 import 'package:sonr_app/style/style.dart';
-import 'package:sonr_app/theme/colors.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// #### TransferView: Builds Invite View based on InviteRequest Payload Type
@@ -72,12 +72,12 @@ class _InviteRequestFileHeader extends StatelessWidget {
                 padding: EdgeInsets.only(top: 4, left: 4),
                 child: Tooltip(
                   message: profile.sName + ".snr/",
-                  child: "View SName".light(fontSize: 16, color: AppColors.primary1),
+                  child: Text("View SName", style: AppTextStyles.bodyTinyBold,),
                   height: 50,
                   decoration: BoxDecoration(color: Get.theme.focusColor.withOpacity(0.9), borderRadius: BorderRadius.circular(22)),
                   padding: const EdgeInsets.all(16.0),
                   preferBelow: false,
-                  textStyle: DisplayTextStyle.Light.style(color: Get.theme.cardColor, fontSize: 24),
+                  textStyle: AppTextStyles.bodyTinyBold,
                   showDuration: 1800.milliseconds,
                   waitDuration: 0.milliseconds,
                 ),

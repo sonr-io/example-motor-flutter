@@ -1,4 +1,5 @@
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 const K_HOVER_BUTTON_SIZE = 42.0;
@@ -58,7 +59,7 @@ class _ShareHoverPeerInfo extends StatelessWidget {
       children: [
         PlatformIcon(peer.device.os).icon(color: Get.theme.focusColor.withOpacity(0.75), size: 26),
         Padding(padding: EdgeInsets.only(left: 8)),
-        peer.profile.firstName.subheading(fontSize: 28, color: Get.theme.focusColor),
+        Text(peer.profile.firstName, style: AppTextStyles.body3Bold),
       ],
     );
   }

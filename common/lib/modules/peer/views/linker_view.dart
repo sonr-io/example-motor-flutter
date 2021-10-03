@@ -1,4 +1,5 @@
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// #### PeerListItem for Remote View
@@ -17,9 +18,9 @@ class PeerLinkerItem extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 4.0, left: 8.0),
                   child: RichText(
                       text: TextSpan(children: [
-                    "${peer.device.hostName} \n".subheadingSpan(fontSize: 24),
+                    TextSpan(text: "${peer.device.hostName} \n", style: AppTextStyles.bodyNormalBold),
                     WidgetSpan(child: PlatformIcon(peer.device.os).icon(size: 18, color: Get.theme.focusColor.withOpacity(0.75))),
-                    " ${peer.device.os}".paragraphSpan(fontSize: 18),
+                    TextSpan(text: " ${peer.device.os}", style: AppTextStyles.bodyNormalRegular)
                   ]))),
               Spacer(),
               ColorButton.neutral(

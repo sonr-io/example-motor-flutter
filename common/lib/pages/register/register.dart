@@ -56,8 +56,16 @@ class RegisterSetupTitleBar extends StatelessWidget implements PreferredSizeWidg
             crossAxisAlignment: instruction != null ? CrossAxisAlignment.center : CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              instruction != null ? instruction!.light(fontSize: 42, color: Get.theme.focusColor) : Container(),
-              isGradient ? title.gradient(value: AppGradients.gradientCommon05, size: 48) : title.heading(fontSize: 42, color: Get.theme.focusColor),
+              instruction != null
+                  ? Text(
+                      instruction!,
+                      style: AppTextStyles.bodyLargeRegular,
+                    )
+                  : Container(),
+              Text(
+                instruction!,
+                style: AppTextStyles.headline03,
+              ),
             ],
           ),
         ),
@@ -133,21 +141,6 @@ class RegisterTextField extends GetView<RegisterController> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Container(
-              margin: EdgeInsets.only(left: 24),
-              alignment: Alignment.centerLeft,
-              child: [
-                type.label.toUpperCase().lightSpan(
-                      color: Get.theme.hintColor,
-                      fontSize: 20,
-                    ),
-                isError
-                    ? " Error".sectionSpan(
-                        color: AppColors.primary3,
-                        fontSize: 20,
-                      )
-                    : "".lightSpan(),
-              ].rich()),
-          Container(
             decoration: BoxDecoration(
               color: Get.theme.backgroundColor,
               borderRadius: BorderRadius.circular(22),
@@ -155,7 +148,7 @@ class RegisterTextField extends GetView<RegisterController> {
             margin: EdgeInsets.only(left: 16, right: 16, top: 8),
             padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
             child: TextField(
-              style: DisplayTextStyle.Light.style(color: Get.theme.focusColor, fontSize: 20),
+              style: AppTextStyles.componentHairlineSmall,
               keyboardType: type.textInputType,
               autofocus: type.autoFocus,
               textInputAction: type.textInputAction,
@@ -172,7 +165,7 @@ class RegisterTextField extends GetView<RegisterController> {
                   ? decoration
                   : InputDecoration.collapsed(
                       hintText: hint,
-                      hintStyle: DisplayTextStyle.Paragraph.style(color: Get.theme.hintColor, fontSize: 20),
+                      hintStyle: AppTextStyles.componentHairlineSmall,
                     ),
             ),
           )
@@ -195,7 +188,7 @@ class RegisterTextField extends GetView<RegisterController> {
           decoration: InputDecoration.collapsed(
               border: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.primary3, width: 4)),
               hintText: hint,
-              hintStyle: DisplayTextStyle.Paragraph.style(color: Get.theme.focusColor.withOpacity(0.75), fontSize: 20))),
+              hintStyle: AppTextStyles.bodyNormalBold)),
     );
   }
 

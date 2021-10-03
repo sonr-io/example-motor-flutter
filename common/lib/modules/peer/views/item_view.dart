@@ -39,10 +39,12 @@ class PeerListItem extends StatelessWidget {
   }
 
   Widget _buildTitle() {
-    return [
-      "${member.profile.firstName + member.profile.lastName} \n".subheadingSpan(fontSize: 20),
-      " ${member.sName}.snr/".paragraphSpan(fontSize: 16),
-    ].rich();
+    return RichText(
+        text: TextSpan(children: [
+      TextSpan(text: "${member.device.hostName} \n", style: AppTextStyles.bodyNormalBold),
+      WidgetSpan(child: PlatformIcon(member.device.os).icon(size: 18, color: Get.theme.focusColor.withOpacity(0.75))),
+      TextSpan(text: " ${member.device.os}", style: AppTextStyles.bodyNormalRegular)
+    ]));
   }
 
   Widget _buildAvatar() {

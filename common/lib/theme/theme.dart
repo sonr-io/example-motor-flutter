@@ -39,7 +39,6 @@ class AppTheme {
         backgroundColor: AppColors.neutrals8,
         dividerColor: AppColors.neutrals4,
         scaffoldBackgroundColor: AppColors.neutrals7,
-        fontFamily: 'Montserrat',
         splashColor: Colors.transparent,
         errorColor: AppColors.primary3,
         focusColor: AppColors.neutrals1,
@@ -53,7 +52,6 @@ class AppTheme {
   static ThemeData get DarkTheme => ThemeData(
         brightness: Brightness.dark,
         dividerColor: AppColors.neutrals3,
-        fontFamily: 'Montserrat',
         primaryColor: AppColors.primary1,
         backgroundColor: Color(0xff15162D),
         scaffoldBackgroundColor: AppColors.neutrals1,

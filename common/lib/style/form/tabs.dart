@@ -39,9 +39,9 @@ class GradientTabs extends StatelessWidget {
                 child: AnimatedScale(
                     scale: currentIndex.value == index ? 1.1 : 1.0,
                     duration: 300.milliseconds,
-                    child: tabs[index].light(
-                      color: _buildTextColor(currentIndex.value == index),
-                      align: TextAlign.center,
+                    child: Text(
+                      tabs[index],
+                      style: AppTextStyles.bodyNormalBold,
                     )),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(24),
@@ -52,11 +52,4 @@ class GradientTabs extends StatelessWidget {
             ));
   }
 
-  Color _buildTextColor(bool isCurrent) {
-    if (isCurrent) {
-      return Get.theme.focusColor;
-    } else {
-      return Get.theme.hintColor;
-    }
-  }
 }

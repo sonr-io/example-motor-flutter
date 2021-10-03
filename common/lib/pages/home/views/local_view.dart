@@ -1,5 +1,6 @@
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/modules/peer/peer.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 enum LobbyFilter { All, Phones, Desktops }
@@ -25,7 +26,7 @@ class LocalView extends StatelessWidget {
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 24),
           child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            "Around Me".section(align: TextAlign.start, color: Get.theme.focusColor),
+            Text("Around Me", style: AppTextStyles.headline05),
             Obx(() => ArrowButton.checkList(
                   title: _buildArrowTitle(true, true), //controller.phonesEnabled.value, controller.desktopsEnabled.value),
                   onSelectedOption: (index) {
@@ -84,7 +85,7 @@ class _LocalEmptyView extends StatelessWidget {
             fit: BoxFit.fitHeight,
           ),
           Padding(padding: EdgeInsets.only(top: 8)),
-          "Nobody Here..".subheading(color: Get.theme.hintColor, fontSize: 20)
+          Text("Nobody Here..", style: AppTextStyles.headline05),
         ]),
         padding: EdgeInsets.zero,
       ),

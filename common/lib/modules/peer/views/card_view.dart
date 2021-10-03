@@ -1,4 +1,5 @@
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 const double K_CARD_WIDTH = 160;
@@ -78,13 +79,13 @@ class _PeerMainCard extends StatelessWidget {
 
   Widget _buildName() {
     if (peer.profile.firstName.toLowerCase().contains('anonymous')) {
-      return "${peer.profile.firstName.capitalizeFirst}".subheading(color: Get.theme.focusColor);
+      return Text("${peer.profile.firstName.capitalizeFirst}", style: AppTextStyles.componentHairlineLarge);
     } else {
-      return "${peer.profile.firstName.capitalizeFirst}".subheading(color: Get.theme.focusColor);
+      return Text("${peer.profile.firstName.capitalizeFirst}", style: AppTextStyles.componentHairlineLarge);
     }
   }
 
   Widget _buildModel() {
-    return "${peer.device.model}".paragraph(color: Get.theme.hintColor);
+    return Text("${peer.device.model}", style: AppTextStyles.componentHairlineSmall);
   }
 }

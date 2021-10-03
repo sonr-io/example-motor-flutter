@@ -56,10 +56,7 @@ class _NamePage extends GetView<RegisterController> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                "Sonr Name".toUpperCase().light(
-                      color: Get.theme.hintColor,
-                      fontSize: 20,
-                    ),
+                Text("Sonr Name", style: AppTextStyles.headline04),
                 Obx(() => Container(
                       child: controller.sName.value.length > 0
                           ? ActionButton(
@@ -82,21 +79,13 @@ class _NamePage extends GetView<RegisterController> {
                         inputFormatters: [
                           FilteringTextInputFormatter.allow(RegExp("[a-z]")),
                         ],
-                        style: DisplayTextStyle.Paragraph.style(color: Get.theme.focusColor, fontSize: 24),
+                        style: AppTextStyles.bodyLargeRegular,
                         autofocus: true,
                         textInputAction: TextInputAction.go,
                         autocorrect: false,
                         showCursor: false,
                         textCapitalization: TextCapitalization.none,
                         // onEditingComplete: controller.setName,
-                        onChanged: (val) {
-                          final length = controller.checkName(val);
-                          if (length > 0) {
-                            leftPadding(length);
-                          } else {
-                            leftPadding(hint.size(DisplayTextStyle.Paragraph, fontSize: 24).width + 1);
-                          }
-                        },
                         decoration: InputDecoration.collapsed(hintText: hint),
                       ),
                       Container(
@@ -104,7 +93,7 @@ class _NamePage extends GetView<RegisterController> {
                         padding: EdgeInsets.only(left: leftPadding.value),
                         child: Text(
                           ".snr/",
-                          style: DisplayTextStyle.Subheading.style(color: Get.theme.focusColor, fontSize: 24),
+                          style: AppTextStyles.componentHairlineLarge,
                         ),
                       ),
                     ]),
@@ -201,7 +190,7 @@ class _BackupCodeView extends GetView<RegisterController> {
                       ),
                       Container(
                         padding: EdgeInsets.only(bottom: 24),
-                        child: controller.mnemonic.value.gradient(value: AppGradients.gradientCommon05, size: 32),
+                        child: Text(controller.mnemonic.value, style: AppTextStyles.bodyLargeRegular),
                       ),
                     ],
                   ),

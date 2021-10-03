@@ -7,6 +7,6 @@
   "designSystemName": "Sonr App Design System",
   "designSystemVersionName": "Initial Version",
   "exporterName": "Flutter",
-  "write_to": "lib/style",
+  "write_to": "lib/theme",
   "description": "Note to our fellow developers: Install Supernova integration from the VSCode marketplace and then our  Flutter exporter will synchronize design data and generate appropriate code from the  Initial Version design system every time you request it through the extension interface, fully automatically."
 }

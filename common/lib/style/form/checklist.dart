@@ -1,4 +1,5 @@
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// Option Displayed in Checklist
@@ -13,7 +14,7 @@ class ChecklistOption {
   }
 
   /// Returns this Widgets Size
-  Size get size => this.title.size(DisplayTextStyle.Light, fontSize: 24);
+  Size get size => Size(42, 24);
 
   /// Returns Icon for Checklist Option based on State
   Widget icon() {
@@ -39,7 +40,7 @@ class ChecklistOption {
     return AnimatedScale(
       scale: isEnabled.value ? 1.05 : 1.0,
       duration: 300.milliseconds,
-      child: title.light(color: Get.theme.focusColor, fontSize: 24),
+      child: Text(title, style: AppTextStyles.bodyNormalRegular),
     );
   }
 }

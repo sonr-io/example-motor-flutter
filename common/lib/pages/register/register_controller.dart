@@ -48,13 +48,6 @@ class RegisterController extends GetxController {
     super.onInit();
   }
 
-  double checkName(String name) {
-    sName(name);
-    // validateName();
-    final size = name.size(DisplayTextStyle.Paragraph, fontSize: 24);
-    return size.width;
-  }
-
   void exportCode() async {
     if (mnemonic.value != "") {
       final directory = await getApplicationDocumentsDirectory();
