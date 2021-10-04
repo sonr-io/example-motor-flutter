@@ -5,7 +5,3 @@ export 'views/content/item_thumbnail.dart';
 
 // Export Views
 export 'views/auth_sheet.dart';
-
-// Export Models
-export 'data/type.dart';
-export 'data/utility.dart';

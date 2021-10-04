@@ -16,6 +16,7 @@ export 'components/overlay.dart';
 export 'elements/painter.dart';
 export 'elements/scaffold.dart';
 export 'elements/appbar.dart';
+export 'elements/text.dart';
 export 'elements/animation.dart' hide AnimatedScale;
 
 // Form Styles

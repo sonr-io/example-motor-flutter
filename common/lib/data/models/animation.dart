@@ -170,7 +170,6 @@ extension BigDirectionUtils on BigDirection {
   }
 }
 
-
 /// Rive Board Options
 enum RiveBoard { Splash, Documents, Bubble }
 
@@ -180,7 +179,7 @@ extension RiveBoardUtils on RiveBoard {
   String get path {
     switch (this) {
       case RiveBoard.Splash:
-        return 'assets/animations/rive/splash.riv';
+        return 'assets/animations/splash.riv';
       case RiveBoard.Documents:
         return 'assets/animations/rive/documents.riv';
       case RiveBoard.Bubble:

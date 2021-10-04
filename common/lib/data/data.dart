@@ -9,5 +9,4 @@ export 'models/option.dart';
 export 'models/status.dart';
 
 // References
-export 'package:sonr_app/modules/share/share.dart';
 export 'package:sonr_app/pages/details/details.dart';

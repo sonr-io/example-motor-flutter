@@ -1,12 +1,11 @@
-import 'package:sonr_app/pages/register/register_controller.dart';
+import 'package:sonr_app/pages/register/controller.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 
 enum RegisterPageType {
-  Intro,
   Name,
   Backup,
-  Contact,
+  Profile,
   Location,
   Gallery,
   Notifications,
@@ -16,11 +15,9 @@ extension RegisterPageTypeUtils on RegisterPageType {
   /// Returns ValueKey for Type
   Key? get key => ValueKey<RegisterPageType>(this);
 
-  /// Checks to Use Intro View
-  bool get isIntro => this == RegisterPageType.Intro;
 
   /// Checks to Use Setup View
-  bool get isSetup => this == RegisterPageType.Name || this == RegisterPageType.Backup || this == RegisterPageType.Contact;
+  bool get isSetup => this == RegisterPageType.Name || this == RegisterPageType.Backup || this == RegisterPageType.Profile;
 
   /// Checks to User Permissions View
   bool get isPermissions => this == RegisterPageType.Location || this == RegisterPageType.Gallery || this == RegisterPageType.Notifications;
@@ -58,14 +55,11 @@ extension RegisterPageTypeUtils on RegisterPageType {
     return -1;
   }
 
-  /// Returns Intro Pages
-  static List<RegisterPageType> get introPageTypes => [RegisterPageType.Intro];
-
   /// Returns Setup Pages
   static List<RegisterPageType> get setupPageTypes => [
         RegisterPageType.Name,
         RegisterPageType.Backup,
-        RegisterPageType.Contact,
+        RegisterPageType.Profile,
       ];
 
   /// Returns Permissions Pages
@@ -79,7 +73,7 @@ extension RegisterPageTypeUtils on RegisterPageType {
   Widget leftButton() {
     if (this == RegisterPageType.Backup) {
       return ColorButton.neutral(onPressed: Get.find<RegisterController>().exportCode, text: "Save");
-    } else if (this == RegisterPageType.Contact) {
+    } else if (this == RegisterPageType.Profile) {
       return ColorButton.neutral(onPressed: () => Get.find<RegisterController>().nextPage(RegisterPageType.Location), text: "Later");
     } else {
       return Container();
@@ -89,8 +83,8 @@ extension RegisterPageTypeUtils on RegisterPageType {
   /// Returns Right Button for Setup Page
   Widget rightButton() {
     if (this == RegisterPageType.Backup) {
-      return ColorButton.primary(onPressed: () => Get.find<RegisterController>().nextPage(RegisterPageType.Contact), text: "Next");
-    } else if (this == RegisterPageType.Contact) {
+      return ColorButton.primary(onPressed: () => Get.find<RegisterController>().nextPage(RegisterPageType.Profile), text: "Next");
+    } else if (this == RegisterPageType.Profile) {
       return ColorButton.primary(onPressed: () => Get.find<RegisterController>().nextPage(RegisterPageType.Location), text: "Confirm");
     } else {
       return Container();
@@ -136,7 +130,7 @@ extension RegisterPageTypeUtils on RegisterPageType {
         return "SName";
       case RegisterPageType.Backup:
         return "Backup Code";
-      case RegisterPageType.Contact:
+      case RegisterPageType.Profile:
         return "Profile";
       default:
         return "";
@@ -150,7 +144,7 @@ extension RegisterPageTypeUtils on RegisterPageType {
         return "Choose Your";
       case RegisterPageType.Backup:
         return "Secure Your";
-      case RegisterPageType.Contact:
+      case RegisterPageType.Profile:
         return "Edit Your";
       default:
         return "";

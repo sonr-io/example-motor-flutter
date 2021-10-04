@@ -5,9 +5,6 @@ import UIKit
 
 public class SwiftSonrCorePlugin: NSObject, FlutterPlugin {
   // ^ Initialize Sonr Plugin Vars ^
-  // let sonr = SonrProxy()
-  var node: LibClient?
-
   static var methodChannel: FlutterMethodChannel?
   static var eventChannel: FlutterMethodChannel?
 

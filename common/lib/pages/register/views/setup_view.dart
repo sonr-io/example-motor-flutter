@@ -10,9 +10,9 @@ class SetupView extends GetView<RegisterController> {
         resizeToAvoidBottomInset: false,
         backgroundColor: Get.theme.canvasColor,
         appBar: RegisterSetupTitleBar(
-          title: RegisterPageType.Name.title,
-          instruction: RegisterPageType.Name.instruction,
-          isGradient: RegisterPageType.Name.isGradient,
+          title: controller.status.value.title,
+          instruction: controller.status.value.instruction,
+          isGradient: controller.status.value.isGradient,
         ),
         body: Stack(
           children: [
@@ -21,8 +21,8 @@ class SetupView extends GetView<RegisterController> {
               scrollDirection: Axis.vertical,
               children: [
                 _NamePage(key: RegisterPageType.Name.key),
-                _BackupCodeView(key: RegisterPageType.Backup.key),
-                _ProfileSetupView(key: RegisterPageType.Contact.key),
+                // _BackupCodeView(key: RegisterPageType.Backup.key),
+                _EditProfilePage(key: RegisterPageType.Profile.key),
               ],
               controller: Get.find<RegisterController>().setupPageController,
             ),
@@ -44,7 +44,10 @@ class _NamePage extends GetView<RegisterController> {
   _NamePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final hint = TextUtils.hintName.item1.toLowerCase();
+    final hintName = TextUtils.hintName;
+    final sNameHint = hintName.item1.toLowerCase().substring(0, 1) + hintName.item2.substring(0, 1).toUpperCase() + hintName.item2.substring(1);
+    final fullWidth = sNameHint.textWidth(AppTextStyles.bodyParagraphRegular, 16);
+    final leftPaddingInitial = fullWidth / 2;
     return SingleChildScrollView(
       reverse: true,
       child: Column(mainAxisSize: MainAxisSize.max, mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -90,8 +93,10 @@ class _NamePage extends GetView<RegisterController> {
                           leftPadding.refresh();
                         },
                         textCapitalization: TextCapitalization.none,
-                        // onEditingComplete: controller.setName,
-                        decoration: InputDecoration.collapsed(hintText: hint),
+                        onSubmitted: (val) {
+                          controller.nextPage(RegisterPageType.Profile);
+                        },
+                        decoration: InputDecoration.collapsed(hintText: sNameHint),
                       ),
                       Container(
                         alignment: Alignment.centerLeft,
@@ -102,7 +107,7 @@ class _NamePage extends GetView<RegisterController> {
                         ),
                       ),
                     ]),
-                (hint.length * 12.0).obs)),
+                (leftPaddingInitial).obs)),
         Padding(padding: EdgeInsets.all(8)),
         Padding(padding: EdgeInsets.all(200))
       ]),
@@ -110,6 +115,7 @@ class _NamePage extends GetView<RegisterController> {
   }
 }
 
+// ignore: unused_element
 class _BackupCodeView extends GetView<RegisterController> {
   _BackupCodeView({Key? key}) : super(key: key);
   @override
@@ -160,49 +166,116 @@ class _BackupCodeView extends GetView<RegisterController> {
   }
 }
 
-class _ProfileSetupView extends GetView<RegisterController> {
-  final hintName = TextUtils.hintName;
-  final firstNameFocus = FocusNode();
-  final lastNameFocus = FocusNode();
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  _ProfileSetupView({Key? key}) : super(key: key);
+class _EditProfilePage extends GetView<RegisterController> {
+  _EditProfilePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Form(
-      key: _formKey,
-      child: SingleChildScrollView(
-        primary: true,
-        reverse: true,
-        child: Column(mainAxisSize: MainAxisSize.max, mainAxisAlignment: MainAxisAlignment.center, children: [
-          Padding(padding: EdgeInsets.all(8)),
-          // CircleContainer(
-          //   alignment: Alignment.center,
-          //   padding: EdgeInsets.all(4),
-          //   child: Container(
-          //     alignment: Alignment.center,
-          //     child: SonrIcons.Avatar.greyWith(size: 100),
-          //   ),
-          // ),
-          RegisterTextField(
-            type: RegisterTextFieldType.FirstName,
-            focusNode: firstNameFocus,
-            hint: hintName.item1,
-            onEditingComplete: () {
-              firstNameFocus.unfocus();
-              lastNameFocus.requestFocus();
-            },
-          ),
-          RegisterTextField(
-            type: RegisterTextFieldType.LastName,
-            focusNode: lastNameFocus,
-            hint: hintName.item2,
-            onEditingComplete: () {
-              // controller.setContact();
-            },
-          ),
-          Padding(padding: EdgeInsets.all(200))
-        ]),
+    final hintName = TextUtils.hintName;
+    final firstNameHint = hintName.item1;
+    final lastNameHint = hintName.item2;
+    return Container(
+      padding: EdgeInsets.only(left: 16, top: 8, right: 16),
+      child: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: ListView(
+          children: [
+            SizedBox(
+              height: 15,
+            ),
+            Center(
+              child: Stack(
+                children: [
+                  Container(
+                    width: 108,
+                    height: 108,
+                    decoration: BoxDecoration(
+                        border: Border.all(width: 4, color: Theme.of(context).scaffoldBackgroundColor),
+                        boxShadow: [BoxShadow(spreadRadius: 2, blurRadius: 10, color: Colors.black.withOpacity(0.1), offset: Offset(0, 10))],
+                        shape: BoxShape.circle,
+                        image: DecorationImage(fit: BoxFit.cover, image: AssetImage("assets/images/placeholders/avatar.png"))),
+                  ),
+                  Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: Container(
+                        height: 40,
+                        width: 40,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
+                            width: 4,
+                            color: Theme.of(context).scaffoldBackgroundColor,
+                          ),
+                          color: Colors.blue,
+                        ),
+                        child: Icon(
+                          Icons.edit,
+                          color: Colors.white,
+                        ),
+                      )),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 35,
+            ),
+            buildTextField(
+              "First Name",
+              firstNameHint,
+              textInputAction: TextInputAction.next,
+              onChanged: (val) => controller.firstName(val),
+            ),
+            buildTextField(
+              "Last Name",
+              lastNameHint,
+              textInputAction: TextInputAction.next,
+              onChanged: (val) => controller.lastName(val),
+            ),
+            buildTextField("Bio", "I like trains.",
+                textInputAction: TextInputAction.done,
+                onChanged: (val) => controller.bio(val),
+                onSubmitted: (val) => controller.nextPage(RegisterPageType.Location)),
+            SizedBox(
+              height: 80,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget buildTextField(
+    String labelText,
+    String placeholder, {
+    void Function(String)? onChanged,
+    void Function(String)? onSubmitted,
+    required TextInputAction textInputAction,
+  }) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 35.0),
+      child: TextField(
+        textInputAction: textInputAction,
+        onChanged: onChanged,
+        onSubmitted: onSubmitted,
+        style: AppTextStyles.bodyParagraphRegular,
+        decoration: InputDecoration(
+            fillColor: Get.isDarkMode ? AppColors.neutrals1 : AppColors.neutrals8,
+            focusColor: AppColors.primary,
+            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColors.primary, width: 2)),
+            contentPadding: EdgeInsets.only(bottom: 3),
+            labelText: labelText.toUpperCase(),
+            labelStyle: AppTextStyles.hairlineDefault,
+            floatingLabelBehavior: FloatingLabelBehavior.always,
+            hintText: placeholder,
+            border: UnderlineInputBorder(
+              borderSide: BorderSide(color: AppColors.primary),
+            ),
+            hintStyle: AppTextStyles.bodyParagraphRegular.copyWith(
+              color: AppColors.neutrals4,
+            )),
       ),
     );
   }

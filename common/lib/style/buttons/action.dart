@@ -96,7 +96,7 @@ class _ActionIconButton extends StatelessWidget {
                       gradient: AppGradients.gradientSecondary,
                       borderRadius: AppRadii.buttonRadius,
                       boxShadow: [AppShadows.depth1],
-                      // border:
+                      border: Get.isDarkMode ? AppBorders.buttonCircleDark : AppBorders.buttonCircleLight,
                     ),
                     child: Icon(
                       iconData,

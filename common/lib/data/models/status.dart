@@ -1,35 +1,5 @@
+
 import 'package:sonr_app/style/style.dart';
-
-/// Current User Existence Status
-enum UserStatus {
-  /// Initial Status
-  Default,
-
-  /// Brand New User
-  New,
-
-  /// Returning User
-  Existing,
-}
-
-extension UserStatusUtils on UserStatus {
-  /// User Status Not Determined Yet
-  bool get isUnknown => this == UserStatus.Default;
-
-  /// Is New User on App
-  bool get isNew => this == UserStatus.New;
-
-  /// Is Existing User on App
-  bool get hasUser => this == UserStatus.Existing;
-
-  /// Utility to Determine User Status
-  static UserStatus fromBox(bool hasContact) {
-    if (hasContact) {
-      return UserStatus.Existing;
-    }
-    return UserStatus.New;
-  }
-}
 
 enum AppState {
   /// App has Just Begun

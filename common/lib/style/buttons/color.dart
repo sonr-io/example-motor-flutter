@@ -41,16 +41,25 @@ class ColorButton extends StatelessWidget {
     EdgeInsets? margin,
     UIIcons? uiIcon,
     IconData? icon,
+    BoxShadow? depth,
     double? gradientRadius,
     String? text,
     double? width,
   }) {
+    final lightModeDecoration = BoxDecoration(
+      color: AppColors.primaryLight,
+      borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
+      boxShadow: depth != null ? [depth] : AppShadows.primaryDepth,
+    );
+
+    final darkModeDecoration = BoxDecoration(
+      gradient: AppGradients.gradientPrimaryDark,
+      borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
+      boxShadow: depth != null ? [depth] : AppShadows.primaryDepth,
+    );
     // Build Child
     return ColorButton(
-        decoration: BoxDecoration(
-            gradient: Get.isDarkMode ? AppGradients.gradientPrimaryDark : AppGradients.gradientPrimaryLight,
-            borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
-            boxShadow: [AppShadows.depth3]),
+        decoration: Get.isDarkMode ? darkModeDecoration : lightModeDecoration,
         onPressed: onPressed,
         child: ButtonUtility.buildChild(icon, text, child),
         tooltip: tooltip,
@@ -71,6 +80,7 @@ class ColorButton extends StatelessWidget {
     EdgeInsets? padding,
     EdgeInsets? margin,
     double? width,
+    BoxShadow? depth,
     IconData? icon,
     String? text,
   }) {
@@ -79,6 +89,7 @@ class ColorButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: color != null ? color : AppColors.secondary1,
           borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
+          boxShadow: depth != null ? [depth] : AppShadows.primaryDepth,
         ),
         onPressed: onPressed,
         width: width,
@@ -98,12 +109,14 @@ class ColorButton extends StatelessWidget {
     Color? borderColor,
     EdgeInsets? margin,
     double? width,
+    BoxShadow? depth,
     required String text,
   }) {
     // Build Child
     return ColorButton(
         decoration: BoxDecoration(
             color: Colors.transparent,
+            boxShadow: depth != null ? [depth] : AppShadows.primaryDepth,
             borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
             border: Border.all(width: 2, color: borderColor ?? Color(0xffE7E7E7))),
         onPressed: onPressed,
