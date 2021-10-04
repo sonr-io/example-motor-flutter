@@ -1,16 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sonr_plugin/sonr_plugin.dart';
 
 class AppGradients {
-  /// Returns Primary gradient by theme mode - Red or Blue
-  static LinearGradient get gradientPrimary => Get.isDarkMode ? gradientPrimaryDark : gradientPrimaryLight;
-
-  /// Returns Secondary gradient by theme mode - Black or White
-  static LinearGradient get gradientSecondary => Get.isDarkMode ? glassDark : gradientCommon03;
-
-  /// Returns Teritary gradient by theme mode - Inverse of Secondary
-  static LinearGradient get gradientTeritary => Get.isDarkMode ? gradientCommon03 : glassDark;
-
+  /// Utilized for primary buttons in Dark Mode
   static const gradientPrimaryDark = LinearGradient(
     begin: Alignment(1, 1),
     end: Alignment(-1, -1),
@@ -19,11 +10,12 @@ class AppGradients {
       1,
     ],
     colors: [
-      Color(0xfffd4df6),
-      Color(0xfffda14d),
+    Color(0xfffd4df6),
+    Color(0xfffda14d),
     ],
   );
 
+  /// Utilized for Onboarding Registration Text
   static const gradientPrimaryLight = LinearGradient(
     begin: Alignment(1, 1),
     end: Alignment(-1, -1),
@@ -33,13 +25,12 @@ class AppGradients {
       1,
     ],
     colors: [
-      Color(0xff4d74fd),
-      Color(0xff4daef8),
-      Color(0xff4dfdf2),
+    Color(0xff4d74fd),
+    Color(0xff4daef8),
+    Color(0xff4dfdf2),
     ],
   );
 
-  /// Purple Gradient
   static const gradientCommon01 = LinearGradient(
     begin: Alignment(0.7631596451624887, 0.9999942389266039),
     end: Alignment(-0.9342047725293696, -1),
@@ -48,8 +39,8 @@ class AppGradients {
       1,
     ],
     colors: [
-      Color(0xff8c79f1),
-      Color(0xffffbde9),
+    Color(0xff8c79f1),
+    Color(0xffffbde9),
     ],
   );
 
@@ -62,8 +53,8 @@ class AppGradients {
       1,
     ],
     colors: [
-      Color(0xff434343),
-      Color(0xff000000),
+    Color(0xff434343),
+    Color(0xff000000),
     ],
   );
 
@@ -76,8 +67,8 @@ class AppGradients {
       1,
     ],
     colors: [
-      Color(0xfffafafa),
-      Color(0xffffffff),
+    Color(0xfffafafa),
+    Color(0xffffffff),
     ],
   );
 
@@ -90,11 +81,12 @@ class AppGradients {
       1,
     ],
     colors: [
-      Color(0xfffa709a),
-      Color(0xfffee140),
+    Color(0xfffa709a),
+    Color(0xfffee140),
     ],
   );
 
+  /// Light Mode Blur Gradient Circle 1
   static const gradientLight01 = LinearGradient(
     begin: Alignment(0.9999999999999998, -1),
     end: Alignment(-0.9999999701976785, 0.9999999701976781),
@@ -103,11 +95,12 @@ class AppGradients {
       1,
     ],
     colors: [
-      Color(0xffe2e3ff),
-      Color(0xffeadeff),
+    Color(0xffe2e3ff),
+    Color(0xffeadeff),
     ],
   );
 
+  /// Light/Dark Mode Blur Circle Gradient two
   static const gradientLight02 = LinearGradient(
     begin: Alignment(0.9999999999999998, -1),
     end: Alignment(-0.9999999701976785, 0.9999999701976781),
@@ -116,11 +109,12 @@ class AppGradients {
       1,
     ],
     colors: [
-      Color(0xfff0d8ff),
-      Color(0xffdefdff),
+    Color(0xfff0d8ff),
+    Color(0xffdefdff),
     ],
   );
 
+  /// Utilize for Gradient Elements with Light Mode
   static const gradientLight03 = LinearGradient(
     begin: Alignment(0.9999999999999998, -1),
     end: Alignment(-0.9999999701976785, 0.9999999701976781),
@@ -129,11 +123,12 @@ class AppGradients {
       1,
     ],
     colors: [
-      Color(0xffe5eff5),
-      Color(0xffffecde),
+    Color(0xffe5eff5),
+    Color(0xffffecde),
     ],
   );
 
+  /// Dark Mode Circle Gradient 1
   static const gradientDark01 = LinearGradient(
     begin: Alignment(0.9999998483458212, -1),
     end: Alignment(-1, 1),
@@ -142,8 +137,8 @@ class AppGradients {
       0.7881540060043335,
     ],
     colors: [
-      Color(0xff1c1c3b),
-      Color(0xff272752),
+    Color(0xff1c1c3b),
+    Color(0xff272752),
     ],
   );
 
@@ -155,8 +150,21 @@ class AppGradients {
       1,
     ],
     colors: [
-      Color(0xff232042),
-      Color(0xff282442),
+    Color(0xff232042),
+    Color(0xff282442),
+    ],
+  );
+
+  static const glassLight = LinearGradient(
+    begin: Alignment(1, -0.9841269220791821),
+    end: Alignment(-0.9999999397573842, 0.9999999408684115),
+    stops: [
+      0,
+      1,
+    ],
+    colors: [
+    Color(0xfffcfcfd),
+    Color(0x99fcfcfd),
     ],
   );
 
@@ -168,8 +176,8 @@ class AppGradients {
       1,
     ],
     colors: [
-      Color(0xff141416),
-      Color(0xb2141416),
+    Color(0xff141416),
+    Color(0xb2141416),
     ],
   );
 
