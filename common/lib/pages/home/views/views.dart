@@ -1,4 +1,5 @@
 import 'package:sonr_app/pages/home/home.dart';
+import 'package:sonr_app/pages/home/navigation/bottom_bar.dart';
 import 'package:sonr_app/style/style.dart';
 
 enum HomeView { Dashboard, Personal, Explorer, Search }

@@ -8,6 +8,7 @@ class NearbyRow extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(top: 16),
       margin: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
         children: [
@@ -15,9 +16,12 @@ class NearbyRow extends StatelessWidget implements PreferredSizeWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Nearby', style: AppTextStyles.headline04),
-              IconButton(
-                icon: Icon(Icons.arrow_forward_ios),
-                onPressed: () {},
+              Container(
+                padding: EdgeInsets.only(left: 8),
+                child: IconButton(
+                  icon: Icon(Icons.arrow_forward_ios, size: 16),
+                  onPressed: () {},
+                ),
               ),
             ],
           ),

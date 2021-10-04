@@ -65,10 +65,8 @@ class ShareButton extends StatelessWidget {
                     radius: 24,
                     rotate: 30,
                     sides: 6,
-                    child: SimpleIcons.Share.gradient(
-                      size: 34,
-                      value: AppGradients.gradientPrimary,
-                    ),
+                    gradient: AppGradients.gradientPrimary,
+                    child: SimpleIcons.Share.gradient(size: 34),
                   ),
                 ),
               )),
