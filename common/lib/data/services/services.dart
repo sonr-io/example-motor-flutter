@@ -15,7 +15,7 @@ class AppServices {
     try {
       await dotenv.load(fileName: ".env");
     } catch (e) {
-      print(e);
+      print(".env File not Found");
     }
 
     await Get.putAsync(() => SonrService().init(), permanent: true);

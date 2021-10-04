@@ -92,6 +92,7 @@ flutter:
 
   # -- Media --
   assets:
+    - .env
     - assets/animations/
     - assets/animations/permissions/
     - assets/fonts/

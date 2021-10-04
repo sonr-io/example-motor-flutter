@@ -2,6 +2,8 @@ import 'package:sonr_app/modules/peer/peer.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 
+import 'nearby_list.dart';
+
 class NearbyRow extends StatelessWidget implements PreferredSizeWidget {
   NearbyRow({Key? key}) : super(key: key);
 
@@ -20,7 +22,9 @@ class NearbyRow extends StatelessWidget implements PreferredSizeWidget {
                 padding: EdgeInsets.only(left: 8),
                 child: IconButton(
                   icon: Icon(Icons.arrow_forward_ios, size: 16),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(NearbyList());
+                  },
                 ),
               ),
             ],
