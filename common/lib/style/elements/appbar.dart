@@ -131,7 +131,8 @@ class DetailAppBar extends StatelessWidget implements PreferredSizeWidget {
           padding: EdgeInsets.only(top: 24, bottom: 24),
           child: NavigationToolbar(
             centerMiddle: false,
-            leading: ActionButton(
+            leading: CircleButton(
+              size: CircleButtonSize.Small,
               onPressed: onPressed,
               iconData: isClose ? SimpleIcons.Close : SimpleIcons.Back,
             ),

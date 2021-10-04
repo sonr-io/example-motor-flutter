@@ -60,7 +60,7 @@ class DefaultFileBox extends StatelessWidget {
                 child: _buildFileIcon(item.mime),
               ),
               SizedBox(height: 12),
-              DarkButton(
+              NeutralButton(
                 icon: SimpleIcons.Open,
                 label: 'Open File',
                 onPressed: () {

@@ -65,10 +65,9 @@ class PermPanel extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocations.fixedCenterDocked,
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 32.0),
-        child: ColorButton.neutral(
+        child: NeutralButton(
           onPressed: () => onPressed(),
-          text: buttonText,
-          textColor: buttonTextColor,
+          label: buttonText,
         ),
       ),
       body: Container(

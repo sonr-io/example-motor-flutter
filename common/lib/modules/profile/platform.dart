@@ -30,7 +30,7 @@ class PlatformIcon extends StatelessWidget {
       case "windows":
         return SimpleIcons.Windows;
       default:
-        return SimpleIcons.Unknown;
+        return SimpleIcons.Check;
     }
   }
 

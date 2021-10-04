@@ -35,13 +35,13 @@ class AlertOverlay extends StatelessWidget {
                   Divider(),
                   Row(crossAxisAlignment: CrossAxisAlignment.center, mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                     // Accept Button
-                    ColorButton.primary(
+                    PrimaryButton(
                       onPressed: () {
                         hasDecided(true);
                         Future.delayed(250.milliseconds, () => Get.back());
                       },
-                      icon: SimpleIcons.Check,
-                      text: buttonText,
+                      iconData: SimpleIcons.Check,
+                      label: buttonText,
                     ),
                   ]),
                 ]),
@@ -168,21 +168,21 @@ class QuestionOverlay extends StatelessWidget {
                     Padding(padding: EdgeInsets.all(4)),
                     Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
                       // Decline Button
-                      ColorButton.neutral(
+                      NeutralButton(
                         onPressed: () {
                           hasDecided(true);
                           Future.delayed(250.milliseconds, () => onDecision(false));
                         },
-                        text: declineTitle,
+                        label: declineTitle,
                       ),
                       // Accept Button
-                      ColorButton.primary(
+                      SecondaryButton(
                         onPressed: () {
                           hasDecided(true);
                           Future.delayed(250.milliseconds, () => onDecision(true));
                         },
-                        icon: SimpleIcons.Check,
-                        text: acceptTitle,
+                        iconData: SimpleIcons.Check,
+                        label: acceptTitle,
                       ),
                     ]),
                   ]),

@@ -26,7 +26,8 @@ class NearbyList extends StatelessWidget {
         toolbarHeight: 92,
         elevation: 0,
         backgroundColor: AppColors.neutrals1,
-        leading: ActionButton(
+        leading: CircleButton(
+          size: CircleButtonSize.Small,
           iconData: Icons.arrow_back,
           onPressed: () => Get.back(),
         ),

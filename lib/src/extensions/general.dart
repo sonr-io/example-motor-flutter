@@ -1,6 +1,14 @@
 import 'dart:math';
+import 'dart:typed_data';
 
 import 'package:flutter/cupertino.dart';
+
+extension ListIntUtils on List<int> {
+  /// Converts a list of bytes to a Uint8List.
+  Uint8List toUint8List() {
+    return Uint8List.fromList(this);
+  }
+}
 
 extension ListUtils<T> on List<T> {
   random() {
@@ -74,3 +82,6 @@ extension TextStyleStringUtils on String {
     return width;
   }
 }
+
+
+
