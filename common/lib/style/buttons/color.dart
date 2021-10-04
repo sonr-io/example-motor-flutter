@@ -47,15 +47,14 @@ class ColorButton extends StatelessWidget {
     double? width,
   }) {
     final lightModeDecoration = BoxDecoration(
-      color: AppColors.primaryLight,
-      borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
-      boxShadow: depth != null ? [depth] : AppShadows.primaryDepth,
-    );
+        color: AppColors.primaryLight,
+        borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
+        boxShadow: depth != null ? [depth] : [AppShadows.depth1]);
 
     final darkModeDecoration = BoxDecoration(
       gradient: AppGradients.gradientPrimaryDark,
       borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
-      boxShadow: depth != null ? [depth] : AppShadows.primaryDepth,
+      boxShadow: depth != null ? [depth] : [AppShadows.depth1],
     );
     // Build Child
     return ColorButton(
@@ -89,7 +88,7 @@ class ColorButton extends StatelessWidget {
         decoration: BoxDecoration(
           color: color != null ? color : AppColors.secondary1,
           borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
-          boxShadow: depth != null ? [depth] : AppShadows.primaryDepth,
+          boxShadow: depth != null ? [depth] : [AppShadows.depth2],
         ),
         onPressed: onPressed,
         width: width,
@@ -116,7 +115,7 @@ class ColorButton extends StatelessWidget {
     return ColorButton(
         decoration: BoxDecoration(
             color: Colors.transparent,
-            boxShadow: depth != null ? [depth] : AppShadows.primaryDepth,
+            boxShadow: depth != null ? [depth] : [AppShadows.depth2],
             borderRadius: BorderRadius.circular(ButtonUtility.K_BORDER_RADIUS),
             border: Border.all(width: 2, color: borderColor ?? Color(0xffE7E7E7))),
         onPressed: onPressed,

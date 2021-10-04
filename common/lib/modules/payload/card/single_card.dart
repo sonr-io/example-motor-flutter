@@ -11,7 +11,7 @@ class PayloadSingleCard extends StatelessWidget {
       height: 460,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        borderRadius: AppRadii.cardRadius,
+        borderRadius: AppRadii.radiusCard,
       ),
     );
   }

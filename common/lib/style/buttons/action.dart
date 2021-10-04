@@ -94,7 +94,7 @@ class _ActionIconButton extends StatelessWidget {
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       gradient: AppGradients.gradientSecondary,
-                      borderRadius: AppRadii.buttonRadius,
+                      borderRadius: AppRadii.radiusButton,
                       boxShadow: [AppShadows.depth1],
                       border: Get.isDarkMode ? AppBorders.buttonCircleDark : AppBorders.buttonCircleLight,
                     ),

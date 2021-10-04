@@ -12,7 +12,7 @@ class OnboardingPage extends StatelessWidget {
       child: Onboarding(
         pagesContentPadding: EdgeInsets.only(top: 45),
         proceedButtonStyle: ProceedButtonStyle(
-          proceedButtonBorderRadius: AppRadii.buttonRadius,
+          proceedButtonBorderRadius: AppRadii.radiusButton,
           proceedpButtonText: Text("Register", style: AppTextStyles.buttonDefault),
           proceedButtonColor: AppColors.primary,
           proceedButtonRoute: (context) {

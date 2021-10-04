@@ -16,7 +16,7 @@ class PayloadMultiCard extends StatelessWidget {
       height: 460,
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
-        borderRadius: AppRadii.cardRadius,
+        borderRadius: AppRadii.radiusCard,
       ),
       child: Stack(
         children: [

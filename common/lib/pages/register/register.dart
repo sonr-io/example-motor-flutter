@@ -98,7 +98,7 @@ class RegisterBottomSheet extends StatelessWidget {
         decoration: BoxDecoration(
           boxShadow: [AppShadows.depth3],
           gradient: AppGradients.glassDark,
-          borderRadius: AppRadii.cardOverlayRadius,
+          borderRadius: AppRadii.radiusCardOverlay,
         ),
         child: Row(
           children: [leftButton!, rightButton!],
