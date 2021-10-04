@@ -30,7 +30,7 @@ class Config {
 
   /// Method Creates New Initialize Request
   /// Given Location, and Profile
-  static Future<InitializeRequest> newInitializeRequest({required Location location, required Profile profile}) async {
+  static Future<InitializeRequest> newInitializeRequest({required Location location, Profile? profile}) async {
     // Set Options
     final deviceOpts = await _getDeviceOpts();
     final connection = await _getConnection();

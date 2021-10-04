@@ -120,7 +120,15 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     // Handle Tab Controller
     tabController = TabController(vsync: this, length: 1);
     scrollController = ScrollController(keepScrollOffset: false);
-    connect();
+    HomeArguments? args = Get.arguments;
+    if (args != null) {
+      if (args.isNewUser) {
+        connect();
+      } else if (args.isFirstLoad) {
+        connect(profile: args.profile);
+      }
+    }
+
     // Initialize
     super.onInit();
   }
@@ -136,10 +144,10 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     super.onClose();
   }
 
-  Future<void> connect() async {
+  Future<void> connect({Profile? profile}) async {
     final loc = await LocationUtil.current(requestIfNoPermission: true);
     print("Find Location: \n" + "\t${loc.toString()}");
-    await SonrService.to.start(location: loc);
+    await SonrService.to.start(location: loc, profile: profile);
   }
 
   /// #### Change View

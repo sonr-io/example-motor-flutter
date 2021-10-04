@@ -80,7 +80,7 @@ class SonrService extends GetxService {
     // Create initialization request
     final request = await Config.newInitializeRequest(
       location: location,
-      profile: this.profile.value,
+      profile: profile,
     );
 
     // Await Response

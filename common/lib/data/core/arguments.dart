@@ -134,9 +134,16 @@ class SnackArgs {
 /// Class to Provide Arguments for HomePage
 class HomeArguments {
   final bool isFirstLoad;
-  HomeArguments({this.isFirstLoad = false});
+  final bool isNewUser;
+  final Profile? profile;
+  HomeArguments({this.isFirstLoad = false, this.isNewUser = false, this.profile});
 
   static HomeArguments get FirstLoad => HomeArguments(isFirstLoad: true);
+  static HomeArguments NewUser(Profile profile) => HomeArguments(
+        isNewUser: true,
+        isFirstLoad: true,
+        profile: profile,
+      );
 }
 
 // ** ─── Details Arguments ────────────────────────────────────────────────────────

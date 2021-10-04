@@ -31,7 +31,7 @@ class PermissionsView extends GetView<RegisterController> {
                   if (Platform.isIOS) {
                     controller.nextPage(RegisterPageType.Notifications);
                   } else {
-                    AppPage.Home.off(args: HomeArguments.FirstLoad);
+                    AppPage.Home.off(args: HomeArguments.NewUser(controller.profile));
                   }
                 }
               } else if (item == RegisterPageType.Notifications) {

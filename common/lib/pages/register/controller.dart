@@ -26,6 +26,13 @@ class RegisterController extends GetxController {
   late PageController permissionsPageController;
   final ScrollController contactScrollController = ScrollController();
 
+  Profile get profile => Profile(
+        firstName: firstName.value,
+        lastName: lastName.value,
+        bio: bio.value,
+        sName: sName.value,
+      );
+
   // * Constructer * //
   @override
   onInit() {
@@ -85,12 +92,6 @@ class RegisterController extends GetxController {
 
     // Permissions Page
     if (type.isPermissions) {
-      SonrService.to.profile(Profile(
-        firstName: firstName.value,
-        lastName: lastName.value,
-        bio: bio.value,
-        sName: sName.value,
-      ));
       // Validate Not Last
       if (!type.isFirst) {
         permissionsPageController.animateToPage(
@@ -103,12 +104,7 @@ class RegisterController extends GetxController {
   }
 
   void registerProfile() {
-    SonrService.to.profile(Profile(
-      firstName: firstName.value,
-      lastName: lastName.value,
-      bio: bio.value,
-      sName: sName.value,
-    ));
+    // TODO
   }
 
   // @ Helper: Handle Scroll
