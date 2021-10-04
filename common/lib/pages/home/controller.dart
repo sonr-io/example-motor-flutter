@@ -120,7 +120,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     // Handle Tab Controller
     tabController = TabController(vsync: this, length: 1);
     scrollController = ScrollController(keepScrollOffset: false);
-
+    connect();
     // Initialize
     super.onInit();
   }

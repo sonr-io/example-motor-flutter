@@ -42,9 +42,6 @@ class SonrService extends GetxService {
   /// Connection is current device Internet Connection
   final connection = Rx<Connection>(Connection.OFFLINE);
 
-  /// Local Peers is list of Peers nearby within OLC
-  final localPeers = RxList<Peer>();
-
   /// Recent Profiles is list of peers User interacts with
   final recentProfiles = RxList<ProfileList>();
 
@@ -55,6 +52,7 @@ class SonrService extends GetxService {
   final status = Rx<Status>(Status.IDLE);
 
   // GRPC Streams
+  final _refreshEvents = StreamController<RefreshEvent>();
   final _decisionEvents = StreamController<DecisionEvent>();
   final _inviteEvents = StreamController<InviteEvent>();
   final _progressEvents = StreamController<ProgressEvent>();
@@ -116,8 +114,7 @@ class SonrService extends GetxService {
     // Handle Lobby Refresh
     _client.onLobbyRefresh(Empty()).listen(
       (value) {
-        localPeers(value.peers);
-        localPeers.refresh();
+        _refreshEvents.add(value);
       },
       onError: (err) => print("[RPC Client] ERROR: Listening to onLocalJoin \n" + err.toString()),
       cancelOnError: true,
@@ -292,6 +289,11 @@ class SonrService extends GetxService {
     final statRequest = StatRequest();
     final resp = await _client.stat(statRequest);
     return resp;
+  }
+
+  /// `StreamSubscription<DecisionEvent>` - Add Stream Listener for Decision Events
+  StreamSubscription<RefreshEvent> onRefresh(void Function(RefreshEvent)? onData, {Function? onError, void Function()? onDone, bool? cancelOnError}) {
+    return _refreshEvents.stream.listen(onData, onError: onError, onDone: onDone);
   }
 
   /// `StreamSubscription<DecisionEvent>` - Add Stream Listener for Decision Events

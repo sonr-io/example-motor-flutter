@@ -8,6 +8,7 @@ import 'package:path_provider/path_provider.dart';
 import '../proto.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:network_info_plus/network_info_plus.dart';
 
 class Config {
   /// Method creates a Folder in the Documents Directory and returns the path
@@ -33,9 +34,11 @@ class Config {
     // Set Options
     final deviceOpts = await _getDeviceOpts();
     final connection = await _getConnection();
+    final hostOpts = await _getHostOptions();
     return InitializeRequest(
       connection: connection,
       location: location,
+      hostOptions: hostOpts,
       profile: profile,
       deviceOptions: deviceOpts,
       environment: BuildModeUtil.toEnvironment(),
@@ -102,6 +105,33 @@ class Config {
     } else {
       return '';
     }
+  }
+
+  /// Method gets Network Info
+  static Future<InitializeRequest_HostOptions> _getHostOptions() async {
+    final info = NetworkInfo();
+    var wifiName = await info.getWifiName();
+    var wifiIP = await info.getWifiIP(); // 192.168.1.43
+    if (wifiIP != null) {
+      return InitializeRequest_HostOptions(listenAddrs: [
+        InitializeRequest_IPAddress(
+          name: wifiName,
+          value: wifiIP,
+          family: InitializeRequest_IPAddress_Family.IPV4,
+        )
+      ]);
+    }
+    var wifiIPv6 = await info.getWifiIPv6(); // 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+    if (wifiIPv6 != null) {
+      return InitializeRequest_HostOptions(listenAddrs: [
+        InitializeRequest_IPAddress(
+          name: wifiName,
+          value: wifiIP,
+          family: InitializeRequest_IPAddress_Family.IPV4,
+        )
+      ]);
+    }
+    return InitializeRequest_HostOptions();
   }
 }
 

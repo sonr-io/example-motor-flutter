@@ -3,9 +3,10 @@ import 'package:sonr_app/modules/list-items/peer_list-item.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 
+import 'nearby_controller.dart';
 import 'nearby_list.dart';
 
-class NearbyRow extends StatelessWidget implements PreferredSizeWidget {
+class NearbyRow extends GetView<NearbyController> implements PreferredSizeWidget {
   NearbyRow({Key? key}) : super(key: key);
 
   @override
@@ -36,10 +37,10 @@ class NearbyRow extends StatelessWidget implements PreferredSizeWidget {
               child: Obx(
                 () => ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: SonrService.to.localPeers.length,
+                  itemCount: controller.localPeers.length,
                   itemBuilder: (context, index) {
                     return PeerListItem(
-                      peer: SonrService.to.localPeers[index],
+                      peer: controller.localPeers[index],
                       index: index,
                     );
                   },

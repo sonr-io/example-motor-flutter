@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:showcaseview/showcaseview.dart';
 import 'package:sonr_app/pages/details/details.dart';
 import 'package:sonr_app/pages/home/home.dart';
+import 'package:sonr_app/pages/home/nearby/nearby_controller.dart';
 import 'package:sonr_app/pages/register/onboarding.dart';
 import 'package:sonr_app/pages/register/register.dart';
 import 'package:sonr_app/style/style.dart';
@@ -447,6 +448,7 @@ class HomeBinding implements Bindings {
   @override
   void dependencies() {
     Get.put<HomeController>(HomeController());
+    Get.put<NearbyController>(NearbyController());
   }
 }
 
