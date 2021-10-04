@@ -1,4 +1,5 @@
-import 'package:sonr_app/modules/peer/peer.dart';
+
+import 'package:sonr_app/modules/list-items/peer_list-item.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 
@@ -37,7 +38,7 @@ class NearbyRow extends StatelessWidget implements PreferredSizeWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: SonrService.to.localPeers.length,
                   itemBuilder: (context, index) {
-                    return PeerItem.list(
+                    return PeerListItem(
                       peer: SonrService.to.localPeers[index],
                       index: index,
                     );

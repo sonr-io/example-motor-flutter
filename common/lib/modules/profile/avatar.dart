@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 import 'package:sonr_app/style/style.dart';
-import 'package:sonr_app/modules/peer/peer.dart';
+import 'platform.dart';
 
 const PROFILE_AVATAR_PLACEHOLDER = "assets/images/placeholders/avatar.png";
 

@@ -1,5 +1,6 @@
+import 'package:sonr_app/modules/list-items/peer_list-item.dart';
 import 'package:sonr_app/style/style.dart';
-import 'package:sonr_app/modules/peer/peer.dart';
+
 import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 

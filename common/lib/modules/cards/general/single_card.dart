@@ -1,3 +1,4 @@
+import '../payload/content/content.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 
@@ -12,6 +13,11 @@ class PayloadSingleCard extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         borderRadius: AppRadii.radiusCard,
+      ),
+      child: Stack(
+        children: [
+          item.mime.isUrl ? UrlItemContent(item: item.url) : FileItemContent(item: item.file),
+        ],
       ),
     );
   }

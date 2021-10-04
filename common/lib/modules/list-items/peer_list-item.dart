@@ -1,7 +1,7 @@
 import 'dart:typed_data';
 
+import 'package:sonr_app/modules/profile/profile.dart';
 import 'package:sonr_app/style/style.dart';
-import 'package:sonr_app/modules/peer/peer.dart';
 import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 

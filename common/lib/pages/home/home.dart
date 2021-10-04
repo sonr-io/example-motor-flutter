@@ -1,5 +1,5 @@
 export 'controller.dart';
-import 'package:sonr_app/modules/share/button/button.dart';
+import 'package:sonr_app/pages/home/button.dart';
 import 'package:sonr_app/theme/theme.dart';
 
 import 'controller.dart';
