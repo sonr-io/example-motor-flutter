@@ -65,9 +65,9 @@ class PrimaryButton extends StatelessWidget {
                 duration: duration,
                 child: Container(
                   decoration: Get.isDarkMode ? darkModeDecoration : lightModeDecoration,
-                  constraints: BoxConstraints(maxHeight: size == ButtonSize.Default ? 48 : 40, maxWidth: MediaQuery.of(context).size.width * 0.8),
                   padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                   child: Row(
+                    mainAxisSize: MainAxisSize.min,
                     textDirection: iconPosition == ButtonIconPosition.Left ? TextDirection.ltr : TextDirection.rtl,
                     children: [
                       Icon(
@@ -78,6 +78,7 @@ class PrimaryButton extends StatelessWidget {
                       Text(
                         label ?? "Unknown",
                         style: _ButtonUtility.buildTextStyle(ButtonType.Primary, size, Get.isDarkMode),
+                        textAlign: iconPosition == ButtonIconPosition.Left ? TextAlign.left : TextAlign.right,
                       ),
                     ],
                   ),
@@ -133,9 +134,9 @@ class SecondaryButton extends StatelessWidget {
                 duration: duration,
                 child: Container(
                   decoration: Get.isDarkMode ? darkModeDecoration : lightModeDecoration,
-                  constraints: BoxConstraints(maxHeight: size == ButtonSize.Default ? 48 : 40, maxWidth: MediaQuery.of(context).size.width * 0.8),
                   padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                   child: Row(
+                    mainAxisSize: MainAxisSize.min,
                     textDirection: iconPosition == ButtonIconPosition.Left ? TextDirection.ltr : TextDirection.rtl,
                     children: [
                       Icon(
@@ -146,6 +147,7 @@ class SecondaryButton extends StatelessWidget {
                       Text(
                         label ?? "Unknown",
                         style: _ButtonUtility.buildTextStyle(ButtonType.Secondary, size, Get.isDarkMode),
+                        textAlign: iconPosition == ButtonIconPosition.Left ? TextAlign.left : TextAlign.right,
                       ),
                     ],
                   ),
@@ -206,8 +208,8 @@ class NeutralButton extends StatelessWidget {
                 child: Container(
                   decoration: Get.isDarkMode ? darkModeDecoration : lightModeDecoration,
                   padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-                  constraints: BoxConstraints(maxHeight: size == ButtonSize.Default ? 48 : 40, maxWidth: MediaQuery.of(context).size.width * 0.8),
                   child: Row(
+                    mainAxisSize: MainAxisSize.min,
                     textDirection: iconPosition == ButtonIconPosition.Left ? TextDirection.ltr : TextDirection.rtl,
                     children: [
                       Icon(
@@ -218,6 +220,7 @@ class NeutralButton extends StatelessWidget {
                       Text(
                         label ?? "Unknown",
                         style: _ButtonUtility.buildTextStyle(ButtonType.Neutral, size, Get.isDarkMode),
+                        textAlign: iconPosition == ButtonIconPosition.Left ? TextAlign.left : TextAlign.right,
                       ),
                     ],
                   ),
@@ -255,17 +258,6 @@ extension _CircleButtonSizeUtil on CircleButtonSize {
     }
   }
 
-  double get maxWidthHeight {
-    switch (this) {
-      case CircleButtonSize.Large:
-        return 80;
-      case CircleButtonSize.Default:
-        return 48;
-      case CircleButtonSize.Small:
-        return 40;
-    }
-  }
-
   List<BoxShadow> buildBoxShadow(bool isDarkMode) {
     if (this == CircleButtonSize.Small) {
       return [];
@@ -287,9 +279,9 @@ extension _CircleButtonSizeUtil on CircleButtonSize {
 
   Color buildIconColor(bool isDarkMode) {
     if (this == CircleButtonSize.Small) {
-      return isDarkMode ? AppColors.primaryLight : AppColors.neutrals4;
-    } else {
       return isDarkMode ? AppColors.neutrals8 : AppColors.neutrals2;
+    } else {
+      return isDarkMode ? AppColors.primaryLight : AppColors.neutrals4;
     }
   }
 }
@@ -329,7 +321,6 @@ class CircleButton extends StatelessWidget {
                       color: size.buildCircleColor(Get.isDarkMode),
                       boxShadow: size.buildBoxShadow(Get.isDarkMode),
                     ),
-                    constraints: BoxConstraints(maxHeight: size.maxWidthHeight, maxWidth: size.maxWidthHeight),
                     padding: EdgeInsets.all(size.allPadding),
                     child: Center(
                       child: Icon(
@@ -366,5 +357,49 @@ class _ButtonUtility {
       case ButtonType.Neutral:
         return isDarkMode ? sizedTextStyle.copyWith(color: AppColors.neutrals8) : sizedTextStyle.copyWith(color: AppColors.neutrals2);
     }
+  }
+}
+
+class AppBarButton extends StatelessWidget {
+  final IconData iconData;
+  final Function onPressed;
+  final Duration duration;
+
+  const AppBarButton({
+    Key? key,
+    required this.iconData,
+    required this.onPressed,
+    this.duration = const Duration(milliseconds: 300),
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final RxBool isPressed = false.obs;
+    return ObxValue<RxBool>(
+        (pressed) => GestureDetector(
+            onTapCancel: () => pressed(false),
+            onTapDown: (details) => pressed(true),
+            onTapUp: (details) async {
+              pressed(false);
+              await Future.delayed(duration);
+              onPressed();
+            },
+            child: AnimatedScale(
+                scale: pressed.value ? 1.1 : 1.0,
+                duration: duration,
+                child: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Get.isDarkMode ? AppColors.neutrals3 : AppColors.neutrals6,
+                    ),
+                    padding: EdgeInsets.all(8),
+                    child: Center(
+                      child: Icon(
+                        iconData,
+                        size: 16,
+                        color: Get.isDarkMode ? AppColors.neutrals8 : AppColors.neutrals2,
+                      ),
+                    )))),
+        isPressed);
   }
 }

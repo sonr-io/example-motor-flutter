@@ -26,8 +26,7 @@ class NearbyList extends StatelessWidget {
         toolbarHeight: 92,
         elevation: 0,
         backgroundColor: AppColors.neutrals1,
-        leading: CircleButton(
-          size: CircleButtonSize.Small,
+        leading: AppBarButton(
           iconData: Icons.arrow_back,
           onPressed: () => Get.back(),
         ),
@@ -45,7 +44,7 @@ class NearbyList extends StatelessWidget {
           )
         ],
       ),
-      body: Obx(() => SonrService.to.localPeers.isNotEmpty
+      body: Obx(() => SonrService.to.localPeers.length > 0
           ? ListView.builder(
               itemCount: SonrService.to.localPeers.length,
               itemBuilder: (context, index) {

@@ -73,29 +73,18 @@ class SplashPage extends StatelessWidget {
   Future<void> _checkInitialPage() async {
     await Future.delayed(3500.milliseconds);
 
-    // # Check for User
-    if (SonrService.to.connection.value.isOnline) {
-      if (Get.isPlatformDarkMode) {
-        AppPage.Onboarding.off();
-      }
-      // # Handle Returning
-      else {
-        // All Valid
-        if (await Permissions.Location.isGranted) {
-          AppPage.Home.off(args: HomeArguments.FirstLoad);
-        }
-
-        // No Location
-        else {
-          Permissions.Location.request().then((value) {
-            if (value) {
-              AppPage.Home.off(args: HomeArguments.FirstLoad);
-            }
-          });
-        }
-      }
-    } else {
-      AppPage.Error.to(args: ErrorPageArgs.noNetwork());
+    // All Valid
+    if (await Permissions.Location.isGranted) {
+      AppPage.Home.off(args: HomeArguments.FirstLoad);
     }
+
+    // No Location
+    else {
+      AppPage.Onboarding.off();
+    }
+
+    // } else {
+    //   AppPage.Error.to(args: ErrorPageArgs.noNetwork());
+    // }
   }
 }

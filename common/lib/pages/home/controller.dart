@@ -127,13 +127,6 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
 
   @override
   void onReady() {
-    // Check Entry Arguments
-    HomeArguments args = Get.arguments;
-    if (args.isFirstLoad) {
-      LocationUtil.current(requestIfNoPermission: true).then((value) {
-        SonrService.to.start(location: value);
-      });
-    }
     super.onReady();
   }
 
@@ -141,6 +134,12 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  Future<void> connect() async {
+    final loc = await LocationUtil.current(requestIfNoPermission: true);
+    print("Find Location: \n" + "\t${loc.toString()}");
+    await SonrService.to.start(location: loc);
   }
 
   /// #### Change View

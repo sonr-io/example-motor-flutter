@@ -48,9 +48,6 @@ class SonrService extends GetxService {
   /// Recent Profiles is list of peers User interacts with
   final recentProfiles = RxList<ProfileList>();
 
-  /// Location is current user location
-  final location = Rx<Location>(Location());
-
   /// Profile is current user profile
   final profile = Rx<Profile>(Profile());
 
@@ -71,42 +68,20 @@ class SonrService extends GetxService {
 
   /// ### Checks permissions and Returns GetxService
   /// Optional Params for: `Profile`, `Location`, and `Map<String, String>`
-  Future<SonrService> init({Profile? profile, Location? location}) async {
+  Future<SonrService> init() async {
     // Bind Network Connection stream to service
     Connectivity().onConnectivityChanged.listen((event) {
       this.connection(Connection.values[event.index]);
     });
-
-    // Set the location if provided
-    if (location != null) {
-      this.location(location);
-    }
-
-    // Set Profile if provided
-    if (profile != null) {
-      this.profile(profile);
-    }
     return this;
   }
 
   /// ### Connects to New Sonr GRPC Server on Swift, or Java
   /// Optional Params for: `Profile` and `Location`
-  Future<void> start({Profile? profile, Location? location}) async {
-    // Set the location if provided
-    if (location != null) {
-      this.location(location);
-      this.location.refresh();
-    }
-
-    // Set Profile if provided
-    if (profile != null) {
-      this.profile(profile);
-      this.profile.refresh();
-    }
-
+  Future<void> start({Profile? profile, required Location location}) async {
     // Create initialization request
     final request = await Config.newInitializeRequest(
-      location: this.location.value,
+      location: location,
       profile: this.profile.value,
     );
 
