@@ -1,3 +1,4 @@
+import 'package:sonr_app/modules/peer/peer.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
@@ -57,7 +58,7 @@ class _ShareHoverPeerInfo extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        PlatformIcon(peer.device.os).icon(color: Get.theme.focusColor.withOpacity(0.75), size: 26),
+        PlatformIcon(platform: peer.device.os),
         Padding(padding: EdgeInsets.only(left: 8)),
         Text(peer.profile.firstName, style: AppTextStyles.bodyParagraphBold),
       ],

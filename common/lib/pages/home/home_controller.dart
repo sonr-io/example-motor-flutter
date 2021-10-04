@@ -27,7 +27,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   @override
   onInit() {
     // Handle Tab Controller
-    tabController = TabController(vsync: this, length: 2);
+    tabController = TabController(vsync: this, length: 1);
     scrollController = ScrollController(keepScrollOffset: false);
 
     // Initialize
@@ -38,7 +38,11 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   void onReady() {
     // Check Entry Arguments
     HomeArguments args = Get.arguments;
-    if (args.isFirstLoad) {}
+    if (args.isFirstLoad) {
+      LocationUtil.current(requestIfNoPermission: true).then((value) {
+        SonrService.to.start(location: value);
+      });
+    }
     super.onReady();
   }
 

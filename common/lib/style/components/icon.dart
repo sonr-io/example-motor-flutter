@@ -154,67 +154,6 @@ extension MimeIcon on MIME_Type {
   }
 }
 
-class PlatformIcon {
-  final String platform;
-  PlatformIcon(this.platform);
-
-  ///-- Returns Icon Widget -- //
-  Widget gradient({double size = 32, Gradient? gradient}) {
-    return this.iconData.gradient(value: gradient ?? AppGradients.gradientSecondary, size: size);
-  }
-
-  Icon icon({double size = 32, Color color = AppColors.neutrals8}) {
-    return this.iconData.icon(size: size, color: color) as Icon;
-  }
-
-  Icon black({double size = 32}) {
-    return this.iconData.blackWith(size: size) as Icon;
-  }
-
-  Icon grey({double size = 32}) {
-    return this.iconData.greyWith(size: size) as Icon;
-  }
-
-  Icon white({double size = 32}) {
-    return this.iconData.whiteWith(size: size) as Icon;
-  }
-
-  /// Returns `IconData` based on Platform
-  IconData get iconData {
-    switch (this.platform) {
-      case "android":
-        return SimpleIcons.Android;
-      case "ios":
-        return SimpleIcons.IPhone;
-      case "darwin":
-        return SimpleIcons.IMac;
-      case "linux":
-        return SimpleIcons.LinuxDesktop;
-      case "windows":
-        return SimpleIcons.Windows;
-      default:
-        return SimpleIcons.Unknown;
-    }
-  }
-
-  Color get defaultIconColor {
-    switch (this.platform) {
-      case "android":
-        return AppColors.platformsAndroid;
-      case "ios":
-        return AppColors.platformsIOs;
-      case "darwin":
-        return AppColors.platformsMacOs;
-      case "linux":
-        return AppColors.platformsLinux;
-      case "windows":
-        return AppColors.platformsMacOs;
-      default:
-        return Colors.black87;
-    }
-  }
-}
-
 extension DesignIcon on IconData {
   Icon get black {
     return Icon(

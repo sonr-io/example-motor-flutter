@@ -115,6 +115,7 @@ class _NamePage extends GetView<RegisterController> {
   }
 }
 
+// ignore: unused_element
 class _BackupCodeView extends GetView<RegisterController> {
   _BackupCodeView({Key? key}) : super(key: key);
   @override

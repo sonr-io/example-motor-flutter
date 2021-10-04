@@ -1,0 +1,46 @@
+import 'package:sonr_app/modules/peer/peer.dart';
+import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
+
+class NearbyRow extends StatelessWidget implements PreferredSizeWidget {
+  NearbyRow({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text('Nearby', style: AppTextStyles.headline04),
+              IconButton(
+                icon: Icon(Icons.arrow_forward_ios),
+                onPressed: () {},
+              ),
+            ],
+          ),
+          SizedBox(height: 16),
+          Container(
+              height: 64,
+              child: Obx(
+                () => ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: SonrService.to.localPeers.length,
+                  itemBuilder: (context, index) {
+                    return PeerItem.list(
+                      peer: SonrService.to.localPeers[index],
+                      index: index,
+                    );
+                  },
+                ),
+              )),
+        ],
+      ),
+    );
+  }
+
+  @override
+  Size get preferredSize => Size(Get.width, Get.height * 0.14);
+}

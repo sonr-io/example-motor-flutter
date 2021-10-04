@@ -157,11 +157,11 @@ class _LocalManyView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   switch (filter) {
                     case LobbyFilter.All:
-                      return PeerItem.list(index: index, member: SonrService.to.localPeers[index]);
+                      return PeerItem.list(index: index, peer: SonrService.to.localPeers[index]);
                     case LobbyFilter.Phones:
-                      return PeerItem.list(index: index, member: SonrService.to.localPeers[index]);
+                      return PeerItem.list(index: index, peer: SonrService.to.localPeers[index]);
                     case LobbyFilter.Desktops:
-                      return PeerItem.list(index: index, member: SonrService.to.localPeers[index]);
+                      return PeerItem.list(index: index, peer: SonrService.to.localPeers[index]);
                   }
                 },
                 itemCount: SonrService.to.localPeers.length,

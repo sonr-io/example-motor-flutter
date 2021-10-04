@@ -33,33 +33,39 @@ class AppTheme {
 
   /// Returns Light Theme for App
   static ThemeData get LightTheme => ThemeData(
-        brightness: Brightness.light,
-        primaryColor: AppColors.primaryLight,
-        backgroundColor: AppColors.neutrals8,
-        dividerColor: AppColors.neutrals4,
-        scaffoldBackgroundColor: AppColors.neutrals7,
-        splashColor: Colors.transparent,
-        errorColor: AppColors.primary3,
-        focusColor: AppColors.neutrals1,
-        hintColor: AppColors.neutrals2,
-        cardColor: AppColors.neutrals7,
-        canvasColor: AppColors.neutrals7,
-        shadowColor: AppColors.neutrals6,
-      );
+      brightness: Brightness.light,
+      primaryColor: AppColors.primaryLight,
+      backgroundColor: AppColors.neutrals8,
+      dividerColor: AppColors.neutrals4,
+      scaffoldBackgroundColor: AppColors.neutrals7,
+      splashColor: Colors.transparent,
+      errorColor: AppColors.primary3,
+      focusColor: AppColors.neutrals1,
+      hintColor: AppColors.neutrals2,
+      cardColor: AppColors.neutrals7,
+      canvasColor: AppColors.neutrals7,
+      shadowColor: AppColors.neutrals6,
+      iconTheme: IconThemeData(
+        color: AppColors.neutrals2,
+        size: 16,
+      ));
 
   /// Returns Dark Theme for App
   static ThemeData get DarkTheme => ThemeData(
-        brightness: Brightness.dark,
-        dividerColor: AppColors.neutrals3,
-        primaryColor: AppColors.primaryDark,
-        backgroundColor: AppColors.neutrals1,
-        scaffoldBackgroundColor: AppColors.neutrals1,
-        splashColor: Colors.transparent,
-        errorColor: AppColors.primary3,
-        focusColor: AppColors.neutrals7,
-        hintColor: AppColors.neutrals5,
-        cardColor: AppColors.neutrals2,
-        canvasColor: AppColors.neutrals2,
-        shadowColor: AppColors.neutrals2,
-      );
+      brightness: Brightness.dark,
+      dividerColor: AppColors.neutrals3,
+      primaryColor: AppColors.primaryDark,
+      backgroundColor: AppColors.neutrals1,
+      scaffoldBackgroundColor: AppColors.neutrals1,
+      splashColor: Colors.transparent,
+      errorColor: AppColors.primary3,
+      focusColor: AppColors.neutrals7,
+      hintColor: AppColors.neutrals5,
+      cardColor: AppColors.neutrals2,
+      canvasColor: AppColors.neutrals2,
+      shadowColor: AppColors.neutrals2,
+      iconTheme: IconThemeData(
+        color: AppColors.neutrals8,
+        size: 16,
+      ));
 }

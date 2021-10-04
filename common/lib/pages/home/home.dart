@@ -3,29 +3,37 @@ export 'views/views.dart';
 export 'widgets/bottom_bar.dart';
 export 'widgets/top_button.dart';
 
-import 'package:sonr_app/pages/home/widgets/app_bar.dart';
-
 import 'home_controller.dart';
 import 'package:sonr_app/style/style.dart';
-import 'views/views.dart';
 import 'package:sonr_app/pages/home/home_controller.dart';
-import 'package:sonr_app/pages/home/views/views.dart';
 import 'widgets/bottom_bar.dart';
+import 'widgets/nearby_row.dart';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<HomeController>();
     // Return View
     return Obx(() => SonrScaffold(
           resizeToAvoidBottomInset: false,
           floatingAction: HomeFloatingBar(),
-          appBar: _buildAppBar(controller.view.value),
+          appBar: AppBar(
+            leading: Get.isDarkMode
+                ? SvgPicture.asset(
+                    "assets/images/logos/home-sonr-dark.svg",
+                    width: 92,
+                  )
+                : SvgPicture.asset(
+                    "assets/images/logos/home-sonr-light.svg",
+                    width: 92,
+                  ),
+            actions: [
+              IconButton(
+                icon: Get.isDarkMode ? SimpleIcons.Menu.white : SimpleIcons.Menu.white,
+                onPressed: () {},
+              )
+            ],
+            bottom: NearbyRow(),
+          ),
           body: Container(
               child: TabBarView(
             physics: NeverScrollableScrollPhysics(),
@@ -36,13 +44,5 @@ class _HomePageState extends State<HomePage> {
             ],
           )),
         ));
-  }
-
-  PreferredSizeWidget? _buildAppBar(HomeView view) {
-    if (view == HomeView.Search) {
-      return null;
-    } else {
-      return HomeAppBar();
-    }
   }
 }
