@@ -242,8 +242,8 @@ class InviteEvent extends $pb.GeneratedMessage {
   $1.Payload ensurePayload() => $_ensure(2);
 }
 
-class MailEvent extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MailEvent', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
+class MailboxEvent extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MailboxEvent', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
     ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'buffer', $pb.PbFieldType.OY)
     ..aOM<$0.Profile>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from', subBuilder: $0.Profile.create)
@@ -252,8 +252,8 @@ class MailEvent extends $pb.GeneratedMessage {
     ..hasRequiredFields = false
   ;
 
-  MailEvent._() : super();
-  factory MailEvent({
+  MailboxEvent._() : super();
+  factory MailboxEvent({
     $core.String? id,
     $core.List<$core.int>? buffer,
     $0.Profile? from,
@@ -278,26 +278,26 @@ class MailEvent extends $pb.GeneratedMessage {
     }
     return _result;
   }
-  factory MailEvent.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory MailEvent.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory MailboxEvent.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MailboxEvent.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  MailEvent clone() => MailEvent()..mergeFromMessage(this);
+  MailboxEvent clone() => MailboxEvent()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  MailEvent copyWith(void Function(MailEvent) updates) => super.copyWith((message) => updates(message as MailEvent)) as MailEvent; // ignore: deprecated_member_use
+  MailboxEvent copyWith(void Function(MailboxEvent) updates) => super.copyWith((message) => updates(message as MailboxEvent)) as MailboxEvent; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static MailEvent create() => MailEvent._();
-  MailEvent createEmptyInstance() => create();
-  static $pb.PbList<MailEvent> createRepeated() => $pb.PbList<MailEvent>();
+  static MailboxEvent create() => MailboxEvent._();
+  MailboxEvent createEmptyInstance() => create();
+  static $pb.PbList<MailboxEvent> createRepeated() => $pb.PbList<MailboxEvent>();
   @$core.pragma('dart2js:noInline')
-  static MailEvent getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MailEvent>(create);
-  static MailEvent? _defaultInstance;
+  static MailboxEvent getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MailboxEvent>(create);
+  static MailboxEvent? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);

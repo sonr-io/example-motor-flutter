@@ -44,9 +44,9 @@ const InviteEvent$json = const {
 
 /// Descriptor for `InviteEvent`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List inviteEventDescriptor = $convert.base64Decode('CgtJbnZpdGVFdmVudBIaCghyZWNlaXZlZBgBIAEoA1IIcmVjZWl2ZWQSIwoEZnJvbRgCIAEoCzIPLnNvbnIuY29yZS5QZWVyUgRmcm9tEiwKB3BheWxvYWQYAyABKAsyEi5zb25yLmNvcmUuUGF5bG9hZFIHcGF5bG9hZA==');
-@$core.Deprecated('Use mailEventDescriptor instead')
-const MailEvent$json = const {
-  '1': 'MailEvent',
+@$core.Deprecated('Use mailboxEventDescriptor instead')
+const MailboxEvent$json = const {
+  '1': 'MailboxEvent',
   '2': const [
     const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     const {'1': 'buffer', '3': 2, '4': 1, '5': 12, '10': 'buffer'},
@@ -56,8 +56,8 @@ const MailEvent$json = const {
   ],
 };
 
-/// Descriptor for `MailEvent`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List mailEventDescriptor = $convert.base64Decode('CglNYWlsRXZlbnQSDgoCaWQYASABKAlSAmlkEhYKBmJ1ZmZlchgCIAEoDFIGYnVmZmVyEiYKBGZyb20YAyABKAsyEi5zb25yLmNvcmUuUHJvZmlsZVIEZnJvbRIiCgJ0bxgEIAEoCzISLnNvbnIuY29yZS5Qcm9maWxlUgJ0bxIvCghtZXRhZGF0YRgFIAEoCzITLnNvbnIuY29yZS5NZXRhZGF0YVIIbWV0YWRhdGE=');
+/// Descriptor for `MailboxEvent`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List mailboxEventDescriptor = $convert.base64Decode('CgxNYWlsYm94RXZlbnQSDgoCaWQYASABKAlSAmlkEhYKBmJ1ZmZlchgCIAEoDFIGYnVmZmVyEiYKBGZyb20YAyABKAsyEi5zb25yLmNvcmUuUHJvZmlsZVIEZnJvbRIiCgJ0bxgEIAEoCzISLnNvbnIuY29yZS5Qcm9maWxlUgJ0bxIvCghtZXRhZGF0YRgFIAEoCzITLnNvbnIuY29yZS5NZXRhZGF0YVIIbWV0YWRhdGE=');
 @$core.Deprecated('Use progressEventDescriptor instead')
 const ProgressEvent$json = const {
   '1': 'ProgressEvent',

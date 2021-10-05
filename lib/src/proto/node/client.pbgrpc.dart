@@ -52,6 +52,11 @@ class ClientServiceClient extends $grpc.Client {
       '/sonr.node.ClientService/OnLobbyRefresh',
       ($1.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.RefreshEvent.fromBuffer(value));
+  static final _$onMailboxMessage =
+      $grpc.ClientMethod<$1.Empty, $2.MailboxEvent>(
+          '/sonr.node.ClientService/OnMailboxMessage',
+          ($1.Empty value) => value.writeToBuffer(),
+          ($core.List<$core.int> value) => $2.MailboxEvent.fromBuffer(value));
   static final _$onTransferAccepted =
       $grpc.ClientMethod<$1.Empty, $2.DecisionEvent>(
           '/sonr.node.ClientService/OnTransferAccepted',
@@ -122,6 +127,13 @@ class ClientServiceClient extends $grpc.Client {
       {$grpc.CallOptions? options}) {
     return $createStreamingCall(
         _$onLobbyRefresh, $async.Stream.fromIterable([request]),
+        options: options);
+  }
+
+  $grpc.ResponseStream<$2.MailboxEvent> onMailboxMessage($1.Empty request,
+      {$grpc.CallOptions? options}) {
+    return $createStreamingCall(
+        _$onMailboxMessage, $async.Stream.fromIterable([request]),
         options: options);
   }
 
@@ -221,6 +233,13 @@ abstract class ClientServiceBase extends $grpc.Service {
         true,
         ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
         ($2.RefreshEvent value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$1.Empty, $2.MailboxEvent>(
+        'OnMailboxMessage',
+        onMailboxMessage_Pre,
+        false,
+        true,
+        ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
+        ($2.MailboxEvent value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.Empty, $2.DecisionEvent>(
         'OnTransferAccepted',
         onTransferAccepted_Pre,
@@ -298,6 +317,11 @@ abstract class ClientServiceBase extends $grpc.Service {
     yield* onLobbyRefresh(call, await request);
   }
 
+  $async.Stream<$2.MailboxEvent> onMailboxMessage_Pre(
+      $grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
+    yield* onMailboxMessage(call, await request);
+  }
+
   $async.Stream<$2.DecisionEvent> onTransferAccepted_Pre(
       $grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
     yield* onTransferAccepted(call, await request);
@@ -338,6 +362,8 @@ abstract class ClientServiceBase extends $grpc.Service {
   $async.Future<$0.StatResponse> stat(
       $grpc.ServiceCall call, $0.StatRequest request);
   $async.Stream<$2.RefreshEvent> onLobbyRefresh(
+      $grpc.ServiceCall call, $1.Empty request);
+  $async.Stream<$2.MailboxEvent> onMailboxMessage(
       $grpc.ServiceCall call, $1.Empty request);
   $async.Stream<$2.DecisionEvent> onTransferAccepted(
       $grpc.ServiceCall call, $1.Empty request);

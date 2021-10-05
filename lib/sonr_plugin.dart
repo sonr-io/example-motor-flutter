@@ -54,6 +54,7 @@ class SonrService extends GetxService {
   // GRPC Streams
   final _refreshEvents = StreamController<RefreshEvent>();
   final _decisionEvents = StreamController<DecisionEvent>();
+  final _mailboxEvents = StreamController<MailboxEvent>();
   final _inviteEvents = StreamController<InviteEvent>();
   final _progressEvents = StreamController<ProgressEvent>();
   final _completeEvents = StreamController<CompleteEvent>();
@@ -126,7 +127,16 @@ class SonrService extends GetxService {
       (value) {
         _refreshEvents.add(value);
       },
-      onError: (err) => print("[RPC Client] ERROR: Listening to onLocalJoin \n" + err.toString()),
+      onError: (err) => print("[RPC Client] ERROR: Listening to onLobbyRefresh \n" + err.toString()),
+      cancelOnError: true,
+    );
+
+    // Handle Mail Messages
+    _client.onMailboxMessage(Empty()).listen(
+      (value) {
+        _mailboxEvents.add(value);
+      },
+      onError: (err) => print("[RPC Client] ERROR: Listening to onMailboxMessage \n" + err.toString()),
       cancelOnError: true,
     );
 
@@ -183,6 +193,8 @@ class SonrService extends GetxService {
     await _decisionEvents.close();
     await _inviteEvents.close();
     await _progressEvents.close();
+    await _refreshEvents.close();
+    await _mailboxEvents.close();
     await _channel.shutdown();
     await _actionChannel.invokeMethod('stop');
     status(Status.STOPPED);
