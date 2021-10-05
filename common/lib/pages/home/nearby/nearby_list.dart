@@ -4,7 +4,7 @@ import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
-import 'nearby_controller.dart';
+import '../controller.dart';
 
 enum LobbyFilter { All, Phones, Desktops }
 
@@ -20,7 +20,7 @@ extension LobbyFilterUtils on LobbyFilter {
   }
 }
 
-class NearbyList extends GetView<NearbyController> {
+class NearbyList extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return SonrScaffold(
@@ -42,7 +42,7 @@ class NearbyList extends GetView<NearbyController> {
             child: IconButton(
               icon: Get.isDarkMode ? SimpleIcons.Menu.white : SimpleIcons.Menu.white,
               onPressed: () {
-                
+
               },
             ),
           )

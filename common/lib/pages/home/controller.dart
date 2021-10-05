@@ -113,41 +113,60 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   // References
   late ScrollController scrollController;
   late TabController tabController;
+  final localPeers = RxList<Peer>();
+  late StreamSubscription<RefreshEvent> _subscription;
+  late Profile profile;
 
   /// #### Controller Constructer
   @override
   onInit() {
-    // Handle Tab Controller
-    tabController = TabController(vsync: this, length: 1);
-    scrollController = ScrollController(keepScrollOffset: false);
+    // Create Profile
+    final hint = TextUtils.hintName;
+    profile = Profile(
+      firstName: hint.item1,
+      lastName: hint.item2,
+      sName: hint.item1[0] + hint.item2,
+    );
+
+    // Connect to Network
     HomeArguments? args = Get.arguments;
     if (args != null) {
       if (args.isNewUser) {
         connect();
       } else if (args.isFirstLoad) {
-        connect(profile: args.profile);
+        connect();
       }
     }
+
+    // Handle Tab Controller
+    tabController = TabController(vsync: this, length: 1);
+    scrollController = ScrollController(keepScrollOffset: false);
 
     // Initialize
     super.onInit();
   }
 
   @override
-  void onReady() {
-    super.onReady();
-  }
-
-  /// #### On Dispose
-  @override
   void onClose() {
+    _subscription.cancel();
     super.onClose();
   }
 
-  Future<void> connect({Profile? profile}) async {
+  void handleRefresh(RefreshEvent event) {
+    print(event.peers.toString());
+    localPeers(event.peers);
+    localPeers.refresh();
+  }
+
+  Future<void> connect() async {
     final loc = await LocationUtil.current(requestIfNoPermission: true);
     print("Find Location: \n" + "\t${loc.toString()}");
     await SonrService.to.start(location: loc, profile: profile);
+    _subscription = SonrService.to.onRefresh(handleRefresh);
+  }
+
+  Future<void> edit() async {
+    await SonrService.to.edit(profile);
   }
 
   /// #### Change View

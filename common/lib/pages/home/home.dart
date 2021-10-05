@@ -36,7 +36,9 @@ class HomePage extends GetView<HomeController> {
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
               icon: Get.isDarkMode ? SimpleIcons.Menu.white : SimpleIcons.Menu.white,
-              onPressed: () {},
+              onPressed: () {
+                controller.edit();
+              },
             ),
           )
         ],

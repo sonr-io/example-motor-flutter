@@ -2,11 +2,10 @@
 import 'package:sonr_app/modules/list-items/peer_list-item.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
-
-import 'nearby_controller.dart';
+import '../controller.dart';
 import 'nearby_list.dart';
 
-class NearbyRow extends GetView<NearbyController> implements PreferredSizeWidget {
+class NearbyRow extends GetView<HomeController> implements PreferredSizeWidget {
   NearbyRow({Key? key}) : super(key: key);
 
   @override
