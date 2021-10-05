@@ -69,14 +69,14 @@ class InviteComposer extends GetView<HomeController> {
                             child: Container(
                               width: 200,
                               padding: EdgeInsets.only(right: 24),
-                              child: SNameTextField(
-                                onEditingComplete: (value) {
-                                  print("TODO");
-                                },
-                                onChanged: (value) {
-                                  print("TODO");
-                                },
-                              ),
+                              // child: SNameTextField(
+                              //   onEditingComplete: (value) {
+                              //     print("TODO");
+                              //   },
+                              //   onChanged: (value) {
+                              //     print("TODO");
+                              //   },
+                              // ),
                             ),
                           ),
                           // AnimatedStatus()

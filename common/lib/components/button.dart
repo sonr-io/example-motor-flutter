@@ -375,31 +375,36 @@ class AppBarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final RxBool isPressed = false.obs;
-    return ObxValue<RxBool>(
-        (pressed) => GestureDetector(
-            onTapCancel: () => pressed(false),
-            onTapDown: (details) => pressed(true),
-            onTapUp: (details) async {
-              pressed(false);
-              await Future.delayed(duration);
-              onPressed();
-            },
-            child: AnimatedScale(
-                scale: pressed.value ? 1.1 : 1.0,
-                duration: duration,
-                child: Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Get.isDarkMode ? AppColors.neutrals3 : AppColors.neutrals6,
-                    ),
-                    padding: EdgeInsets.all(8),
-                    child: Center(
-                      child: Icon(
-                        iconData,
-                        size: 16,
-                        color: Get.isDarkMode ? AppColors.neutrals8 : AppColors.neutrals2,
-                      ),
-                    )))),
-        isPressed);
+    return Container(
+      margin: EdgeInsets.all(8),
+      child: ObxValue<RxBool>(
+          (pressed) => GestureDetector(
+              onTapCancel: () => pressed(false),
+              onTapDown: (details) => pressed(true),
+              onTapUp: (details) async {
+                pressed(false);
+                await Future.delayed(duration);
+                onPressed();
+              },
+              child: SizedBox(
+                child: AnimatedScale(
+                    scale: pressed.value ? 1.1 : 1.0,
+                    duration: duration,
+                    child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Get.isDarkMode ? AppColors.neutrals3 : AppColors.neutrals6,
+                        ),
+                        padding: EdgeInsets.all(8),
+                        child: Center(
+                          child: Icon(
+                            iconData,
+                            size: 16,
+                            color: Get.isDarkMode ? AppColors.neutrals8 : AppColors.neutrals2,
+                          ),
+                        ))),
+              )),
+          isPressed),
+    );
   }
 }

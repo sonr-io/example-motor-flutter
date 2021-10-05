@@ -37,7 +37,7 @@ class PermissionsView extends GetView<RegisterController> {
               } else if (item == RegisterPageType.Notifications) {
                 final result = await Permissions.Notifications.request();
                 if (result || await Permissions.Notifications.isGranted || Platform.isAndroid) {
-                  AppPage.Home.off(args: HomeArguments.FirstLoad);
+                  AppPage.Home.off(args: HomeArguments.NewUser(controller.profile));
                 }
               }
             },
