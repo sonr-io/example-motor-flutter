@@ -14,4 +14,7 @@ enum Status {
 }
 
 /// Option for Share Choice
-enum PickOption { Media, File }
+enum PickOption {
+  Media,
+  File,
+}

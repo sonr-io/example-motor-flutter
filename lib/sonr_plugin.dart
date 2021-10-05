@@ -58,6 +58,9 @@ class SonrService extends GetxService {
   final _progressEvents = StreamController<ProgressEvent>();
   final _completeEvents = StreamController<CompleteEvent>();
 
+  /// Enviornment Variables reference
+  Map<String, String>? _enviornmentVariables;
+
   // GRPC Service Client
   late ClientServiceClient _client;
 
@@ -66,7 +69,10 @@ class SonrService extends GetxService {
 
   /// ### Checks permissions and Returns GetxService
   /// Optional Params for: `Profile`, `Location`, and `Map<String, String>`
-  Future<SonrService> init() async {
+  Future<SonrService> init({Map<String, String>? enviornmentVariables}) async {
+    // Set Enviornment Variables
+    _enviornmentVariables = enviornmentVariables;
+
     // Bind Network Connection stream to service
     Connectivity().onConnectivityChanged.listen((event) {
       this.connection(Connection.values[event.index]);
@@ -81,7 +87,11 @@ class SonrService extends GetxService {
     final request = await Config.newInitializeRequest(
       location: location,
       profile: profile,
+      envVars: _enviornmentVariables,
     );
+
+    // Delete Enviornment Variables Ref
+    _enviornmentVariables = null;
 
     // Await Response
     final respBuf = await _actionChannel.invokeMethod('start', request.writeToBuffer());

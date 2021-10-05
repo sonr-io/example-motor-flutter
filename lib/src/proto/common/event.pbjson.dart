@@ -44,6 +44,20 @@ const InviteEvent$json = const {
 
 /// Descriptor for `InviteEvent`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List inviteEventDescriptor = $convert.base64Decode('CgtJbnZpdGVFdmVudBIaCghyZWNlaXZlZBgBIAEoA1IIcmVjZWl2ZWQSIwoEZnJvbRgCIAEoCzIPLnNvbnIuY29yZS5QZWVyUgRmcm9tEiwKB3BheWxvYWQYAyABKAsyEi5zb25yLmNvcmUuUGF5bG9hZFIHcGF5bG9hZA==');
+@$core.Deprecated('Use mailEventDescriptor instead')
+const MailEvent$json = const {
+  '1': 'MailEvent',
+  '2': const [
+    const {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    const {'1': 'buffer', '3': 2, '4': 1, '5': 12, '10': 'buffer'},
+    const {'1': 'from', '3': 3, '4': 1, '5': 11, '6': '.sonr.core.Profile', '10': 'from'},
+    const {'1': 'to', '3': 4, '4': 1, '5': 11, '6': '.sonr.core.Profile', '10': 'to'},
+    const {'1': 'metadata', '3': 5, '4': 1, '5': 11, '6': '.sonr.core.Metadata', '10': 'metadata'},
+  ],
+};
+
+/// Descriptor for `MailEvent`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List mailEventDescriptor = $convert.base64Decode('CglNYWlsRXZlbnQSDgoCaWQYASABKAlSAmlkEhYKBmJ1ZmZlchgCIAEoDFIGYnVmZmVyEiYKBGZyb20YAyABKAsyEi5zb25yLmNvcmUuUHJvZmlsZVIEZnJvbRIiCgJ0bxgEIAEoCzISLnNvbnIuY29yZS5Qcm9maWxlUgJ0bxIvCghtZXRhZGF0YRgFIAEoCzITLnNvbnIuY29yZS5NZXRhZGF0YVIIbWV0YWRhdGE=');
 @$core.Deprecated('Use progressEventDescriptor instead')
 const ProgressEvent$json = const {
   '1': 'ProgressEvent',

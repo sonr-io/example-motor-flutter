@@ -54,8 +54,19 @@ const InitializeRequest$json = const {
     const {'1': 'serviceOptions', '3': 5, '4': 1, '5': 11, '6': '.sonr.node.InitializeRequest.ServiceOptions', '10': 'serviceOptions'},
     const {'1': 'deviceOptions', '3': 6, '4': 1, '5': 11, '6': '.sonr.node.InitializeRequest.DeviceOptions', '10': 'deviceOptions'},
     const {'1': 'environment', '3': 7, '4': 1, '5': 14, '6': '.sonr.core.Environment', '10': 'environment'},
+    const {'1': 'variables', '3': 8, '4': 3, '5': 11, '6': '.sonr.node.InitializeRequest.VariablesEntry', '10': 'variables'},
   ],
-  '3': const [InitializeRequest_DeviceOptions$json, InitializeRequest_HostOptions$json, InitializeRequest_ServiceOptions$json, InitializeRequest_IPAddress$json],
+  '3': const [InitializeRequest_VariablesEntry$json, InitializeRequest_DeviceOptions$json, InitializeRequest_HostOptions$json, InitializeRequest_ServiceOptions$json, InitializeRequest_IPAddress$json],
+};
+
+@$core.Deprecated('Use initializeRequestDescriptor instead')
+const InitializeRequest_VariablesEntry$json = const {
+  '1': 'VariablesEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
+  ],
+  '7': const {'7': true},
 };
 
 @$core.Deprecated('Use initializeRequestDescriptor instead')
@@ -67,7 +78,7 @@ const InitializeRequest_DeviceOptions$json = const {
     const {'1': 'databaseDir', '3': 3, '4': 1, '5': 9, '10': 'databaseDir'},
     const {'1': 'documentsDir', '3': 4, '4': 1, '5': 9, '10': 'documentsDir'},
     const {'1': 'downloadsDir', '3': 5, '4': 1, '5': 9, '10': 'downloadsDir'},
-    const {'1': 'mailboxDir', '3': 6, '4': 1, '5': 9, '10': 'mailboxDir'},
+    const {'1': 'textileDir', '3': 6, '4': 1, '5': 9, '10': 'textileDir'},
     const {'1': 'supportDir', '3': 7, '4': 1, '5': 9, '10': 'supportDir'},
   ],
 };
@@ -99,10 +110,9 @@ const InitializeRequest_IPAddress$json = const {
   '1': 'IPAddress',
   '2': const [
     const {'1': 'name', '3': 1, '4': 1, '5': 9, '10': 'name'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 9, '10': 'value'},
-    const {'1': 'mac', '3': 3, '4': 1, '5': 9, '10': 'mac'},
-    const {'1': 'internal', '3': 4, '4': 1, '5': 8, '10': 'internal'},
-    const {'1': 'family', '3': 5, '4': 1, '5': 14, '6': '.sonr.node.InitializeRequest.IPAddress.Family', '10': 'family'},
+    const {'1': 'address', '3': 2, '4': 1, '5': 9, '10': 'address'},
+    const {'1': 'internal', '3': 3, '4': 1, '5': 8, '10': 'internal'},
+    const {'1': 'family', '3': 4, '4': 1, '5': 14, '6': '.sonr.node.InitializeRequest.IPAddress.Family', '10': 'family'},
   ],
   '4': const [InitializeRequest_IPAddress_Family$json],
 };
@@ -117,7 +127,7 @@ const InitializeRequest_IPAddress_Family$json = const {
 };
 
 /// Descriptor for `InitializeRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List initializeRequestDescriptor = $convert.base64Decode('ChFJbml0aWFsaXplUmVxdWVzdBIvCghsb2NhdGlvbhgBIAEoCzITLnNvbnIuY29yZS5Mb2NhdGlvblIIbG9jYXRpb24SLAoHcHJvZmlsZRgCIAEoCzISLnNvbnIuY29yZS5Qcm9maWxlUgdwcm9maWxlEjUKCmNvbm5lY3Rpb24YAyABKA4yFS5zb25yLmNvcmUuQ29ubmVjdGlvblIKY29ubmVjdGlvbhJKCgtob3N0T3B0aW9ucxgEIAEoCzIoLnNvbnIubm9kZS5Jbml0aWFsaXplUmVxdWVzdC5Ib3N0T3B0aW9uc1ILaG9zdE9wdGlvbnMSUwoOc2VydmljZU9wdGlvbnMYBSABKAsyKy5zb25yLm5vZGUuSW5pdGlhbGl6ZVJlcXVlc3QuU2VydmljZU9wdGlvbnNSDnNlcnZpY2VPcHRpb25zElAKDWRldmljZU9wdGlvbnMYBiABKAsyKi5zb25yLm5vZGUuSW5pdGlhbGl6ZVJlcXVlc3QuRGV2aWNlT3B0aW9uc1INZGV2aWNlT3B0aW9ucxI4CgtlbnZpcm9ubWVudBgHIAEoDjIWLnNvbnIuY29yZS5FbnZpcm9ubWVudFILZW52aXJvbm1lbnQa5QEKDURldmljZU9wdGlvbnMSDgoCaWQYASABKAlSAmlkEhoKCGNhY2hlRGlyGAIgASgJUghjYWNoZURpchIgCgtkYXRhYmFzZURpchgDIAEoCVILZGF0YWJhc2VEaXISIgoMZG9jdW1lbnRzRGlyGAQgASgJUgxkb2N1bWVudHNEaXISIgoMZG93bmxvYWRzRGlyGAUgASgJUgxkb3dubG9hZHNEaXISHgoKbWFpbGJveERpchgGIAEoCVIKbWFpbGJveERpchIeCgpzdXBwb3J0RGlyGAcgASgJUgpzdXBwb3J0RGlyGr8BCgtIb3N0T3B0aW9ucxIkCg1xdWljVHJhbnNwb3J0GAEgASgIUg1xdWljVHJhbnNwb3J0EiQKDWh0dHBUcmFuc3BvcnQYAiABKAhSDWh0dHBUcmFuc3BvcnQSGgoIaXB2NE9ubHkYAyABKAhSCGlwdjRPbmx5EkgKC2xpc3RlbkFkZHJzGAQgAygLMiYuc29uci5ub2RlLkluaXRpYWxpemVSZXF1ZXN0LklQQWRkcmVzc1ILbGlzdGVuQWRkcnMafgoOU2VydmljZU9wdGlvbnMSGAoHdGV4dGlsZRgBIAEoCFIHdGV4dGlsZRIYCgdtYWlsYm94GAIgASgIUgdtYWlsYm94EhgKB2J1Y2tldHMYAyABKAhSB2J1Y2tldHMSHgoKYXV0b1VwZGF0ZRgEIAEoCFIKYXV0b1VwZGF0ZRrIAQoJSVBBZGRyZXNzEhIKBG5hbWUYASABKAlSBG5hbWUSFAoFdmFsdWUYAiABKAlSBXZhbHVlEhAKA21hYxgDIAEoCVIDbWFjEhoKCGludGVybmFsGAQgASgIUghpbnRlcm5hbBJFCgZmYW1pbHkYBSABKA4yLS5zb25yLm5vZGUuSW5pdGlhbGl6ZVJlcXVlc3QuSVBBZGRyZXNzLkZhbWlseVIGZmFtaWx5IhwKBkZhbWlseRIICgRJUFY0EAASCAoESVBWNhAB');
+final $typed_data.Uint8List initializeRequestDescriptor = $convert.base64Decode('ChFJbml0aWFsaXplUmVxdWVzdBIvCghsb2NhdGlvbhgBIAEoCzITLnNvbnIuY29yZS5Mb2NhdGlvblIIbG9jYXRpb24SLAoHcHJvZmlsZRgCIAEoCzISLnNvbnIuY29yZS5Qcm9maWxlUgdwcm9maWxlEjUKCmNvbm5lY3Rpb24YAyABKA4yFS5zb25yLmNvcmUuQ29ubmVjdGlvblIKY29ubmVjdGlvbhJKCgtob3N0T3B0aW9ucxgEIAEoCzIoLnNvbnIubm9kZS5Jbml0aWFsaXplUmVxdWVzdC5Ib3N0T3B0aW9uc1ILaG9zdE9wdGlvbnMSUwoOc2VydmljZU9wdGlvbnMYBSABKAsyKy5zb25yLm5vZGUuSW5pdGlhbGl6ZVJlcXVlc3QuU2VydmljZU9wdGlvbnNSDnNlcnZpY2VPcHRpb25zElAKDWRldmljZU9wdGlvbnMYBiABKAsyKi5zb25yLm5vZGUuSW5pdGlhbGl6ZVJlcXVlc3QuRGV2aWNlT3B0aW9uc1INZGV2aWNlT3B0aW9ucxI4CgtlbnZpcm9ubWVudBgHIAEoDjIWLnNvbnIuY29yZS5FbnZpcm9ubWVudFILZW52aXJvbm1lbnQSSQoJdmFyaWFibGVzGAggAygLMisuc29uci5ub2RlLkluaXRpYWxpemVSZXF1ZXN0LlZhcmlhYmxlc0VudHJ5Ugl2YXJpYWJsZXMaPAoOVmFyaWFibGVzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSFAoFdmFsdWUYAiABKAlSBXZhbHVlOgI4ARrlAQoNRGV2aWNlT3B0aW9ucxIOCgJpZBgBIAEoCVICaWQSGgoIY2FjaGVEaXIYAiABKAlSCGNhY2hlRGlyEiAKC2RhdGFiYXNlRGlyGAMgASgJUgtkYXRhYmFzZURpchIiCgxkb2N1bWVudHNEaXIYBCABKAlSDGRvY3VtZW50c0RpchIiCgxkb3dubG9hZHNEaXIYBSABKAlSDGRvd25sb2Fkc0RpchIeCgp0ZXh0aWxlRGlyGAYgASgJUgp0ZXh0aWxlRGlyEh4KCnN1cHBvcnREaXIYByABKAlSCnN1cHBvcnREaXIavwEKC0hvc3RPcHRpb25zEiQKDXF1aWNUcmFuc3BvcnQYASABKAhSDXF1aWNUcmFuc3BvcnQSJAoNaHR0cFRyYW5zcG9ydBgCIAEoCFINaHR0cFRyYW5zcG9ydBIaCghpcHY0T25seRgDIAEoCFIIaXB2NE9ubHkSSAoLbGlzdGVuQWRkcnMYBCADKAsyJi5zb25yLm5vZGUuSW5pdGlhbGl6ZVJlcXVlc3QuSVBBZGRyZXNzUgtsaXN0ZW5BZGRycxp+Cg5TZXJ2aWNlT3B0aW9ucxIYCgd0ZXh0aWxlGAEgASgIUgd0ZXh0aWxlEhgKB21haWxib3gYAiABKAhSB21haWxib3gSGAoHYnVja2V0cxgDIAEoCFIHYnVja2V0cxIeCgphdXRvVXBkYXRlGAQgASgIUgphdXRvVXBkYXRlGroBCglJUEFkZHJlc3MSEgoEbmFtZRgBIAEoCVIEbmFtZRIYCgdhZGRyZXNzGAIgASgJUgdhZGRyZXNzEhoKCGludGVybmFsGAMgASgIUghpbnRlcm5hbBJFCgZmYW1pbHkYBCABKA4yLS5zb25yLm5vZGUuSW5pdGlhbGl6ZVJlcXVlc3QuSVBBZGRyZXNzLkZhbWlseVIGZmFtaWx5IhwKBkZhbWlseRIICgRJUFY0EAASCAoESVBWNhAB');
 @$core.Deprecated('Use initializeResponseDescriptor instead')
 const InitializeResponse$json = const {
   '1': 'InitializeResponse',

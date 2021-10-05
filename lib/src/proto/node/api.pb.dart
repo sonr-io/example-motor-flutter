@@ -168,7 +168,7 @@ class InitializeRequest_DeviceOptions extends $pb.GeneratedMessage {
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'databaseDir', protoName: 'databaseDir')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'documentsDir', protoName: 'documentsDir')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'downloadsDir', protoName: 'downloadsDir')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mailboxDir', protoName: 'mailboxDir')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'textileDir', protoName: 'textileDir')
     ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportDir', protoName: 'supportDir')
     ..hasRequiredFields = false
   ;
@@ -180,7 +180,7 @@ class InitializeRequest_DeviceOptions extends $pb.GeneratedMessage {
     $core.String? databaseDir,
     $core.String? documentsDir,
     $core.String? downloadsDir,
-    $core.String? mailboxDir,
+    $core.String? textileDir,
     $core.String? supportDir,
   }) {
     final _result = create();
@@ -199,8 +199,8 @@ class InitializeRequest_DeviceOptions extends $pb.GeneratedMessage {
     if (downloadsDir != null) {
       _result.downloadsDir = downloadsDir;
     }
-    if (mailboxDir != null) {
-      _result.mailboxDir = mailboxDir;
+    if (textileDir != null) {
+      _result.textileDir = textileDir;
     }
     if (supportDir != null) {
       _result.supportDir = supportDir;
@@ -274,13 +274,13 @@ class InitializeRequest_DeviceOptions extends $pb.GeneratedMessage {
   void clearDownloadsDir() => clearField(5);
 
   @$pb.TagNumber(6)
-  $core.String get mailboxDir => $_getSZ(5);
+  $core.String get textileDir => $_getSZ(5);
   @$pb.TagNumber(6)
-  set mailboxDir($core.String v) { $_setString(5, v); }
+  set textileDir($core.String v) { $_setString(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasMailboxDir() => $_has(5);
+  $core.bool hasTextileDir() => $_has(5);
   @$pb.TagNumber(6)
-  void clearMailboxDir() => clearField(6);
+  void clearTextileDir() => clearField(6);
 
   @$pb.TagNumber(7)
   $core.String get supportDir => $_getSZ(6);
@@ -467,18 +467,16 @@ class InitializeRequest_ServiceOptions extends $pb.GeneratedMessage {
 class InitializeRequest_IPAddress extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeRequest.IPAddress', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'value')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mac')
-    ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'internal')
-    ..e<InitializeRequest_IPAddress_Family>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'family', $pb.PbFieldType.OE, defaultOrMaker: InitializeRequest_IPAddress_Family.IPV4, valueOf: InitializeRequest_IPAddress_Family.valueOf, enumValues: InitializeRequest_IPAddress_Family.values)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
+    ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'internal')
+    ..e<InitializeRequest_IPAddress_Family>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'family', $pb.PbFieldType.OE, defaultOrMaker: InitializeRequest_IPAddress_Family.IPV4, valueOf: InitializeRequest_IPAddress_Family.valueOf, enumValues: InitializeRequest_IPAddress_Family.values)
     ..hasRequiredFields = false
   ;
 
   InitializeRequest_IPAddress._() : super();
   factory InitializeRequest_IPAddress({
     $core.String? name,
-    $core.String? value,
-    $core.String? mac,
+    $core.String? address,
     $core.bool? internal,
     InitializeRequest_IPAddress_Family? family,
   }) {
@@ -486,11 +484,8 @@ class InitializeRequest_IPAddress extends $pb.GeneratedMessage {
     if (name != null) {
       _result.name = name;
     }
-    if (value != null) {
-      _result.value = value;
-    }
-    if (mac != null) {
-      _result.mac = mac;
+    if (address != null) {
+      _result.address = address;
     }
     if (internal != null) {
       _result.internal = internal;
@@ -531,40 +526,31 @@ class InitializeRequest_IPAddress extends $pb.GeneratedMessage {
   void clearName() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get value => $_getSZ(1);
+  $core.String get address => $_getSZ(1);
   @$pb.TagNumber(2)
-  set value($core.String v) { $_setString(1, v); }
+  set address($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasValue() => $_has(1);
+  $core.bool hasAddress() => $_has(1);
   @$pb.TagNumber(2)
-  void clearValue() => clearField(2);
+  void clearAddress() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get mac => $_getSZ(2);
+  $core.bool get internal => $_getBF(2);
   @$pb.TagNumber(3)
-  set mac($core.String v) { $_setString(2, v); }
+  set internal($core.bool v) { $_setBool(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasMac() => $_has(2);
+  $core.bool hasInternal() => $_has(2);
   @$pb.TagNumber(3)
-  void clearMac() => clearField(3);
+  void clearInternal() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.bool get internal => $_getBF(3);
+  InitializeRequest_IPAddress_Family get family => $_getN(3);
   @$pb.TagNumber(4)
-  set internal($core.bool v) { $_setBool(3, v); }
+  set family(InitializeRequest_IPAddress_Family v) { setField(4, v); }
   @$pb.TagNumber(4)
-  $core.bool hasInternal() => $_has(3);
+  $core.bool hasFamily() => $_has(3);
   @$pb.TagNumber(4)
-  void clearInternal() => clearField(4);
-
-  @$pb.TagNumber(5)
-  InitializeRequest_IPAddress_Family get family => $_getN(4);
-  @$pb.TagNumber(5)
-  set family(InitializeRequest_IPAddress_Family v) { setField(5, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasFamily() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearFamily() => clearField(5);
+  void clearFamily() => clearField(4);
 }
 
 class InitializeRequest extends $pb.GeneratedMessage {
@@ -576,6 +562,7 @@ class InitializeRequest extends $pb.GeneratedMessage {
     ..aOM<InitializeRequest_ServiceOptions>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'serviceOptions', protoName: 'serviceOptions', subBuilder: InitializeRequest_ServiceOptions.create)
     ..aOM<InitializeRequest_DeviceOptions>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceOptions', protoName: 'deviceOptions', subBuilder: InitializeRequest_DeviceOptions.create)
     ..e<$3.Environment>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'environment', $pb.PbFieldType.OE, defaultOrMaker: $3.Environment.DEVELOPMENT, valueOf: $3.Environment.valueOf, enumValues: $3.Environment.values)
+    ..m<$core.String, $core.String>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'variables', entryClassName: 'InitializeRequest.VariablesEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('sonr.node'))
     ..hasRequiredFields = false
   ;
 
@@ -588,6 +575,7 @@ class InitializeRequest extends $pb.GeneratedMessage {
     InitializeRequest_ServiceOptions? serviceOptions,
     InitializeRequest_DeviceOptions? deviceOptions,
     $3.Environment? environment,
+    $core.Map<$core.String, $core.String>? variables,
   }) {
     final _result = create();
     if (location != null) {
@@ -610,6 +598,9 @@ class InitializeRequest extends $pb.GeneratedMessage {
     }
     if (environment != null) {
       _result.environment = environment;
+    }
+    if (variables != null) {
+      _result.variables.addAll(variables);
     }
     return _result;
   }
@@ -706,6 +697,9 @@ class InitializeRequest extends $pb.GeneratedMessage {
   $core.bool hasEnvironment() => $_has(6);
   @$pb.TagNumber(7)
   void clearEnvironment() => clearField(7);
+
+  @$pb.TagNumber(8)
+  $core.Map<$core.String, $core.String> get variables => $_getMap(7);
 }
 
 class InitializeResponse extends $pb.GeneratedMessage {

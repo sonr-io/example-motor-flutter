@@ -30,7 +30,10 @@ class Config {
 
   /// Method Creates New Initialize Request
   /// Given Location, and Profile
-  static Future<InitializeRequest> newInitializeRequest({required Location location, Profile? profile}) async {
+  static Future<InitializeRequest> newInitializeRequest({required Location location, Profile? profile, Map<String, String>? envVars}) async {
+    // Print Provided EnvVars count
+    print('Provided Enviornment Vars Count: ${envVars?.length ?? 0}');
+
     // Set Options
     final deviceOpts = await _getDeviceOpts();
     final connection = await _getConnection();
@@ -41,6 +44,7 @@ class Config {
       hostOptions: hostOpts,
       profile: profile,
       deviceOptions: deviceOpts,
+      variables: envVars,
       environment: BuildModeUtil.toEnvironment(),
     );
   }
@@ -56,21 +60,10 @@ class Config {
     final documentsPath = await getApplicationDocumentsDirectory();
     final supportPath = await createFolderInAppDocDir('Support');
     final databasePath = await createFolderInAppDocDir('Database');
+    final textilePath = await createFolderInAppDocDir('Textile');
     final downloadsPath = await createFolderInAppDocDir('Downloads');
     final temporaryPath = await getTemporaryDirectory();
     final deviceId = await _getDeviceId();
-
-    // Create Mailbox
-    final Directory _appDocDirFolder = Directory('${supportPath}/mailbox');
-    var mailboxPath = "";
-    if (await _appDocDirFolder.exists()) {
-      //if folder already exists return path
-      mailboxPath = _appDocDirFolder.path;
-    } else {
-      //if folder not exists create folder and then return its path
-      final Directory _appDocDirNewFolder = await _appDocDirFolder.create(recursive: true);
-      mailboxPath = _appDocDirNewFolder.path;
-    }
 
     // Return Device Options
     return InitializeRequest_DeviceOptions(
@@ -78,8 +71,8 @@ class Config {
       documentsDir: documentsPath.path,
       downloadsDir: downloadsPath,
       databaseDir: databasePath,
-      mailboxDir: mailboxPath,
       supportDir: supportPath,
+      textileDir: textilePath,
       id: deviceId,
     );
   }
@@ -116,7 +109,7 @@ class Config {
       return InitializeRequest_HostOptions(listenAddrs: [
         InitializeRequest_IPAddress(
           name: wifiName,
-          value: wifiIP,
+          address: wifiIP,
           family: InitializeRequest_IPAddress_Family.IPV4,
         )
       ]);
@@ -126,7 +119,7 @@ class Config {
       return InitializeRequest_HostOptions(listenAddrs: [
         InitializeRequest_IPAddress(
           name: wifiName,
-          value: wifiIP,
+          address: wifiIP,
           family: InitializeRequest_IPAddress_Family.IPV4,
         )
       ]);

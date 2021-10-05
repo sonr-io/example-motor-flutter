@@ -242,6 +242,115 @@ class InviteEvent extends $pb.GeneratedMessage {
   $1.Payload ensurePayload() => $_ensure(2);
 }
 
+class MailEvent extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MailEvent', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
+    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'buffer', $pb.PbFieldType.OY)
+    ..aOM<$0.Profile>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from', subBuilder: $0.Profile.create)
+    ..aOM<$0.Profile>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to', subBuilder: $0.Profile.create)
+    ..aOM<$0.Metadata>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'metadata', subBuilder: $0.Metadata.create)
+    ..hasRequiredFields = false
+  ;
+
+  MailEvent._() : super();
+  factory MailEvent({
+    $core.String? id,
+    $core.List<$core.int>? buffer,
+    $0.Profile? from,
+    $0.Profile? to,
+    $0.Metadata? metadata,
+  }) {
+    final _result = create();
+    if (id != null) {
+      _result.id = id;
+    }
+    if (buffer != null) {
+      _result.buffer = buffer;
+    }
+    if (from != null) {
+      _result.from = from;
+    }
+    if (to != null) {
+      _result.to = to;
+    }
+    if (metadata != null) {
+      _result.metadata = metadata;
+    }
+    return _result;
+  }
+  factory MailEvent.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory MailEvent.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  MailEvent clone() => MailEvent()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  MailEvent copyWith(void Function(MailEvent) updates) => super.copyWith((message) => updates(message as MailEvent)) as MailEvent; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static MailEvent create() => MailEvent._();
+  MailEvent createEmptyInstance() => create();
+  static $pb.PbList<MailEvent> createRepeated() => $pb.PbList<MailEvent>();
+  @$core.pragma('dart2js:noInline')
+  static MailEvent getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<MailEvent>(create);
+  static MailEvent? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get buffer => $_getN(1);
+  @$pb.TagNumber(2)
+  set buffer($core.List<$core.int> v) { $_setBytes(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasBuffer() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearBuffer() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $0.Profile get from => $_getN(2);
+  @$pb.TagNumber(3)
+  set from($0.Profile v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasFrom() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearFrom() => clearField(3);
+  @$pb.TagNumber(3)
+  $0.Profile ensureFrom() => $_ensure(2);
+
+  @$pb.TagNumber(4)
+  $0.Profile get to => $_getN(3);
+  @$pb.TagNumber(4)
+  set to($0.Profile v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasTo() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearTo() => clearField(4);
+  @$pb.TagNumber(4)
+  $0.Profile ensureTo() => $_ensure(3);
+
+  @$pb.TagNumber(5)
+  $0.Metadata get metadata => $_getN(4);
+  @$pb.TagNumber(5)
+  set metadata($0.Metadata v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasMetadata() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearMetadata() => clearField(5);
+  @$pb.TagNumber(5)
+  $0.Metadata ensureMetadata() => $_ensure(4);
+}
+
 class ProgressEvent extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ProgressEvent', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
     ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'current', $pb.PbFieldType.O3)

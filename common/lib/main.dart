@@ -1,11 +1,27 @@
 import 'dart:async';
 
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 import 'package:get/get.dart';
 import 'package:sonr_app/style/style.dart';
-
-import 'data/services/services.dart';
 import 'theme/theme.dart';
+
+/// #### Application Services
+Future<void> initServices() async {
+  bool hasEnv = false;
+
+  // Initialize Services
+  try {
+    await dotenv.load(fileName: ".env");
+    hasEnv = true;
+  } catch (e) {
+    print(".env File not Found");
+    hasEnv = false;
+  }
+
+  // Initialize Sonr
+  await Get.putAsync(() => SonrService().init(enviornmentVariables: hasEnv ? dotenv.env : null), permanent: true);
+}
 
 /// #### Main Method
 Future<void> main() async {
@@ -13,7 +29,7 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Services
-  await AppServices.init();
+  await initServices();
 
   // Check Platform
   runApp(SplashPage());

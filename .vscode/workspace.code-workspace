@@ -36,7 +36,7 @@
         "**/*.pbenum.dart": true,
         "**/*.pbserver.dart": true,
         "**/dartdoc_options.yaml": true,
-        "**/common": true,
+        "common": true,
       },
     "github-actions.workflows.pinned.workflows": [".github/workflows/main.yml"]
   }
