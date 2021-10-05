@@ -13,7 +13,7 @@ class AppGradients {
   /// [ThemeMode.light] = [AppGradients.gradientLight01]
   /// [ThemeMode.dark] = [AppGradients.gradientDark01]
   static LinearGradient get gradientSecondary {
-    return Get.isDarkMode ? gradientLight01 : gradientDark01;
+    return Get.isDarkMode ? glassDark : glassLight;
   }
 
   /// Gets Gradient Teritary by Theme Mode

@@ -34,8 +34,8 @@ class InviteComposer extends GetView<HomeController> {
         height: Get.height,
         margin: EdgeInsets.only(top: 64, bottom: 135, left: 24, right: 24),
         child: BoxContainer(
-            footer: ColorButton.primary(
-              text: "Share File",
+            footer: PrimaryButton(
+              label: "Share File",
               onPressed: () => print("TODO"),
             ),
             padding: EdgeInsets.all(16),
@@ -69,14 +69,14 @@ class InviteComposer extends GetView<HomeController> {
                             child: Container(
                               width: 200,
                               padding: EdgeInsets.only(right: 24),
-                              child: SNameTextField(
-                                onEditingComplete: (value) {
-                                  print("TODO");
-                                },
-                                onChanged: (value) {
-                                  print("TODO");
-                                },
-                              ),
+                              // child: SNameTextField(
+                              //   onEditingComplete: (value) {
+                              //     print("TODO");
+                              //   },
+                              //   onChanged: (value) {
+                              //     print("TODO");
+                              //   },
+                              // ),
                             ),
                           ),
                           // AnimatedStatus()

@@ -4,6 +4,8 @@ import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
+import '../controller.dart';
+
 enum LobbyFilter { All, Phones, Desktops }
 
 extension LobbyFilterUtils on LobbyFilter {
@@ -18,7 +20,7 @@ extension LobbyFilterUtils on LobbyFilter {
   }
 }
 
-class NearbyList extends StatelessWidget {
+class NearbyList extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return SonrScaffold(
@@ -26,7 +28,7 @@ class NearbyList extends StatelessWidget {
         toolbarHeight: 92,
         elevation: 0,
         backgroundColor: AppColors.neutrals1,
-        leading: ActionButton(
+        leading: AppBarButton(
           iconData: Icons.arrow_back,
           onPressed: () => Get.back(),
         ),
@@ -39,17 +41,19 @@ class NearbyList extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
               icon: Get.isDarkMode ? SimpleIcons.Menu.white : SimpleIcons.Menu.white,
-              onPressed: () {},
+              onPressed: () {
+
+              },
             ),
           )
         ],
       ),
-      body: Obx(() => SonrService.to.localPeers.isNotEmpty
+      body: Obx(() => controller.localPeers.length > 0
           ? ListView.builder(
-              itemCount: SonrService.to.localPeers.length,
+              itemCount: controller.localPeers.length,
               itemBuilder: (context, index) {
                 return PeerListItem(
-                  peer: SonrService.to.localPeers[index],
+                  peer: controller.localPeers[index],
                   index: index,
                   withInviteButton: true,
                 );

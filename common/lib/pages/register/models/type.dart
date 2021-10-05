@@ -15,7 +15,6 @@ extension RegisterPageTypeUtils on RegisterPageType {
   /// Returns ValueKey for Type
   Key? get key => ValueKey<RegisterPageType>(this);
 
-
   /// Checks to Use Setup View
   bool get isSetup => this == RegisterPageType.Name || this == RegisterPageType.Backup || this == RegisterPageType.Profile;
 
@@ -72,9 +71,9 @@ extension RegisterPageTypeUtils on RegisterPageType {
   /// Returns Left Button for Setup Page
   Widget leftButton() {
     if (this == RegisterPageType.Backup) {
-      return ColorButton.neutral(onPressed: Get.find<RegisterController>().exportCode, text: "Save");
+      return SecondaryButton(onPressed: Get.find<RegisterController>().exportCode, label: "Save");
     } else if (this == RegisterPageType.Profile) {
-      return ColorButton.neutral(onPressed: () => Get.find<RegisterController>().nextPage(RegisterPageType.Location), text: "Later");
+      return NeutralButton(onPressed: () => Get.find<RegisterController>().nextPage(RegisterPageType.Location), label: "Later");
     } else {
       return Container();
     }
@@ -83,9 +82,9 @@ extension RegisterPageTypeUtils on RegisterPageType {
   /// Returns Right Button for Setup Page
   Widget rightButton() {
     if (this == RegisterPageType.Backup) {
-      return ColorButton.primary(onPressed: () => Get.find<RegisterController>().nextPage(RegisterPageType.Profile), text: "Next");
+      return NeutralButton(onPressed: () => Get.find<RegisterController>().nextPage(RegisterPageType.Profile), label: "Next");
     } else if (this == RegisterPageType.Profile) {
-      return ColorButton.primary(onPressed: () => Get.find<RegisterController>().nextPage(RegisterPageType.Location), text: "Confirm");
+      return PrimaryButton(onPressed: () => Get.find<RegisterController>().nextPage(RegisterPageType.Location), label: "Confirm");
     } else {
       return Container();
     }

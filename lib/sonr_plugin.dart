@@ -42,14 +42,8 @@ class SonrService extends GetxService {
   /// Connection is current device Internet Connection
   final connection = Rx<Connection>(Connection.OFFLINE);
 
-  /// Local Peers is list of Peers nearby within OLC
-  final localPeers = RxList<Peer>();
-
   /// Recent Profiles is list of peers User interacts with
   final recentProfiles = RxList<ProfileList>();
-
-  /// Location is current user location
-  final location = Rx<Location>(Location());
 
   /// Profile is current user profile
   final profile = Rx<Profile>(Profile());
@@ -58,6 +52,7 @@ class SonrService extends GetxService {
   final status = Rx<Status>(Status.IDLE);
 
   // GRPC Streams
+  final _refreshEvents = StreamController<RefreshEvent>();
   final _decisionEvents = StreamController<DecisionEvent>();
   final _inviteEvents = StreamController<InviteEvent>();
   final _progressEvents = StreamController<ProgressEvent>();
@@ -71,43 +66,21 @@ class SonrService extends GetxService {
 
   /// ### Checks permissions and Returns GetxService
   /// Optional Params for: `Profile`, `Location`, and `Map<String, String>`
-  Future<SonrService> init({Profile? profile, Location? location}) async {
+  Future<SonrService> init() async {
     // Bind Network Connection stream to service
     Connectivity().onConnectivityChanged.listen((event) {
       this.connection(Connection.values[event.index]);
     });
-
-    // Set the location if provided
-    if (location != null) {
-      this.location(location);
-    }
-
-    // Set Profile if provided
-    if (profile != null) {
-      this.profile(profile);
-    }
     return this;
   }
 
   /// ### Connects to New Sonr GRPC Server on Swift, or Java
   /// Optional Params for: `Profile` and `Location`
-  Future<void> start({Profile? profile, Location? location}) async {
-    // Set the location if provided
-    if (location != null) {
-      this.location(location);
-      this.location.refresh();
-    }
-
-    // Set Profile if provided
-    if (profile != null) {
-      this.profile(profile);
-      this.profile.refresh();
-    }
-
+  Future<void> start({Profile? profile, required Location location}) async {
     // Create initialization request
     final request = await Config.newInitializeRequest(
-      location: this.location.value,
-      profile: this.profile.value,
+      location: location,
+      profile: profile,
     );
 
     // Await Response
@@ -141,8 +114,7 @@ class SonrService extends GetxService {
     // Handle Lobby Refresh
     _client.onLobbyRefresh(Empty()).listen(
       (value) {
-        localPeers(value.peers);
-        localPeers.refresh();
+        _refreshEvents.add(value);
       },
       onError: (err) => print("[RPC Client] ERROR: Listening to onLocalJoin \n" + err.toString()),
       cancelOnError: true,
@@ -317,6 +289,11 @@ class SonrService extends GetxService {
     final statRequest = StatRequest();
     final resp = await _client.stat(statRequest);
     return resp;
+  }
+
+  /// `StreamSubscription<DecisionEvent>` - Add Stream Listener for Decision Events
+  StreamSubscription<RefreshEvent> onRefresh(void Function(RefreshEvent)? onData, {Function? onError, void Function()? onDone, bool? cancelOnError}) {
+    return _refreshEvents.stream.listen(onData, onError: onError, onDone: onDone);
   }
 
   /// `StreamSubscription<DecisionEvent>` - Add Stream Listener for Decision Events

@@ -21,10 +21,9 @@ class ErrorPage extends StatelessWidget {
           Container(
             padding: EdgeInsets.only(bottom: 32),
             alignment: Alignment.bottomCenter,
-            child: ColorButton.neutral(
+            child: NeutralButton(
               onPressed: () => args.action(),
-              text: args.buttonText,
-              textColor: args.textColor,
+              label: args.buttonText,
             ),
           ),
         ],

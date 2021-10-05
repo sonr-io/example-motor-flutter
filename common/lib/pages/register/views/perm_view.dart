@@ -31,13 +31,13 @@ class PermissionsView extends GetView<RegisterController> {
                   if (Platform.isIOS) {
                     controller.nextPage(RegisterPageType.Notifications);
                   } else {
-                    AppPage.Home.off(args: HomeArguments.FirstLoad);
+                    AppPage.Home.off(args: HomeArguments.NewUser(controller.profile));
                   }
                 }
               } else if (item == RegisterPageType.Notifications) {
                 final result = await Permissions.Notifications.request();
                 if (result || await Permissions.Notifications.isGranted || Platform.isAndroid) {
-                  AppPage.Home.off(args: HomeArguments.FirstLoad);
+                  AppPage.Home.off(args: HomeArguments.NewUser(controller.profile));
                 }
               }
             },
@@ -65,10 +65,9 @@ class PermPanel extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocations.fixedCenterDocked,
       floatingActionButton: Padding(
         padding: const EdgeInsets.only(bottom: 32.0),
-        child: ColorButton.neutral(
+        child: NeutralButton(
           onPressed: () => onPressed(),
-          text: buttonText,
-          textColor: buttonTextColor,
+          label: buttonText,
         ),
       ),
       body: Container(

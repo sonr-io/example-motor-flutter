@@ -27,7 +27,12 @@ class PeerListItem extends StatelessWidget {
         _buildSName(),
         style: AppTextStyles.bodyCaptionRegular,
       ),
-      trailing: withInviteButton ? _buildInviteButton(context) : null,
+      trailing: withInviteButton
+          ? NeutralButton(
+              onPressed: () => SonrService.to.share(peer),
+              label: "Invite",
+            )
+          : null,
     );
   }
 
@@ -41,18 +46,5 @@ class PeerListItem extends StatelessWidget {
         return "test.snr/";
       }
     }
-  }
-
-  Widget _buildInviteButton(BuildContext context) {
-    return Container(
-      width: 75,
-      padding: EdgeInsets.symmetric(vertical: 8),
-      decoration: BoxDecoration(
-        border: Get.isDarkMode ? AppBorders.buttonCircleDark : AppBorders.buttonCircleLight,
-        borderRadius: BorderRadius.circular(90),
-        color: Colors.transparent,
-      ),
-      child: Text("Invite", style: AppTextStyles.buttonSmall),
-    );
   }
 }

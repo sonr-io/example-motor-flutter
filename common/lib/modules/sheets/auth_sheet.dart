@@ -25,13 +25,12 @@ class InviteRequestSheet extends StatelessWidget {
             Text(invite.payload.size.toString()),
             Padding(
               padding: const EdgeInsets.only(top: 8.0),
-              child: ColorButton.primary(
+              child: SecondaryButton(
                 onPressed: () {
                   SonrService.to.respond(true, invite.from);
                 },
-                text: "Accept",
-                icon: SimpleIcons.Check,
-                margin: EdgeInsets.symmetric(horizontal: 54),
+                label: "Accept",
+                iconData: SimpleIcons.Check,
               ),
             ),
           ],

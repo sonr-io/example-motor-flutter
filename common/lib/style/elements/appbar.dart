@@ -131,7 +131,7 @@ class DetailAppBar extends StatelessWidget implements PreferredSizeWidget {
           padding: EdgeInsets.only(top: 24, bottom: 24),
           child: NavigationToolbar(
             centerMiddle: false,
-            leading: ActionButton(
+            leading: AppBarButton(
               onPressed: onPressed,
               iconData: isClose ? SimpleIcons.Close : SimpleIcons.Back,
             ),
@@ -147,7 +147,7 @@ class DetailAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size(Get.width, kToolbarHeight + 32);
+  Size get preferredSize => Size(Get.width, 92);
 
   Widget _buildTrailing() {
     return action != null ? action! : Container(width: 32, height: 32);

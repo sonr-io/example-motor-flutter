@@ -1,3 +1,4 @@
+import 'package:sonr_app/style/form/textfield.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/pages/register/register.dart';
 import 'package:sonr_app/theme/theme.dart';
@@ -62,7 +63,8 @@ class _NamePage extends GetView<RegisterController> {
                 Text("User ID Name".toUpperCase(), style: AppTextStyles.hairlineDefault),
                 Obx(() => Container(
                       child: controller.sName.value.length > 0
-                          ? ActionButton(
+                          ? CircleButton(
+                              size: CircleButtonSize.Small,
                               onPressed: () {
                                 controller.sName("");
                                 controller.sName.refresh();
@@ -140,7 +142,8 @@ class _BackupCodeView extends GetView<RegisterController> {
                     children: [
                       Align(
                         alignment: Alignment.topRight,
-                        child: ActionButton(
+                        child: CircleButton(
+                          size: CircleButtonSize.Small,
                           iconData: SimpleIcons.Info,
                           onPressed: () {
                             AppRoute.alert(

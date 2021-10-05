@@ -7,57 +7,55 @@ import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/pages/home/controller.dart';
 import 'nearby/nearby_row.dart';
 
-
 class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     // Return View
-    return Obx(
-      () => SonrScaffold(
-        resizeToAvoidBottomInset: false,
-        floatingAction: HomeFloatingBar(),
-        appBar: AppBar(
-          toolbarHeight: 92,
-          elevation: 0,
-          backgroundColor: AppColors.neutrals1,
-          title: Container(
-            padding: const EdgeInsets.all(8.0),
-            child: Get.isDarkMode
-                ? SvgPicture.asset(
-                    "assets/images/logos/home-sonr-dark.svg",
-                    height: 32,
-                  )
-                : SvgPicture.asset(
-                    "assets/images/logos/home-sonr-light.svg",
-                    height: 32,
-                    cacheColorFilter: true,
-                  ),
-          ),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: IconButton(
-                icon: Get.isDarkMode ? SimpleIcons.Menu.white : SimpleIcons.Menu.white,
-                onPressed: () {},
-              ),
-            )
-          ],
-          bottom: SonrService.to.localPeers.isNotEmpty ? NearbyRow() : null,
+    return SonrScaffold(
+      resizeToAvoidBottomInset: false,
+      floatingAction: HomeFloatingBar(),
+      appBar: AppBar(
+        toolbarHeight: 92,
+        elevation: 0,
+        backgroundColor: AppColors.neutrals1,
+        title: Container(
+          padding: const EdgeInsets.all(8.0),
+          child: Get.isDarkMode
+              ? SvgPicture.asset(
+                  "assets/images/logos/home-sonr-dark.svg",
+                  height: 32,
+                )
+              : SvgPicture.asset(
+                  "assets/images/logos/home-sonr-light.svg",
+                  height: 32,
+                  cacheColorFilter: true,
+                ),
         ),
-        body: Container(
-            child: TabBarView(
-          physics: NeverScrollableScrollPhysics(),
-          controller: controller.tabController,
-          children: [
-            // DashboardView(key: ValueKey<HomeView>(HomeView.Dashboard)),
-            Container(),
-          ],
-        )),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: IconButton(
+              icon: Get.isDarkMode ? SimpleIcons.Menu.white : SimpleIcons.Menu.white,
+              onPressed: () {
+                controller.edit();
+              },
+            ),
+          )
+        ],
+        bottom: NearbyRow(),
       ),
+      body: Container(
+          child: TabBarView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: controller.tabController,
+        children: [
+          // DashboardView(key: ValueKey<HomeView>(HomeView.Dashboard)),
+          Container(),
+        ],
+      )),
     );
   }
 }
-
 
 /// #### Home Tab Bar Navigation
 class HomeFloatingBar extends GetWidget<HomeController> {

@@ -2,9 +2,7 @@
 export 'package:animate_do/animate_do.dart';
 export 'package:sonr_plugin/sonr_plugin.dart';
 export 'package:sonr_app/data/data.dart';
-export 'buttons/action.dart';
-export 'buttons/color.dart';
-export 'buttons/solid.dart';
+export '../components/components.dart';
 export 'icons/icons.dart';
 
 // Theme Components
