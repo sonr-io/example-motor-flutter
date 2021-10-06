@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:sonr_app/modules/modals/modals.dart';
 import 'package:sonr_app/style/style.dart';
 import 'home.dart';
 
@@ -114,7 +115,8 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   late ScrollController scrollController;
   late TabController tabController;
   final localPeers = RxList<Peer>();
-  late StreamSubscription<RefreshEvent> _subscription;
+  late StreamSubscription<RefreshEvent> _refreshSubscription;
+  late StreamSubscription<InviteEvent> _inviteSubscription;
   late Profile profile;
 
   /// #### Controller Constructer
@@ -129,14 +131,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     );
 
     // Connect to Network
-    HomeArguments? args = Get.arguments;
-    if (args != null) {
-      if (args.isNewUser) {
-        connect();
-      } else if (args.isFirstLoad) {
-        connect();
-      }
-    }
+    connect();
 
     // Handle Tab Controller
     tabController = TabController(vsync: this, length: 1);
@@ -148,8 +143,18 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
 
   @override
   void onClose() {
-    _subscription.cancel();
+    _refreshSubscription.cancel();
+    _inviteSubscription.cancel();
     super.onClose();
+  }
+
+  void handleInvite(InviteEvent event) {
+    Get.dialog(
+      InviteModal(event: event),
+      barrierDismissible: true,
+      barrierColor: Colors.transparent,
+      useSafeArea: false,
+    );
   }
 
   void handleRefresh(RefreshEvent event) {
@@ -160,9 +165,9 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
 
   Future<void> connect() async {
     final loc = await LocationUtil.current(requestIfNoPermission: true);
-    print("Find Location: \n" + "\t${loc.toString()}");
     await SonrService.to.start(location: loc, profile: profile);
-    _subscription = SonrService.to.onRefresh(handleRefresh);
+    _refreshSubscription = SonrService.to.onRefresh(handleRefresh);
+    _inviteSubscription = SonrService.to.onInvite(handleInvite);
   }
 
   Future<void> edit() async {

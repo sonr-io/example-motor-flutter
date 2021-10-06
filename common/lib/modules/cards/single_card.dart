@@ -1,4 +1,4 @@
-import '../payload/content/content.dart';
+import 'content/content.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 

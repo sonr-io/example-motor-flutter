@@ -290,11 +290,7 @@ class ErrorPageArgs {
     } else if (type == ErrorPageType.PermNotifications) {
       await Permissions.Notifications.request();
     } else if (type == ErrorPageType.NoNetwork) {
-      if (SonrService.to.connection.value.isOnline) {
         AppRoute.close();
-      } else {
-        AppRoute.snack(SnackArgs.error("Network has still not been found."));
-      }
     } else {
       AppRoute.close();
     }

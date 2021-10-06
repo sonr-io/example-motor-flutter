@@ -26,7 +26,7 @@ extension ComposeStatusUtil on ComposeStatus {
 }
 
 /// #### Invite Composer for Remote Transfer
-class InviteComposer extends GetView<HomeController> {
+class ComposerModal extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Container(

@@ -54,8 +54,8 @@ class BlurredBackground extends StatelessWidget {
                   }
                 },
                 child: Container(
-                  width: Width.full,
-                  height: Height.full,
+                  width: Get.width,
+                  height: Get.height,
                 ),
               ),
             ),

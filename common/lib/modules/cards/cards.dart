@@ -1,3 +1,3 @@
-export 'general/multi_card.dart';
-export 'general/single_card.dart';
+export 'multi_card.dart';
+export 'single_card.dart';
 
