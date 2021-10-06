@@ -28,34 +28,13 @@ class Config {
     }
   }
 
-  /// Method Creates New Initialize Request
-  /// Given Location, and Profile
-  static Future<InitializeRequest> newInitializeRequest({required Location location, Profile? profile, Map<String, String>? envVars}) async {
-    // Print Provided EnvVars count
-    print('Provided Enviornment Vars Count: ${envVars?.length ?? 0}');
-
-    // Set Options
-    final deviceOpts = await _getDeviceOpts();
-    final connection = await _getConnection();
-    final hostOpts = await _getHostOptions();
-    return InitializeRequest(
-      connection: connection,
-      location: location,
-      hostOptions: hostOpts,
-      profile: profile,
-      deviceOptions: deviceOpts,
-      variables: envVars,
-      environment: BuildModeUtil.toEnvironment(),
-    );
-  }
-
   /// Method Gets Environment
   static Future<Environment> getEnvironment() async {
     return BuildModeUtil.toEnvironment();
   }
 
   /// Method gets device info
-  static Future<InitializeRequest_DeviceOptions> _getDeviceOpts() async {
+  static Future<InitializeRequest_DeviceOptions> getDeviceOpts() async {
     // Get Default Directories
     final documentsPath = await getApplicationDocumentsDirectory();
     final supportPath = await createFolderInAppDocDir('Support');
@@ -63,7 +42,7 @@ class Config {
     final textilePath = await createFolderInAppDocDir('Textile');
     final downloadsPath = await createFolderInAppDocDir('Downloads');
     final temporaryPath = await getTemporaryDirectory();
-    final deviceId = await _getDeviceId();
+    final deviceId = await getDeviceId();
 
     // Return Device Options
     return InitializeRequest_DeviceOptions(
@@ -78,13 +57,13 @@ class Config {
   }
 
   /// Method Gets Connection Info
-  static Future<Connection> _getConnection() async {
+  static Future<Connection> getConnection() async {
     var connectivityResult = await (Connectivity().checkConnectivity());
     return Connection.values[connectivityResult.index];
   }
 
   /// Method gets device id
-  static Future<String?> _getDeviceId() async {
+  static Future<String?> getDeviceId() async {
     final DeviceInfoPlugin deviceInfoPlugin = DeviceInfoPlugin();
     // UUID for Android
     if (Platform.isAndroid) {
@@ -101,29 +80,29 @@ class Config {
   }
 
   /// Method gets Network Info
-  static Future<InitializeRequest_HostOptions> _getHostOptions() async {
-    final info = NetworkInfo();
-    var wifiName = await info.getWifiName();
-    var wifiIP = await info.getWifiIP(); // 192.168.1.43
-    if (wifiIP != null) {
-      return InitializeRequest_HostOptions(listenAddrs: [
-        InitializeRequest_IPAddress(
-          name: wifiName,
-          address: wifiIP,
-          family: InitializeRequest_IPAddress_Family.IPV4,
-        )
-      ]);
-    }
-    var wifiIPv6 = await info.getWifiIPv6(); // 2001:0db8:85a3:0000:0000:8a2e:0370:7334
-    if (wifiIPv6 != null) {
-      return InitializeRequest_HostOptions(listenAddrs: [
-        InitializeRequest_IPAddress(
-          name: wifiName,
-          address: wifiIP,
-          family: InitializeRequest_IPAddress_Family.IPV4,
-        )
-      ]);
-    }
+  static Future<InitializeRequest_HostOptions> getHostOptions() async {
+    NetworkInfo();
+    //var wifiName = await info.getWifiName();
+    //var wifiIP = await info.getWifiIP(); // 192.168.1.43
+    // if (wifiIP != null) {
+    //   return InitializeRequest_HostOptions(listenAddrs: [
+    //     InitializeRequest_IPAddress(
+    //       name: wifiName,
+    //       address: wifiIP,
+    //       family: InitializeRequest_IPAddress_Family.IPV4,
+    //     )
+    //   ]);
+    // }
+    // var wifiIPv6 = await info.getWifiIPv6(); // 2001:0db8:85a3:0000:0000:8a2e:0370:7334
+    // if (wifiIPv6 != null) {
+    //   return InitializeRequest_HostOptions(listenAddrs: [
+    //     InitializeRequest_IPAddress(
+    //       name: wifiName,
+    //       address: wifiIP,
+    //       family: InitializeRequest_IPAddress_Family.IPV4,
+    //     )
+    //   ]);
+    // }
     return InitializeRequest_HostOptions();
   }
 }

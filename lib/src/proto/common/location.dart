@@ -80,9 +80,8 @@ class LocationUtil {
         }
       }
     }
-
     // Check if permissions permanently denied.
-    if (permission == LocationPermission.deniedForever) {
+    else if (permission == LocationPermission.deniedForever) {
       return Future.error('Location permissions are permanently denied, we cannot request permissions.');
     }
 

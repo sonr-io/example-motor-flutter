@@ -380,7 +380,7 @@ class InitializeRequest_ServiceOptions extends $pb.GeneratedMessage {
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'textile')
     ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mailbox')
     ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'buckets')
-    ..aOB(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'autoUpdate', protoName: 'autoUpdate')
+    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'interval', $pb.PbFieldType.O3)
     ..hasRequiredFields = false
   ;
 
@@ -389,7 +389,7 @@ class InitializeRequest_ServiceOptions extends $pb.GeneratedMessage {
     $core.bool? textile,
     $core.bool? mailbox,
     $core.bool? buckets,
-    $core.bool? autoUpdate,
+    $core.int? interval,
   }) {
     final _result = create();
     if (textile != null) {
@@ -401,8 +401,8 @@ class InitializeRequest_ServiceOptions extends $pb.GeneratedMessage {
     if (buckets != null) {
       _result.buckets = buckets;
     }
-    if (autoUpdate != null) {
-      _result.autoUpdate = autoUpdate;
+    if (interval != null) {
+      _result.interval = interval;
     }
     return _result;
   }
@@ -455,13 +455,13 @@ class InitializeRequest_ServiceOptions extends $pb.GeneratedMessage {
   void clearBuckets() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.bool get autoUpdate => $_getBF(3);
+  $core.int get interval => $_getIZ(3);
   @$pb.TagNumber(4)
-  set autoUpdate($core.bool v) { $_setBool(3, v); }
+  set interval($core.int v) { $_setSignedInt32(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasAutoUpdate() => $_has(3);
+  $core.bool hasInterval() => $_has(3);
   @$pb.TagNumber(4)
-  void clearAutoUpdate() => clearField(4);
+  void clearInterval() => clearField(4);
 }
 
 class InitializeRequest_IPAddress extends $pb.GeneratedMessage {

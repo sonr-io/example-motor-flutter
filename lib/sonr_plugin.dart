@@ -4,7 +4,6 @@ import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:fixnum/fixnum.dart' as fixnum;
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -39,14 +38,8 @@ class SonrService extends GetxService {
   /// Quick Static Accessor to verify service registered
   static bool get isRegistered => Get.isRegistered<SonrService>();
 
-  /// Connection is current device Internet Connection
-  final connection = Rx<Connection>(Connection.OFFLINE);
-
   /// Recent Profiles is list of peers User interacts with
   final recentProfiles = RxList<ProfileList>();
-
-  /// Profile is current user profile
-  final profile = Rx<Profile>(Profile());
 
   /// Status is the status of the Sonr RPC Server
   final status = Rx<Status>(Status.IDLE);
@@ -73,22 +66,24 @@ class SonrService extends GetxService {
   Future<SonrService> init({Map<String, String>? enviornmentVariables}) async {
     // Set Enviornment Variables
     _enviornmentVariables = enviornmentVariables;
-
-    // Bind Network Connection stream to service
-    Connectivity().onConnectivityChanged.listen((event) {
-      this.connection(Connection.values[event.index]);
-    });
     return this;
   }
 
   /// ### Connects to New Sonr GRPC Server on Swift, or Java
   /// Optional Params for: `Profile` and `Location`
   Future<void> start({Profile? profile, required Location location}) async {
-    // Create initialization request
-    final request = await Config.newInitializeRequest(
+    // Set Options
+    final deviceOpts = await Config.getDeviceOpts();
+    final connection = await Config.getConnection();
+    final hostOpts = await Config.getHostOptions();
+    final request = InitializeRequest(
+      connection: connection,
       location: location,
+      hostOptions: hostOpts,
       profile: profile,
-      envVars: _enviornmentVariables,
+      deviceOptions: deviceOpts,
+      variables: _enviornmentVariables,
+      environment: BuildModeUtil.toEnvironment(),
     );
 
     // Delete Enviornment Variables Ref
@@ -99,17 +94,7 @@ class SonrService extends GetxService {
     if (respBuf is Uint8List) {
       // Parse Response
       final resp = InitializeResponse.fromBuffer(respBuf.toList());
-
-      // Add Profile from Memory
-      if (resp.hasProfile()) {
-        this.profile(resp.profile);
-        this.profile.refresh();
-        print('Profile: ${this.profile.value.toString()}');
-      }
-
-      // Add Recent Profiles from Memory
       recentProfiles.addAll(resp.recents.values.toList());
-      print(resp.toString());
     }
 
     // Create a client channel and client
@@ -271,11 +256,6 @@ class SonrService extends GetxService {
       // Add all profiles to list
       recentProfiles(respLists);
       recentProfiles.refresh();
-    }
-
-    // Check if profile provided
-    if (resp.hasProfile()) {
-      profile(resp.profile);
     }
     return resp;
   }
