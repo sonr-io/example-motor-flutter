@@ -8,9 +8,8 @@ import 'package:sonr_plugin/sonr_plugin.dart';
 /// #### PeerListItem for Remote View
 class PeerListItem extends StatelessWidget {
   final Peer peer;
-  final int index;
   final bool withInviteButton;
-  PeerListItem({required this.peer, required this.index, this.withInviteButton = false});
+  PeerListItem({required this.peer, this.withInviteButton = false});
   @override
   Widget build(BuildContext context) {
     return ListTile(

@@ -41,9 +41,7 @@ class NearbyList extends GetView<HomeController> {
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
               icon: Get.isDarkMode ? SimpleIcons.Menu.white : SimpleIcons.Menu.white,
-              onPressed: () {
-
-              },
+              onPressed: () {},
             ),
           )
         ],
@@ -54,7 +52,6 @@ class NearbyList extends GetView<HomeController> {
               itemBuilder: (context, index) {
                 return PeerListItem(
                   peer: controller.localPeers[index],
-                  index: index,
                   withInviteButton: true,
                 );
               })

@@ -45,9 +45,9 @@ class SonrService extends GetxService {
   final status = Rx<Status>(Status.IDLE);
 
   // GRPC Streams
-  final _refreshEvents = StreamController<RefreshEvent>();
   final _decisionEvents = StreamController<DecisionEvent>();
-  final _mailboxEvents = StreamController<MailboxEvent>();
+  final _refreshEvents = StreamController<RefreshEvent>();
+  // final _mailboxEvents = StreamController<MailboxEvent>();
   final _inviteEvents = StreamController<InviteEvent>();
   final _progressEvents = StreamController<ProgressEvent>();
   final _completeEvents = StreamController<CompleteEvent>();
@@ -82,7 +82,7 @@ class SonrService extends GetxService {
       hostOptions: hostOpts,
       profile: profile,
       deviceOptions: deviceOpts,
-      variables: _enviornmentVariables,
+     variables: _enviornmentVariables,
       environment: BuildModeUtil.toEnvironment(),
     );
 
@@ -109,21 +109,19 @@ class SonrService extends GetxService {
 
     // Handle Lobby Refresh
     _client.onLobbyRefresh(Empty()).listen(
-      (value) {
-        _refreshEvents.add(value);
-      },
-      onError: (err) => print("[RPC Client] ERROR: Listening to onLobbyRefresh \n" + err.toString()),
-      cancelOnError: true,
-    );
+          (value) => _refreshEvents.add(value),
+          onError: (err) => print("[RPC Client] ERROR: Listening to onLobbyRefresh \n" + err.toString()),
+          cancelOnError: true,
+        );
 
-    // Handle Mail Messages
-    _client.onMailboxMessage(Empty()).listen(
-      (value) {
-        _mailboxEvents.add(value);
-      },
-      onError: (err) => print("[RPC Client] ERROR: Listening to onMailboxMessage \n" + err.toString()),
-      cancelOnError: true,
-    );
+    // // Handle Mail Messages
+    // _client.onMailboxMessage(Empty()).listen(
+    //   (value) {
+    //     _mailboxEvents.add(value);
+    //   },
+    //   onError: (err) => print("[RPC Client] ERROR: Listening to onMailboxMessage \n" + err.toString()),
+    //   cancelOnError: true,
+    // );
 
     // Create Decision Stream
     _client.onTransferAccepted(Empty()).listen(
@@ -179,7 +177,7 @@ class SonrService extends GetxService {
     await _inviteEvents.close();
     await _progressEvents.close();
     await _refreshEvents.close();
-    await _mailboxEvents.close();
+    //await _mailboxEvents.close();
     await _channel.shutdown();
     await _actionChannel.invokeMethod('stop');
     status(Status.STOPPED);
@@ -294,11 +292,6 @@ class SonrService extends GetxService {
   }
 
   /// `StreamSubscription<DecisionEvent>` - Add Stream Listener for Decision Events
-  StreamSubscription<RefreshEvent> onRefresh(void Function(RefreshEvent)? onData, {Function? onError, void Function()? onDone, bool? cancelOnError}) {
-    return _refreshEvents.stream.listen(onData, onError: onError, onDone: onDone);
-  }
-
-  /// `StreamSubscription<DecisionEvent>` - Add Stream Listener for Decision Events
   StreamSubscription<DecisionEvent> onDecision(void Function(DecisionEvent)? onData,
       {Function? onError, void Function()? onDone, bool? cancelOnError}) {
     return _decisionEvents.stream.listen(onData, onError: onError, onDone: onDone);
@@ -313,6 +306,11 @@ class SonrService extends GetxService {
   StreamSubscription<ProgressEvent> onProgress(void Function(ProgressEvent)? onData,
       {Function? onError, void Function()? onDone, bool? cancelOnError}) {
     return _progressEvents.stream.listen(onData, onError: onError, onDone: onDone);
+  }
+
+  /// `StreamSubscription<ProgressEvent>` - Add Stream Listener for Progress Events
+  StreamSubscription<RefreshEvent> onRefresh(void Function(RefreshEvent)? onData, {Function? onError, void Function()? onDone, bool? cancelOnError}) {
+    return _refreshEvents.stream.listen(onData, onError: onError, onDone: onDone);
   }
 
   /// `StreamSubscription<CompleteEvent>` - Add Stream Listener for Complete Events

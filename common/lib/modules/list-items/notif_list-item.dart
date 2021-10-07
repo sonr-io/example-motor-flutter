@@ -14,15 +14,17 @@ class NotificationListItem extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: ProfileAvatar(
-        picture: profile.picture.toUint8List(),
-        platform: platform,
+    return Container(
+      child: ListTile(
+        leading: ProfileAvatar(
+          picture: profile.picture.toUint8List(),
+          platform: platform,
+        ),
+        title: _buildTitle(Get.isDarkMode),
+        subtitle: _buildSubtitle(Get.isDarkMode),
+        minLeadingWidth: 48,
+        minVerticalPadding: 8,
       ),
-      title: _buildTitle(Get.isDarkMode),
-      subtitle: _buildSubtitle(Get.isDarkMode),
-      minLeadingWidth: 48,
-      minVerticalPadding: 8,
     );
   }
 

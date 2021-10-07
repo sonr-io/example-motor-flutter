@@ -1,4 +1,3 @@
-
 import 'package:sonr_app/modules/list-items/peer_list-item.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
@@ -11,6 +10,8 @@ class NearbyRow extends GetView<HomeController> implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      width: Get.width,
+      height: Get.height * 0.13,
       padding: EdgeInsets.only(top: 16),
       margin: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
@@ -33,6 +34,7 @@ class NearbyRow extends GetView<HomeController> implements PreferredSizeWidget {
           SizedBox(height: 16),
           Container(
               height: 64,
+              width: Get.width,
               child: Obx(
                 () => ListView.builder(
                   scrollDirection: Axis.horizontal,
@@ -40,7 +42,6 @@ class NearbyRow extends GetView<HomeController> implements PreferredSizeWidget {
                   itemBuilder: (context, index) {
                     return PeerListItem(
                       peer: controller.localPeers[index],
-                      index: index,
                     );
                   },
                 ),
@@ -51,5 +52,5 @@ class NearbyRow extends GetView<HomeController> implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size(Get.width, Get.height * 0.14);
+  Size get preferredSize => Size(Get.width, Get.height * 0.15);
 }

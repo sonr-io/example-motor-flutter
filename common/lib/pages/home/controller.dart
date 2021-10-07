@@ -100,6 +100,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   final appbarOpacity = 1.0.obs;
   final isConnecting = true.obs;
   final view = HomeView.Dashboard.obs;
+  final localPeers = <Peer>[].obs;
 
   // Propeties
   final query = "".obs;
@@ -114,8 +115,6 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   // References
   late ScrollController scrollController;
   late TabController tabController;
-  final localPeers = RxList<Peer>();
-  late StreamSubscription<RefreshEvent> _refreshSubscription;
   late StreamSubscription<InviteEvent> _inviteSubscription;
   late Profile profile;
 
@@ -143,7 +142,6 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
 
   @override
   void onClose() {
-    _refreshSubscription.cancel();
     _inviteSubscription.cancel();
     super.onClose();
   }
@@ -158,7 +156,6 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   }
 
   void handleRefresh(RefreshEvent event) {
-    print(event.peers.toString());
     localPeers(event.peers);
     localPeers.refresh();
   }
@@ -166,7 +163,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   Future<void> connect() async {
     final loc = await LocationUtil.current(requestIfNoPermission: true);
     await SonrService.to.start(location: loc, profile: profile);
-    _refreshSubscription = SonrService.to.onRefresh(handleRefresh);
+
     _inviteSubscription = SonrService.to.onInvite(handleInvite);
   }
 
