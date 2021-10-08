@@ -63,9 +63,9 @@ class SonrService extends GetxService {
 
   /// ### Checks permissions and Returns GetxService
   /// Optional Params for: `Profile`, `Location`, and `Map<String, String>`
-  Future<SonrService> init({Map<String, String>? enviornmentVariables}) async {
-    // Set Enviornment Variables
-    _enviornmentVariables = enviornmentVariables;
+  Future<SonrService> init({Map<String, String>? vars}) async {
+    // Set Enviornment Variables from OS
+    _enviornmentVariables = vars ?? <String, String>{};
     return this;
   }
 
@@ -82,7 +82,7 @@ class SonrService extends GetxService {
       hostOptions: hostOpts,
       profile: profile,
       deviceOptions: deviceOpts,
-     variables: _enviornmentVariables,
+      variables: _enviornmentVariables,
       environment: BuildModeUtil.toEnvironment(),
     );
 

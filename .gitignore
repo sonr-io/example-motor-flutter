@@ -57,6 +57,8 @@ dist/
 **/android/libs/**.aar
 
 # iOS/XCode related
+**/.env
+**/*.env
 **/ios/Frameworks/**.xcframework
 **/ios/fastlane/report.xml
 **/ios/**/*.mode1v3
