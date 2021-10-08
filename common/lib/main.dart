@@ -1,35 +1,17 @@
 import 'dart:async';
-
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 import 'package:get/get.dart';
 import 'package:sonr_app/style/style.dart';
 import 'theme/theme.dart';
 
-/// #### Application Services
-Future<void> initServices() async {
-  bool hasEnv = false;
-
-  // Initialize Services
-  try {
-    await dotenv.load(fileName: ".env");
-    hasEnv = true;
-  } catch (e) {
-    print(".env File not Found");
-    hasEnv = false;
-  }
-
-  // Initialize Sonr
-  await Get.putAsync(() => SonrService().init(enviornmentVariables: hasEnv ? dotenv.env : null), permanent: true);
-}
-
 /// #### Main Method
 Future<void> main() async {
   // Init Services
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Services
-  await initServices();
+  await Get.putAsync(
+    () => SonrService().init(vars: Map.fromEntries(EnvVars.values.map((e) => e.mapEntry))),
+    permanent: true,
+  );
 
   // Check Platform
   runApp(SplashPage());
@@ -79,7 +61,7 @@ class SplashPage extends StatelessWidget {
                   delay: 2222.milliseconds,
                   child: Text(
                     "Sonr",
-                    style: AppTextStyles.hero,
+                    style: AppTextStyles.headline02,
                   )),
             ),
           ],

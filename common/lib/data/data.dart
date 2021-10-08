@@ -1,7 +1,7 @@
 // Core
 export 'core/arguments.dart';
 export 'core/routing.dart';
-
+export 'core/env.dart';
 
 // Models
 export 'models/animation.dart';

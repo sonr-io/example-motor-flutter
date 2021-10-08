@@ -22,7 +22,6 @@ dependencies:
   # ** - User Defined - **
   # -- Management --
   bip39: ^1.0.6
-  flutter_dotenv: ^5.0.2
   intercom_flutter: ^5.0.2
   intl: ^0.17.0
 
@@ -46,7 +45,7 @@ dependencies:
   # -- UI/UX --
   animate_do: ^2.0.0
   flutter_svg: ^0.22.0
-  introduction_screen: ^2.1.0
+  dots_indicator: ^2.0.0
   lottie: ^1.1.0
   pin_code_fields: ^7.3.0
   rive: ^0.7.28
@@ -92,7 +91,6 @@ flutter:
 
   # -- Media --
   assets:
-    - .env
     - assets/animations/
     - assets/animations/permissions/
     - assets/fonts/
