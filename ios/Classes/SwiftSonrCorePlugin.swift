@@ -29,8 +29,8 @@ public class SwiftSonrCorePlugin: NSObject, FlutterPlugin {
     // Starts the Node
     case "start":
       let args = call.arguments as! FlutterStandardTypedData
-      let data = Core.LibStart(args.data)
-      result(FlutterStandardTypedData(bytes: data!))
+      Core.LibStart(args.data)
+      result(nil)
 
     // Resumes the Node
     case "resume":

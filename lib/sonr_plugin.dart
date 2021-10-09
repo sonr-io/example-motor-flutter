@@ -8,15 +8,12 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:grpc/grpc.dart';
-import 'src/models.dart';
-import 'src/proto/proto.dart';
-export 'src/models.dart';
+import 'src/src.dart';
 export 'package:path/path.dart';
 export 'package:path_provider/path_provider.dart';
 export 'package:open_file/open_file.dart';
 export 'package:get/get.dart';
-export 'src/proto/proto.dart';
-export 'src/extensions/extensions.dart';
+export 'src/src.dart';
 
 /// [RPC_HOST] is the address for Sonr RPC Node
 const RPC_HOST = 'localhost';
@@ -88,14 +85,7 @@ class SonrService extends GetxService {
 
     // Delete Enviornment Variables Ref
     _enviornmentVariables = null;
-
-    // Await Response
-    final respBuf = await _actionChannel.invokeMethod('start', request.writeToBuffer());
-    if (respBuf is Uint8List) {
-      // Parse Response
-      final resp = InitializeResponse.fromBuffer(respBuf.toList());
-      recentProfiles.addAll(resp.recents.values.toList());
-    }
+    _actionChannel.invokeMethod('start', request.writeToBuffer());
 
     // Create a client channel and client
     _channel = ClientChannel(RPC_HOST,

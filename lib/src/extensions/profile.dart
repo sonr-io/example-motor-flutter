@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:flutter/widgets.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
+import 'package:sonr_plugin/src/proto/proto.dart';
 
 /// ### ProfileUtils
 /// Dart Extension for `Profile` Protobuf Class

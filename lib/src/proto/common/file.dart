@@ -1,4 +1,4 @@
-import '../proto.dart';
+import '../../src.dart';
 import 'package:open_file/open_file.dart';
 import 'package:url_launcher/url_launcher.dart';
 

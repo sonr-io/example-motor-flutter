@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:get/get.dart';
-import 'package:showcaseview/showcaseview.dart';
 import 'package:sonr_app/pages/details/details.dart';
 import 'package:sonr_app/pages/home/home.dart';
 import 'package:sonr_app/pages/register/onboarding.dart';
@@ -120,10 +119,9 @@ extension AppRoute on AppPage {
         return () => OnboardingPage();
       default:
         return () {
-          return ShowCaseWidget(
-              builder: Builder(
+          return Builder(
             builder: (_) => HomePage(),
-          ));
+          );
         };
     }
   }

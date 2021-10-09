@@ -1,5 +1,5 @@
 export 'node/api.pb.dart';
-export 'node/event.dart';
+export 'common/event.dart';
 export 'node/client.pbgrpc.dart';
 export 'common/core.pb.dart';
 export 'common/data.pb.dart';

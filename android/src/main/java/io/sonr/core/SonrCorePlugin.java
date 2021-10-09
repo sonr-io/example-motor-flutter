@@ -36,8 +36,8 @@ public class SonrCorePlugin implements FlutterPlugin, MethodCallHandler {
       // Starts the Node
       case "start":
         final byte[] initArgs = call.arguments();
-        final byte[] initResp = Lib.start(initArgs);
-        result.success(initResp);
+        Lib.start(initArgs);
+        result.success(null);
         break;
 
       // Resumes the Node

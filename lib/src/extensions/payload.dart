@@ -1,3 +1,4 @@
+import 'package:sonr_plugin/src/proto/proto.dart';
 import '../../sonr_plugin.dart';
 
 extension PayloadUtils on Payload {

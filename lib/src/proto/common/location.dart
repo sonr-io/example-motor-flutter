@@ -1,6 +1,6 @@
 import 'package:geocoding/geocoding.dart' as geocoding;
 import 'package:geolocator/geolocator.dart';
-import '../proto.dart';
+import '../../src.dart';
 
 class LocationUtil {
   /// Checks if Location Services are enabled on the device.
