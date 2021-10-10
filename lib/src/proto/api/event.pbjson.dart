@@ -1,6 +1,6 @@
 ///
 //  Generated code. Do not modify.
-//  source: proto/common/event.proto
+//  source: proto/api/event.proto
 //
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields,deprecated_member_use_from_same_package
@@ -75,7 +75,7 @@ final $typed_data.Uint8List progressEventDescriptor = $convert.base64Decode('Cg1
 const CompleteEvent$json = const {
   '1': 'CompleteEvent',
   '2': const [
-    const {'1': 'direction', '3': 1, '4': 1, '5': 14, '6': '.sonr.core.CompleteEvent.Direction', '10': 'direction'},
+    const {'1': 'direction', '3': 1, '4': 1, '5': 14, '6': '.sonr.api.CompleteEvent.Direction', '10': 'direction'},
     const {'1': 'payload', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.Payload', '10': 'payload'},
     const {'1': 'from', '3': 3, '4': 1, '5': 11, '6': '.sonr.core.Peer', '10': 'from'},
     const {'1': 'to', '3': 4, '4': 1, '5': 11, '6': '.sonr.core.Peer', '10': 'to'},
@@ -96,4 +96,4 @@ const CompleteEvent_Direction$json = const {
 };
 
 /// Descriptor for `CompleteEvent`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List completeEventDescriptor = $convert.base64Decode('Cg1Db21wbGV0ZUV2ZW50EkAKCWRpcmVjdGlvbhgBIAEoDjIiLnNvbnIuY29yZS5Db21wbGV0ZUV2ZW50LkRpcmVjdGlvblIJZGlyZWN0aW9uEiwKB3BheWxvYWQYAiABKAsyEi5zb25yLmNvcmUuUGF5bG9hZFIHcGF5bG9hZBIjCgRmcm9tGAMgASgLMg8uc29uci5jb3JlLlBlZXJSBGZyb20SHwoCdG8YBCABKAsyDy5zb25yLmNvcmUuUGVlclICdG8SHAoJY3JlYXRlZEF0GAUgASgDUgljcmVhdGVkQXQSHgoKcmVjZWl2ZWRBdBgGIAEoA1IKcmVjZWl2ZWRBdCI0CglEaXJlY3Rpb24SCwoHREVGQVVMVBAAEgwKCElOQ09NSU5HEAESDAoIT1VUR09JTkcQAg==');
+final $typed_data.Uint8List completeEventDescriptor = $convert.base64Decode('Cg1Db21wbGV0ZUV2ZW50Ej8KCWRpcmVjdGlvbhgBIAEoDjIhLnNvbnIuYXBpLkNvbXBsZXRlRXZlbnQuRGlyZWN0aW9uUglkaXJlY3Rpb24SLAoHcGF5bG9hZBgCIAEoCzISLnNvbnIuY29yZS5QYXlsb2FkUgdwYXlsb2FkEiMKBGZyb20YAyABKAsyDy5zb25yLmNvcmUuUGVlclIEZnJvbRIfCgJ0bxgEIAEoCzIPLnNvbnIuY29yZS5QZWVyUgJ0bxIcCgljcmVhdGVkQXQYBSABKANSCWNyZWF0ZWRBdBIeCgpyZWNlaXZlZEF0GAYgASgDUgpyZWNlaXZlZEF0IjQKCURpcmVjdGlvbhILCgdERUZBVUxUEAASDAoISU5DT01JTkcQARIMCghPVVRHT0lORxAC');

@@ -1,8 +1,6 @@
 library sonr_plugin;
 
 import 'dart:async';
-import 'dart:typed_data';
-
 import 'package:fixnum/fixnum.dart' as fixnum;
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
@@ -39,7 +37,7 @@ class SonrService extends GetxService {
   final recentProfiles = RxList<ProfileList>();
 
   /// Status is the status of the Sonr RPC Server
-  final status = Rx<Status>(Status.IDLE);
+  //final status = Rx<Status>(Status.IDLE);
 
   // GRPC Streams
   final _decisionEvents = StreamController<DecisionEvent>();
@@ -72,11 +70,9 @@ class SonrService extends GetxService {
     // Set Options
     final deviceOpts = await Config.getDeviceOpts();
     final connection = await Config.getConnection();
-    final hostOpts = await Config.getHostOptions();
     final request = InitializeRequest(
       connection: connection,
       location: location,
-      hostOptions: hostOpts,
       profile: profile,
       deviceOptions: deviceOpts,
       variables: _enviornmentVariables,
@@ -157,7 +153,7 @@ class SonrService extends GetxService {
       onError: (err) => print("[RPC Client] ERROR: Listening to onTransferComplete \n" + err.toString()),
       cancelOnError: true,
     );
-    status(Status.ACTIVE);
+    // status(Status.ACTIVE);
   }
 
   /// #### Stops Sonr GRPC Server on Swift, or Java
@@ -170,19 +166,16 @@ class SonrService extends GetxService {
     //await _mailboxEvents.close();
     await _channel.shutdown();
     await _actionChannel.invokeMethod('stop');
-    status(Status.STOPPED);
   }
 
   /// #### Pauses Sonr GRPC Server on Swift, or Java
   Future<void> pause() async {
     await _actionChannel.invokeMethod('pause');
-    status(Status.PAUSED);
   }
 
   /// #### Resumes Sonr GRPC Server on Swift, or Java
   Future<void> resume() async {
     await _actionChannel.invokeMethod('resume');
-    status(Status.ACTIVE);
   }
 
   /// [pick()] Presents a native dialog for selecting files
@@ -271,13 +264,6 @@ class SonrService extends GetxService {
     // Create Request
     final searchRequest = SearchRequest(sName: sName);
     final resp = await _client.search(searchRequest);
-    return resp;
-  }
-
-  /// [stat()] Returns the status of the node.
-  Future<StatResponse> stat() async {
-    final statRequest = StatRequest();
-    final resp = await _client.stat(statRequest);
     return resp;
   }
 

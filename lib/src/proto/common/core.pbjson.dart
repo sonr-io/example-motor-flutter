@@ -204,6 +204,19 @@ const Social_Media$json = const {
 
 /// Descriptor for `Social`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List socialDescriptor = $convert.base64Decode('CgZTb2NpYWwSFAoFdmFsaWQYASABKAhSBXZhbGlkEhoKCHVzZXJuYW1lGAIgASgJUgh1c2VybmFtZRIQCgN1cmwYAyABKAlSA3VybBIYCgdwaWN0dXJlGAQgASgMUgdwaWN0dXJlEi0KBW1lZGlhGAUgASgOMhcuc29uci5jb3JlLlNvY2lhbC5NZWRpYVIFbWVkaWEiiAEKBU1lZGlhEgkKBU9USEVSEAASDAoIRkFDRUJPT0sQARILCgdUV0lUVEVSEAISCgoGTUVESVVNEAMSCgoGVElLVE9LEAQSDQoJSU5TVEFHUkFNEAUSCwoHWU9VVFVCRRAGEgoKBkdJVEhVQhAHEgwKCFNOQVBDSEFUEAgSCwoHU1BPVElGWRAJ');
+@$core.Deprecated('Use sNIDDescriptor instead')
+const SNID$json = const {
+  '1': 'SNID',
+  '2': const [
+    const {'1': 'domain', '3': 1, '4': 1, '5': 9, '10': 'domain'},
+    const {'1': 'publicKey', '3': 2, '4': 1, '5': 12, '10': 'publicKey'},
+    const {'1': 'peerId', '3': 3, '4': 1, '5': 9, '10': 'peerId'},
+    const {'1': 'deviceId', '3': 4, '4': 1, '5': 9, '10': 'deviceId'},
+  ],
+};
+
+/// Descriptor for `SNID`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List sNIDDescriptor = $convert.base64Decode('CgRTTklEEhYKBmRvbWFpbhgBIAEoCVIGZG9tYWluEhwKCXB1YmxpY0tleRgCIAEoDFIJcHVibGljS2V5EhYKBnBlZXJJZBgDIAEoCVIGcGVlcklkEhoKCGRldmljZUlkGAQgASgJUghkZXZpY2VJZA==');
 @$core.Deprecated('Use uUIDDescriptor instead')
 const UUID$json = const {
   '1': 'UUID',

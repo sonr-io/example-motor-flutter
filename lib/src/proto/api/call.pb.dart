@@ -1,6 +1,6 @@
 ///
 //  Generated code. Do not modify.
-//  source: proto/node/api.proto
+//  source: proto/api/call.proto
 //
 // @dart = 2.12
 // ignore_for_file: annotate_overrides,camel_case_types,unnecessary_const,non_constant_identifier_names,library_prefixes,unused_import,unused_shown_name,return_of_invalid_type,unnecessary_this,prefer_final_fields
@@ -9,16 +9,16 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import '../common/core.pb.dart' as $3;
-import '../common/data.pb.dart' as $4;
+import '../common/core.pb.dart' as $0;
+import '../common/data.pb.dart' as $1;
 
-import '../common/core.pbenum.dart' as $3;
-import 'api.pbenum.dart';
+import '../common/core.pbenum.dart' as $0;
+import 'call.pbenum.dart';
 
-export 'api.pbenum.dart';
+export 'call.pbenum.dart';
 
 class AuthorizeRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AuthorizeRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AuthorizeRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sName', protoName: 'sName')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mnemonic')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceId', protoName: 'deviceId')
@@ -93,10 +93,10 @@ class AuthorizeRequest extends $pb.GeneratedMessage {
 }
 
 class AuthorizeResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AuthorizeResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'AuthorizeResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
-    ..m<$core.String, $core.String>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'records', entryClassName: 'AuthorizeResponse.RecordsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('sonr.node'))
+    ..m<$core.String, $core.String>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'records', entryClassName: 'AuthorizeResponse.RecordsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('sonr.api'))
     ..hasRequiredFields = false
   ;
 
@@ -162,48 +162,23 @@ class AuthorizeResponse extends $pb.GeneratedMessage {
 }
 
 class InitializeRequest_DeviceOptions extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeRequest.DeviceOptions', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeRequest.DeviceOptions', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cacheDir', protoName: 'cacheDir')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'databaseDir', protoName: 'databaseDir')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'documentsDir', protoName: 'documentsDir')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'downloadsDir', protoName: 'downloadsDir')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'textileDir', protoName: 'textileDir')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportDir', protoName: 'supportDir')
+    ..m<$core.String, $core.String>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'folders', entryClassName: 'InitializeRequest.DeviceOptions.FoldersEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('sonr.api'))
     ..hasRequiredFields = false
   ;
 
   InitializeRequest_DeviceOptions._() : super();
   factory InitializeRequest_DeviceOptions({
     $core.String? id,
-    $core.String? cacheDir,
-    $core.String? databaseDir,
-    $core.String? documentsDir,
-    $core.String? downloadsDir,
-    $core.String? textileDir,
-    $core.String? supportDir,
+    $core.Map<$core.String, $core.String>? folders,
   }) {
     final _result = create();
     if (id != null) {
       _result.id = id;
     }
-    if (cacheDir != null) {
-      _result.cacheDir = cacheDir;
-    }
-    if (databaseDir != null) {
-      _result.databaseDir = databaseDir;
-    }
-    if (documentsDir != null) {
-      _result.documentsDir = documentsDir;
-    }
-    if (downloadsDir != null) {
-      _result.downloadsDir = downloadsDir;
-    }
-    if (textileDir != null) {
-      _result.textileDir = textileDir;
-    }
-    if (supportDir != null) {
-      _result.supportDir = supportDir;
+    if (folders != null) {
+      _result.folders.addAll(folders);
     }
     return _result;
   }
@@ -238,62 +213,11 @@ class InitializeRequest_DeviceOptions extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get cacheDir => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set cacheDir($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasCacheDir() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearCacheDir() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get databaseDir => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set databaseDir($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasDatabaseDir() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearDatabaseDir() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.String get documentsDir => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set documentsDir($core.String v) { $_setString(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasDocumentsDir() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearDocumentsDir() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $core.String get downloadsDir => $_getSZ(4);
-  @$pb.TagNumber(5)
-  set downloadsDir($core.String v) { $_setString(4, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasDownloadsDir() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearDownloadsDir() => clearField(5);
-
-  @$pb.TagNumber(6)
-  $core.String get textileDir => $_getSZ(5);
-  @$pb.TagNumber(6)
-  set textileDir($core.String v) { $_setString(5, v); }
-  @$pb.TagNumber(6)
-  $core.bool hasTextileDir() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearTextileDir() => clearField(6);
-
-  @$pb.TagNumber(7)
-  $core.String get supportDir => $_getSZ(6);
-  @$pb.TagNumber(7)
-  set supportDir($core.String v) { $_setString(6, v); }
-  @$pb.TagNumber(7)
-  $core.bool hasSupportDir() => $_has(6);
-  @$pb.TagNumber(7)
-  void clearSupportDir() => clearField(7);
+  $core.Map<$core.String, $core.String> get folders => $_getMap(1);
 }
 
 class InitializeRequest_HostOptions extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeRequest.HostOptions', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeRequest.HostOptions', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'quicTransport', protoName: 'quicTransport')
     ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'httpTransport', protoName: 'httpTransport')
     ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'ipv4Only', protoName: 'ipv4Only')
@@ -376,7 +300,7 @@ class InitializeRequest_HostOptions extends $pb.GeneratedMessage {
 }
 
 class InitializeRequest_ServiceOptions extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeRequest.ServiceOptions', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeRequest.ServiceOptions', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'textile')
     ..aOB(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mailbox')
     ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'buckets')
@@ -465,7 +389,7 @@ class InitializeRequest_ServiceOptions extends $pb.GeneratedMessage {
 }
 
 class InitializeRequest_IPAddress extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeRequest.IPAddress', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeRequest.IPAddress', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'address')
     ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'internal')
@@ -554,27 +478,27 @@ class InitializeRequest_IPAddress extends $pb.GeneratedMessage {
 }
 
 class InitializeRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
-    ..aOM<$3.Location>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'location', subBuilder: $3.Location.create)
-    ..aOM<$3.Profile>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profile', subBuilder: $3.Profile.create)
-    ..e<$3.Connection>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'connection', $pb.PbFieldType.OE, defaultOrMaker: $3.Connection.WIFI, valueOf: $3.Connection.valueOf, enumValues: $3.Connection.values)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
+    ..aOM<$0.Location>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'location', subBuilder: $0.Location.create)
+    ..aOM<$0.Profile>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profile', subBuilder: $0.Profile.create)
+    ..e<$0.Connection>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'connection', $pb.PbFieldType.OE, defaultOrMaker: $0.Connection.WIFI, valueOf: $0.Connection.valueOf, enumValues: $0.Connection.values)
     ..aOM<InitializeRequest_HostOptions>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'hostOptions', protoName: 'hostOptions', subBuilder: InitializeRequest_HostOptions.create)
     ..aOM<InitializeRequest_ServiceOptions>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'serviceOptions', protoName: 'serviceOptions', subBuilder: InitializeRequest_ServiceOptions.create)
     ..aOM<InitializeRequest_DeviceOptions>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceOptions', protoName: 'deviceOptions', subBuilder: InitializeRequest_DeviceOptions.create)
-    ..e<$3.Environment>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'environment', $pb.PbFieldType.OE, defaultOrMaker: $3.Environment.DEVELOPMENT, valueOf: $3.Environment.valueOf, enumValues: $3.Environment.values)
-    ..m<$core.String, $core.String>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'variables', entryClassName: 'InitializeRequest.VariablesEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('sonr.node'))
+    ..e<$0.Environment>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'environment', $pb.PbFieldType.OE, defaultOrMaker: $0.Environment.DEVELOPMENT, valueOf: $0.Environment.valueOf, enumValues: $0.Environment.values)
+    ..m<$core.String, $core.String>(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'variables', entryClassName: 'InitializeRequest.VariablesEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('sonr.api'))
     ..hasRequiredFields = false
   ;
 
   InitializeRequest._() : super();
   factory InitializeRequest({
-    $3.Location? location,
-    $3.Profile? profile,
-    $3.Connection? connection,
+    $0.Location? location,
+    $0.Profile? profile,
+    $0.Connection? connection,
     InitializeRequest_HostOptions? hostOptions,
     InitializeRequest_ServiceOptions? serviceOptions,
     InitializeRequest_DeviceOptions? deviceOptions,
-    $3.Environment? environment,
+    $0.Environment? environment,
     $core.Map<$core.String, $core.String>? variables,
   }) {
     final _result = create();
@@ -626,31 +550,31 @@ class InitializeRequest extends $pb.GeneratedMessage {
   static InitializeRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.Location get location => $_getN(0);
+  $0.Location get location => $_getN(0);
   @$pb.TagNumber(1)
-  set location($3.Location v) { setField(1, v); }
+  set location($0.Location v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasLocation() => $_has(0);
   @$pb.TagNumber(1)
   void clearLocation() => clearField(1);
   @$pb.TagNumber(1)
-  $3.Location ensureLocation() => $_ensure(0);
+  $0.Location ensureLocation() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $3.Profile get profile => $_getN(1);
+  $0.Profile get profile => $_getN(1);
   @$pb.TagNumber(2)
-  set profile($3.Profile v) { setField(2, v); }
+  set profile($0.Profile v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasProfile() => $_has(1);
   @$pb.TagNumber(2)
   void clearProfile() => clearField(2);
   @$pb.TagNumber(2)
-  $3.Profile ensureProfile() => $_ensure(1);
+  $0.Profile ensureProfile() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $3.Connection get connection => $_getN(2);
+  $0.Connection get connection => $_getN(2);
   @$pb.TagNumber(3)
-  set connection($3.Connection v) { setField(3, v); }
+  set connection($0.Connection v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasConnection() => $_has(2);
   @$pb.TagNumber(3)
@@ -690,9 +614,9 @@ class InitializeRequest extends $pb.GeneratedMessage {
   InitializeRequest_DeviceOptions ensureDeviceOptions() => $_ensure(5);
 
   @$pb.TagNumber(7)
-  $3.Environment get environment => $_getN(6);
+  $0.Environment get environment => $_getN(6);
   @$pb.TagNumber(7)
-  set environment($3.Environment v) { setField(7, v); }
+  set environment($0.Environment v) { setField(7, v); }
   @$pb.TagNumber(7)
   $core.bool hasEnvironment() => $_has(6);
   @$pb.TagNumber(7)
@@ -703,12 +627,12 @@ class InitializeRequest extends $pb.GeneratedMessage {
 }
 
 class InitializeResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
-    ..aOM<$3.Profile>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profile', subBuilder: $3.Profile.create)
-    ..m<$core.String, $3.ProfileList>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'recents', entryClassName: 'InitializeResponse.RecentsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $3.ProfileList.create, packageName: const $pb.PackageName('sonr.node'))
-    ..m<$core.String, $4.PayloadItemList>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'history', entryClassName: 'InitializeResponse.HistoryEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $4.PayloadItemList.create, packageName: const $pb.PackageName('sonr.node'))
+    ..aOM<$0.Profile>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profile', subBuilder: $0.Profile.create)
+    ..m<$core.String, $0.ProfileList>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'recents', entryClassName: 'InitializeResponse.RecentsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $0.ProfileList.create, packageName: const $pb.PackageName('sonr.api'))
+    ..m<$core.String, $1.PayloadItemList>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'history', entryClassName: 'InitializeResponse.HistoryEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $1.PayloadItemList.create, packageName: const $pb.PackageName('sonr.api'))
     ..e<InitializeResponse_UserStatus>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userStatus', $pb.PbFieldType.OE, protoName: 'userStatus', defaultOrMaker: InitializeResponse_UserStatus.RETURNING, valueOf: InitializeResponse_UserStatus.valueOf, enumValues: InitializeResponse_UserStatus.values)
     ..hasRequiredFields = false
   ;
@@ -717,9 +641,9 @@ class InitializeResponse extends $pb.GeneratedMessage {
   factory InitializeResponse({
     $core.bool? success,
     $core.String? error,
-    $3.Profile? profile,
-    $core.Map<$core.String, $3.ProfileList>? recents,
-    $core.Map<$core.String, $4.PayloadItemList>? history,
+    $0.Profile? profile,
+    $core.Map<$core.String, $0.ProfileList>? recents,
+    $core.Map<$core.String, $1.PayloadItemList>? history,
     InitializeResponse_UserStatus? userStatus,
   }) {
     final _result = create();
@@ -783,21 +707,21 @@ class InitializeResponse extends $pb.GeneratedMessage {
   void clearError() => clearField(2);
 
   @$pb.TagNumber(3)
-  $3.Profile get profile => $_getN(2);
+  $0.Profile get profile => $_getN(2);
   @$pb.TagNumber(3)
-  set profile($3.Profile v) { setField(3, v); }
+  set profile($0.Profile v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasProfile() => $_has(2);
   @$pb.TagNumber(3)
   void clearProfile() => clearField(3);
   @$pb.TagNumber(3)
-  $3.Profile ensureProfile() => $_ensure(2);
+  $0.Profile ensureProfile() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $core.Map<$core.String, $3.ProfileList> get recents => $_getMap(3);
+  $core.Map<$core.String, $0.ProfileList> get recents => $_getMap(3);
 
   @$pb.TagNumber(5)
-  $core.Map<$core.String, $4.PayloadItemList> get history => $_getMap(4);
+  $core.Map<$core.String, $1.PayloadItemList> get history => $_getMap(4);
 
   @$pb.TagNumber(6)
   InitializeResponse_UserStatus get userStatus => $_getN(5);
@@ -810,16 +734,16 @@ class InitializeResponse extends $pb.GeneratedMessage {
 }
 
 class SupplyRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SupplyRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SupplyRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'paths')
-    ..aOM<$3.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peer', subBuilder: $3.Peer.create)
+    ..aOM<$0.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peer', subBuilder: $0.Peer.create)
     ..hasRequiredFields = false
   ;
 
   SupplyRequest._() : super();
   factory SupplyRequest({
     $core.Iterable<$core.String>? paths,
-    $3.Peer? peer,
+    $0.Peer? peer,
   }) {
     final _result = create();
     if (paths != null) {
@@ -855,19 +779,19 @@ class SupplyRequest extends $pb.GeneratedMessage {
   $core.List<$core.String> get paths => $_getList(0);
 
   @$pb.TagNumber(2)
-  $3.Peer get peer => $_getN(1);
+  $0.Peer get peer => $_getN(1);
   @$pb.TagNumber(2)
-  set peer($3.Peer v) { setField(2, v); }
+  set peer($0.Peer v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPeer() => $_has(1);
   @$pb.TagNumber(2)
   void clearPeer() => clearField(2);
   @$pb.TagNumber(2)
-  $3.Peer ensurePeer() => $_ensure(1);
+  $0.Peer ensurePeer() => $_ensure(1);
 }
 
 class SupplyResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SupplyResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SupplyResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
     ..hasRequiredFields = false
@@ -928,14 +852,14 @@ class SupplyResponse extends $pb.GeneratedMessage {
 }
 
 class EditRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'EditRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
-    ..aOM<$3.Profile>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profile', subBuilder: $3.Profile.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'EditRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
+    ..aOM<$0.Profile>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profile', subBuilder: $0.Profile.create)
     ..hasRequiredFields = false
   ;
 
   EditRequest._() : super();
   factory EditRequest({
-    $3.Profile? profile,
+    $0.Profile? profile,
   }) {
     final _result = create();
     if (profile != null) {
@@ -965,19 +889,19 @@ class EditRequest extends $pb.GeneratedMessage {
   static EditRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.Profile get profile => $_getN(0);
+  $0.Profile get profile => $_getN(0);
   @$pb.TagNumber(1)
-  set profile($3.Profile v) { setField(1, v); }
+  set profile($0.Profile v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasProfile() => $_has(0);
   @$pb.TagNumber(1)
   void clearProfile() => clearField(1);
   @$pb.TagNumber(1)
-  $3.Profile ensureProfile() => $_ensure(0);
+  $0.Profile ensureProfile() => $_ensure(0);
 }
 
 class EditResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'EditResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'EditResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
     ..hasRequiredFields = false
@@ -1038,7 +962,7 @@ class EditResponse extends $pb.GeneratedMessage {
 }
 
 class FetchRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FetchRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FetchRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..e<FetchRequest_Key>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'key', $pb.PbFieldType.OE, defaultOrMaker: FetchRequest_Key.ALL, valueOf: FetchRequest_Key.valueOf, enumValues: FetchRequest_Key.values)
     ..hasRequiredFields = false
   ;
@@ -1085,13 +1009,13 @@ class FetchRequest extends $pb.GeneratedMessage {
 }
 
 class FetchResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FetchResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FetchResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
-    ..aOM<$3.Profile>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profile', subBuilder: $3.Profile.create)
-    ..m<$core.String, $3.Peer>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'devices', entryClassName: 'FetchResponse.DevicesEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $3.Peer.create, packageName: const $pb.PackageName('sonr.node'))
-    ..m<$core.String, $3.ProfileList>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'recents', entryClassName: 'FetchResponse.RecentsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $3.ProfileList.create, packageName: const $pb.PackageName('sonr.node'))
-    ..m<$core.String, $4.PayloadItemList>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'history', entryClassName: 'FetchResponse.HistoryEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $4.PayloadItemList.create, packageName: const $pb.PackageName('sonr.node'))
+    ..aOM<$0.Profile>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profile', subBuilder: $0.Profile.create)
+    ..m<$core.String, $0.Peer>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'devices', entryClassName: 'FetchResponse.DevicesEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $0.Peer.create, packageName: const $pb.PackageName('sonr.api'))
+    ..m<$core.String, $0.ProfileList>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'recents', entryClassName: 'FetchResponse.RecentsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $0.ProfileList.create, packageName: const $pb.PackageName('sonr.api'))
+    ..m<$core.String, $1.PayloadItemList>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'history', entryClassName: 'FetchResponse.HistoryEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $1.PayloadItemList.create, packageName: const $pb.PackageName('sonr.api'))
     ..hasRequiredFields = false
   ;
 
@@ -1099,10 +1023,10 @@ class FetchResponse extends $pb.GeneratedMessage {
   factory FetchResponse({
     $core.bool? success,
     $core.String? error,
-    $3.Profile? profile,
-    $core.Map<$core.String, $3.Peer>? devices,
-    $core.Map<$core.String, $3.ProfileList>? recents,
-    $core.Map<$core.String, $4.PayloadItemList>? history,
+    $0.Profile? profile,
+    $core.Map<$core.String, $0.Peer>? devices,
+    $core.Map<$core.String, $0.ProfileList>? recents,
+    $core.Map<$core.String, $1.PayloadItemList>? history,
   }) {
     final _result = create();
     if (success != null) {
@@ -1165,28 +1089,28 @@ class FetchResponse extends $pb.GeneratedMessage {
   void clearError() => clearField(2);
 
   @$pb.TagNumber(3)
-  $3.Profile get profile => $_getN(2);
+  $0.Profile get profile => $_getN(2);
   @$pb.TagNumber(3)
-  set profile($3.Profile v) { setField(3, v); }
+  set profile($0.Profile v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasProfile() => $_has(2);
   @$pb.TagNumber(3)
   void clearProfile() => clearField(3);
   @$pb.TagNumber(3)
-  $3.Profile ensureProfile() => $_ensure(2);
+  $0.Profile ensureProfile() => $_ensure(2);
 
   @$pb.TagNumber(4)
-  $core.Map<$core.String, $3.Peer> get devices => $_getMap(3);
+  $core.Map<$core.String, $0.Peer> get devices => $_getMap(3);
 
   @$pb.TagNumber(5)
-  $core.Map<$core.String, $3.ProfileList> get recents => $_getMap(4);
+  $core.Map<$core.String, $0.ProfileList> get recents => $_getMap(4);
 
   @$pb.TagNumber(6)
-  $core.Map<$core.String, $4.PayloadItemList> get history => $_getMap(5);
+  $core.Map<$core.String, $1.PayloadItemList> get history => $_getMap(5);
 }
 
 class LinkRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LinkRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LinkRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sName', protoName: 'sName')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mnemonic')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceId', protoName: 'deviceId')
@@ -1275,10 +1199,10 @@ class LinkRequest extends $pb.GeneratedMessage {
 }
 
 class LinkResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LinkResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'LinkResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
-    ..m<$core.String, $core.String>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'records', entryClassName: 'LinkResponse.RecordsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('sonr.node'))
+    ..m<$core.String, $core.String>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'records', entryClassName: 'LinkResponse.RecordsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('sonr.api'))
     ..hasRequiredFields = false
   ;
 
@@ -1344,16 +1268,16 @@ class LinkResponse extends $pb.GeneratedMessage {
 }
 
 class ShareRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ShareRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
-    ..aOM<$3.Peer>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peer', subBuilder: $3.Peer.create)
-    ..aOM<$4.MessageItem>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message', subBuilder: $4.MessageItem.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ShareRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
+    ..aOM<$0.Peer>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peer', subBuilder: $0.Peer.create)
+    ..aOM<$1.MessageItem>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message', subBuilder: $1.MessageItem.create)
     ..hasRequiredFields = false
   ;
 
   ShareRequest._() : super();
   factory ShareRequest({
-    $3.Peer? peer,
-    $4.MessageItem? message,
+    $0.Peer? peer,
+    $1.MessageItem? message,
   }) {
     final _result = create();
     if (peer != null) {
@@ -1386,30 +1310,30 @@ class ShareRequest extends $pb.GeneratedMessage {
   static ShareRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $3.Peer get peer => $_getN(0);
+  $0.Peer get peer => $_getN(0);
   @$pb.TagNumber(1)
-  set peer($3.Peer v) { setField(1, v); }
+  set peer($0.Peer v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasPeer() => $_has(0);
   @$pb.TagNumber(1)
   void clearPeer() => clearField(1);
   @$pb.TagNumber(1)
-  $3.Peer ensurePeer() => $_ensure(0);
+  $0.Peer ensurePeer() => $_ensure(0);
 
   @$pb.TagNumber(2)
-  $4.MessageItem get message => $_getN(1);
+  $1.MessageItem get message => $_getN(1);
   @$pb.TagNumber(2)
-  set message($4.MessageItem v) { setField(2, v); }
+  set message($1.MessageItem v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasMessage() => $_has(1);
   @$pb.TagNumber(2)
   void clearMessage() => clearField(2);
   @$pb.TagNumber(2)
-  $4.MessageItem ensureMessage() => $_ensure(1);
+  $1.MessageItem ensureMessage() => $_ensure(1);
 }
 
 class ShareResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ShareResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ShareResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
     ..hasRequiredFields = false
@@ -1470,7 +1394,7 @@ class ShareResponse extends $pb.GeneratedMessage {
 }
 
 class RegisterRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RegisterRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RegisterRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sName', protoName: 'sName')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'prefix')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'fingerprint')
@@ -1545,10 +1469,10 @@ class RegisterRequest extends $pb.GeneratedMessage {
 }
 
 class RegisterResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RegisterResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RegisterResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
-    ..m<$core.String, $core.String>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'records', entryClassName: 'RegisterResponse.RecordsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('sonr.node'))
+    ..m<$core.String, $core.String>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'records', entryClassName: 'RegisterResponse.RecordsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OS, packageName: const $pb.PackageName('sonr.api'))
     ..hasRequiredFields = false
   ;
 
@@ -1614,16 +1538,16 @@ class RegisterResponse extends $pb.GeneratedMessage {
 }
 
 class RespondRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RespondRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RespondRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'decision')
-    ..aOM<$3.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peer', subBuilder: $3.Peer.create)
+    ..aOM<$0.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peer', subBuilder: $0.Peer.create)
     ..hasRequiredFields = false
   ;
 
   RespondRequest._() : super();
   factory RespondRequest({
     $core.bool? decision,
-    $3.Peer? peer,
+    $0.Peer? peer,
   }) {
     final _result = create();
     if (decision != null) {
@@ -1665,19 +1589,19 @@ class RespondRequest extends $pb.GeneratedMessage {
   void clearDecision() => clearField(1);
 
   @$pb.TagNumber(2)
-  $3.Peer get peer => $_getN(1);
+  $0.Peer get peer => $_getN(1);
   @$pb.TagNumber(2)
-  set peer($3.Peer v) { setField(2, v); }
+  set peer($0.Peer v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasPeer() => $_has(1);
   @$pb.TagNumber(2)
   void clearPeer() => clearField(2);
   @$pb.TagNumber(2)
-  $3.Peer ensurePeer() => $_ensure(1);
+  $0.Peer ensurePeer() => $_ensure(1);
 }
 
 class RespondResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RespondResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'RespondResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
     ..hasRequiredFields = false
@@ -1749,7 +1673,7 @@ class SearchRequest extends $pb.GeneratedMessage {
     2 : SearchRequest_Query.peerId,
     0 : SearchRequest_Query.notSet
   };
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SearchRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SearchRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..oo(0, [1, 2])
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sName', protoName: 'sName')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peerId', protoName: 'peerId')
@@ -1814,10 +1738,10 @@ class SearchRequest extends $pb.GeneratedMessage {
 }
 
 class SearchResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SearchResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SearchResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
-    ..aOM<$3.Peer>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peer', subBuilder: $3.Peer.create)
+    ..aOM<$0.Peer>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peer', subBuilder: $0.Peer.create)
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peerId', protoName: 'peerId')
     ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sName', protoName: 'sName')
     ..hasRequiredFields = false
@@ -1827,7 +1751,7 @@ class SearchResponse extends $pb.GeneratedMessage {
   factory SearchResponse({
     $core.bool? success,
     $core.String? error,
-    $3.Peer? peer,
+    $0.Peer? peer,
     $core.String? peerId,
     $core.String? sName,
   }) {
@@ -1889,15 +1813,15 @@ class SearchResponse extends $pb.GeneratedMessage {
   void clearError() => clearField(2);
 
   @$pb.TagNumber(3)
-  $3.Peer get peer => $_getN(2);
+  $0.Peer get peer => $_getN(2);
   @$pb.TagNumber(3)
-  set peer($3.Peer v) { setField(3, v); }
+  set peer($0.Peer v) { setField(3, v); }
   @$pb.TagNumber(3)
   $core.bool hasPeer() => $_has(2);
   @$pb.TagNumber(3)
   void clearPeer() => clearField(3);
   @$pb.TagNumber(3)
-  $3.Peer ensurePeer() => $_ensure(2);
+  $0.Peer ensurePeer() => $_ensure(2);
 
   @$pb.TagNumber(4)
   $core.String get peerId => $_getSZ(3);
@@ -1916,349 +1840,5 @@ class SearchResponse extends $pb.GeneratedMessage {
   $core.bool hasSName() => $_has(4);
   @$pb.TagNumber(5)
   void clearSName() => clearField(5);
-}
-
-class StatRequest extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'StatRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
-    ..hasRequiredFields = false
-  ;
-
-  StatRequest._() : super();
-  factory StatRequest() => create();
-  factory StatRequest.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory StatRequest.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  StatRequest clone() => StatRequest()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  StatRequest copyWith(void Function(StatRequest) updates) => super.copyWith((message) => updates(message as StatRequest)) as StatRequest; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static StatRequest create() => StatRequest._();
-  StatRequest createEmptyInstance() => create();
-  static $pb.PbList<StatRequest> createRepeated() => $pb.PbList<StatRequest>();
-  @$core.pragma('dart2js:noInline')
-  static StatRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<StatRequest>(create);
-  static StatRequest? _defaultInstance;
-}
-
-class StatResponse_Device extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'StatResponse.Device', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'os')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'arch')
-    ..aOB(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isDesktop', protoName: 'isDesktop')
-    ..aOB(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isMobile', protoName: 'isMobile')
-    ..hasRequiredFields = false
-  ;
-
-  StatResponse_Device._() : super();
-  factory StatResponse_Device({
-    $core.String? id,
-    $core.String? name,
-    $core.String? os,
-    $core.String? arch,
-    $core.bool? isDesktop,
-    $core.bool? isMobile,
-  }) {
-    final _result = create();
-    if (id != null) {
-      _result.id = id;
-    }
-    if (name != null) {
-      _result.name = name;
-    }
-    if (os != null) {
-      _result.os = os;
-    }
-    if (arch != null) {
-      _result.arch = arch;
-    }
-    if (isDesktop != null) {
-      _result.isDesktop = isDesktop;
-    }
-    if (isMobile != null) {
-      _result.isMobile = isMobile;
-    }
-    return _result;
-  }
-  factory StatResponse_Device.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory StatResponse_Device.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  StatResponse_Device clone() => StatResponse_Device()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  StatResponse_Device copyWith(void Function(StatResponse_Device) updates) => super.copyWith((message) => updates(message as StatResponse_Device)) as StatResponse_Device; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static StatResponse_Device create() => StatResponse_Device._();
-  StatResponse_Device createEmptyInstance() => create();
-  static $pb.PbList<StatResponse_Device> createRepeated() => $pb.PbList<StatResponse_Device>();
-  @$core.pragma('dart2js:noInline')
-  static StatResponse_Device getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<StatResponse_Device>(create);
-  static StatResponse_Device? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get id => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set id($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasId() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearId() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get name => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set name($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasName() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearName() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get os => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set os($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasOs() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearOs() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.String get arch => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set arch($core.String v) { $_setString(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasArch() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearArch() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $core.bool get isDesktop => $_getBF(4);
-  @$pb.TagNumber(5)
-  set isDesktop($core.bool v) { $_setBool(4, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasIsDesktop() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearIsDesktop() => clearField(5);
-
-  @$pb.TagNumber(6)
-  $core.bool get isMobile => $_getBF(5);
-  @$pb.TagNumber(6)
-  set isMobile($core.bool v) { $_setBool(5, v); }
-  @$pb.TagNumber(6)
-  $core.bool hasIsMobile() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearIsMobile() => clearField(6);
-}
-
-class StatResponse_Network extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'StatResponse.Network', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'publicKey', protoName: 'publicKey')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peerID', protoName: 'peerID')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'multiaddr')
-    ..hasRequiredFields = false
-  ;
-
-  StatResponse_Network._() : super();
-  factory StatResponse_Network({
-    $core.String? publicKey,
-    $core.String? peerID,
-    $core.String? multiaddr,
-  }) {
-    final _result = create();
-    if (publicKey != null) {
-      _result.publicKey = publicKey;
-    }
-    if (peerID != null) {
-      _result.peerID = peerID;
-    }
-    if (multiaddr != null) {
-      _result.multiaddr = multiaddr;
-    }
-    return _result;
-  }
-  factory StatResponse_Network.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory StatResponse_Network.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  StatResponse_Network clone() => StatResponse_Network()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  StatResponse_Network copyWith(void Function(StatResponse_Network) updates) => super.copyWith((message) => updates(message as StatResponse_Network)) as StatResponse_Network; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static StatResponse_Network create() => StatResponse_Network._();
-  StatResponse_Network createEmptyInstance() => create();
-  static $pb.PbList<StatResponse_Network> createRepeated() => $pb.PbList<StatResponse_Network>();
-  @$core.pragma('dart2js:noInline')
-  static StatResponse_Network getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<StatResponse_Network>(create);
-  static StatResponse_Network? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get publicKey => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set publicKey($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasPublicKey() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearPublicKey() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get peerID => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set peerID($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasPeerID() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearPeerID() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get multiaddr => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set multiaddr($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasMultiaddr() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearMultiaddr() => clearField(3);
-}
-
-class StatResponse extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'StatResponse', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.node'), createEmptyInstance: create)
-    ..aOB(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'sName', protoName: 'sName')
-    ..aOM<$3.Profile>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profile', subBuilder: $3.Profile.create)
-    ..aOM<StatResponse_Device>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'device', subBuilder: StatResponse_Device.create)
-    ..aOM<StatResponse_Network>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'network', subBuilder: StatResponse_Network.create)
-    ..hasRequiredFields = false
-  ;
-
-  StatResponse._() : super();
-  factory StatResponse({
-    $core.bool? success,
-    $core.String? error,
-    $core.String? sName,
-    $3.Profile? profile,
-    StatResponse_Device? device,
-    StatResponse_Network? network,
-  }) {
-    final _result = create();
-    if (success != null) {
-      _result.success = success;
-    }
-    if (error != null) {
-      _result.error = error;
-    }
-    if (sName != null) {
-      _result.sName = sName;
-    }
-    if (profile != null) {
-      _result.profile = profile;
-    }
-    if (device != null) {
-      _result.device = device;
-    }
-    if (network != null) {
-      _result.network = network;
-    }
-    return _result;
-  }
-  factory StatResponse.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory StatResponse.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  StatResponse clone() => StatResponse()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  StatResponse copyWith(void Function(StatResponse) updates) => super.copyWith((message) => updates(message as StatResponse)) as StatResponse; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static StatResponse create() => StatResponse._();
-  StatResponse createEmptyInstance() => create();
-  static $pb.PbList<StatResponse> createRepeated() => $pb.PbList<StatResponse>();
-  @$core.pragma('dart2js:noInline')
-  static StatResponse getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<StatResponse>(create);
-  static StatResponse? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.bool get success => $_getBF(0);
-  @$pb.TagNumber(1)
-  set success($core.bool v) { $_setBool(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasSuccess() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearSuccess() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get error => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set error($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasError() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearError() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get sName => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set sName($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasSName() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearSName() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $3.Profile get profile => $_getN(3);
-  @$pb.TagNumber(4)
-  set profile($3.Profile v) { setField(4, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasProfile() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearProfile() => clearField(4);
-  @$pb.TagNumber(4)
-  $3.Profile ensureProfile() => $_ensure(3);
-
-  @$pb.TagNumber(5)
-  StatResponse_Device get device => $_getN(4);
-  @$pb.TagNumber(5)
-  set device(StatResponse_Device v) { setField(5, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasDevice() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearDevice() => clearField(5);
-  @$pb.TagNumber(5)
-  StatResponse_Device ensureDevice() => $_ensure(4);
-
-  @$pb.TagNumber(6)
-  StatResponse_Network get network => $_getN(5);
-  @$pb.TagNumber(6)
-  set network(StatResponse_Network v) { setField(6, v); }
-  @$pb.TagNumber(6)
-  $core.bool hasNetwork() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearNetwork() => clearField(6);
-  @$pb.TagNumber(6)
-  StatResponse_Network ensureNetwork() => $_ensure(5);
 }
 

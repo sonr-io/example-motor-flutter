@@ -10,9 +10,9 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import 'api.pb.dart' as $0;
+import '../api/call.pb.dart' as $0;
 import 'client.pb.dart' as $1;
-import '../common/event.pb.dart' as $2;
+import '../api/event.pb.dart' as $2;
 export 'client.pb.dart';
 
 class ClientServiceClient extends $grpc.Client {
@@ -44,10 +44,6 @@ class ClientServiceClient extends $grpc.Client {
           '/sonr.node.ClientService/Search',
           ($0.SearchRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.SearchResponse.fromBuffer(value));
-  static final _$stat = $grpc.ClientMethod<$0.StatRequest, $0.StatResponse>(
-      '/sonr.node.ClientService/Stat',
-      ($0.StatRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.StatResponse.fromBuffer(value));
   static final _$onLobbyRefresh = $grpc.ClientMethod<$1.Empty, $2.RefreshEvent>(
       '/sonr.node.ClientService/OnLobbyRefresh',
       ($1.Empty value) => value.writeToBuffer(),
@@ -116,11 +112,6 @@ class ClientServiceClient extends $grpc.Client {
   $grpc.ResponseFuture<$0.SearchResponse> search($0.SearchRequest request,
       {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$search, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$0.StatResponse> stat($0.StatRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$stat, request, options: options);
   }
 
   $grpc.ResponseStream<$2.RefreshEvent> onLobbyRefresh($1.Empty request,
@@ -219,13 +210,6 @@ abstract class ClientServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.SearchRequest.fromBuffer(value),
         ($0.SearchResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.StatRequest, $0.StatResponse>(
-        'Stat',
-        stat_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $0.StatRequest.fromBuffer(value),
-        ($0.StatResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.Empty, $2.RefreshEvent>(
         'OnLobbyRefresh',
         onLobbyRefresh_Pre,
@@ -307,11 +291,6 @@ abstract class ClientServiceBase extends $grpc.Service {
     return search(call, await request);
   }
 
-  $async.Future<$0.StatResponse> stat_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.StatRequest> request) async {
-    return stat(call, await request);
-  }
-
   $async.Stream<$2.RefreshEvent> onLobbyRefresh_Pre(
       $grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
     yield* onLobbyRefresh(call, await request);
@@ -359,8 +338,6 @@ abstract class ClientServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $0.RespondRequest request);
   $async.Future<$0.SearchResponse> search(
       $grpc.ServiceCall call, $0.SearchRequest request);
-  $async.Future<$0.StatResponse> stat(
-      $grpc.ServiceCall call, $0.StatRequest request);
   $async.Stream<$2.RefreshEvent> onLobbyRefresh(
       $grpc.ServiceCall call, $1.Empty request);
   $async.Stream<$2.MailboxEvent> onMailboxMessage(
