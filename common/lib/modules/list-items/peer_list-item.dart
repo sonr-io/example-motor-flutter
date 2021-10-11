@@ -13,7 +13,6 @@ class PeerListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      minLeadingWidth: 76,
       leading: ProfileAvatar(
         picture: Uint8List.fromList(peer.profile.picture),
         platform: peer.device.os,
@@ -46,4 +45,6 @@ class PeerListItem extends StatelessWidget {
       }
     }
   }
+
+  
 }

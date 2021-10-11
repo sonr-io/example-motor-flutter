@@ -17,7 +17,7 @@ export 'src/src.dart';
 const RPC_HOST = 'localhost';
 
 /// [RPC_SERVER_PORT] is the listening port for the Sonr RPC Node
-const RPC_SERVER_PORT = 52006;
+const RPC_SERVER_PORT = 26225;
 
 /// [_actionChannel] is the Method channel to interact with Java/Swift proxy
 const _actionChannel = MethodChannel('io.sonr.plugin/action');
@@ -81,7 +81,7 @@ class SonrService extends GetxService {
 
     // Delete Enviornment Variables Ref
     _enviornmentVariables = null;
-    _actionChannel.invokeMethod('start', request.writeToBuffer());
+    await _actionChannel.invokeMethod('start', request.writeToBuffer());
 
     // Create a client channel and client
     _channel = ClientChannel(RPC_HOST,
@@ -97,7 +97,6 @@ class SonrService extends GetxService {
     _client.onLobbyRefresh(Empty()).listen(
           (value) => _refreshEvents.add(value),
           onError: (err) => print("[RPC Client] ERROR: Listening to onLobbyRefresh \n" + err.toString()),
-          cancelOnError: true,
         );
 
     // // Handle Mail Messages
@@ -115,7 +114,6 @@ class SonrService extends GetxService {
         _decisionEvents.add(value);
       },
       onError: (err) => print("[RPC Client] ERROR: Listening to onTransferAccepted \n" + err.toString()),
-      cancelOnError: true,
     );
 
     // Create Decision Stream
@@ -124,7 +122,6 @@ class SonrService extends GetxService {
         _decisionEvents.add(value);
       },
       onError: (err) => print("[RPC Client] ERROR: Listening to onTransferDeclined \n" + err.toString()),
-      cancelOnError: true,
     );
 
     // Create Invite Stream
@@ -133,7 +130,6 @@ class SonrService extends GetxService {
         _inviteEvents.add(value);
       },
       onError: (err) => print("[RPC Client] ERROR: Listening to onTransferInvite \n" + err.toString()),
-      cancelOnError: true,
     );
 
     // Create Progress Stream
@@ -142,7 +138,6 @@ class SonrService extends GetxService {
         _progressEvents.add(value);
       },
       onError: (err) => print("[RPC Client] ERROR: Listening to onTransferProgress \n" + err.toString()),
-      cancelOnError: true,
     );
 
     // Create Complete Stream
@@ -151,7 +146,6 @@ class SonrService extends GetxService {
         _completeEvents.add(value);
       },
       onError: (err) => print("[RPC Client] ERROR: Listening to onTransferComplete \n" + err.toString()),
-      cancelOnError: true,
     );
     // status(Status.ACTIVE);
   }

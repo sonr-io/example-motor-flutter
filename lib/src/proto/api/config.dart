@@ -32,13 +32,22 @@ class Config {
   /// Method gets device info
   static Future<InitializeRequest_DeviceOptions> getDeviceOpts() async {
     // Get Default Directories
-    final homePath = await getApplicationDocumentsDirectory();
+    final documentsPath = await getApplicationDocumentsDirectory();
+    final supportPath = await createFolderInAppDocDir('Support');
+    final databasePath = await createFolderInAppDocDir('Database');
+    final textilePath = await createFolderInAppDocDir('Textile');
+    final downloadsPath = await createFolderInAppDocDir('Downloads');
     final temporaryPath = await getTemporaryDirectory();
     final deviceId = await getDeviceId();
-    final folders = <String, String>{"HOME": homePath.path, "TEMPORARY": temporaryPath.path};
+
     // Return Device Options
     return InitializeRequest_DeviceOptions(
-      folders: folders,
+      cacheDir: temporaryPath.path,
+      documentsDir: documentsPath.path,
+      downloadsDir: downloadsPath,
+      databaseDir: databasePath,
+      supportDir: supportPath,
+      textileDir: textilePath,
       id: deviceId,
     );
   }

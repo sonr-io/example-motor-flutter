@@ -11,12 +11,14 @@ class NearbyRow extends GetView<HomeController> implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return Container(
       width: Get.width,
-      height: Get.height * 0.13,
-      padding: EdgeInsets.only(top: 16),
+      height: 327,
       margin: EdgeInsets.symmetric(horizontal: 24),
       child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
+            mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text('Nearby', style: AppTextStyles.headline04),
@@ -34,14 +36,16 @@ class NearbyRow extends GetView<HomeController> implements PreferredSizeWidget {
           SizedBox(height: 16),
           Container(
               height: 64,
-              width: Get.width,
               child: Obx(
                 () => ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: controller.localPeers.length,
                   itemBuilder: (context, index) {
-                    return PeerListItem(
-                      peer: controller.localPeers[index],
+                    return Container(
+                      width: 187,
+                      child: PeerListItem(
+                        peer: controller.localPeers[index],
+                      ),
                     );
                   },
                 ),
@@ -52,5 +56,5 @@ class NearbyRow extends GetView<HomeController> implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size(Get.width, Get.height * 0.15);
+  Size get preferredSize => Size(Get.width, 327);
 }

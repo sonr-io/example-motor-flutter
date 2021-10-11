@@ -116,6 +116,9 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   late ScrollController scrollController;
   late TabController tabController;
   late StreamSubscription<InviteEvent> _inviteSubscription;
+  late StreamSubscription<ProgressEvent> _progressSubscription;
+  late StreamSubscription<RefreshEvent> _refreshSubscription;
+  late StreamSubscription<CompleteEvent> _completeSubscription;
   late Profile profile;
 
   /// #### Controller Constructer
@@ -142,29 +145,20 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
 
   @override
   void onClose() {
+    _completeSubscription.cancel();
     _inviteSubscription.cancel();
+    _progressSubscription.cancel();
+    _refreshSubscription.cancel();
     super.onClose();
-  }
-
-  void handleInvite(InviteEvent event) {
-    Get.dialog(
-      InviteModal(event: event),
-      barrierDismissible: true,
-      barrierColor: Colors.transparent,
-      useSafeArea: false,
-    );
-  }
-
-  void handleRefresh(RefreshEvent event) {
-    localPeers(event.peers);
-    localPeers.refresh();
   }
 
   Future<void> connect() async {
     final loc = await LocationUtil.current(requestIfNoPermission: true);
     await SonrService.to.start(location: loc, profile: profile);
-
-    _inviteSubscription = SonrService.to.onInvite(handleInvite);
+    _completeSubscription = SonrService.to.onComplete(_handleComplete);
+    _inviteSubscription = SonrService.to.onInvite(_handleInvite);
+    _refreshSubscription = SonrService.to.onRefresh(_handleRefresh);
+    _progressSubscription = SonrService.to.onProgress(_handleProgress);
   }
 
   Future<void> edit() async {
@@ -201,5 +195,31 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
       // Set Page
       view(HomeView.values[newIndex]);
     }
+  }
+
+  void _handleInvite(InviteEvent event) {
+    Get.dialog(
+      InviteModal(event: event),
+      barrierDismissible: true,
+      barrierColor: Colors.transparent,
+      useSafeArea: false,
+    );
+  }
+
+  void _handleProgress(ProgressEvent event) {
+    print("Current Progress: ${(event.progress * 100).roundToDouble()}%");
+  }
+
+  void _handleComplete(CompleteEvent event) {
+    Get.snackbar("Completed Transfer!", event.toString(), duration: 1.seconds);
+    Future.delayed(1.seconds, () {
+      OpenFile.open(event.payload.items[0].file.path);
+    });
+  }
+
+  void _handleRefresh(RefreshEvent event) {
+    print(event.toString());
+    localPeers(event.peers);
+    localPeers.refresh();
   }
 }

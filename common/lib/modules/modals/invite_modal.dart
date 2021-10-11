@@ -13,7 +13,12 @@ class InviteModal extends StatelessWidget {
   Widget build(BuildContext context) {
     return GeneralModal(
         titleLabel: 'Invite',
-        footerPrimaryButton: PrimaryButton(onPressed: () => SonrService.to.respond(true, event.from), label: 'Accept'),
+        footerPrimaryButton: PrimaryButton(
+            onPressed: () {
+              SonrService.to.respond(true, event.from);
+              Get.back();
+            },
+            label: 'Accept'),
         onDismissed: () => SonrService.to.respond(false, event.from),
         body: _InviteRequestFileHeader(
           payload: event.payload,

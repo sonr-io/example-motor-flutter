@@ -113,7 +113,8 @@ const Peer$json = const {
     const {'1': 'device', '3': 3, '4': 1, '5': 11, '6': '.sonr.core.Peer.Device', '10': 'device'},
     const {'1': 'profile', '3': 4, '4': 1, '5': 11, '6': '.sonr.core.Profile', '10': 'profile'},
     const {'1': 'publicKey', '3': 5, '4': 1, '5': 12, '10': 'publicKey'},
-    const {'1': 'lastModified', '3': 6, '4': 1, '5': 3, '10': 'lastModified'},
+    const {'1': 'peerID', '3': 6, '4': 1, '5': 9, '10': 'peerID'},
+    const {'1': 'lastModified', '3': 7, '4': 1, '5': 3, '10': 'lastModified'},
   ],
   '3': const [Peer_Device$json],
   '4': const [Peer_Status$json],
@@ -143,7 +144,7 @@ const Peer_Status$json = const {
 };
 
 /// Descriptor for `Peer`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List peerDescriptor = $convert.base64Decode('CgRQZWVyEhQKBXNOYW1lGAEgASgJUgVzTmFtZRIuCgZzdGF0dXMYAiABKA4yFi5zb25yLmNvcmUuUGVlci5TdGF0dXNSBnN0YXR1cxIuCgZkZXZpY2UYAyABKAsyFi5zb25yLmNvcmUuUGVlci5EZXZpY2VSBmRldmljZRIsCgdwcm9maWxlGAQgASgLMhIuc29uci5jb3JlLlByb2ZpbGVSB3Byb2ZpbGUSHAoJcHVibGljS2V5GAUgASgMUglwdWJsaWNLZXkSIgoMbGFzdE1vZGlmaWVkGAYgASgDUgxsYXN0TW9kaWZpZWQabgoGRGV2aWNlEg4KAmlkGAEgASgJUgJpZBIaCghob3N0TmFtZRgCIAEoCVIIaG9zdE5hbWUSDgoCb3MYAyABKAlSAm9zEhIKBGFyY2gYBCABKAlSBGFyY2gSFAoFbW9kZWwYBSABKAlSBW1vZGVsIjUKBlN0YXR1cxILCgdPRkZMSU5FEAASCgoGT05MSU5FEAESCAoEQVdBWRACEggKBEJVU1kQAw==');
+final $typed_data.Uint8List peerDescriptor = $convert.base64Decode('CgRQZWVyEhQKBXNOYW1lGAEgASgJUgVzTmFtZRIuCgZzdGF0dXMYAiABKA4yFi5zb25yLmNvcmUuUGVlci5TdGF0dXNSBnN0YXR1cxIuCgZkZXZpY2UYAyABKAsyFi5zb25yLmNvcmUuUGVlci5EZXZpY2VSBmRldmljZRIsCgdwcm9maWxlGAQgASgLMhIuc29uci5jb3JlLlByb2ZpbGVSB3Byb2ZpbGUSHAoJcHVibGljS2V5GAUgASgMUglwdWJsaWNLZXkSFgoGcGVlcklEGAYgASgJUgZwZWVySUQSIgoMbGFzdE1vZGlmaWVkGAcgASgDUgxsYXN0TW9kaWZpZWQabgoGRGV2aWNlEg4KAmlkGAEgASgJUgJpZBIaCghob3N0TmFtZRgCIAEoCVIIaG9zdE5hbWUSDgoCb3MYAyABKAlSAm9zEhIKBGFyY2gYBCABKAlSBGFyY2gSFAoFbW9kZWwYBSABKAlSBW1vZGVsIjUKBlN0YXR1cxILCgdPRkZMSU5FEAASCgoGT05MSU5FEAESCAoEQVdBWRACEggKBEJVU1kQAw==');
 @$core.Deprecated('Use profileDescriptor instead')
 const Profile$json = const {
   '1': 'Profile',
@@ -209,14 +210,13 @@ const SNID$json = const {
   '1': 'SNID',
   '2': const [
     const {'1': 'domain', '3': 1, '4': 1, '5': 9, '10': 'domain'},
-    const {'1': 'publicKey', '3': 2, '4': 1, '5': 12, '10': 'publicKey'},
-    const {'1': 'peerId', '3': 3, '4': 1, '5': 9, '10': 'peerId'},
-    const {'1': 'deviceId', '3': 4, '4': 1, '5': 9, '10': 'deviceId'},
+    const {'1': 'pubKey', '3': 2, '4': 1, '5': 12, '10': 'pubKey'},
+    const {'1': 'peerID', '3': 3, '4': 1, '5': 9, '10': 'peerID'},
   ],
 };
 
 /// Descriptor for `SNID`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List sNIDDescriptor = $convert.base64Decode('CgRTTklEEhYKBmRvbWFpbhgBIAEoCVIGZG9tYWluEhwKCXB1YmxpY0tleRgCIAEoDFIJcHVibGljS2V5EhYKBnBlZXJJZBgDIAEoCVIGcGVlcklkEhoKCGRldmljZUlkGAQgASgJUghkZXZpY2VJZA==');
+final $typed_data.Uint8List sNIDDescriptor = $convert.base64Decode('CgRTTklEEhYKBmRvbWFpbhgBIAEoCVIGZG9tYWluEhYKBnB1YktleRgCIAEoDFIGcHViS2V5EhYKBnBlZXJJRBgDIAEoCVIGcGVlcklE');
 @$core.Deprecated('Use uUIDDescriptor instead')
 const UUID$json = const {
   '1': 'UUID',

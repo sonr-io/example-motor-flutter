@@ -566,7 +566,8 @@ class Peer extends $pb.GeneratedMessage {
     ..aOM<Peer_Device>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'device', subBuilder: Peer_Device.create)
     ..aOM<Profile>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profile', subBuilder: Profile.create)
     ..a<$core.List<$core.int>>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'publicKey', $pb.PbFieldType.OY, protoName: 'publicKey')
-    ..aInt64(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastModified', protoName: 'lastModified')
+    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peerID', protoName: 'peerID')
+    ..aInt64(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastModified', protoName: 'lastModified')
     ..hasRequiredFields = false
   ;
 
@@ -577,6 +578,7 @@ class Peer extends $pb.GeneratedMessage {
     Peer_Device? device,
     Profile? profile,
     $core.List<$core.int>? publicKey,
+    $core.String? peerID,
     $fixnum.Int64? lastModified,
   }) {
     final _result = create();
@@ -594,6 +596,9 @@ class Peer extends $pb.GeneratedMessage {
     }
     if (publicKey != null) {
       _result.publicKey = publicKey;
+    }
+    if (peerID != null) {
+      _result.peerID = peerID;
     }
     if (lastModified != null) {
       _result.lastModified = lastModified;
@@ -671,13 +676,22 @@ class Peer extends $pb.GeneratedMessage {
   void clearPublicKey() => clearField(5);
 
   @$pb.TagNumber(6)
-  $fixnum.Int64 get lastModified => $_getI64(5);
+  $core.String get peerID => $_getSZ(5);
   @$pb.TagNumber(6)
-  set lastModified($fixnum.Int64 v) { $_setInt64(5, v); }
+  set peerID($core.String v) { $_setString(5, v); }
   @$pb.TagNumber(6)
-  $core.bool hasLastModified() => $_has(5);
+  $core.bool hasPeerID() => $_has(5);
   @$pb.TagNumber(6)
-  void clearLastModified() => clearField(6);
+  void clearPeerID() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $fixnum.Int64 get lastModified => $_getI64(6);
+  @$pb.TagNumber(7)
+  set lastModified($fixnum.Int64 v) { $_setInt64(6, v); }
+  @$pb.TagNumber(7)
+  $core.bool hasLastModified() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearLastModified() => clearField(7);
 }
 
 class Profile extends $pb.GeneratedMessage {
@@ -980,31 +994,26 @@ class Social extends $pb.GeneratedMessage {
 class SNID extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SNID', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'domain')
-    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'publicKey', $pb.PbFieldType.OY, protoName: 'publicKey')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peerId', protoName: 'peerId')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'deviceId', protoName: 'deviceId')
+    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pubKey', $pb.PbFieldType.OY, protoName: 'pubKey')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peerID', protoName: 'peerID')
     ..hasRequiredFields = false
   ;
 
   SNID._() : super();
   factory SNID({
     $core.String? domain,
-    $core.List<$core.int>? publicKey,
-    $core.String? peerId,
-    $core.String? deviceId,
+    $core.List<$core.int>? pubKey,
+    $core.String? peerID,
   }) {
     final _result = create();
     if (domain != null) {
       _result.domain = domain;
     }
-    if (publicKey != null) {
-      _result.publicKey = publicKey;
+    if (pubKey != null) {
+      _result.pubKey = pubKey;
     }
-    if (peerId != null) {
-      _result.peerId = peerId;
-    }
-    if (deviceId != null) {
-      _result.deviceId = deviceId;
+    if (peerID != null) {
+      _result.peerID = peerID;
     }
     return _result;
   }
@@ -1039,31 +1048,22 @@ class SNID extends $pb.GeneratedMessage {
   void clearDomain() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<$core.int> get publicKey => $_getN(1);
+  $core.List<$core.int> get pubKey => $_getN(1);
   @$pb.TagNumber(2)
-  set publicKey($core.List<$core.int> v) { $_setBytes(1, v); }
+  set pubKey($core.List<$core.int> v) { $_setBytes(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasPublicKey() => $_has(1);
+  $core.bool hasPubKey() => $_has(1);
   @$pb.TagNumber(2)
-  void clearPublicKey() => clearField(2);
+  void clearPubKey() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get peerId => $_getSZ(2);
+  $core.String get peerID => $_getSZ(2);
   @$pb.TagNumber(3)
-  set peerId($core.String v) { $_setString(2, v); }
+  set peerID($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasPeerId() => $_has(2);
+  $core.bool hasPeerID() => $_has(2);
   @$pb.TagNumber(3)
-  void clearPeerId() => clearField(3);
-
-  @$pb.TagNumber(4)
-  $core.String get deviceId => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set deviceId($core.String v) { $_setString(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasDeviceId() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearDeviceId() => clearField(4);
+  void clearPeerID() => clearField(3);
 }
 
 class UUID extends $pb.GeneratedMessage {
