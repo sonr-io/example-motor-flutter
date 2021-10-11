@@ -42,9 +42,10 @@ class NearbyRow extends GetView<HomeController> implements PreferredSizeWidget {
                   itemCount: controller.localPeers.length,
                   itemBuilder: (context, index) {
                     return Container(
-                      width: 187,
+                      width: 210,
                       child: PeerListItem(
                         peer: controller.localPeers[index],
+                        onTap: () => Get.to(NearbyList()),
                       ),
                     );
                   },

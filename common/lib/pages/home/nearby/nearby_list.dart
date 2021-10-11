@@ -53,6 +53,7 @@ class NearbyList extends GetView<HomeController> {
                 return PeerListItem(
                   peer: controller.localPeers[index],
                   withInviteButton: true,
+                  onTap: () => SonrService.to.share(controller.localPeers[index]),
                 );
               })
           : _buildEmpty()),

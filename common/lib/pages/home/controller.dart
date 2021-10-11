@@ -218,8 +218,9 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   }
 
   void _handleRefresh(RefreshEvent event) {
-    print(event.toString());
-    localPeers(event.peers);
-    localPeers.refresh();
+    if (event.peers.length != localPeers.length) {
+      localPeers(event.peers);
+      localPeers.refresh();
+    }
   }
 }

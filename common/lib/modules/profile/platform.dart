@@ -7,12 +7,14 @@ class PlatformIcon extends StatelessWidget {
   const PlatformIcon({Key? key, this.platform}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return ClipPolygon(
-      sides: 6,
-      child: Container(
-        padding: EdgeInsets.all(8),
-        child: Icon(platformIconData),
-        color: AppColors.secondary3,
+    return Container(
+      height: 24,
+      width: 24,
+      alignment: Alignment.center,
+      child: Icon(platformIconData, size: 12),
+      decoration: BoxDecoration(
+        color: platformColor,
+        shape: BoxShape.circle,
       ),
     );
   }
@@ -22,9 +24,9 @@ class PlatformIcon extends StatelessWidget {
       case "android":
         return SimpleIcons.Android;
       case "ios":
-        return SimpleIcons.IPhone;
+        return SimpleIcons.Apple;
       case "darwin":
-        return SimpleIcons.IMac;
+        return SimpleIcons.Apple;
       case "linux":
         return SimpleIcons.LinuxDesktop;
       case "windows":

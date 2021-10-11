@@ -223,21 +223,22 @@ class TextUtils {
       case "android":
         return [
           Tuple("Larry", "Page"),
-          Tuple("Sergei", "Bring"),
+          Tuple("Sergei", "Brin"),
           Tuple("Eric", "Schmidt"),
+          Tuple("Andy", "Rubin"),
         ].random();
       case "ios":
         return [Tuple("Steve", "Jobs"), Tuple("Steve", "Wozniak"), Tuple("Jony", "Ive")].random();
       case "linux":
         return Tuple("Linus", "Trovalds");
       case "macos":
-        return [Tuple("Steve", "Jobs"), Tuple("Jony", "Ive"), Tuple("Andy", "Hertzeld")].random();
-      case "web":
-        return [Tuple("Vitalik", "Buterin"), Tuple("Elon", "Musk"), Tuple("Jeff", "Bezos"), Tuple("Tim", "Berners-Lee")].random();
-      case "windows":
-        return [Tuple("Bill", "Gates"), Tuple("Paul", "Allen")].random();
+        return [Tuple("Bill", "Atkinson"), Tuple("Andy", "Hertzeld")].random();
       default:
         return [
+          Tuple("Vitalik", "Buterin"),
+          Tuple("Tim", "Berners-Lee"),
+          Tuple("Bill", "Gates"),
+          Tuple("Paul", "Allen"),
           Tuple("Michelangelo", "Buonarroti"),
           Tuple("Kendrick", "Lamar"),
           Tuple("Madam", "Curie"),

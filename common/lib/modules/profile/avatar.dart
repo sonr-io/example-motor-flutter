@@ -46,3 +46,45 @@ class ProfileAvatar extends StatelessWidget {
     }
   }
 }
+
+/// #### PeerListItem for Remote View
+class PeerAvatar extends StatelessWidget {
+  final Peer peer;
+  PeerAvatar({required this.peer});
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 64,
+      height: 64,
+      child: Stack(
+        children: [
+          Align(
+            alignment: Alignment.center,
+            child: Container(
+              margin: EdgeInsets.all(4),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                  fit: BoxFit.contain,
+                  image: _buildAvatar(),
+                ),
+              ),
+            ),
+          ),
+          Align(
+            alignment: Alignment.topRight,
+            child: PlatformIcon(platform: peer.device.os),
+          ),
+        ],
+      ),
+    );
+  }
+
+  ImageProvider<Object> _buildAvatar() {
+    if (peer.profile.hasPicture()) {
+      return MemoryImage(Uint8List.fromList(peer.profile.picture));
+    } else {
+      return AssetImage(PROFILE_AVATAR_PLACEHOLDER);
+    }
+  }
+}

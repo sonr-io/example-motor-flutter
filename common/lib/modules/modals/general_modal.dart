@@ -22,8 +22,9 @@ class GeneralModal extends StatelessWidget {
             boxShadow: [AppShadows.depth4],
           ),
           padding: EdgeInsets.symmetric(vertical: 24),
-          margin: EdgeInsets.symmetric(horizontal: 24),
+          margin: EdgeInsets.symmetric(horizontal: 24, vertical: 180),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               // Title Bar with Close
               Container(
