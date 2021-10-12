@@ -3,7 +3,7 @@ import '../../sonr_plugin.dart';
 
 extension PayloadUtils on Payload {
   /// A method returns a human readable string representing a file _size
-  String prettySize([int round = 2]) {
+  String prettySize([int round = 1]) {
     /**
    * [size] can be passed as number or as string
    *

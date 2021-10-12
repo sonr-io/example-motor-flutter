@@ -14,6 +14,7 @@ class PeerListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       onTap: onTap,
+      minLeadingWidth: 64,
       onLongPress: onLongPress,
       leading: PeerAvatar(peer: peer),
       title: Text(

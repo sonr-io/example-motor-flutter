@@ -167,12 +167,13 @@ const ProfileList$json = const {
   '2': const [
     const {'1': 'profiles', '3': 1, '4': 3, '5': 11, '6': '.sonr.core.Profile', '10': 'profiles'},
     const {'1': 'createdAt', '3': 2, '4': 1, '5': 3, '10': 'createdAt'},
-    const {'1': 'lastModified', '3': 3, '4': 1, '5': 3, '10': 'lastModified'},
+    const {'1': 'key', '3': 3, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'lastModified', '3': 4, '4': 1, '5': 3, '10': 'lastModified'},
   ],
 };
 
 /// Descriptor for `ProfileList`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List profileListDescriptor = $convert.base64Decode('CgtQcm9maWxlTGlzdBIuCghwcm9maWxlcxgBIAMoCzISLnNvbnIuY29yZS5Qcm9maWxlUghwcm9maWxlcxIcCgljcmVhdGVkQXQYAiABKANSCWNyZWF0ZWRBdBIiCgxsYXN0TW9kaWZpZWQYAyABKANSDGxhc3RNb2RpZmllZA==');
+final $typed_data.Uint8List profileListDescriptor = $convert.base64Decode('CgtQcm9maWxlTGlzdBIuCghwcm9maWxlcxgBIAMoCzISLnNvbnIuY29yZS5Qcm9maWxlUghwcm9maWxlcxIcCgljcmVhdGVkQXQYAiABKANSCWNyZWF0ZWRBdBIQCgNrZXkYAyABKAlSA2tleRIiCgxsYXN0TW9kaWZpZWQYBCABKANSDGxhc3RNb2RpZmllZA==');
 @$core.Deprecated('Use socialDescriptor instead')
 const Social$json = const {
   '1': 'Social',

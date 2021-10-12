@@ -158,7 +158,7 @@ const InitializeResponse_HistoryEntry$json = const {
   '1': 'HistoryEntry',
   '2': const [
     const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.PayloadItemList', '10': 'value'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.PayloadList', '10': 'value'},
   ],
   '7': const {'7': true},
 };
@@ -173,7 +173,7 @@ const InitializeResponse_UserStatus$json = const {
 };
 
 /// Descriptor for `InitializeResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List initializeResponseDescriptor = $convert.base64Decode('ChJJbml0aWFsaXplUmVzcG9uc2USGAoHc3VjY2VzcxgBIAEoCFIHc3VjY2VzcxIUCgVlcnJvchgCIAEoCVIFZXJyb3ISLAoHcHJvZmlsZRgDIAEoCzISLnNvbnIuY29yZS5Qcm9maWxlUgdwcm9maWxlEkMKB3JlY2VudHMYBCADKAsyKS5zb25yLmFwaS5Jbml0aWFsaXplUmVzcG9uc2UuUmVjZW50c0VudHJ5UgdyZWNlbnRzEkMKB2hpc3RvcnkYBSADKAsyKS5zb25yLmFwaS5Jbml0aWFsaXplUmVzcG9uc2UuSGlzdG9yeUVudHJ5UgdoaXN0b3J5EkcKCnVzZXJTdGF0dXMYBiABKA4yJy5zb25yLmFwaS5Jbml0aWFsaXplUmVzcG9uc2UuVXNlclN0YXR1c1IKdXNlclN0YXR1cxpSCgxSZWNlbnRzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSLAoFdmFsdWUYAiABKAsyFi5zb25yLmNvcmUuUHJvZmlsZUxpc3RSBXZhbHVlOgI4ARpWCgxIaXN0b3J5RW50cnkSEAoDa2V5GAEgASgJUgNrZXkSMAoFdmFsdWUYAiABKAsyGi5zb25yLmNvcmUuUGF5bG9hZEl0ZW1MaXN0UgV2YWx1ZToCOAEiJAoKVXNlclN0YXR1cxINCglSRVRVUk5JTkcQABIHCgNORVcQAQ==');
+final $typed_data.Uint8List initializeResponseDescriptor = $convert.base64Decode('ChJJbml0aWFsaXplUmVzcG9uc2USGAoHc3VjY2VzcxgBIAEoCFIHc3VjY2VzcxIUCgVlcnJvchgCIAEoCVIFZXJyb3ISLAoHcHJvZmlsZRgDIAEoCzISLnNvbnIuY29yZS5Qcm9maWxlUgdwcm9maWxlEkMKB3JlY2VudHMYBCADKAsyKS5zb25yLmFwaS5Jbml0aWFsaXplUmVzcG9uc2UuUmVjZW50c0VudHJ5UgdyZWNlbnRzEkMKB2hpc3RvcnkYBSADKAsyKS5zb25yLmFwaS5Jbml0aWFsaXplUmVzcG9uc2UuSGlzdG9yeUVudHJ5UgdoaXN0b3J5EkcKCnVzZXJTdGF0dXMYBiABKA4yJy5zb25yLmFwaS5Jbml0aWFsaXplUmVzcG9uc2UuVXNlclN0YXR1c1IKdXNlclN0YXR1cxpSCgxSZWNlbnRzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSLAoFdmFsdWUYAiABKAsyFi5zb25yLmNvcmUuUHJvZmlsZUxpc3RSBXZhbHVlOgI4ARpSCgxIaXN0b3J5RW50cnkSEAoDa2V5GAEgASgJUgNrZXkSLAoFdmFsdWUYAiABKAsyFi5zb25yLmNvcmUuUGF5bG9hZExpc3RSBXZhbHVlOgI4ASIkCgpVc2VyU3RhdHVzEg0KCVJFVFVSTklORxAAEgcKA05FVxAB');
 @$core.Deprecated('Use supplyRequestDescriptor instead')
 const SupplyRequest$json = const {
   '1': 'SupplyRequest',
@@ -251,10 +251,10 @@ const FetchResponse$json = const {
     const {'1': 'error', '3': 2, '4': 1, '5': 9, '10': 'error'},
     const {'1': 'profile', '3': 3, '4': 1, '5': 11, '6': '.sonr.core.Profile', '10': 'profile'},
     const {'1': 'devices', '3': 4, '4': 3, '5': 11, '6': '.sonr.api.FetchResponse.DevicesEntry', '10': 'devices'},
-    const {'1': 'recents', '3': 5, '4': 3, '5': 11, '6': '.sonr.api.FetchResponse.RecentsEntry', '10': 'recents'},
-    const {'1': 'history', '3': 6, '4': 3, '5': 11, '6': '.sonr.api.FetchResponse.HistoryEntry', '10': 'history'},
+    const {'1': 'recents', '3': 5, '4': 1, '5': 11, '6': '.sonr.core.ProfileList', '10': 'recents'},
+    const {'1': 'history', '3': 6, '4': 1, '5': 11, '6': '.sonr.core.PayloadList', '10': 'history'},
   ],
-  '3': const [FetchResponse_DevicesEntry$json, FetchResponse_RecentsEntry$json, FetchResponse_HistoryEntry$json],
+  '3': const [FetchResponse_DevicesEntry$json],
 };
 
 @$core.Deprecated('Use fetchResponseDescriptor instead')
@@ -267,28 +267,8 @@ const FetchResponse_DevicesEntry$json = const {
   '7': const {'7': true},
 };
 
-@$core.Deprecated('Use fetchResponseDescriptor instead')
-const FetchResponse_RecentsEntry$json = const {
-  '1': 'RecentsEntry',
-  '2': const [
-    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.ProfileList', '10': 'value'},
-  ],
-  '7': const {'7': true},
-};
-
-@$core.Deprecated('Use fetchResponseDescriptor instead')
-const FetchResponse_HistoryEntry$json = const {
-  '1': 'HistoryEntry',
-  '2': const [
-    const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
-    const {'1': 'value', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.PayloadItemList', '10': 'value'},
-  ],
-  '7': const {'7': true},
-};
-
 /// Descriptor for `FetchResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List fetchResponseDescriptor = $convert.base64Decode('Cg1GZXRjaFJlc3BvbnNlEhgKB3N1Y2Nlc3MYASABKAhSB3N1Y2Nlc3MSFAoFZXJyb3IYAiABKAlSBWVycm9yEiwKB3Byb2ZpbGUYAyABKAsyEi5zb25yLmNvcmUuUHJvZmlsZVIHcHJvZmlsZRI+CgdkZXZpY2VzGAQgAygLMiQuc29uci5hcGkuRmV0Y2hSZXNwb25zZS5EZXZpY2VzRW50cnlSB2RldmljZXMSPgoHcmVjZW50cxgFIAMoCzIkLnNvbnIuYXBpLkZldGNoUmVzcG9uc2UuUmVjZW50c0VudHJ5UgdyZWNlbnRzEj4KB2hpc3RvcnkYBiADKAsyJC5zb25yLmFwaS5GZXRjaFJlc3BvbnNlLkhpc3RvcnlFbnRyeVIHaGlzdG9yeRpLCgxEZXZpY2VzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSJQoFdmFsdWUYAiABKAsyDy5zb25yLmNvcmUuUGVlclIFdmFsdWU6AjgBGlIKDFJlY2VudHNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIsCgV2YWx1ZRgCIAEoCzIWLnNvbnIuY29yZS5Qcm9maWxlTGlzdFIFdmFsdWU6AjgBGlYKDEhpc3RvcnlFbnRyeRIQCgNrZXkYASABKAlSA2tleRIwCgV2YWx1ZRgCIAEoCzIaLnNvbnIuY29yZS5QYXlsb2FkSXRlbUxpc3RSBXZhbHVlOgI4AQ==');
+final $typed_data.Uint8List fetchResponseDescriptor = $convert.base64Decode('Cg1GZXRjaFJlc3BvbnNlEhgKB3N1Y2Nlc3MYASABKAhSB3N1Y2Nlc3MSFAoFZXJyb3IYAiABKAlSBWVycm9yEiwKB3Byb2ZpbGUYAyABKAsyEi5zb25yLmNvcmUuUHJvZmlsZVIHcHJvZmlsZRI+CgdkZXZpY2VzGAQgAygLMiQuc29uci5hcGkuRmV0Y2hSZXNwb25zZS5EZXZpY2VzRW50cnlSB2RldmljZXMSMAoHcmVjZW50cxgFIAEoCzIWLnNvbnIuY29yZS5Qcm9maWxlTGlzdFIHcmVjZW50cxIwCgdoaXN0b3J5GAYgASgLMhYuc29uci5jb3JlLlBheWxvYWRMaXN0UgdoaXN0b3J5GksKDERldmljZXNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIlCgV2YWx1ZRgCIAEoCzIPLnNvbnIuY29yZS5QZWVyUgV2YWx1ZToCOAE=');
 @$core.Deprecated('Use linkRequestDescriptor instead')
 const LinkRequest$json = const {
   '1': 'LinkRequest',

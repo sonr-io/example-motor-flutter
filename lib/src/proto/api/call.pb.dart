@@ -708,7 +708,7 @@ class InitializeResponse extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
     ..aOM<$0.Profile>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profile', subBuilder: $0.Profile.create)
     ..m<$core.String, $0.ProfileList>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'recents', entryClassName: 'InitializeResponse.RecentsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $0.ProfileList.create, packageName: const $pb.PackageName('sonr.api'))
-    ..m<$core.String, $1.PayloadItemList>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'history', entryClassName: 'InitializeResponse.HistoryEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $1.PayloadItemList.create, packageName: const $pb.PackageName('sonr.api'))
+    ..m<$core.String, $1.PayloadList>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'history', entryClassName: 'InitializeResponse.HistoryEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $1.PayloadList.create, packageName: const $pb.PackageName('sonr.api'))
     ..e<InitializeResponse_UserStatus>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'userStatus', $pb.PbFieldType.OE, protoName: 'userStatus', defaultOrMaker: InitializeResponse_UserStatus.RETURNING, valueOf: InitializeResponse_UserStatus.valueOf, enumValues: InitializeResponse_UserStatus.values)
     ..hasRequiredFields = false
   ;
@@ -719,7 +719,7 @@ class InitializeResponse extends $pb.GeneratedMessage {
     $core.String? error,
     $0.Profile? profile,
     $core.Map<$core.String, $0.ProfileList>? recents,
-    $core.Map<$core.String, $1.PayloadItemList>? history,
+    $core.Map<$core.String, $1.PayloadList>? history,
     InitializeResponse_UserStatus? userStatus,
   }) {
     final _result = create();
@@ -797,7 +797,7 @@ class InitializeResponse extends $pb.GeneratedMessage {
   $core.Map<$core.String, $0.ProfileList> get recents => $_getMap(3);
 
   @$pb.TagNumber(5)
-  $core.Map<$core.String, $1.PayloadItemList> get history => $_getMap(4);
+  $core.Map<$core.String, $1.PayloadList> get history => $_getMap(4);
 
   @$pb.TagNumber(6)
   InitializeResponse_UserStatus get userStatus => $_getN(5);
@@ -1090,8 +1090,8 @@ class FetchResponse extends $pb.GeneratedMessage {
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'error')
     ..aOM<$0.Profile>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profile', subBuilder: $0.Profile.create)
     ..m<$core.String, $0.Peer>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'devices', entryClassName: 'FetchResponse.DevicesEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $0.Peer.create, packageName: const $pb.PackageName('sonr.api'))
-    ..m<$core.String, $0.ProfileList>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'recents', entryClassName: 'FetchResponse.RecentsEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $0.ProfileList.create, packageName: const $pb.PackageName('sonr.api'))
-    ..m<$core.String, $1.PayloadItemList>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'history', entryClassName: 'FetchResponse.HistoryEntry', keyFieldType: $pb.PbFieldType.OS, valueFieldType: $pb.PbFieldType.OM, valueCreator: $1.PayloadItemList.create, packageName: const $pb.PackageName('sonr.api'))
+    ..aOM<$0.ProfileList>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'recents', subBuilder: $0.ProfileList.create)
+    ..aOM<$1.PayloadList>(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'history', subBuilder: $1.PayloadList.create)
     ..hasRequiredFields = false
   ;
 
@@ -1101,8 +1101,8 @@ class FetchResponse extends $pb.GeneratedMessage {
     $core.String? error,
     $0.Profile? profile,
     $core.Map<$core.String, $0.Peer>? devices,
-    $core.Map<$core.String, $0.ProfileList>? recents,
-    $core.Map<$core.String, $1.PayloadItemList>? history,
+    $0.ProfileList? recents,
+    $1.PayloadList? history,
   }) {
     final _result = create();
     if (success != null) {
@@ -1118,10 +1118,10 @@ class FetchResponse extends $pb.GeneratedMessage {
       _result.devices.addAll(devices);
     }
     if (recents != null) {
-      _result.recents.addAll(recents);
+      _result.recents = recents;
     }
     if (history != null) {
-      _result.history.addAll(history);
+      _result.history = history;
     }
     return _result;
   }
@@ -1179,10 +1179,26 @@ class FetchResponse extends $pb.GeneratedMessage {
   $core.Map<$core.String, $0.Peer> get devices => $_getMap(3);
 
   @$pb.TagNumber(5)
-  $core.Map<$core.String, $0.ProfileList> get recents => $_getMap(4);
+  $0.ProfileList get recents => $_getN(4);
+  @$pb.TagNumber(5)
+  set recents($0.ProfileList v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasRecents() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearRecents() => clearField(5);
+  @$pb.TagNumber(5)
+  $0.ProfileList ensureRecents() => $_ensure(4);
 
   @$pb.TagNumber(6)
-  $core.Map<$core.String, $1.PayloadItemList> get history => $_getMap(5);
+  $1.PayloadList get history => $_getN(5);
+  @$pb.TagNumber(6)
+  set history($1.PayloadList v) { setField(6, v); }
+  @$pb.TagNumber(6)
+  $core.bool hasHistory() => $_has(5);
+  @$pb.TagNumber(6)
+  void clearHistory() => clearField(6);
+  @$pb.TagNumber(6)
+  $1.PayloadList ensureHistory() => $_ensure(5);
 }
 
 class LinkRequest extends $pb.GeneratedMessage {

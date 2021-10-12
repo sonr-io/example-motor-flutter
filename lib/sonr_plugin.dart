@@ -34,7 +34,7 @@ class SonrService extends GetxService {
   static bool get isRegistered => Get.isRegistered<SonrService>();
 
   /// Recent Profiles is list of peers User interacts with
-  final recentProfiles = RxList<ProfileList>();
+  final recentProfiles = RxList<Profile>();
 
   /// Status is the status of the Sonr RPC Server
   //final status = Rx<Status>(Status.IDLE);
@@ -42,7 +42,7 @@ class SonrService extends GetxService {
   // GRPC Streams
   final _decisionEvents = StreamController<DecisionEvent>();
   final _refreshEvents = StreamController<RefreshEvent>();
-  // final _mailboxEvents = StreamController<MailboxEvent>();
+  final _mailboxEvents = StreamController<MailboxEvent>();
   final _inviteEvents = StreamController<InviteEvent>();
   final _progressEvents = StreamController<ProgressEvent>();
   final _completeEvents = StreamController<CompleteEvent>();
@@ -100,13 +100,13 @@ class SonrService extends GetxService {
         );
 
     // // Handle Mail Messages
-    // _client.onMailboxMessage(Empty()).listen(
-    //   (value) {
-    //     _mailboxEvents.add(value);
-    //   },
-    //   onError: (err) => print("[RPC Client] ERROR: Listening to onMailboxMessage \n" + err.toString()),
-    //   cancelOnError: true,
-    // );
+    _client.onMailboxMessage(Empty()).listen(
+      (value) {
+        _mailboxEvents.add(value);
+      },
+      onError: (err) => print("[RPC Client] ERROR: Listening to onMailboxMessage \n" + err.toString()),
+      cancelOnError: true,
+    );
 
     // Create Decision Stream
     _client.onTransferAccepted(Empty()).listen(
@@ -223,13 +223,13 @@ class SonrService extends GetxService {
     final resp = await _client.fetch(fetchRequest);
 
     // Check recents length and update
-    if (resp.recents.length > 0) {
+    if (resp.recents.profiles.length > 0) {
       // Initialize and Sort
-      final respLists = resp.recents.values.toList();
+      final respLists = resp.recents.profiles.toList();
       respLists.sort((a, b) => a.lastModified.compareTo(b.lastModified));
 
       // Add all profiles to list
-      recentProfiles(respLists);
+      recentProfiles(resp.recents.profiles);
       recentProfiles.refresh();
     }
     return resp;

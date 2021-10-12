@@ -237,16 +237,15 @@ const Payload_Item$json = const {
 
 /// Descriptor for `Payload`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List payloadDescriptor = $convert.base64Decode('CgdQYXlsb2FkEi0KBWl0ZW1zGAEgAygLMhcuc29uci5jb3JlLlBheWxvYWQuSXRlbVIFaXRlbXMSKAoFb3duZXIYAiABKAsyEi5zb25yLmNvcmUuUHJvZmlsZVIFb3duZXISEgoEc2l6ZRgDIAEoA1IEc2l6ZRIcCgljcmVhdGVkQXQYBCABKANSCWNyZWF0ZWRBdBrNAgoESXRlbRIjCgRtaW1lGAEgASgLMg8uc29uci5jb3JlLk1JTUVSBG1pbWUSEgoEc2l6ZRgCIAEoA1IEc2l6ZRIpCgRmaWxlGAMgASgLMhMuc29uci5jb3JlLkZpbGVJdGVtSABSBGZpbGUSJgoDdXJsGAQgASgLMhIuc29uci5jb3JlLlVybEl0ZW1IAFIDdXJsEjIKB21lc3NhZ2UYBSABKAsyFi5zb25yLmNvcmUuTWVzc2FnZUl0ZW1IAFIHbWVzc2FnZRI0Cgl0aHVtYm5haWwYBiABKAsyFC5zb25yLmNvcmUuVGh1bWJuYWlsSAFSCXRodW1ibmFpbBI8CglvcGVuR3JhcGgYByABKAsyHC5zb25yLmNvcmUuT3BlbkdyYXBoLlByaW1hcnlIAVIJb3BlbkdyYXBoQgYKBGRhdGFCCQoHcHJldmlldw==');
-@$core.Deprecated('Use payloadItemListDescriptor instead')
-const PayloadItemList$json = const {
-  '1': 'PayloadItemList',
+@$core.Deprecated('Use payloadListDescriptor instead')
+const PayloadList$json = const {
+  '1': 'PayloadList',
   '2': const [
-    const {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.sonr.core.Payload.Item', '10': 'items'},
-    const {'1': 'mime', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.MIME', '10': 'mime'},
-    const {'1': 'size', '3': 3, '4': 1, '5': 3, '10': 'size'},
-    const {'1': 'lastModified', '3': 4, '4': 1, '5': 3, '10': 'lastModified'},
+    const {'1': 'payloads', '3': 1, '4': 3, '5': 11, '6': '.sonr.core.Payload', '10': 'payloads'},
+    const {'1': 'key', '3': 2, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'lastModified', '3': 3, '4': 1, '5': 3, '10': 'lastModified'},
   ],
 };
 
-/// Descriptor for `PayloadItemList`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List payloadItemListDescriptor = $convert.base64Decode('Cg9QYXlsb2FkSXRlbUxpc3QSLQoFaXRlbXMYASADKAsyFy5zb25yLmNvcmUuUGF5bG9hZC5JdGVtUgVpdGVtcxIjCgRtaW1lGAIgASgLMg8uc29uci5jb3JlLk1JTUVSBG1pbWUSEgoEc2l6ZRgDIAEoA1IEc2l6ZRIiCgxsYXN0TW9kaWZpZWQYBCABKANSDGxhc3RNb2RpZmllZA==');
+/// Descriptor for `PayloadList`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List payloadListDescriptor = $convert.base64Decode('CgtQYXlsb2FkTGlzdBIuCghwYXlsb2FkcxgBIAMoCzISLnNvbnIuY29yZS5QYXlsb2FkUghwYXlsb2FkcxIQCgNrZXkYAiABKAlSA2tleRIiCgxsYXN0TW9kaWZpZWQYAyABKANSDGxhc3RNb2RpZmllZA==');

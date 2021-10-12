@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:sonr_app/modules/modals/modals.dart';
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'home.dart';
 
 enum HomeView { Dashboard, Personal, Explorer, Search }
@@ -101,6 +102,8 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   final isConnecting = true.obs;
   final view = HomeView.Dashboard.obs;
   final localPeers = <Peer>[].obs;
+  final history = <Payload>[].obs;
+  final recents = <Profile>[].obs;
 
   // Propeties
   final query = "".obs;
@@ -119,21 +122,17 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   late StreamSubscription<ProgressEvent> _progressSubscription;
   late StreamSubscription<RefreshEvent> _refreshSubscription;
   late StreamSubscription<CompleteEvent> _completeSubscription;
-  late Profile profile;
 
   /// #### Controller Constructer
   @override
   onInit() {
-    // Create Profile
-    final hint = TextUtils.hintName;
-    profile = Profile(
-      firstName: hint.item1,
-      lastName: hint.item2,
-      sName: hint.item1[0] + hint.item2,
-    );
+    _completeSubscription = SonrService.to.onComplete(_handleComplete);
+    _inviteSubscription = SonrService.to.onInvite(_handleInvite);
+    _refreshSubscription = SonrService.to.onRefresh(_handleRefresh);
+    _progressSubscription = SonrService.to.onProgress(_handleProgress);
 
     // Connect to Network
-    connect();
+    fetchData();
 
     // Handle Tab Controller
     tabController = TabController(vsync: this, length: 1);
@@ -152,17 +151,16 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     super.onClose();
   }
 
-  Future<void> connect() async {
-    final loc = await LocationUtil.current(requestIfNoPermission: true);
-    await SonrService.to.start(location: loc, profile: profile);
-    _completeSubscription = SonrService.to.onComplete(_handleComplete);
-    _inviteSubscription = SonrService.to.onInvite(_handleInvite);
-    _refreshSubscription = SonrService.to.onRefresh(_handleRefresh);
-    _progressSubscription = SonrService.to.onProgress(_handleProgress);
+  Future<void> fetchData() async {
+    final resp = await SonrService.to.fetch(key: FetchRequest_Key.ALL);
+    history(resp.history.payloads);
+    recents(resp.recents.profiles);
+    history.refresh();
+    recents.refresh();
   }
 
   Future<void> edit() async {
-    await SonrService.to.edit(profile);
+    // await SonrService.to.edit(profile);
   }
 
   /// #### Change View
@@ -211,10 +209,14 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   }
 
   void _handleComplete(CompleteEvent event) {
-    Get.snackbar("Completed Transfer!", event.toString(), duration: 1.seconds);
-    Future.delayed(1.seconds, () {
-      OpenFile.open(event.payload.items[0].file.path);
-    });
+    Get.snackbar(
+      event.snackTitle,
+      event.snackMessage,
+      duration: event.snackDuration,
+      icon: event.snackIcon,
+      backgroundColor: AppColors.primary4,
+      onTap: (snack) => OpenFile.open(event.payload.items[0].file.path),
+    );
   }
 
   void _handleRefresh(RefreshEvent event) {
@@ -223,4 +225,32 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
       localPeers.refresh();
     }
   }
+}
+
+extension CompleteEventUtils on CompleteEvent {
+  String get snackTitle {
+    if (this.direction == CompleteEvent_Direction.INCOMING) {
+      return "Completed Receive!";
+    } else {
+      return "Completed Share!";
+    }
+  }
+
+  String get snackMessage {
+    if (this.direction == CompleteEvent_Direction.INCOMING) {
+      return "Received ${this.payload.items.length} File(s) of ${this.payload.prettySize()} total size.";
+    } else {
+      return "Sent ${this.payload.items.length} File(s) of ${this.payload.prettySize()} total size.";
+    }
+  }
+
+  Duration get snackDuration {
+    if (this.direction == CompleteEvent_Direction.INCOMING) {
+      return 3.seconds;
+    } else {
+      return 1.seconds;
+    }
+  }
+
+  Widget get snackIcon => Icon(SimpleIcons.Check, color: AppColors.neutrals8);
 }

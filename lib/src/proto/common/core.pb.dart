@@ -823,7 +823,8 @@ class ProfileList extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ProfileList', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
     ..pc<Profile>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profiles', $pb.PbFieldType.PM, subBuilder: Profile.create)
     ..aInt64(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
-    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastModified', protoName: 'lastModified')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'key')
+    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastModified', protoName: 'lastModified')
     ..hasRequiredFields = false
   ;
 
@@ -831,6 +832,7 @@ class ProfileList extends $pb.GeneratedMessage {
   factory ProfileList({
     $core.Iterable<Profile>? profiles,
     $fixnum.Int64? createdAt,
+    $core.String? key,
     $fixnum.Int64? lastModified,
   }) {
     final _result = create();
@@ -839,6 +841,9 @@ class ProfileList extends $pb.GeneratedMessage {
     }
     if (createdAt != null) {
       _result.createdAt = createdAt;
+    }
+    if (key != null) {
+      _result.key = key;
     }
     if (lastModified != null) {
       _result.lastModified = lastModified;
@@ -879,13 +884,22 @@ class ProfileList extends $pb.GeneratedMessage {
   void clearCreatedAt() => clearField(2);
 
   @$pb.TagNumber(3)
-  $fixnum.Int64 get lastModified => $_getI64(2);
+  $core.String get key => $_getSZ(2);
   @$pb.TagNumber(3)
-  set lastModified($fixnum.Int64 v) { $_setInt64(2, v); }
+  set key($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasLastModified() => $_has(2);
+  $core.bool hasKey() => $_has(2);
   @$pb.TagNumber(3)
-  void clearLastModified() => clearField(3);
+  void clearKey() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $fixnum.Int64 get lastModified => $_getI64(3);
+  @$pb.TagNumber(4)
+  set lastModified($fixnum.Int64 v) { $_setInt64(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasLastModified() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearLastModified() => clearField(4);
 }
 
 class Social extends $pb.GeneratedMessage {

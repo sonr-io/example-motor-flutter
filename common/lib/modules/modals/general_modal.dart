@@ -17,7 +17,7 @@ class GeneralModal extends StatelessWidget {
         onTapped: () => closeModal(),
         child: Container(
           decoration: BoxDecoration(
-            color: Get.isDarkMode ? AppColors.neutrals1 : AppColors.neutrals8,
+            color: Get.isDarkMode ? AppColors.neutrals2 : AppColors.neutrals7,
             borderRadius: AppRadii.radiusCard,
             boxShadow: [AppShadows.depth4],
           ),
