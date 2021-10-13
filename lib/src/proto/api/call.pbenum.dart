@@ -39,6 +39,23 @@ class InitializeResponse_UserStatus extends $pb.ProtobufEnum {
   const InitializeResponse_UserStatus._($core.int v, $core.String n) : super(v, n);
 }
 
+class EditRequest_Type extends $pb.ProtobufEnum {
+  static const EditRequest_Type NONE = EditRequest_Type._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'NONE');
+  static const EditRequest_Type DELETE = EditRequest_Type._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'DELETE');
+  static const EditRequest_Type MODIFY = EditRequest_Type._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'MODIFY');
+
+  static const $core.List<EditRequest_Type> values = <EditRequest_Type> [
+    NONE,
+    DELETE,
+    MODIFY,
+  ];
+
+  static final $core.Map<$core.int, EditRequest_Type> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static EditRequest_Type? valueOf($core.int value) => _byValue[value];
+
+  const EditRequest_Type._($core.int v, $core.String n) : super(v, n);
+}
+
 class FetchRequest_Key extends $pb.ProtobufEnum {
   static const FetchRequest_Key ALL = FetchRequest_Key._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'ALL');
   static const FetchRequest_Key PROFILE = FetchRequest_Key._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'PROFILE');

@@ -13,9 +13,7 @@ import 'package:protobuf/protobuf.dart' as $pb;
 import '../common/core.pb.dart' as $0;
 import '../common/data.pb.dart' as $1;
 
-import 'event.pbenum.dart';
-
-export 'event.pbenum.dart';
+import '../common/data.pbenum.dart' as $1;
 
 class DecisionEvent extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'DecisionEvent', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
@@ -357,6 +355,7 @@ class ProgressEvent extends $pb.GeneratedMessage {
     ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'total', $pb.PbFieldType.O3)
     ..a<$core.double>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'progress', $pb.PbFieldType.OD)
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'received')
+    ..e<$1.Direction>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'direction', $pb.PbFieldType.OE, defaultOrMaker: $1.Direction.DEFAULT, valueOf: $1.Direction.valueOf, enumValues: $1.Direction.values)
     ..hasRequiredFields = false
   ;
 
@@ -366,6 +365,7 @@ class ProgressEvent extends $pb.GeneratedMessage {
     $core.int? total,
     $core.double? progress,
     $fixnum.Int64? received,
+    $1.Direction? direction,
   }) {
     final _result = create();
     if (current != null) {
@@ -379,6 +379,9 @@ class ProgressEvent extends $pb.GeneratedMessage {
     }
     if (received != null) {
       _result.received = received;
+    }
+    if (direction != null) {
+      _result.direction = direction;
     }
     return _result;
   }
@@ -438,11 +441,20 @@ class ProgressEvent extends $pb.GeneratedMessage {
   $core.bool hasReceived() => $_has(3);
   @$pb.TagNumber(4)
   void clearReceived() => clearField(4);
+
+  @$pb.TagNumber(5)
+  $1.Direction get direction => $_getN(4);
+  @$pb.TagNumber(5)
+  set direction($1.Direction v) { setField(5, v); }
+  @$pb.TagNumber(5)
+  $core.bool hasDirection() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearDirection() => clearField(5);
 }
 
 class CompleteEvent extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'CompleteEvent', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
-    ..e<CompleteEvent_Direction>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'direction', $pb.PbFieldType.OE, defaultOrMaker: CompleteEvent_Direction.DEFAULT, valueOf: CompleteEvent_Direction.valueOf, enumValues: CompleteEvent_Direction.values)
+    ..e<$1.Direction>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'direction', $pb.PbFieldType.OE, defaultOrMaker: $1.Direction.DEFAULT, valueOf: $1.Direction.valueOf, enumValues: $1.Direction.values)
     ..aOM<$1.Payload>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'payload', subBuilder: $1.Payload.create)
     ..aOM<$0.Peer>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'from', subBuilder: $0.Peer.create)
     ..aOM<$0.Peer>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to', subBuilder: $0.Peer.create)
@@ -453,7 +465,7 @@ class CompleteEvent extends $pb.GeneratedMessage {
 
   CompleteEvent._() : super();
   factory CompleteEvent({
-    CompleteEvent_Direction? direction,
+    $1.Direction? direction,
     $1.Payload? payload,
     $0.Peer? from,
     $0.Peer? to,
@@ -503,9 +515,9 @@ class CompleteEvent extends $pb.GeneratedMessage {
   static CompleteEvent? _defaultInstance;
 
   @$pb.TagNumber(1)
-  CompleteEvent_Direction get direction => $_getN(0);
+  $1.Direction get direction => $_getN(0);
   @$pb.TagNumber(1)
-  set direction(CompleteEvent_Direction v) { setField(1, v); }
+  set direction($1.Direction v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasDirection() => $_has(0);
   @$pb.TagNumber(1)

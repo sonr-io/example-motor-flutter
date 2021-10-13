@@ -96,12 +96,20 @@ extension HomeViewUtils on HomeView {
   static HomeView fromIndex(int i) => HomeView.values[i];
 }
 
+enum PeerStatus {
+  NONE,
+  PENDING,
+  IN_PROGRESS,
+  COMPLETED,
+}
+
 class HomeController extends GetxController with SingleGetTickerProviderMixin {
   // Properties
   final appbarOpacity = 1.0.obs;
   final isConnecting = true.obs;
   final view = HomeView.Dashboard.obs;
   final localPeers = <Peer>[].obs;
+  final localPeersStatus = <Peer, PeerStatus>{}.obs;
   final history = <Payload>[].obs;
   final recents = <Profile>[].obs;
 
@@ -196,6 +204,21 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     }
   }
 
+  /// #### Return PeerStatus by Peer from Map
+  PeerStatus? statusForPeer(Peer p) {
+    return localPeersStatus[p];
+  }
+
+  /// #### Share to Peer
+  void shareToPeer(Peer peer) async {
+    // Update Peer status
+    localPeersStatus[peer] = PeerStatus.PENDING;
+
+    // Invite Peer from Service
+    final resp = await SonrService.to.share(peer);
+    print(resp.toString());
+  }
+
   void _handleInvite(InviteEvent event) {
     Get.dialog(
       InviteModal(event: event),
@@ -210,6 +233,9 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   }
 
   void _handleComplete(CompleteEvent event) {
+    if (event.direction == Direction.OUTGOING) {
+      localPeersStatus[event.to] = PeerStatus.COMPLETED;
+    }
     Get.snackbar(
       event.snackTitle,
       event.snackMessage,
@@ -222,15 +248,26 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
 
   void _handleRefresh(RefreshEvent event) {
     if (event.peers.length != localPeers.length) {
+      // Refresh Local Peers
       localPeers(event.peers);
       localPeers.refresh();
+
+      // Update Peer-Status Map
+      localPeersStatus.forEach((key, value) {
+        if (!event.peers.contains(key)) {
+          localPeersStatus[key] = PeerStatus.NONE;
+        }
+      });
+
+      // Update Peer-Status Map
+      localPeersStatus.refresh();
     }
   }
 }
 
 extension CompleteEventUtils on CompleteEvent {
   String get snackTitle {
-    if (this.direction == CompleteEvent_Direction.INCOMING) {
+    if (this.direction == Direction.INCOMING) {
       return "Completed Receive!";
     } else {
       return "Completed Share!";
@@ -238,7 +275,7 @@ extension CompleteEventUtils on CompleteEvent {
   }
 
   String get snackMessage {
-    if (this.direction == CompleteEvent_Direction.INCOMING) {
+    if (this.direction == Direction.INCOMING) {
       return "Received ${this.payload.items.length} File(s) of ${this.payload.prettySize()} total size.";
     } else {
       return "Sent ${this.payload.items.length} File(s) of ${this.payload.prettySize()} total size.";
@@ -246,7 +283,7 @@ extension CompleteEventUtils on CompleteEvent {
   }
 
   Duration get snackDuration {
-    if (this.direction == CompleteEvent_Direction.INCOMING) {
+    if (this.direction == Direction.INCOMING) {
       return 3.seconds;
     } else {
       return 1.seconds;

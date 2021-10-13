@@ -13,17 +13,6 @@ Future<void> main() async {
     permanent: true,
   );
 
-  // Create Profile
-  final hint = TextUtils.hintName;
-  final profile = Profile(
-    firstName: hint.item1,
-    lastName: hint.item2,
-    sName: hint.item1[0] + hint.item2,
-  );
-
-  final loc = await LocationUtil.current(requestIfNoPermission: true);
-  await SonrService.to.start(location: loc, profile: profile);
-
   // Check Platform
   runApp(SplashPage());
 }
@@ -80,7 +69,16 @@ class SplashPage extends StatelessWidget {
   }
 
   Future<void> _checkInitialPage() async {
-    await Future.delayed(3500.milliseconds);
+    // Create Profile
+    final hint = TextUtils.hintName;
+    final profile = Profile(
+      firstName: hint.item1,
+      lastName: hint.item2,
+      sName: hint.item1[0] + hint.item2,
+    );
+
+    final loc = await LocationUtil.current(requestIfNoPermission: false);
+    await SonrService.to.start(location: loc, profile: profile);
 
     // All Valid
     if (await Permissions.Location.isGranted) {

@@ -60,7 +60,6 @@ class NearbyRow extends GetView<HomeController> implements PreferredSizeWidget {
   Size get preferredSize => Size(Get.width, 327);
 }
 
-
 enum LobbyFilter { All, Phones, Desktops }
 
 extension LobbyFilterUtils on LobbyFilter {
@@ -108,7 +107,7 @@ class NearbyList extends GetView<HomeController> {
                 return PeerListItem(
                   peer: controller.localPeers[index],
                   withInviteButton: true,
-                  onTap: () => SonrService.to.share(controller.localPeers[index]),
+                  onTap: () => controller.shareToPeer(controller.localPeers[index]),
                 );
               })
           : _buildEmpty()),

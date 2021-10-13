@@ -1,4 +1,5 @@
 import 'package:sonr_app/modules/profile/profile.dart';
+import 'package:sonr_app/pages/home/controller.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
@@ -26,12 +27,27 @@ class PeerListItem extends StatelessWidget {
         style: AppTextStyles.bodyCaptionRegular,
       ),
       trailing: withInviteButton
-          ? NeutralButton(
-              onPressed: () => SonrService.to.share(peer),
-              label: "Invite",
-            )
+          ? Obx(() => NeutralButton(
+                onPressed: () => SonrService.to.share(peer),
+                label: _buildButtonLabel(Get.find<HomeController>().statusForPeer(peer)),
+              ))
           : null,
     );
+  }
+
+  String _buildButtonLabel(PeerStatus? status) {
+    switch (status) {
+      case PeerStatus.NONE:
+        return "Invite";
+      case PeerStatus.PENDING:
+        return "Pending";
+      case PeerStatus.IN_PROGRESS:
+        return "In Progress";
+      case PeerStatus.COMPLETED:
+        return "Complete";
+      default:
+        return "Invite";
+    }
   }
 
   String _buildSName() {

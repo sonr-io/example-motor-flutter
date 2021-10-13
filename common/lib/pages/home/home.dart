@@ -181,17 +181,24 @@ class ShareButton extends StatelessWidget {
   }
 }
 
+// #### Home History View is the body of Home Page
 class HomeHistoryView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16),
-      child: ListView.builder(
-        itemCount: controller.history.length,
-        itemBuilder: (context, index) => PayloadMultiCard(
-          items: controller.history[index].items,
-        ),
-      ),
-    );
+        margin: EdgeInsets.symmetric(horizontal: 16),
+        child: Obx(() => controller.history.length > 0
+            ? ListView.builder(
+                itemCount: controller.history.length,
+                itemBuilder: (context, index) => PayloadMultiCard(
+                  items: controller.history[index].items,
+                ),
+              )
+            : Container(
+                width: Get.width,
+                height: Get.height,
+                alignment: Alignment.center,
+                child: Text("No History yet.", style: AppTextStyles.bodyCaptionRegular),
+              )));
   }
 }

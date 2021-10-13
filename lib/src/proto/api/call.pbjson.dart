@@ -203,12 +203,29 @@ final $typed_data.Uint8List supplyResponseDescriptor = $convert.base64Decode('Cg
 const EditRequest$json = const {
   '1': 'EditRequest',
   '2': const [
-    const {'1': 'profile', '3': 1, '4': 1, '5': 11, '6': '.sonr.core.Profile', '10': 'profile'},
+    const {'1': 'type', '3': 1, '4': 1, '5': 14, '6': '.sonr.api.EditRequest.Type', '10': 'type'},
+    const {'1': 'profile', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.Profile', '10': 'profile'},
+    const {'1': 'history', '3': 3, '4': 1, '5': 11, '6': '.sonr.core.Payload', '9': 0, '10': 'history'},
+    const {'1': 'recent', '3': 4, '4': 1, '5': 11, '6': '.sonr.core.Profile', '9': 0, '10': 'recent'},
+  ],
+  '4': const [EditRequest_Type$json],
+  '8': const [
+    const {'1': 'deleteValue'},
+  ],
+};
+
+@$core.Deprecated('Use editRequestDescriptor instead')
+const EditRequest_Type$json = const {
+  '1': 'Type',
+  '2': const [
+    const {'1': 'NONE', '2': 0},
+    const {'1': 'DELETE', '2': 1},
+    const {'1': 'MODIFY', '2': 2},
   ],
 };
 
 /// Descriptor for `EditRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List editRequestDescriptor = $convert.base64Decode('CgtFZGl0UmVxdWVzdBIsCgdwcm9maWxlGAEgASgLMhIuc29uci5jb3JlLlByb2ZpbGVSB3Byb2ZpbGU=');
+final $typed_data.Uint8List editRequestDescriptor = $convert.base64Decode('CgtFZGl0UmVxdWVzdBIuCgR0eXBlGAEgASgOMhouc29uci5hcGkuRWRpdFJlcXVlc3QuVHlwZVIEdHlwZRIsCgdwcm9maWxlGAIgASgLMhIuc29uci5jb3JlLlByb2ZpbGVSB3Byb2ZpbGUSLgoHaGlzdG9yeRgDIAEoCzISLnNvbnIuY29yZS5QYXlsb2FkSABSB2hpc3RvcnkSLAoGcmVjZW50GAQgASgLMhIuc29uci5jb3JlLlByb2ZpbGVIAFIGcmVjZW50IigKBFR5cGUSCAoETk9ORRAAEgoKBkRFTEVURRABEgoKBk1PRElGWRACQg0KC2RlbGV0ZVZhbHVl');
 @$core.Deprecated('Use editResponseDescriptor instead')
 const EditResponse$json = const {
   '1': 'EditResponse',
@@ -321,11 +338,12 @@ const ShareRequest$json = const {
   '2': const [
     const {'1': 'peer', '3': 1, '4': 1, '5': 11, '6': '.sonr.core.Peer', '10': 'peer'},
     const {'1': 'message', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.MessageItem', '10': 'message'},
+    const {'1': 'paths', '3': 3, '4': 3, '5': 9, '10': 'paths'},
   ],
 };
 
 /// Descriptor for `ShareRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List shareRequestDescriptor = $convert.base64Decode('CgxTaGFyZVJlcXVlc3QSIwoEcGVlchgBIAEoCzIPLnNvbnIuY29yZS5QZWVyUgRwZWVyEjAKB21lc3NhZ2UYAiABKAsyFi5zb25yLmNvcmUuTWVzc2FnZUl0ZW1SB21lc3NhZ2U=');
+final $typed_data.Uint8List shareRequestDescriptor = $convert.base64Decode('CgxTaGFyZVJlcXVlc3QSIwoEcGVlchgBIAEoCzIPLnNvbnIuY29yZS5QZWVyUgRwZWVyEjAKB21lc3NhZ2UYAiABKAsyFi5zb25yLmNvcmUuTWVzc2FnZUl0ZW1SB21lc3NhZ2USFAoFcGF0aHMYAyADKAlSBXBhdGhz');
 @$core.Deprecated('Use shareResponseDescriptor instead')
 const ShareResponse$json = const {
   '1': 'ShareResponse',

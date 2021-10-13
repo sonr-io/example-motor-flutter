@@ -8,6 +8,18 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+@$core.Deprecated('Use directionDescriptor instead')
+const Direction$json = const {
+  '1': 'Direction',
+  '2': const [
+    const {'1': 'DEFAULT', '2': 0},
+    const {'1': 'INCOMING', '2': 1},
+    const {'1': 'OUTGOING', '2': 2},
+  ],
+};
+
+/// Descriptor for `Direction`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List directionDescriptor = $convert.base64Decode('CglEaXJlY3Rpb24SCwoHREVGQVVMVBAAEgwKCElOQ09NSU5HEAESDAoIT1VUR09JTkcQAg==');
 @$core.Deprecated('Use fileItemDescriptor instead')
 const FileItem$json = const {
   '1': 'FileItem',

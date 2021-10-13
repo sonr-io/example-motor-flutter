@@ -174,7 +174,7 @@ class SonrService extends GetxService {
 
   /// [pick()] Presents a native dialog for selecting files
   /// Optionally can be supplied after pick
-  Future<List<String>> pick({bool supplyAfterPick = false, FileType type = FileType.any}) async {
+  Future<List<String>> pick({bool supplyAfterPick = true, FileType type = FileType.any}) async {
     // Initialize
     List<String> adjPaths = [];
     FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -194,7 +194,8 @@ class SonrService extends GetxService {
 
     // Check if we need to supply the result
     if (supplyAfterPick && adjPaths.length > 0) {
-      await supply(adjPaths);
+      final resp = await supply(adjPaths);
+      print(resp.toString());
     }
     return adjPaths;
   }
@@ -239,8 +240,8 @@ class SonrService extends GetxService {
   }
 
   /// [share(Peer)] Shares queued transfer with peer.
-  Future<ShareResponse> share(Peer peer) async {
-    final shareRequest = ShareRequest(peer: peer);
+  Future<ShareResponse> share(Peer peer, {List<String>? paths, MessageItem? message}) async {
+    final shareRequest = ShareRequest(peer: peer, paths: paths, message: message);
     final resp = await _client.share(shareRequest);
     return resp;
   }

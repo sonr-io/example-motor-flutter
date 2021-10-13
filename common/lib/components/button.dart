@@ -163,6 +163,7 @@ class NeutralButton extends StatelessWidget {
   final ButtonIconPosition iconPosition;
   final ButtonSize size;
   final Duration duration;
+  final bool disabled;
 
   final lightModeDecoration = BoxDecoration(
     borderRadius: AppRadii.radiusButton,
@@ -188,6 +189,7 @@ class NeutralButton extends StatelessWidget {
     this.icon,
     this.iconPosition = ButtonIconPosition.Left,
     this.size = ButtonSize.Default,
+    this.disabled = false,
   }) : super(key: key);
 
   @override
@@ -200,7 +202,9 @@ class NeutralButton extends StatelessWidget {
             onTapUp: (details) async {
               pressed(false);
               await Future.delayed(duration);
-              onPressed();
+              if (!disabled) {
+                onPressed();
+              }
             },
             child: AnimatedScale(
                 scale: pressed.value ? 1.1 : 1.0,

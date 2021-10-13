@@ -927,19 +927,46 @@ class SupplyResponse extends $pb.GeneratedMessage {
   void clearError() => clearField(2);
 }
 
+enum EditRequest_DeleteValue {
+  history, 
+  recent, 
+  notSet
+}
+
 class EditRequest extends $pb.GeneratedMessage {
+  static const $core.Map<$core.int, EditRequest_DeleteValue> _EditRequest_DeleteValueByTag = {
+    3 : EditRequest_DeleteValue.history,
+    4 : EditRequest_DeleteValue.recent,
+    0 : EditRequest_DeleteValue.notSet
+  };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'EditRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
-    ..aOM<$0.Profile>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profile', subBuilder: $0.Profile.create)
+    ..oo(0, [3, 4])
+    ..e<EditRequest_Type>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'type', $pb.PbFieldType.OE, defaultOrMaker: EditRequest_Type.NONE, valueOf: EditRequest_Type.valueOf, enumValues: EditRequest_Type.values)
+    ..aOM<$0.Profile>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profile', subBuilder: $0.Profile.create)
+    ..aOM<$1.Payload>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'history', subBuilder: $1.Payload.create)
+    ..aOM<$0.Profile>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'recent', subBuilder: $0.Profile.create)
     ..hasRequiredFields = false
   ;
 
   EditRequest._() : super();
   factory EditRequest({
+    EditRequest_Type? type,
     $0.Profile? profile,
+    $1.Payload? history,
+    $0.Profile? recent,
   }) {
     final _result = create();
+    if (type != null) {
+      _result.type = type;
+    }
     if (profile != null) {
       _result.profile = profile;
+    }
+    if (history != null) {
+      _result.history = history;
+    }
+    if (recent != null) {
+      _result.recent = recent;
     }
     return _result;
   }
@@ -964,16 +991,50 @@ class EditRequest extends $pb.GeneratedMessage {
   static EditRequest getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<EditRequest>(create);
   static EditRequest? _defaultInstance;
 
+  EditRequest_DeleteValue whichDeleteValue() => _EditRequest_DeleteValueByTag[$_whichOneof(0)]!;
+  void clearDeleteValue() => clearField($_whichOneof(0));
+
   @$pb.TagNumber(1)
-  $0.Profile get profile => $_getN(0);
+  EditRequest_Type get type => $_getN(0);
   @$pb.TagNumber(1)
-  set profile($0.Profile v) { setField(1, v); }
+  set type(EditRequest_Type v) { setField(1, v); }
   @$pb.TagNumber(1)
-  $core.bool hasProfile() => $_has(0);
+  $core.bool hasType() => $_has(0);
   @$pb.TagNumber(1)
-  void clearProfile() => clearField(1);
-  @$pb.TagNumber(1)
-  $0.Profile ensureProfile() => $_ensure(0);
+  void clearType() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $0.Profile get profile => $_getN(1);
+  @$pb.TagNumber(2)
+  set profile($0.Profile v) { setField(2, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasProfile() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearProfile() => clearField(2);
+  @$pb.TagNumber(2)
+  $0.Profile ensureProfile() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  $1.Payload get history => $_getN(2);
+  @$pb.TagNumber(3)
+  set history($1.Payload v) { setField(3, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasHistory() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearHistory() => clearField(3);
+  @$pb.TagNumber(3)
+  $1.Payload ensureHistory() => $_ensure(2);
+
+  @$pb.TagNumber(4)
+  $0.Profile get recent => $_getN(3);
+  @$pb.TagNumber(4)
+  set recent($0.Profile v) { setField(4, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasRecent() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearRecent() => clearField(4);
+  @$pb.TagNumber(4)
+  $0.Profile ensureRecent() => $_ensure(3);
 }
 
 class EditResponse extends $pb.GeneratedMessage {
@@ -1363,6 +1424,7 @@ class ShareRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ShareRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOM<$0.Peer>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peer', subBuilder: $0.Peer.create)
     ..aOM<$1.MessageItem>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message', subBuilder: $1.MessageItem.create)
+    ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'paths')
     ..hasRequiredFields = false
   ;
 
@@ -1370,6 +1432,7 @@ class ShareRequest extends $pb.GeneratedMessage {
   factory ShareRequest({
     $0.Peer? peer,
     $1.MessageItem? message,
+    $core.Iterable<$core.String>? paths,
   }) {
     final _result = create();
     if (peer != null) {
@@ -1377,6 +1440,9 @@ class ShareRequest extends $pb.GeneratedMessage {
     }
     if (message != null) {
       _result.message = message;
+    }
+    if (paths != null) {
+      _result.paths.addAll(paths);
     }
     return _result;
   }
@@ -1422,6 +1488,9 @@ class ShareRequest extends $pb.GeneratedMessage {
   void clearMessage() => clearField(2);
   @$pb.TagNumber(2)
   $1.MessageItem ensureMessage() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  $core.List<$core.String> get paths => $_getList(2);
 }
 
 class ShareResponse extends $pb.GeneratedMessage {
