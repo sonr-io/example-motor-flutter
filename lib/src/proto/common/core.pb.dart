@@ -1010,6 +1010,7 @@ class SNID extends $pb.GeneratedMessage {
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'domain')
     ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pubKey', $pb.PbFieldType.OY, protoName: 'pubKey')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peerID', protoName: 'peerID')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cid')
     ..hasRequiredFields = false
   ;
 
@@ -1018,6 +1019,7 @@ class SNID extends $pb.GeneratedMessage {
     $core.String? domain,
     $core.List<$core.int>? pubKey,
     $core.String? peerID,
+    $core.String? cid,
   }) {
     final _result = create();
     if (domain != null) {
@@ -1028,6 +1030,9 @@ class SNID extends $pb.GeneratedMessage {
     }
     if (peerID != null) {
       _result.peerID = peerID;
+    }
+    if (cid != null) {
+      _result.cid = cid;
     }
     return _result;
   }
@@ -1078,6 +1083,15 @@ class SNID extends $pb.GeneratedMessage {
   $core.bool hasPeerID() => $_has(2);
   @$pb.TagNumber(3)
   void clearPeerID() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.String get cid => $_getSZ(3);
+  @$pb.TagNumber(4)
+  set cid($core.String v) { $_setString(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasCid() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearCid() => clearField(4);
 }
 
 class UUID extends $pb.GeneratedMessage {

@@ -45,10 +45,12 @@ class ComposerModal extends GetView<HomeController> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Remote Invite", style: AppTextStyles.headingTitleBold),
-                Text(
-                  "Type the SName of the User you want to Share with.",
-                  style: AppTextStyles.bodyParagraphRegular,
+                ListTile(
+                  title: Text("Remote Invite", style: AppTextStyles.headingTitleBold),
+                  subtitle: Text(
+                    "Type the SName of the User you want to Share with.",
+                    style: AppTextStyles.bodyParagraphRegular,
+                  ),
                 ),
                 Container(
                   padding: EdgeInsets.only(top: 16, left: 8, right: 16),

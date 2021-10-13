@@ -157,6 +157,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     recents(resp.recents.profiles);
     history.refresh();
     recents.refresh();
+    print(resp.toString());
   }
 
   Future<void> edit() async {

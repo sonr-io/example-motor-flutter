@@ -1,10 +1,11 @@
 export 'controller.dart';
+import 'package:sonr_app/modules/cards/cards.dart';
 import 'package:sonr_app/theme/theme.dart';
 
 import 'controller.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/pages/home/controller.dart';
-import 'nearby/nearby_row.dart';
+import 'nearby.dart';
 
 class HomePage extends GetView<HomeController> {
   @override
@@ -50,8 +51,7 @@ class HomePage extends GetView<HomeController> {
         physics: NeverScrollableScrollPhysics(),
         controller: controller.tabController,
         children: [
-          // DashboardView(key: ValueKey<HomeView>(HomeView.Dashboard)),
-          Container(),
+          HomeHistoryView(),
         ],
       )),
     );
@@ -177,6 +177,21 @@ class ShareButton extends StatelessWidget {
                 ),
               )),
           false.obs),
+    );
+  }
+}
+
+class HomeHistoryView extends GetView<HomeController> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 16),
+      child: ListView.builder(
+        itemCount: controller.history.length,
+        itemBuilder: (context, index) => PayloadMultiCard(
+          items: controller.history[index].items,
+        ),
+      ),
     );
   }
 }

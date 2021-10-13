@@ -213,11 +213,12 @@ const SNID$json = const {
     const {'1': 'domain', '3': 1, '4': 1, '5': 9, '10': 'domain'},
     const {'1': 'pubKey', '3': 2, '4': 1, '5': 12, '10': 'pubKey'},
     const {'1': 'peerID', '3': 3, '4': 1, '5': 9, '10': 'peerID'},
+    const {'1': 'cid', '3': 4, '4': 1, '5': 9, '10': 'cid'},
   ],
 };
 
 /// Descriptor for `SNID`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List sNIDDescriptor = $convert.base64Decode('CgRTTklEEhYKBmRvbWFpbhgBIAEoCVIGZG9tYWluEhYKBnB1YktleRgCIAEoDFIGcHViS2V5EhYKBnBlZXJJRBgDIAEoCVIGcGVlcklE');
+final $typed_data.Uint8List sNIDDescriptor = $convert.base64Decode('CgRTTklEEhYKBmRvbWFpbhgBIAEoCVIGZG9tYWluEhYKBnB1YktleRgCIAEoDFIGcHViS2V5EhYKBnBlZXJJRBgDIAEoCVIGcGVlcklEEhAKA2NpZBgEIAEoCVIDY2lk');
 @$core.Deprecated('Use uUIDDescriptor instead')
 const UUID$json = const {
   '1': 'UUID',

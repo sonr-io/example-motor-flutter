@@ -177,7 +177,10 @@ class SonrService extends GetxService {
   Future<List<String>> pick({bool supplyAfterPick = false, FileType type = FileType.any}) async {
     // Initialize
     List<String> adjPaths = [];
-    FilePickerResult? result = await FilePicker.platform.pickFiles(allowMultiple: true, type: type);
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      allowMultiple: true,
+      type: type,
+    );
 
     // Check if the result is valid
     if (result != null) {
