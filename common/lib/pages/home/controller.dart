@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:sonr_app/modules/modals/modals.dart';
+import 'package:sonr_app/components/components.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 import 'home.dart';

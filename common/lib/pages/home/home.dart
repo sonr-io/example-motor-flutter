@@ -1,5 +1,5 @@
 export 'controller.dart';
-import 'package:sonr_app/modules/cards/cards.dart';
+import 'package:sonr_app/modules/payload/payload.dart';
 import 'package:sonr_app/theme/theme.dart';
 
 import 'controller.dart';
