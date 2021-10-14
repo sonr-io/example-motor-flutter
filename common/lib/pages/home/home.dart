@@ -158,7 +158,14 @@ class ShareButton extends StatelessWidget {
                   onTapDown: (details) => isPressed(true),
                   onTapUp: (details) {
                     isPressed(false);
-                    Future.delayed(150.milliseconds, () => SonrService.to.pick(supplyAfterPick: true));
+                    Future.delayed(
+                        150.milliseconds,
+                        () => Get.dialog(
+                              ComposerModal(),
+                              barrierDismissible: true,
+                              barrierColor: Colors.transparent,
+                              useSafeArea: false,
+                            ));
                   },
                   child: PolyContainer(
                       radius: 24,

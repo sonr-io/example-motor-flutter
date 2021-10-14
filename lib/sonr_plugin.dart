@@ -11,6 +11,7 @@ export 'package:path/path.dart';
 export 'package:path_provider/path_provider.dart';
 export 'package:open_file/open_file.dart';
 export 'package:get/get.dart';
+export 'package:file_picker/src/file_picker.dart';
 export 'src/src.dart';
 
 /// [RPC_HOST] is the address for Sonr RPC Node
@@ -174,7 +175,7 @@ class SonrService extends GetxService {
 
   /// [pick()] Presents a native dialog for selecting files
   /// Optionally can be supplied after pick
-  Future<List<String>> pick({bool supplyAfterPick = true, FileType type = FileType.any}) async {
+  Future<List<String>> pick({bool supplyAfterPick = true, Peer? peer, FileType type = FileType.any}) async {
     // Initialize
     List<String> adjPaths = [];
     FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -195,7 +196,7 @@ class SonrService extends GetxService {
 
     // Check if we need to supply the result
     if (supplyAfterPick && adjPaths.length > 0) {
-      final resp = await supply(adjPaths);
+      final resp = await supply(adjPaths, peer: peer);
       print(resp.toString());
     }
     return adjPaths;
@@ -204,7 +205,11 @@ class SonrService extends GetxService {
   /// [supply(List<String>)] Supply a list of paths to the node.
   /// Will be queued for a share.
   Future<SupplyResponse> supply(List<String> paths, {Peer? peer}) async {
-    final supplyRequest = SupplyRequest(paths: paths, peer: peer);
+    final supplyRequest = SupplyRequest(
+      paths: paths,
+      peer: peer,
+      isPeerSupply: peer != null ? true : false,
+    );
     final resp = await _client.supply(supplyRequest);
     return resp;
   }

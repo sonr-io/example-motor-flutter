@@ -813,6 +813,7 @@ class SupplyRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SupplyRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..pPS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'paths')
     ..aOM<$0.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peer', subBuilder: $0.Peer.create)
+    ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isPeerSupply', protoName: 'isPeerSupply')
     ..hasRequiredFields = false
   ;
 
@@ -820,6 +821,7 @@ class SupplyRequest extends $pb.GeneratedMessage {
   factory SupplyRequest({
     $core.Iterable<$core.String>? paths,
     $0.Peer? peer,
+    $core.bool? isPeerSupply,
   }) {
     final _result = create();
     if (paths != null) {
@@ -827,6 +829,9 @@ class SupplyRequest extends $pb.GeneratedMessage {
     }
     if (peer != null) {
       _result.peer = peer;
+    }
+    if (isPeerSupply != null) {
+      _result.isPeerSupply = isPeerSupply;
     }
     return _result;
   }
@@ -864,6 +869,15 @@ class SupplyRequest extends $pb.GeneratedMessage {
   void clearPeer() => clearField(2);
   @$pb.TagNumber(2)
   $0.Peer ensurePeer() => $_ensure(1);
+
+  @$pb.TagNumber(3)
+  $core.bool get isPeerSupply => $_getBF(2);
+  @$pb.TagNumber(3)
+  set isPeerSupply($core.bool v) { $_setBool(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasIsPeerSupply() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearIsPeerSupply() => clearField(3);
 }
 
 class SupplyResponse extends $pb.GeneratedMessage {

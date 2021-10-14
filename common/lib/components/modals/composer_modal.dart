@@ -2,29 +2,6 @@ import 'package:sonr_app/pages/home/controller.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 
-enum ComposeStatus {
-  Initial,
-  Checking,
-  NonExisting,
-  Existing,
-}
-
-extension ComposeStatusUtil on ComposeStatus {
-  /// Convert this Enum to Animated Status Type
-  AnimatedStatusType toAnimatedStatus() {
-    switch (this) {
-      case ComposeStatus.Initial:
-        return AnimatedStatusType.Initial;
-      case ComposeStatus.Checking:
-        return AnimatedStatusType.Loading;
-      case ComposeStatus.NonExisting:
-        return AnimatedStatusType.Error;
-      case ComposeStatus.Existing:
-        return AnimatedStatusType.Success;
-    }
-  }
-}
-
 /// #### Invite Composer for Remote Transfer
 class ComposerModal extends GetView<HomeController> {
   @override
@@ -38,90 +15,65 @@ class ComposerModal extends GetView<HomeController> {
               label: "Share File",
               onPressed: () => print("TODO"),
             ),
-            padding: EdgeInsets.all(16),
+            padding: EdgeInsets.all(8),
             // margin: EdgeInsets.all(8),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ListTile(
-                  title: Text("Remote Invite", style: AppTextStyles.headingTitleBold),
-                  subtitle: Text(
-                    "Type the SName of the User you want to Share with.",
-                    style: AppTextStyles.bodyParagraphRegular,
-                  ),
-                ),
-                Container(
-                  padding: EdgeInsets.only(top: 16, left: 8, right: 16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      CircleContainer(
-                          padding: EdgeInsets.all(4),
-                          child: SimpleIcons.ATSign.icon(
-                            color: Get.theme.focusColor,
-                            size: 24,
-                          )),
-                      Stack(
-                        alignment: Alignment.centerRight,
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Container(
-                              width: 200,
-                              padding: EdgeInsets.only(right: 24),
-                              // child: SNameTextField(
-                              //   onEditingComplete: (value) {
-                              //     print("TODO");
-                              //   },
-                              //   onChanged: (value) {
-                              //     print("TODO");
-                              //   },
-                              // ),
-                            ),
-                          ),
-                          // AnimatedStatus()
-                        ],
-                      )
-                    ],
-                  ),
-                ),
+                _ComposerModalPicker(),
+                SizedBox(height: 16),
+                _ComposerModalFindPeer(),
+                SizedBox(height: 16),
+                _ComposerModalSchedule(),
               ],
             )));
   }
 }
 
-// class AnimatedStatus extends GetView<TransferController> {
-//   const AnimatedStatus();
+class _ComposerModalPicker extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text("Pick File", style: AppTextStyles.headingTitleBold),
+      subtitle: Text(
+        "Type the SName of the User you want to Share with.",
+        style: AppTextStyles.bodyParagraphRegular,
+      ),
+      onTap: () => SonrService.to.pick(),
+    );
+  }
+}
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Obx(() => controller.shouldUpdate.value
-//         ? FadeInLeftBig(
-//             from: 30,
-//             animate: controller.shouldUpdate.value,
-//             child: Container(
-//               child: _buildStatusIcon(controller.composeStatus.value),
-//             ))
-//         : FadeOutRight(
-//             from: 30,
-//             animate: !controller.shouldUpdate.value,
-//             child: Container(
-//               child: _buildStatusIcon(controller.composeStatus.value),
-//             )));
-//   }
+class _ComposerModalFindPeer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text("Find User", style: AppTextStyles.headingTitleBold),
+      subtitle: Text(
+        "Type the SName of the User you want to Share with.",
+        style: AppTextStyles.bodyParagraphRegular,
+      ),
+    );
+  }
+}
 
-//   Widget _buildStatusIcon(ComposeStatus status) {
-//     switch (status) {
-//       case ComposeStatus.Initial:
-//         return Container();
-//       case ComposeStatus.Checking:
-//         return CircleLoader();
-//       case ComposeStatus.NonExisting:
-//         return SimpleIcons.Close.icon(color: AppColors.primary3, size: 36);
-//       case ComposeStatus.Existing:
-//         return SimpleIcons.Check.icon(color: AppColors.primary3, size: 36);
-//     }
-//   }
-// }
+class _ComposerModalSchedule extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      title: Text("Schedule Transfer", style: AppTextStyles.headingTitleBold),
+      subtitle: Text(
+        "Type the SName of the User you want to Share with.",
+        style: AppTextStyles.bodyParagraphRegular,
+      ),
+    );
+  }
+}
+
+class ComposerController extends GetxController {
+  final paths = <String>[].obs;
+  final peer = Peer().obs;
+  final query = "".obs;
+}

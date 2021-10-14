@@ -32,6 +32,7 @@ dependencies:
   video_player: ^2.1.14
 
   # -- Network --
+  shared_preferences: ^2.0.8
   receive_sharing_intent: ^1.4.5
 
   # -- Plugins --

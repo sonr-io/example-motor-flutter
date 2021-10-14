@@ -180,6 +180,7 @@ const SupplyRequest$json = const {
   '2': const [
     const {'1': 'paths', '3': 1, '4': 3, '5': 9, '10': 'paths'},
     const {'1': 'peer', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.Peer', '9': 0, '10': 'peer', '17': true},
+    const {'1': 'isPeerSupply', '3': 3, '4': 1, '5': 8, '10': 'isPeerSupply'},
   ],
   '8': const [
     const {'1': '_peer'},
@@ -187,7 +188,7 @@ const SupplyRequest$json = const {
 };
 
 /// Descriptor for `SupplyRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List supplyRequestDescriptor = $convert.base64Decode('Cg1TdXBwbHlSZXF1ZXN0EhQKBXBhdGhzGAEgAygJUgVwYXRocxIoCgRwZWVyGAIgASgLMg8uc29uci5jb3JlLlBlZXJIAFIEcGVlcogBAUIHCgVfcGVlcg==');
+final $typed_data.Uint8List supplyRequestDescriptor = $convert.base64Decode('Cg1TdXBwbHlSZXF1ZXN0EhQKBXBhdGhzGAEgAygJUgVwYXRocxIoCgRwZWVyGAIgASgLMg8uc29uci5jb3JlLlBlZXJIAFIEcGVlcogBARIiCgxpc1BlZXJTdXBwbHkYAyABKAhSDGlzUGVlclN1cHBseUIHCgVfcGVlcg==');
 @$core.Deprecated('Use supplyResponseDescriptor instead')
 const SupplyResponse$json = const {
   '1': 'SupplyResponse',
