@@ -179,6 +179,7 @@ class SonrService extends GetxService {
     List<String> adjPaths = [];
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       allowMultiple: true,
+      withData: true,
       type: type,
     );
 

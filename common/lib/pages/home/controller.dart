@@ -232,7 +232,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     print("Current Progress: ${(event.progress * 100).roundToDouble()}%");
   }
 
-  void _handleComplete(CompleteEvent event) {
+  void _handleComplete(CompleteEvent event) async {
     if (event.direction == Direction.OUTGOING) {
       localPeersStatus[event.to] = PeerStatus.COMPLETED;
     }
@@ -244,6 +244,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
       backgroundColor: AppColors.primary4,
       onTap: (snack) => OpenFile.open(event.payload.items[0].file.path),
     );
+    await fetchData();
   }
 
   void _handleRefresh(RefreshEvent event) {

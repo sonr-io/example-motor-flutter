@@ -46,6 +46,13 @@ class NearbyRow extends GetView<HomeController> implements PreferredSizeWidget {
                       child: PeerListItem(
                         peer: controller.localPeers[index],
                         onTap: () => Get.to(NearbyList()),
+                        onLongPress: () async {
+                          final result = await SonrService.to.pick(supplyAfterPick: false);
+                          if (result.length > 0) {
+                            final resp = await SonrService.to.supply(result, peer: controller.localPeers[index]);
+                            print(resp.toString());
+                          }
+                        },
                       ),
                     );
                   },
