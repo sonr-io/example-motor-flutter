@@ -70,7 +70,7 @@ class SplashPage extends StatelessWidget {
 
   Future<void> _checkInitialPage() async {
     // Create Profile
-    final hint = TextUtils.hintName;
+    final hint = TextUtils.hintFullName;
     final profile = Profile(
       firstName: hint.item1,
       lastName: hint.item2,

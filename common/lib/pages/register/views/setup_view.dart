@@ -45,8 +45,7 @@ class _NamePage extends GetView<RegisterController> {
   _NamePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final hintName = TextUtils.hintName;
-    final sNameHint = hintName.item1.toLowerCase().substring(0, 1) + hintName.item2.substring(0, 1).toUpperCase() + hintName.item2.substring(1);
+    final sNameHint =TextUtils.hintSName;
     final fullWidth = sNameHint.textWidth(AppTextStyles.bodyParagraphRegular, 16);
     final leftPaddingInitial = fullWidth / 2;
     return SingleChildScrollView(
@@ -174,7 +173,7 @@ class _EditProfilePage extends GetView<RegisterController> {
 
   @override
   Widget build(BuildContext context) {
-    final hintName = TextUtils.hintName;
+    final hintName = TextUtils.hintFullName;
     final firstNameHint = hintName.item1;
     final lastNameHint = hintName.item2;
     return Container(

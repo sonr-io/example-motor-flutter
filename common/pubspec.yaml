@@ -41,13 +41,14 @@ dependencies:
 
   # -- UI/UX --
   animate_do: ^2.0.0
-  flutter_svg: ^0.22.0
+  date_field: ^2.1.2
   dots_indicator: ^2.0.0
+  flutter_svg: ^0.22.0
   lottie: ^1.1.0
+  onboarding: ^2.1.0
   pin_code_fields: ^7.3.0
   rive: ^0.7.28
   supercharged: ^2.0.0
-  onboarding: ^2.1.0
 
 flutter_test:
   sdk: flutter

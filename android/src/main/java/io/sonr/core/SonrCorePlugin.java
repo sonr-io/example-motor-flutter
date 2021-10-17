@@ -7,7 +7,7 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import lib.*;
+import sonr.*;
 
 public class SonrCorePlugin implements FlutterPlugin, MethodCallHandler {
   // ^ Initialize Sonr Plugin Vars ^
@@ -36,25 +36,25 @@ public class SonrCorePlugin implements FlutterPlugin, MethodCallHandler {
       // Starts the Node
       case "start":
         final byte[] initArgs = call.arguments();
-        Lib.start(initArgs);
+        Sonr.start(initArgs);
         result.success(null);
         break;
 
       // Resumes the Node
       case "resume":
-        Lib.resume();
+        Sonr.resume();
         result.success(null);
         break;
 
       // Pauses the Node
       case "pause":
-        Lib.pause();
+        Sonr.pause();
         result.success(null);
         break;
 
       // Stops the Node
       case "stop":
-        Lib.stop();
+        Sonr.stop();
         result.success(null);
         break;
 

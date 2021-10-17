@@ -36,6 +36,7 @@ class _InviteFileBody extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             color: Get.theme.backgroundColor,
+            image: _buildDecorationImage(),
           ),
         ),
         ListTile(
@@ -69,5 +70,9 @@ class _InviteFileBody extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  DecorationImage? _buildDecorationImage() {
+    return event.payload.items.isEmpty ? null : event.payload.items.first.thumbnail.toDecorationImage();
   }
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sonr_plugin/sonr_plugin.dart';
 
 class AppBorders {
+  static Border get primaryBorder => Get.isDarkMode ? buttonCircleDark : buttonCircleLight;
+
   /// Light Text Field Border
   static const textFieldIdleLight = Border.fromBorderSide(BorderSide(
     color: Color(0xff353945),

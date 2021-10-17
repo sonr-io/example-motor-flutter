@@ -1424,22 +1424,17 @@ class OpenGraph extends $pb.GeneratedMessage {
 
 class Thumbnail extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Thumbnail', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
-    ..aInt64(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'size')
-    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'buffer', $pb.PbFieldType.OY)
-    ..aOM<$0.MIME>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $0.MIME.create)
+    ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'buffer', $pb.PbFieldType.OY)
+    ..aOM<$0.MIME>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $0.MIME.create)
     ..hasRequiredFields = false
   ;
 
   Thumbnail._() : super();
   factory Thumbnail({
-    $fixnum.Int64? size,
     $core.List<$core.int>? buffer,
     $0.MIME? mime,
   }) {
     final _result = create();
-    if (size != null) {
-      _result.size = size;
-    }
     if (buffer != null) {
       _result.buffer = buffer;
     }
@@ -1470,33 +1465,24 @@ class Thumbnail extends $pb.GeneratedMessage {
   static Thumbnail? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $fixnum.Int64 get size => $_getI64(0);
+  $core.List<$core.int> get buffer => $_getN(0);
   @$pb.TagNumber(1)
-  set size($fixnum.Int64 v) { $_setInt64(0, v); }
+  set buffer($core.List<$core.int> v) { $_setBytes(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasSize() => $_has(0);
+  $core.bool hasBuffer() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSize() => clearField(1);
+  void clearBuffer() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<$core.int> get buffer => $_getN(1);
+  $0.MIME get mime => $_getN(1);
   @$pb.TagNumber(2)
-  set buffer($core.List<$core.int> v) { $_setBytes(1, v); }
+  set mime($0.MIME v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasBuffer() => $_has(1);
+  $core.bool hasMime() => $_has(1);
   @$pb.TagNumber(2)
-  void clearBuffer() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $0.MIME get mime => $_getN(2);
-  @$pb.TagNumber(3)
-  set mime($0.MIME v) { setField(3, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasMime() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearMime() => clearField(3);
-  @$pb.TagNumber(3)
-  $0.MIME ensureMime() => $_ensure(2);
+  void clearMime() => clearField(2);
+  @$pb.TagNumber(2)
+  $0.MIME ensureMime() => $_ensure(1);
 }
 
 enum Payload_Item_Data {

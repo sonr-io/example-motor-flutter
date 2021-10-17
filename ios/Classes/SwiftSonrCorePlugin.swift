@@ -12,9 +12,6 @@ public class SwiftSonrCorePlugin: NSObject, FlutterPlugin {
   // Initialize Channels
   public static func register(with registrar: FlutterPluginRegistrar) {
     SwiftSonrCorePlugin.methodChannel = FlutterMethodChannel(name: "io.sonr.plugin/action", binaryMessenger: registrar.messenger())
-
-    SwiftSonrCorePlugin.eventChannel = FlutterMethodChannel(name: "io.sonr.plugin/event", binaryMessenger: registrar.messenger())
-
     // Start plugin
     let instance = SwiftSonrCorePlugin()
 
@@ -29,22 +26,22 @@ public class SwiftSonrCorePlugin: NSObject, FlutterPlugin {
     // Starts the Node
     case "start":
       let args = call.arguments as! FlutterStandardTypedData
-      Core.LibStart(args.data)
+      Core.SonrStart(args.data)
       result(nil)
 
     // Resumes the Node
     case "resume":
-      Core.LibResume()
+      Core.SonrResume()
       result(nil)
 
     // Pauses the Node
     case "pause":
-      Core.LibPause()
+      Core.SonrPause()
       result(nil)
 
     // Stops the node
     case "stop":
-      Core.LibStop()
+      Core.SonrStop()
       result(nil)
 
     // ! Method not found

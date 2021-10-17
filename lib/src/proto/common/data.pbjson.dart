@@ -209,14 +209,13 @@ final $typed_data.Uint8List openGraphDescriptor = $convert.base64Decode('CglPcGV
 const Thumbnail$json = const {
   '1': 'Thumbnail',
   '2': const [
-    const {'1': 'size', '3': 1, '4': 1, '5': 3, '10': 'size'},
-    const {'1': 'buffer', '3': 2, '4': 1, '5': 12, '10': 'buffer'},
-    const {'1': 'mime', '3': 3, '4': 1, '5': 11, '6': '.sonr.core.MIME', '10': 'mime'},
+    const {'1': 'buffer', '3': 1, '4': 1, '5': 12, '10': 'buffer'},
+    const {'1': 'mime', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.MIME', '10': 'mime'},
   ],
 };
 
 /// Descriptor for `Thumbnail`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List thumbnailDescriptor = $convert.base64Decode('CglUaHVtYm5haWwSEgoEc2l6ZRgBIAEoA1IEc2l6ZRIWCgZidWZmZXIYAiABKAxSBmJ1ZmZlchIjCgRtaW1lGAMgASgLMg8uc29uci5jb3JlLk1JTUVSBG1pbWU=');
+final $typed_data.Uint8List thumbnailDescriptor = $convert.base64Decode('CglUaHVtYm5haWwSFgoGYnVmZmVyGAEgASgMUgZidWZmZXISIwoEbWltZRgCIAEoCzIPLnNvbnIuY29yZS5NSU1FUgRtaW1l');
 @$core.Deprecated('Use payloadDescriptor instead')
 const Payload$json = const {
   '1': 'Payload',

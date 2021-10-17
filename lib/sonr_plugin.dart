@@ -1,12 +1,17 @@
 library sonr_plugin;
 
 import 'dart:async';
+import 'dart:io';
+import 'dart:typed_data';
 import 'package:fixnum/fixnum.dart' as fixnum;
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:grpc/grpc.dart';
+import 'package:video_compress/video_compress.dart';
 import 'src/src.dart';
+import 'dart:isolate';
+import 'package:image/image.dart';
 export 'package:path/path.dart';
 export 'package:path_provider/path_provider.dart';
 export 'package:open_file/open_file.dart';
@@ -205,8 +210,17 @@ class SonrService extends GetxService {
   /// [supply(List<String>)] Supply a list of paths to the node.
   /// Will be queued for a share.
   Future<SupplyResponse> supply(List<String> paths, {Peer? peer}) async {
+    // Add New Items
+    var items = <SupplyRequest_Item>[];
+    paths.forEach((path) async {
+      final buf = await fetchThumbnail(path);
+      final i = SupplyRequest_Item(path: path, thumbnail: buf);
+      items.add(i);
+    });
+
+    // Provide the request
     final supplyRequest = SupplyRequest(
-      paths: paths,
+      items: items,
       peer: peer,
       isPeerSupply: peer != null ? true : false,
     );
@@ -298,4 +312,41 @@ class SonrService extends GetxService {
       {Function? onError, void Function()? onDone, bool? cancelOnError}) {
     return _completeEvents.stream.listen(onData, onError: onError, onDone: onDone);
   }
+}
+
+Future<Uint8List?> fetchThumbnail(String path) async {
+  final parts = path.split(".");
+  final ext = parts[parts.length - 1];
+  var receivePort = ReceivePort();
+
+  // Check for Video
+  if (VIDEO_FILE_EXTS.any((element) => ext == element)) {
+    await Isolate.spawn(_decodeIsolateVideo, _DecodeParam(File(path), receivePort.sendPort));
+    // Get the processed image from the isolate.
+    return await receivePort.first as Uint8List;
+  }
+  // Check for Image
+  else if (IMAGE_FILE_EXTS.any((element) => ext == element)) {
+    await Isolate.spawn(_decodeIsolateImage, _DecodeParam(File(path), receivePort.sendPort));
+    // Get the processed image from the isolate.
+    return await receivePort.first as Uint8List;
+  }
+  return null;
+}
+
+class _DecodeParam {
+  final File file;
+  final SendPort sendPort;
+  _DecodeParam(this.file, this.sendPort);
+}
+
+void _decodeIsolateImage(_DecodeParam param) async {
+  var image = decodeImage(param.file.readAsBytesSync())!;
+  var thumbnail = copyResize(image, width: 240);
+  param.sendPort.send(thumbnail.getBytes());
+}
+
+void _decodeIsolateVideo(_DecodeParam param) async {
+  final buf = await VideoCompress.getByteThumbnail(param.file.path, quality: 75);
+  param.sendPort.send(buf);
 }

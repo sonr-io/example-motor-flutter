@@ -80,6 +80,7 @@ const InitializeRequest_DeviceOptions$json = const {
     const {'1': 'downloadsDir', '3': 5, '4': 1, '5': 9, '10': 'downloadsDir'},
     const {'1': 'textileDir', '3': 6, '4': 1, '5': 9, '10': 'textileDir'},
     const {'1': 'supportDir', '3': 7, '4': 1, '5': 9, '10': 'supportDir'},
+    const {'1': 'walletDir', '3': 8, '4': 1, '5': 9, '10': 'walletDir'},
   ],
 };
 
@@ -127,7 +128,7 @@ const InitializeRequest_IPAddress_Family$json = const {
 };
 
 /// Descriptor for `InitializeRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List initializeRequestDescriptor = $convert.base64Decode('ChFJbml0aWFsaXplUmVxdWVzdBIvCghsb2NhdGlvbhgBIAEoCzITLnNvbnIuY29yZS5Mb2NhdGlvblIIbG9jYXRpb24SLAoHcHJvZmlsZRgCIAEoCzISLnNvbnIuY29yZS5Qcm9maWxlUgdwcm9maWxlEjUKCmNvbm5lY3Rpb24YAyABKA4yFS5zb25yLmNvcmUuQ29ubmVjdGlvblIKY29ubmVjdGlvbhJJCgtob3N0T3B0aW9ucxgEIAEoCzInLnNvbnIuYXBpLkluaXRpYWxpemVSZXF1ZXN0Lkhvc3RPcHRpb25zUgtob3N0T3B0aW9ucxJSCg5zZXJ2aWNlT3B0aW9ucxgFIAEoCzIqLnNvbnIuYXBpLkluaXRpYWxpemVSZXF1ZXN0LlNlcnZpY2VPcHRpb25zUg5zZXJ2aWNlT3B0aW9ucxJPCg1kZXZpY2VPcHRpb25zGAYgASgLMikuc29uci5hcGkuSW5pdGlhbGl6ZVJlcXVlc3QuRGV2aWNlT3B0aW9uc1INZGV2aWNlT3B0aW9ucxI4CgtlbnZpcm9ubWVudBgHIAEoDjIWLnNvbnIuY29yZS5FbnZpcm9ubWVudFILZW52aXJvbm1lbnQSSAoJdmFyaWFibGVzGAggAygLMiouc29uci5hcGkuSW5pdGlhbGl6ZVJlcXVlc3QuVmFyaWFibGVzRW50cnlSCXZhcmlhYmxlcxo8Cg5WYXJpYWJsZXNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgBGuUBCg1EZXZpY2VPcHRpb25zEg4KAmlkGAEgASgJUgJpZBIaCghjYWNoZURpchgCIAEoCVIIY2FjaGVEaXISIAoLZGF0YWJhc2VEaXIYAyABKAlSC2RhdGFiYXNlRGlyEiIKDGRvY3VtZW50c0RpchgEIAEoCVIMZG9jdW1lbnRzRGlyEiIKDGRvd25sb2Fkc0RpchgFIAEoCVIMZG93bmxvYWRzRGlyEh4KCnRleHRpbGVEaXIYBiABKAlSCnRleHRpbGVEaXISHgoKc3VwcG9ydERpchgHIAEoCVIKc3VwcG9ydERpchq+AQoLSG9zdE9wdGlvbnMSJAoNcXVpY1RyYW5zcG9ydBgBIAEoCFINcXVpY1RyYW5zcG9ydBIkCg1odHRwVHJhbnNwb3J0GAIgASgIUg1odHRwVHJhbnNwb3J0EhoKCGlwdjRPbmx5GAMgASgIUghpcHY0T25seRJHCgtsaXN0ZW5BZGRycxgEIAMoCzIlLnNvbnIuYXBpLkluaXRpYWxpemVSZXF1ZXN0LklQQWRkcmVzc1ILbGlzdGVuQWRkcnMaegoOU2VydmljZU9wdGlvbnMSGAoHdGV4dGlsZRgBIAEoCFIHdGV4dGlsZRIYCgdtYWlsYm94GAIgASgIUgdtYWlsYm94EhgKB2J1Y2tldHMYAyABKAhSB2J1Y2tldHMSGgoIaW50ZXJ2YWwYBCABKAVSCGludGVydmFsGrkBCglJUEFkZHJlc3MSEgoEbmFtZRgBIAEoCVIEbmFtZRIYCgdhZGRyZXNzGAIgASgJUgdhZGRyZXNzEhoKCGludGVybmFsGAMgASgIUghpbnRlcm5hbBJECgZmYW1pbHkYBCABKA4yLC5zb25yLmFwaS5Jbml0aWFsaXplUmVxdWVzdC5JUEFkZHJlc3MuRmFtaWx5UgZmYW1pbHkiHAoGRmFtaWx5EggKBElQVjQQABIICgRJUFY2EAE=');
+final $typed_data.Uint8List initializeRequestDescriptor = $convert.base64Decode('ChFJbml0aWFsaXplUmVxdWVzdBIvCghsb2NhdGlvbhgBIAEoCzITLnNvbnIuY29yZS5Mb2NhdGlvblIIbG9jYXRpb24SLAoHcHJvZmlsZRgCIAEoCzISLnNvbnIuY29yZS5Qcm9maWxlUgdwcm9maWxlEjUKCmNvbm5lY3Rpb24YAyABKA4yFS5zb25yLmNvcmUuQ29ubmVjdGlvblIKY29ubmVjdGlvbhJJCgtob3N0T3B0aW9ucxgEIAEoCzInLnNvbnIuYXBpLkluaXRpYWxpemVSZXF1ZXN0Lkhvc3RPcHRpb25zUgtob3N0T3B0aW9ucxJSCg5zZXJ2aWNlT3B0aW9ucxgFIAEoCzIqLnNvbnIuYXBpLkluaXRpYWxpemVSZXF1ZXN0LlNlcnZpY2VPcHRpb25zUg5zZXJ2aWNlT3B0aW9ucxJPCg1kZXZpY2VPcHRpb25zGAYgASgLMikuc29uci5hcGkuSW5pdGlhbGl6ZVJlcXVlc3QuRGV2aWNlT3B0aW9uc1INZGV2aWNlT3B0aW9ucxI4CgtlbnZpcm9ubWVudBgHIAEoDjIWLnNvbnIuY29yZS5FbnZpcm9ubWVudFILZW52aXJvbm1lbnQSSAoJdmFyaWFibGVzGAggAygLMiouc29uci5hcGkuSW5pdGlhbGl6ZVJlcXVlc3QuVmFyaWFibGVzRW50cnlSCXZhcmlhYmxlcxo8Cg5WYXJpYWJsZXNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgBGoMCCg1EZXZpY2VPcHRpb25zEg4KAmlkGAEgASgJUgJpZBIaCghjYWNoZURpchgCIAEoCVIIY2FjaGVEaXISIAoLZGF0YWJhc2VEaXIYAyABKAlSC2RhdGFiYXNlRGlyEiIKDGRvY3VtZW50c0RpchgEIAEoCVIMZG9jdW1lbnRzRGlyEiIKDGRvd25sb2Fkc0RpchgFIAEoCVIMZG93bmxvYWRzRGlyEh4KCnRleHRpbGVEaXIYBiABKAlSCnRleHRpbGVEaXISHgoKc3VwcG9ydERpchgHIAEoCVIKc3VwcG9ydERpchIcCgl3YWxsZXREaXIYCCABKAlSCXdhbGxldERpchq+AQoLSG9zdE9wdGlvbnMSJAoNcXVpY1RyYW5zcG9ydBgBIAEoCFINcXVpY1RyYW5zcG9ydBIkCg1odHRwVHJhbnNwb3J0GAIgASgIUg1odHRwVHJhbnNwb3J0EhoKCGlwdjRPbmx5GAMgASgIUghpcHY0T25seRJHCgtsaXN0ZW5BZGRycxgEIAMoCzIlLnNvbnIuYXBpLkluaXRpYWxpemVSZXF1ZXN0LklQQWRkcmVzc1ILbGlzdGVuQWRkcnMaegoOU2VydmljZU9wdGlvbnMSGAoHdGV4dGlsZRgBIAEoCFIHdGV4dGlsZRIYCgdtYWlsYm94GAIgASgIUgdtYWlsYm94EhgKB2J1Y2tldHMYAyABKAhSB2J1Y2tldHMSGgoIaW50ZXJ2YWwYBCABKAVSCGludGVydmFsGrkBCglJUEFkZHJlc3MSEgoEbmFtZRgBIAEoCVIEbmFtZRIYCgdhZGRyZXNzGAIgASgJUgdhZGRyZXNzEhoKCGludGVybmFsGAMgASgIUghpbnRlcm5hbBJECgZmYW1pbHkYBCABKA4yLC5zb25yLmFwaS5Jbml0aWFsaXplUmVxdWVzdC5JUEFkZHJlc3MuRmFtaWx5UgZmYW1pbHkiHAoGRmFtaWx5EggKBElQVjQQABIICgRJUFY2EAE=');
 @$core.Deprecated('Use initializeResponseDescriptor instead')
 const InitializeResponse$json = const {
   '1': 'InitializeResponse',
@@ -178,17 +179,27 @@ final $typed_data.Uint8List initializeResponseDescriptor = $convert.base64Decode
 const SupplyRequest$json = const {
   '1': 'SupplyRequest',
   '2': const [
-    const {'1': 'paths', '3': 1, '4': 3, '5': 9, '10': 'paths'},
+    const {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.sonr.api.SupplyRequest.Item', '10': 'items'},
     const {'1': 'peer', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.Peer', '9': 0, '10': 'peer', '17': true},
     const {'1': 'isPeerSupply', '3': 3, '4': 1, '5': 8, '10': 'isPeerSupply'},
   ],
+  '3': const [SupplyRequest_Item$json],
   '8': const [
     const {'1': '_peer'},
   ],
 };
 
+@$core.Deprecated('Use supplyRequestDescriptor instead')
+const SupplyRequest_Item$json = const {
+  '1': 'Item',
+  '2': const [
+    const {'1': 'path', '3': 1, '4': 1, '5': 9, '10': 'path'},
+    const {'1': 'thumbnail', '3': 2, '4': 1, '5': 12, '10': 'thumbnail'},
+  ],
+};
+
 /// Descriptor for `SupplyRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List supplyRequestDescriptor = $convert.base64Decode('Cg1TdXBwbHlSZXF1ZXN0EhQKBXBhdGhzGAEgAygJUgVwYXRocxIoCgRwZWVyGAIgASgLMg8uc29uci5jb3JlLlBlZXJIAFIEcGVlcogBARIiCgxpc1BlZXJTdXBwbHkYAyABKAhSDGlzUGVlclN1cHBseUIHCgVfcGVlcg==');
+final $typed_data.Uint8List supplyRequestDescriptor = $convert.base64Decode('Cg1TdXBwbHlSZXF1ZXN0EjIKBWl0ZW1zGAEgAygLMhwuc29uci5hcGkuU3VwcGx5UmVxdWVzdC5JdGVtUgVpdGVtcxIoCgRwZWVyGAIgASgLMg8uc29uci5jb3JlLlBlZXJIAFIEcGVlcogBARIiCgxpc1BlZXJTdXBwbHkYAyABKAhSDGlzUGVlclN1cHBseRo4CgRJdGVtEhIKBHBhdGgYASABKAlSBHBhdGgSHAoJdGh1bWJuYWlsGAIgASgMUgl0aHVtYm5haWxCBwoFX3BlZXI=');
 @$core.Deprecated('Use supplyResponseDescriptor instead')
 const SupplyResponse$json = const {
   '1': 'SupplyResponse',

@@ -1,5 +1,12 @@
+import 'dart:typed_data';
+
+import 'package:flutter/widgets.dart';
 import 'package:sonr_plugin/src/proto/proto.dart';
 import '../../sonr_plugin.dart';
+
+const VIDEO_FILE_EXTS = ['WEBM', 'MPG', 'MP4', 'AVI', 'MOV', 'M4V', '3GP', '3G2'];
+
+const IMAGE_FILE_EXTS = ['JPG', 'JPEG', 'PNG', 'GIF', 'BMP'];
 
 extension PayloadUtils on Payload {
   /// A method returns a human readable string representing a file _size
@@ -63,5 +70,20 @@ extension PayloadUtils on Payload {
       num r = _size / divider / divider / divider / divider / divider;
       return '${r.toStringAsFixed(round)} PB';
     }
+  }
+}
+
+extension ThumbnailUtils on Thumbnail {
+  /// Returns [Thumbnail] as [DecorationImage]
+  DecorationImage toDecorationImage() {
+    return DecorationImage(
+      image: MemoryImage(Uint8List.fromList(this.buffer)),
+      fit: BoxFit.cover,
+    );
+  }
+
+  /// Returns [Thumbnail] as [Image]
+  Image toImage() {
+    return Image.memory(Uint8List.fromList(this.buffer));
   }
 }
