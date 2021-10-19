@@ -164,51 +164,31 @@ class AuthorizeResponse extends $pb.GeneratedMessage {
 class InitializeRequest_DeviceOptions extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'InitializeRequest.DeviceOptions', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'id')
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'cacheDir', protoName: 'cacheDir')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'databaseDir', protoName: 'databaseDir')
-    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'documentsDir', protoName: 'documentsDir')
-    ..aOS(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'downloadsDir', protoName: 'downloadsDir')
-    ..aOS(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'textileDir', protoName: 'textileDir')
-    ..aOS(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportDir', protoName: 'supportDir')
-    ..aOS(8, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'walletDir', protoName: 'walletDir')
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'homeDir', protoName: 'homeDir')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'supportDir', protoName: 'supportDir')
+    ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'tempDir', protoName: 'tempDir')
     ..hasRequiredFields = false
   ;
 
   InitializeRequest_DeviceOptions._() : super();
   factory InitializeRequest_DeviceOptions({
     $core.String? id,
-    $core.String? cacheDir,
-    $core.String? databaseDir,
-    $core.String? documentsDir,
-    $core.String? downloadsDir,
-    $core.String? textileDir,
+    $core.String? homeDir,
     $core.String? supportDir,
-    $core.String? walletDir,
+    $core.String? tempDir,
   }) {
     final _result = create();
     if (id != null) {
       _result.id = id;
     }
-    if (cacheDir != null) {
-      _result.cacheDir = cacheDir;
-    }
-    if (databaseDir != null) {
-      _result.databaseDir = databaseDir;
-    }
-    if (documentsDir != null) {
-      _result.documentsDir = documentsDir;
-    }
-    if (downloadsDir != null) {
-      _result.downloadsDir = downloadsDir;
-    }
-    if (textileDir != null) {
-      _result.textileDir = textileDir;
+    if (homeDir != null) {
+      _result.homeDir = homeDir;
     }
     if (supportDir != null) {
       _result.supportDir = supportDir;
     }
-    if (walletDir != null) {
-      _result.walletDir = walletDir;
+    if (tempDir != null) {
+      _result.tempDir = tempDir;
     }
     return _result;
   }
@@ -243,67 +223,31 @@ class InitializeRequest_DeviceOptions extends $pb.GeneratedMessage {
   void clearId() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.String get cacheDir => $_getSZ(1);
+  $core.String get homeDir => $_getSZ(1);
   @$pb.TagNumber(2)
-  set cacheDir($core.String v) { $_setString(1, v); }
+  set homeDir($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasCacheDir() => $_has(1);
+  $core.bool hasHomeDir() => $_has(1);
   @$pb.TagNumber(2)
-  void clearCacheDir() => clearField(2);
+  void clearHomeDir() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.String get databaseDir => $_getSZ(2);
+  $core.String get supportDir => $_getSZ(2);
   @$pb.TagNumber(3)
-  set databaseDir($core.String v) { $_setString(2, v); }
+  set supportDir($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasDatabaseDir() => $_has(2);
+  $core.bool hasSupportDir() => $_has(2);
   @$pb.TagNumber(3)
-  void clearDatabaseDir() => clearField(3);
+  void clearSupportDir() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get documentsDir => $_getSZ(3);
+  $core.String get tempDir => $_getSZ(3);
   @$pb.TagNumber(4)
-  set documentsDir($core.String v) { $_setString(3, v); }
+  set tempDir($core.String v) { $_setString(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasDocumentsDir() => $_has(3);
+  $core.bool hasTempDir() => $_has(3);
   @$pb.TagNumber(4)
-  void clearDocumentsDir() => clearField(4);
-
-  @$pb.TagNumber(5)
-  $core.String get downloadsDir => $_getSZ(4);
-  @$pb.TagNumber(5)
-  set downloadsDir($core.String v) { $_setString(4, v); }
-  @$pb.TagNumber(5)
-  $core.bool hasDownloadsDir() => $_has(4);
-  @$pb.TagNumber(5)
-  void clearDownloadsDir() => clearField(5);
-
-  @$pb.TagNumber(6)
-  $core.String get textileDir => $_getSZ(5);
-  @$pb.TagNumber(6)
-  set textileDir($core.String v) { $_setString(5, v); }
-  @$pb.TagNumber(6)
-  $core.bool hasTextileDir() => $_has(5);
-  @$pb.TagNumber(6)
-  void clearTextileDir() => clearField(6);
-
-  @$pb.TagNumber(7)
-  $core.String get supportDir => $_getSZ(6);
-  @$pb.TagNumber(7)
-  set supportDir($core.String v) { $_setString(6, v); }
-  @$pb.TagNumber(7)
-  $core.bool hasSupportDir() => $_has(6);
-  @$pb.TagNumber(7)
-  void clearSupportDir() => clearField(7);
-
-  @$pb.TagNumber(8)
-  $core.String get walletDir => $_getSZ(7);
-  @$pb.TagNumber(8)
-  set walletDir($core.String v) { $_setString(7, v); }
-  @$pb.TagNumber(8)
-  $core.bool hasWalletDir() => $_has(7);
-  @$pb.TagNumber(8)
-  void clearWalletDir() => clearField(8);
+  void clearTempDir() => clearField(4);
 }
 
 class InitializeRequest_HostOptions extends $pb.GeneratedMessage {

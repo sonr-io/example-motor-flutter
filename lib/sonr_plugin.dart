@@ -2,7 +2,6 @@ library sonr_plugin;
 
 import 'dart:async';
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:fixnum/fixnum.dart' as fixnum;
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
@@ -10,7 +9,6 @@ import 'package:get/get.dart';
 import 'package:grpc/grpc.dart';
 import 'package:video_compress/video_compress.dart';
 import 'src/src.dart';
-import 'dart:isolate';
 import 'package:image/image.dart';
 export 'package:path/path.dart';
 export 'package:path_provider/path_provider.dart';
@@ -163,7 +161,7 @@ class SonrService extends GetxService {
     await _inviteEvents.close();
     await _progressEvents.close();
     await _refreshEvents.close();
-    //await _mailboxEvents.close();
+    await _mailboxEvents.close();
     await _channel.shutdown();
     await _actionChannel.invokeMethod('stop');
   }
@@ -201,23 +199,25 @@ class SonrService extends GetxService {
 
     // Check if we need to supply the result
     if (supplyAfterPick && adjPaths.length > 0) {
-      final resp = await supply(adjPaths, peer: peer);
+      final list = await newSupplyItemList(adjPaths);
+      final resp = await supply(list, peer: peer);
       print(resp.toString());
     }
     return adjPaths;
   }
 
+  Future<List<SupplyRequest_Item>> newSupplyItemList(List<String> paths) async {
+    List<SupplyRequest_Item> items = [];
+    for (var i = 0; i < paths.length; i++) {
+      final buf = await fetchThumbnail(paths[i]);
+      items.add(SupplyRequest_Item(path: paths[i], thumbnail: buf));
+    }
+    return items;
+  }
+
   /// [supply(List<String>)] Supply a list of paths to the node.
   /// Will be queued for a share.
-  Future<SupplyResponse> supply(List<String> paths, {Peer? peer}) async {
-    // Add New Items
-    var items = <SupplyRequest_Item>[];
-    paths.forEach((path) async {
-      final buf = await fetchThumbnail(path);
-      final i = SupplyRequest_Item(path: path, thumbnail: buf);
-      items.add(i);
-    });
-
+  Future<SupplyResponse> supply(List<SupplyRequest_Item> items, {Peer? peer}) async {
     // Provide the request
     final supplyRequest = SupplyRequest(
       items: items,
@@ -314,39 +314,23 @@ class SonrService extends GetxService {
   }
 }
 
-Future<Uint8List?> fetchThumbnail(String path) async {
+Future<List<int>> fetchThumbnail(String path) async {
   final parts = path.split(".");
   final ext = parts[parts.length - 1];
-  var receivePort = ReceivePort();
 
   // Check for Video
-  if (VIDEO_FILE_EXTS.any((element) => ext == element)) {
-    await Isolate.spawn(_decodeIsolateVideo, _DecodeParam(File(path), receivePort.sendPort));
-    // Get the processed image from the isolate.
-    return await receivePort.first as Uint8List;
+  if (VIDEO_FILE_EXTS.any((element) => ext.toLowerCase() == element.toLowerCase())) {
+    final buf = await VideoCompress.getByteThumbnail(path, quality: 75);
+    if (buf != null) {
+      return buf;
+    }
   }
   // Check for Image
-  else if (IMAGE_FILE_EXTS.any((element) => ext == element)) {
-    await Isolate.spawn(_decodeIsolateImage, _DecodeParam(File(path), receivePort.sendPort));
+  else if (IMAGE_FILE_EXTS.any((element) => ext.toLowerCase() == element.toLowerCase())) {
+    var image = decodeImage(File(path).readAsBytesSync())!;
+    var thumbnail = copyResize(image, width: 240);
     // Get the processed image from the isolate.
-    return await receivePort.first as Uint8List;
+    return thumbnail.getBytes();
   }
-  return null;
-}
-
-class _DecodeParam {
-  final File file;
-  final SendPort sendPort;
-  _DecodeParam(this.file, this.sendPort);
-}
-
-void _decodeIsolateImage(_DecodeParam param) async {
-  var image = decodeImage(param.file.readAsBytesSync())!;
-  var thumbnail = copyResize(image, width: 240);
-  param.sendPort.send(thumbnail.getBytes());
-}
-
-void _decodeIsolateVideo(_DecodeParam param) async {
-  final buf = await VideoCompress.getByteThumbnail(param.file.path, quality: 75);
-  param.sendPort.send(buf);
+  return [];
 }
