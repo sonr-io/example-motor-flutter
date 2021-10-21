@@ -16,7 +16,6 @@ class ComposerModal extends GetView<ComposerController> {
           SizedBox(height: 16),
           _ComposerModalFindPeer(),
           SizedBox(height: 16),
-          // _ComposerModalSchedule(),
           PrimaryButton(
             mainAxisSize: MainAxisSize.max,
             onPressed: () {

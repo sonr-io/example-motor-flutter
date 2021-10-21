@@ -1,15 +1,14 @@
 library sonr_plugin;
 
 import 'dart:async';
-import 'dart:io';
 import 'package:fixnum/fixnum.dart' as fixnum;
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:grpc/grpc.dart';
-import 'package:video_compress/video_compress.dart';
+import 'dart:typed_data';
+import 'dart:isolate';
 import 'src/src.dart';
-import 'package:image/image.dart';
 export 'package:path/path.dart';
 export 'package:path_provider/path_provider.dart';
 export 'package:open_file/open_file.dart';
@@ -206,16 +205,26 @@ class SonrService extends GetxService {
     return adjPaths;
   }
 
+  /// [newSupplyItemList(List<String>)] creates a list of [SupplyRequest_Item]
+  /// from a list of paths
   Future<List<SupplyRequest_Item>> newSupplyItemList(List<String> paths) async {
+    // Determine Thumbnail Size
+    var thumbnailSize = DEFAULT_THUMB_WIDTH;
+    if (paths.length > 4) {
+      final interval = (paths.length / 4).floor();
+      thumbnailSize = (DEFAULT_THUMB_WIDTH / interval).round();
+    }
+
+    // Initialize List
     List<SupplyRequest_Item> items = [];
     for (var i = 0; i < paths.length; i++) {
-      final buf = await fetchThumbnail(paths[i]);
+      final buf = await fetchThumbnail(paths[i], width: thumbnailSize);
       items.add(SupplyRequest_Item(path: paths[i], thumbnail: buf));
     }
     return items;
   }
 
-  /// [supply(List<String>)] Supply a list of paths to the node.
+  /// [supply(List<SupplyRequest_Item>)] Supply a list of paths to the node.
   /// Will be queued for a share.
   Future<SupplyResponse> supply(List<SupplyRequest_Item> items, {Peer? peer}) async {
     // Provide the request
@@ -314,23 +323,18 @@ class SonrService extends GetxService {
   }
 }
 
-Future<List<int>> fetchThumbnail(String path) async {
-  final parts = path.split(".");
-  final ext = parts[parts.length - 1];
-
-  // Check for Video
-  if (VIDEO_FILE_EXTS.any((element) => ext.toLowerCase() == element.toLowerCase())) {
-    final buf = await VideoCompress.getByteThumbnail(path, quality: 75);
-    if (buf != null) {
-      return buf;
-    }
+Future<List<int>> fetchThumbnail(String path, {int width = DEFAULT_THUMB_WIDTH}) async {
+  var receivePort = ReceivePort();
+  await Isolate.spawn(
+      genThumb,
+      ThumbParams(
+        path: path,
+        sendPort: receivePort.sendPort,
+        width: width,
+      ));
+  var result = await receivePort.first as Uint8List?;
+  if (result == null) {
+    return [];
   }
-  // Check for Image
-  else if (IMAGE_FILE_EXTS.any((element) => ext.toLowerCase() == element.toLowerCase())) {
-    var image = decodeImage(File(path).readAsBytesSync())!;
-    var thumbnail = copyResize(image, width: 240);
-    // Get the processed image from the isolate.
-    return thumbnail.getBytes();
-  }
-  return [];
+  return result.toList();
 }

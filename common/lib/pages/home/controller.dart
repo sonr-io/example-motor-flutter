@@ -126,6 +126,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   // References
   late ScrollController scrollController;
   late TabController tabController;
+  late AnimationController progressController;
   late StreamSubscription<InviteEvent> _inviteSubscription;
   late StreamSubscription<ProgressEvent> _progressSubscription;
   late StreamSubscription<RefreshEvent> _refreshSubscription;
@@ -145,7 +146,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     // Handle Tab Controller
     tabController = TabController(vsync: this, length: 1);
     scrollController = ScrollController(keepScrollOffset: false);
-
+    progressController = AnimationController(vsync: this, lowerBound: 0, upperBound: 1, duration: Duration(milliseconds: 500));
     // Initialize
     super.onInit();
   }
@@ -229,6 +230,27 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   }
 
   void _handleProgress(ProgressEvent event) {
+    if (event.direction == Direction.INCOMING) {
+      progressController.animateTo(event.progress);
+      Get.snackbar(
+        "Receiving",
+        "File",
+        showProgressIndicator: true,
+        snackPosition: SnackPosition.BOTTOM,
+        dismissDirection: SnackDismissDirection.HORIZONTAL,
+        progressIndicatorController: progressController,
+      );
+    } else {
+      progressController.animateTo(event.progress);
+      Get.snackbar(
+        "Sharing",
+        "File",
+        showProgressIndicator: true,
+        snackPosition: SnackPosition.BOTTOM,
+        dismissDirection: SnackDismissDirection.HORIZONTAL,
+        progressIndicatorController: progressController,
+      );
+    }
     print("Current Progress: ${(event.progress * 100).roundToDouble()}%");
   }
 
@@ -248,21 +270,20 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   }
 
   void _handleRefresh(RefreshEvent event) {
-    if (event.peers.length != localPeers.length) {
-      // Refresh Local Peers
-      localPeers(event.peers);
-      localPeers.refresh();
+    localPeers.clear();
+    // Refresh Local Peers
+    localPeers(event.peers);
+    localPeers.refresh();
 
-      // Update Peer-Status Map
-      localPeersStatus.forEach((key, value) {
-        if (!event.peers.contains(key)) {
-          localPeersStatus[key] = PeerStatus.NONE;
-        }
-      });
+    // Update Peer-Status Map
+    localPeersStatus.forEach((key, value) {
+      if (!event.peers.contains(key)) {
+        localPeersStatus[key] = PeerStatus.NONE;
+      }
+    });
 
-      // Update Peer-Status Map
-      localPeersStatus.refresh();
-    }
+    // Update Peer-Status Map
+    localPeersStatus.refresh();
   }
 }
 

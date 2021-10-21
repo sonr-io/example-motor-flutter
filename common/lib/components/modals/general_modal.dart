@@ -7,9 +7,10 @@ class GeneralModal extends StatelessWidget {
   final Widget? body;
   final Widget? footerPrimaryButton;
   final Widget? footerSecondaryButton;
+  final EdgeInsets? margin;
   final void Function()? onDismissed;
 
-  const GeneralModal({Key? key, this.titleLabel, this.footerPrimaryButton, this.footerSecondaryButton, this.body, this.onDismissed})
+  const GeneralModal({Key? key, this.titleLabel, this.footerPrimaryButton, this.footerSecondaryButton, this.body, this.onDismissed, this.margin})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class GeneralModal extends StatelessWidget {
             boxShadow: [AppShadows.depth4],
           ),
           padding: EdgeInsets.symmetric(vertical: 24),
-          margin: EdgeInsets.symmetric(horizontal: 24, vertical: 180),
+          margin: margin ?? EdgeInsets.symmetric(horizontal: 24, vertical: 172),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -50,15 +51,21 @@ class GeneralModal extends StatelessWidget {
               // Body
               Expanded(
                 child: Container(
-                  padding: EdgeInsets.only(bottom: 32),
+                  padding: EdgeInsets.only(bottom: 16),
                   margin: EdgeInsets.symmetric(horizontal: 24),
                   child: body,
                 ),
               ),
 
               // Footer
-              footerPrimaryButton ?? Container(),
-              footerSecondaryButton ?? Container(),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 42),
+                child: footerPrimaryButton ?? Container(),
+              ),
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 42),
+                child: footerSecondaryButton ?? Container(),
+              ),
             ],
           ),
         ));

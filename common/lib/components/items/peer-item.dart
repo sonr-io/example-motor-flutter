@@ -112,10 +112,7 @@ class PeerListItem extends StatelessWidget {
         overflow: TextOverflow.ellipsis,
         maxLines: 1,
       ),
-      subtitle: Text(
-        _buildSName(),
-        style: AppTextStyles.bodyCaptionRegular,
-      ),
+      subtitle: Text(peer.profile.prettySName(), style: AppTextStyles.bodyCaptionRegular),
       trailing: withInviteButton
           ? Obx(() => NeutralButton(
                 onPressed: () => SonrService.to.share(peer),
@@ -139,16 +136,32 @@ class PeerListItem extends StatelessWidget {
         return "Invite";
     }
   }
+}
 
-  String _buildSName() {
-    if (peer.hasSName()) {
-      return peer.sName + ".snr/";
-    } else {
-      if (peer.profile.hasSName()) {
-        return peer.profile.sName + ".snr/";
-      } else {
-        return "test.snr/";
-      }
-    }
+class PeerRowItem extends StatelessWidget {
+  final Peer peer;
+  final void Function()? onTap;
+  final void Function()? onLongPress;
+  const PeerRowItem({Key? key, required this.peer, this.onTap, this.onLongPress}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      onLongPress: onLongPress,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          PeerAvatar(
+            peer: peer,
+            withPlatform: false,
+            size: 24,
+          ),
+          Text(
+            "${peer.profile.prettySName()}",
+            style: AppTextStyles.bodyCaptionBold,
+          ),
+        ],
+      ),
+    );
   }
 }
