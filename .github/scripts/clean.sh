@@ -4,6 +4,7 @@ SCRIPTDIR=$(dirname "$0")
 
 cd ${SCRIPTDIR}/../../
 ROOT_DIR=$(pwd)
+flutter clean
 PROJECT_DIR=${ROOT_DIR}/common
 cd ${PROJECT_DIR}
 flutter clean
@@ -16,5 +17,5 @@ pub global activate cider
 pub global activate protoc_plugin
 pub global activate devtools
 pub global activate derry
-flutter pub get
+cd ${ROOT_DIR} && flutter pub get
 echo "✅ Finished Cleaning ➡ `date`"
