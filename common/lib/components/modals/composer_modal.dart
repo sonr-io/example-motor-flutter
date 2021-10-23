@@ -64,6 +64,7 @@ class _ComposerModalFindPeer extends GetView<ComposerController> {
         textCapitalization: TextCapitalization.none,
         onSubmitted: (val) => controller.queryPeer(val),
         decoration: InputDecoration.collapsed(hintText: sNameHint),
+        
       ),
       leading: _ComposerModalIcon(Icons.search),
     );

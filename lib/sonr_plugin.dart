@@ -39,9 +39,6 @@ class SonrService extends GetxService {
   /// Recent Profiles is list of peers User interacts with
   final recentProfiles = RxList<Profile>();
 
-  /// Status is the status of the Sonr RPC Server
-  //final status = Rx<Status>(Status.IDLE);
-
   // GRPC Streams
   final _decisionEvents = StreamController<DecisionEvent>();
   final _refreshEvents = StreamController<RefreshEvent>();
@@ -102,7 +99,7 @@ class SonrService extends GetxService {
           onError: (err) => print("[RPC Client] ERROR: Listening to onLobbyRefresh \n" + err.toString()),
         );
 
-    // // Handle Mail Messages
+    // Handle Mail Messages
     _client.onMailboxMessage(Empty()).listen(
       (value) {
         _mailboxEvents.add(value);

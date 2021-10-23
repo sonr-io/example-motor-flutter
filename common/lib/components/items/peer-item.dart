@@ -106,12 +106,7 @@ class PeerListItem extends StatelessWidget {
       minLeadingWidth: 64,
       onLongPress: onLongPress,
       leading: PeerAvatar(peer: peer),
-      title: Text(
-        peer.profile.fullName,
-        style: AppTextStyles.bodyParagraphBold,
-        overflow: TextOverflow.ellipsis,
-        maxLines: 1,
-      ),
+      title: _buildName(),
       subtitle: Text(peer.profile.prettySName(), style: AppTextStyles.bodyCaptionRegular),
       trailing: withInviteButton
           ? Obx(() => NeutralButton(
@@ -120,6 +115,24 @@ class PeerListItem extends StatelessWidget {
               ))
           : null,
     );
+  }
+
+  Widget _buildName() {
+    if (peer.profile.firstName.toLowerCase().contains('anonymous')) {
+      return Text(
+        "👻  ${peer.profile.lastName}",
+        style: AppTextStyles.bodyParagraphBold,
+        overflow: TextOverflow.ellipsis,
+        maxLines: 1,
+      );
+    } else {
+      return Text(
+        "${peer.profile.fullName}",
+        style: AppTextStyles.bodyParagraphBold,
+        overflow: TextOverflow.ellipsis,
+        maxLines: 1,
+      );
+    }
   }
 
   String _buildButtonLabel(PeerStatus? status) {

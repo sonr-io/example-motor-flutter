@@ -21,7 +21,6 @@ dependencies:
 
   # ** - User Defined - **
   # -- Management --
-  bip39: ^1.0.6
   intercom_flutter: ^5.0.2
   intl: ^0.17.0
   shared_preferences: ^2.0.8
@@ -82,7 +81,6 @@ flutter:
   # -- Media --
   assets:
     - assets/animations/
-    - assets/animations/permissions/
     - assets/fonts/
     - assets/icons/Communication/
     - assets/icons/DateTime/
