@@ -4,17 +4,12 @@ SCRIPTDIR=$(dirname "$0")
 
 echo "Setting Paths..."
 cd ${SCRIPTDIR}/../../
-PROJECT_DIR=$(pwd)
+ROOT_DIR=$(pwd)
+PROJECT_DIR=${ROOT_DIR}/common
 IOS_DIR=${PROJECT_DIR}/ios
 ANDROID_DIR=${PROJECT_DIR}/android
 APP_BUILD=`cider version | cut -d'+' -f 2`
 APP_VERSION=`cider version | cut -d'+' -f 1`
-echo "Done."
-echo "\n"
-
-echo "Setup Project..."
-cd ${PROJECT_DIR}/${SCRIPTDIR} && sh tidy-project.sh
-cd ${PROJECT_DIR}/${SCRIPTDIR} && sh update-plugin.sh
 echo "Done."
 echo "\n"
 

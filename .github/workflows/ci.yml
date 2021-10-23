@@ -69,6 +69,8 @@ jobs:
             echo INTERCOM_IOS_KEY=${{ secrets.INTERCOM_IOS_KEY }} >> .env
             echo INTERCOM_ANDROID_KEY=${{ secrets.INTERCOM_ANDROID_KEY }} >> .env
             cat .env
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN }}
         working-directory: ${{ github.workspace }}/common
 
       # 7. Configure Android App

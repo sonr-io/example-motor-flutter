@@ -1814,3 +1814,64 @@ class PayloadList extends $pb.GeneratedMessage {
   void clearLastModified() => clearField(3);
 }
 
+class SupplyItem extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SupplyItem', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'path')
+    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'thumbnail', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false
+  ;
+
+  SupplyItem._() : super();
+  factory SupplyItem({
+    $core.String? path,
+    $core.List<$core.int>? thumbnail,
+  }) {
+    final _result = create();
+    if (path != null) {
+      _result.path = path;
+    }
+    if (thumbnail != null) {
+      _result.thumbnail = thumbnail;
+    }
+    return _result;
+  }
+  factory SupplyItem.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SupplyItem.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SupplyItem clone() => SupplyItem()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SupplyItem copyWith(void Function(SupplyItem) updates) => super.copyWith((message) => updates(message as SupplyItem)) as SupplyItem; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SupplyItem create() => SupplyItem._();
+  SupplyItem createEmptyInstance() => create();
+  static $pb.PbList<SupplyItem> createRepeated() => $pb.PbList<SupplyItem>();
+  @$core.pragma('dart2js:noInline')
+  static SupplyItem getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SupplyItem>(create);
+  static SupplyItem? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get path => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set path($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPath() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPath() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get thumbnail => $_getN(1);
+  @$pb.TagNumber(2)
+  set thumbnail($core.List<$core.int> v) { $_setBytes(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasThumbnail() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearThumbnail() => clearField(2);
+}
+

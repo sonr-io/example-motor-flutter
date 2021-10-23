@@ -767,70 +767,9 @@ class InitializeResponse extends $pb.GeneratedMessage {
   void clearUserStatus() => clearField(6);
 }
 
-class SupplyRequest_Item extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SupplyRequest.Item', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'path')
-    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'thumbnail', $pb.PbFieldType.OY)
-    ..hasRequiredFields = false
-  ;
-
-  SupplyRequest_Item._() : super();
-  factory SupplyRequest_Item({
-    $core.String? path,
-    $core.List<$core.int>? thumbnail,
-  }) {
-    final _result = create();
-    if (path != null) {
-      _result.path = path;
-    }
-    if (thumbnail != null) {
-      _result.thumbnail = thumbnail;
-    }
-    return _result;
-  }
-  factory SupplyRequest_Item.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SupplyRequest_Item.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  SupplyRequest_Item clone() => SupplyRequest_Item()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SupplyRequest_Item copyWith(void Function(SupplyRequest_Item) updates) => super.copyWith((message) => updates(message as SupplyRequest_Item)) as SupplyRequest_Item; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static SupplyRequest_Item create() => SupplyRequest_Item._();
-  SupplyRequest_Item createEmptyInstance() => create();
-  static $pb.PbList<SupplyRequest_Item> createRepeated() => $pb.PbList<SupplyRequest_Item>();
-  @$core.pragma('dart2js:noInline')
-  static SupplyRequest_Item getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SupplyRequest_Item>(create);
-  static SupplyRequest_Item? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get path => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set path($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasPath() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearPath() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.List<$core.int> get thumbnail => $_getN(1);
-  @$pb.TagNumber(2)
-  set thumbnail($core.List<$core.int> v) { $_setBytes(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasThumbnail() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearThumbnail() => clearField(2);
-}
-
 class SupplyRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SupplyRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
-    ..pc<SupplyRequest_Item>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'items', $pb.PbFieldType.PM, subBuilder: SupplyRequest_Item.create)
+    ..pc<$1.SupplyItem>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'items', $pb.PbFieldType.PM, subBuilder: $1.SupplyItem.create)
     ..aOM<$0.Peer>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peer', subBuilder: $0.Peer.create)
     ..aOB(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'isPeerSupply', protoName: 'isPeerSupply')
     ..hasRequiredFields = false
@@ -838,7 +777,7 @@ class SupplyRequest extends $pb.GeneratedMessage {
 
   SupplyRequest._() : super();
   factory SupplyRequest({
-    $core.Iterable<SupplyRequest_Item>? items,
+    $core.Iterable<$1.SupplyItem>? items,
     $0.Peer? peer,
     $core.bool? isPeerSupply,
   }) {
@@ -876,7 +815,7 @@ class SupplyRequest extends $pb.GeneratedMessage {
   static SupplyRequest? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<SupplyRequest_Item> get items => $_getList(0);
+  $core.List<$1.SupplyItem> get items => $_getList(0);
 
   @$pb.TagNumber(2)
   $0.Peer get peer => $_getN(1);
@@ -1457,7 +1396,7 @@ class ShareRequest extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ShareRequest', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
     ..aOM<$0.Peer>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peer', subBuilder: $0.Peer.create)
     ..aOM<$1.MessageItem>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'message', subBuilder: $1.MessageItem.create)
-    ..pPS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'paths')
+    ..pc<$1.SupplyItem>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'items', $pb.PbFieldType.PM, subBuilder: $1.SupplyItem.create)
     ..hasRequiredFields = false
   ;
 
@@ -1465,7 +1404,7 @@ class ShareRequest extends $pb.GeneratedMessage {
   factory ShareRequest({
     $0.Peer? peer,
     $1.MessageItem? message,
-    $core.Iterable<$core.String>? paths,
+    $core.Iterable<$1.SupplyItem>? items,
   }) {
     final _result = create();
     if (peer != null) {
@@ -1474,8 +1413,8 @@ class ShareRequest extends $pb.GeneratedMessage {
     if (message != null) {
       _result.message = message;
     }
-    if (paths != null) {
-      _result.paths.addAll(paths);
+    if (items != null) {
+      _result.items.addAll(items);
     }
     return _result;
   }
@@ -1523,7 +1462,7 @@ class ShareRequest extends $pb.GeneratedMessage {
   $1.MessageItem ensureMessage() => $_ensure(1);
 
   @$pb.TagNumber(3)
-  $core.List<$core.String> get paths => $_getList(2);
+  $core.List<$1.SupplyItem> get items => $_getList(2);
 }
 
 class ShareResponse extends $pb.GeneratedMessage {

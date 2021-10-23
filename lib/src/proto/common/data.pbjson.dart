@@ -260,3 +260,17 @@ const PayloadList$json = const {
 
 /// Descriptor for `PayloadList`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List payloadListDescriptor = $convert.base64Decode('CgtQYXlsb2FkTGlzdBIuCghwYXlsb2FkcxgBIAMoCzISLnNvbnIuY29yZS5QYXlsb2FkUghwYXlsb2FkcxIQCgNrZXkYAiABKAlSA2tleRIiCgxsYXN0TW9kaWZpZWQYAyABKANSDGxhc3RNb2RpZmllZA==');
+@$core.Deprecated('Use supplyItemDescriptor instead')
+const SupplyItem$json = const {
+  '1': 'SupplyItem',
+  '2': const [
+    const {'1': 'path', '3': 1, '4': 1, '5': 9, '10': 'path'},
+    const {'1': 'thumbnail', '3': 2, '4': 1, '5': 12, '9': 0, '10': 'thumbnail', '17': true},
+  ],
+  '8': const [
+    const {'1': '_thumbnail'},
+  ],
+};
+
+/// Descriptor for `SupplyItem`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List supplyItemDescriptor = $convert.base64Decode('CgpTdXBwbHlJdGVtEhIKBHBhdGgYASABKAlSBHBhdGgSIQoJdGh1bWJuYWlsGAIgASgMSABSCXRodW1ibmFpbIgBAUIMCgpfdGh1bWJuYWls');

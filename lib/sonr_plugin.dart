@@ -204,26 +204,29 @@ class SonrService extends GetxService {
 
   /// [newSupplyItemList(List<String>)] creates a list of [SupplyRequest_Item]
   /// from a list of paths
-  Future<List<SupplyRequest_Item>> newSupplyItemList(List<String> paths) async {
-    // Determine Thumbnail Size
-    var thumbnailSize = DEFAULT_THUMB_WIDTH;
-    if (paths.length > 4) {
-      final interval = (paths.length / 4).floor();
-      thumbnailSize = (DEFAULT_THUMB_WIDTH / interval).round();
-    }
+  Future<List<SupplyItem>> newSupplyItemList(List<String>? paths) async {
+    if (paths != null) {
+      // Determine Thumbnail Size
+      var thumbnailSize = DEFAULT_THUMB_WIDTH;
+      if (paths.length > 4) {
+        final interval = (paths.length / 4).floor();
+        thumbnailSize = (DEFAULT_THUMB_WIDTH / interval).round();
+      }
 
-    // Initialize List
-    List<SupplyRequest_Item> items = [];
-    for (var i = 0; i < paths.length; i++) {
-      final buf = await fetchThumbnail(paths[i], width: thumbnailSize);
-      items.add(SupplyRequest_Item(path: paths[i], thumbnail: buf));
+      // Initialize List
+      List<SupplyItem> items = [];
+      for (var i = 0; i < paths.length; i++) {
+        final buf = await fetchThumbnail(paths[i], width: thumbnailSize);
+        items.add(SupplyItem(path: paths[i], thumbnail: buf));
+      }
+      return items;
     }
-    return items;
+    return [];
   }
 
   /// [supply(List<SupplyRequest_Item>)] Supply a list of paths to the node.
   /// Will be queued for a share.
-  Future<SupplyResponse> supply(List<SupplyRequest_Item> items, {Peer? peer}) async {
+  Future<SupplyResponse> supply(List<SupplyItem> items, {Peer? peer}) async {
     // Provide the request
     final supplyRequest = SupplyRequest(
       items: items,
@@ -267,7 +270,7 @@ class SonrService extends GetxService {
 
   /// [share(Peer)] Shares queued transfer with peer.
   Future<ShareResponse> share(Peer peer, {List<String>? paths, MessageItem? message}) async {
-    final shareRequest = ShareRequest(peer: peer, paths: paths, message: message);
+    final shareRequest = ShareRequest(peer: peer, items: await newSupplyItemList(paths), message: message);
     final resp = await _client.share(shareRequest);
     return resp;
   }

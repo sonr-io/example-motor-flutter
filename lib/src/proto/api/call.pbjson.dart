@@ -175,27 +175,17 @@ final $typed_data.Uint8List initializeResponseDescriptor = $convert.base64Decode
 const SupplyRequest$json = const {
   '1': 'SupplyRequest',
   '2': const [
-    const {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.sonr.api.SupplyRequest.Item', '10': 'items'},
+    const {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.sonr.core.SupplyItem', '10': 'items'},
     const {'1': 'peer', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.Peer', '9': 0, '10': 'peer', '17': true},
     const {'1': 'isPeerSupply', '3': 3, '4': 1, '5': 8, '10': 'isPeerSupply'},
   ],
-  '3': const [SupplyRequest_Item$json],
   '8': const [
     const {'1': '_peer'},
   ],
 };
 
-@$core.Deprecated('Use supplyRequestDescriptor instead')
-const SupplyRequest_Item$json = const {
-  '1': 'Item',
-  '2': const [
-    const {'1': 'path', '3': 1, '4': 1, '5': 9, '10': 'path'},
-    const {'1': 'thumbnail', '3': 2, '4': 1, '5': 12, '10': 'thumbnail'},
-  ],
-};
-
 /// Descriptor for `SupplyRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List supplyRequestDescriptor = $convert.base64Decode('Cg1TdXBwbHlSZXF1ZXN0EjIKBWl0ZW1zGAEgAygLMhwuc29uci5hcGkuU3VwcGx5UmVxdWVzdC5JdGVtUgVpdGVtcxIoCgRwZWVyGAIgASgLMg8uc29uci5jb3JlLlBlZXJIAFIEcGVlcogBARIiCgxpc1BlZXJTdXBwbHkYAyABKAhSDGlzUGVlclN1cHBseRo4CgRJdGVtEhIKBHBhdGgYASABKAlSBHBhdGgSHAoJdGh1bWJuYWlsGAIgASgMUgl0aHVtYm5haWxCBwoFX3BlZXI=');
+final $typed_data.Uint8List supplyRequestDescriptor = $convert.base64Decode('Cg1TdXBwbHlSZXF1ZXN0EisKBWl0ZW1zGAEgAygLMhUuc29uci5jb3JlLlN1cHBseUl0ZW1SBWl0ZW1zEigKBHBlZXIYAiABKAsyDy5zb25yLmNvcmUuUGVlckgAUgRwZWVyiAEBEiIKDGlzUGVlclN1cHBseRgDIAEoCFIMaXNQZWVyU3VwcGx5QgcKBV9wZWVy');
 @$core.Deprecated('Use supplyResponseDescriptor instead')
 const SupplyResponse$json = const {
   '1': 'SupplyResponse',
@@ -346,12 +336,12 @@ const ShareRequest$json = const {
   '2': const [
     const {'1': 'peer', '3': 1, '4': 1, '5': 11, '6': '.sonr.core.Peer', '10': 'peer'},
     const {'1': 'message', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.MessageItem', '10': 'message'},
-    const {'1': 'paths', '3': 3, '4': 3, '5': 9, '10': 'paths'},
+    const {'1': 'items', '3': 3, '4': 3, '5': 11, '6': '.sonr.core.SupplyItem', '10': 'items'},
   ],
 };
 
 /// Descriptor for `ShareRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List shareRequestDescriptor = $convert.base64Decode('CgxTaGFyZVJlcXVlc3QSIwoEcGVlchgBIAEoCzIPLnNvbnIuY29yZS5QZWVyUgRwZWVyEjAKB21lc3NhZ2UYAiABKAsyFi5zb25yLmNvcmUuTWVzc2FnZUl0ZW1SB21lc3NhZ2USFAoFcGF0aHMYAyADKAlSBXBhdGhz');
+final $typed_data.Uint8List shareRequestDescriptor = $convert.base64Decode('CgxTaGFyZVJlcXVlc3QSIwoEcGVlchgBIAEoCzIPLnNvbnIuY29yZS5QZWVyUgRwZWVyEjAKB21lc3NhZ2UYAiABKAsyFi5zb25yLmNvcmUuTWVzc2FnZUl0ZW1SB21lc3NhZ2USKwoFaXRlbXMYAyADKAsyFS5zb25yLmNvcmUuU3VwcGx5SXRlbVIFaXRlbXM=');
 @$core.Deprecated('Use shareResponseDescriptor instead')
 const ShareResponse$json = const {
   '1': 'ShareResponse',
