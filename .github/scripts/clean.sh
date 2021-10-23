@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "🔷 Cleaning Project..."
+echo "🔷 Cleaning Flutter..."
 SCRIPTDIR=$(dirname "$0")
 
 cd ${SCRIPTDIR}/../../

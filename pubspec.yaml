@@ -7,7 +7,6 @@ publish_to: none
 scripts:
   build: sh .github/scripts/build.sh
   clean: sh .github/scripts/clean.sh
-  proto: sh .github/scripts/proto.sh
   update: sh .github/scripts/update.sh
 
 environment:
