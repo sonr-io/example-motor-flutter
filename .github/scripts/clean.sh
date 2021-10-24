@@ -13,9 +13,9 @@ rm -rf ios/build
 find ios -name "*.zip" -type f -delete && find . -name "*.ipa" -type f -delete
 find ios/fastlane -name "report.xml" -type f -delete
 find android/fastlane -name "report.xml" -type f -delete
-pub global activate cider
-pub global activate protoc_plugin
-pub global activate devtools
-pub global activate derry
+flutter pub global activate cider
+flutter pub global activate protoc_plugin
+flutter pub global activate derry
 cd ${ROOT_DIR} && flutter pub get
+cd ${PROJECT_DIR} && flutter pub get
 echo "✅ Finished Cleaning ➡ `date`"
