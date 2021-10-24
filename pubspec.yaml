@@ -2,11 +2,13 @@ name: sonr_plugin
 description: Plugin that creates bindings for Sonr-Core
 version: 0.11.0
 homepage: https://sonr.io
+documentation: https://docs.sonr.io
 publish_to: none
 
 scripts:
   build: sh .github/scripts/build.sh
   clean: sh .github/scripts/clean.sh
+  inject: define_env -f <(doppler secrets download --no-file --format=env --config dev --project api) --no-generate --no-print -c
   update: sh .github/scripts/update.sh
 
 environment:

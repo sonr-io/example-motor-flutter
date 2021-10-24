@@ -59,6 +59,9 @@ class SonrService extends GetxService {
   /// ### Checks permissions and Returns GetxService
   /// Optional Params for: `Profile`, `Location`, and `Map<String, String>`
   Future<SonrService> init({Map<String, String>? vars}) async {
+    if (vars == null) {
+      print('[SonrService] No Environment Variables Provided');
+    }
     // Set Enviornment Variables from OS
     _enviornmentVariables = vars ?? <String, String>{};
     return this;
