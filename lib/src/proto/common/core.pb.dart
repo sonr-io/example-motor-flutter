@@ -823,7 +823,8 @@ class ProfileList extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ProfileList', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
     ..pc<Profile>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'profiles', $pb.PbFieldType.PM, subBuilder: Profile.create)
     ..aInt64(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
-    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastModified', protoName: 'lastModified')
+    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'key')
+    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastModified', protoName: 'lastModified')
     ..hasRequiredFields = false
   ;
 
@@ -831,6 +832,7 @@ class ProfileList extends $pb.GeneratedMessage {
   factory ProfileList({
     $core.Iterable<Profile>? profiles,
     $fixnum.Int64? createdAt,
+    $core.String? key,
     $fixnum.Int64? lastModified,
   }) {
     final _result = create();
@@ -839,6 +841,9 @@ class ProfileList extends $pb.GeneratedMessage {
     }
     if (createdAt != null) {
       _result.createdAt = createdAt;
+    }
+    if (key != null) {
+      _result.key = key;
     }
     if (lastModified != null) {
       _result.lastModified = lastModified;
@@ -879,13 +884,22 @@ class ProfileList extends $pb.GeneratedMessage {
   void clearCreatedAt() => clearField(2);
 
   @$pb.TagNumber(3)
-  $fixnum.Int64 get lastModified => $_getI64(2);
+  $core.String get key => $_getSZ(2);
   @$pb.TagNumber(3)
-  set lastModified($fixnum.Int64 v) { $_setInt64(2, v); }
+  set key($core.String v) { $_setString(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasLastModified() => $_has(2);
+  $core.bool hasKey() => $_has(2);
   @$pb.TagNumber(3)
-  void clearLastModified() => clearField(3);
+  void clearKey() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $fixnum.Int64 get lastModified => $_getI64(3);
+  @$pb.TagNumber(4)
+  set lastModified($fixnum.Int64 v) { $_setInt64(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasLastModified() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearLastModified() => clearField(4);
 }
 
 class Social extends $pb.GeneratedMessage {
@@ -989,155 +1003,5 @@ class Social extends $pb.GeneratedMessage {
   $core.bool hasMedia() => $_has(4);
   @$pb.TagNumber(5)
   void clearMedia() => clearField(5);
-}
-
-class SNID extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SNID', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
-    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'domain')
-    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'pubKey', $pb.PbFieldType.OY, protoName: 'pubKey')
-    ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'peerID', protoName: 'peerID')
-    ..hasRequiredFields = false
-  ;
-
-  SNID._() : super();
-  factory SNID({
-    $core.String? domain,
-    $core.List<$core.int>? pubKey,
-    $core.String? peerID,
-  }) {
-    final _result = create();
-    if (domain != null) {
-      _result.domain = domain;
-    }
-    if (pubKey != null) {
-      _result.pubKey = pubKey;
-    }
-    if (peerID != null) {
-      _result.peerID = peerID;
-    }
-    return _result;
-  }
-  factory SNID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory SNID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  SNID clone() => SNID()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  SNID copyWith(void Function(SNID) updates) => super.copyWith((message) => updates(message as SNID)) as SNID; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static SNID create() => SNID._();
-  SNID createEmptyInstance() => create();
-  static $pb.PbList<SNID> createRepeated() => $pb.PbList<SNID>();
-  @$core.pragma('dart2js:noInline')
-  static SNID getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SNID>(create);
-  static SNID? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.String get domain => $_getSZ(0);
-  @$pb.TagNumber(1)
-  set domain($core.String v) { $_setString(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasDomain() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearDomain() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.List<$core.int> get pubKey => $_getN(1);
-  @$pb.TagNumber(2)
-  set pubKey($core.List<$core.int> v) { $_setBytes(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasPubKey() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearPubKey() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $core.String get peerID => $_getSZ(2);
-  @$pb.TagNumber(3)
-  set peerID($core.String v) { $_setString(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasPeerID() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearPeerID() => clearField(3);
-}
-
-class UUID extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UUID', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
-    ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'signature', $pb.PbFieldType.OY)
-    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'value')
-    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'timestamp')
-    ..hasRequiredFields = false
-  ;
-
-  UUID._() : super();
-  factory UUID({
-    $core.List<$core.int>? signature,
-    $core.String? value,
-    $fixnum.Int64? timestamp,
-  }) {
-    final _result = create();
-    if (signature != null) {
-      _result.signature = signature;
-    }
-    if (value != null) {
-      _result.value = value;
-    }
-    if (timestamp != null) {
-      _result.timestamp = timestamp;
-    }
-    return _result;
-  }
-  factory UUID.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory UUID.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
-  'Will be removed in next major version')
-  UUID clone() => UUID()..mergeFromMessage(this);
-  @$core.Deprecated(
-  'Using this can add significant overhead to your binary. '
-  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
-  'Will be removed in next major version')
-  UUID copyWith(void Function(UUID) updates) => super.copyWith((message) => updates(message as UUID)) as UUID; // ignore: deprecated_member_use
-  $pb.BuilderInfo get info_ => _i;
-  @$core.pragma('dart2js:noInline')
-  static UUID create() => UUID._();
-  UUID createEmptyInstance() => create();
-  static $pb.PbList<UUID> createRepeated() => $pb.PbList<UUID>();
-  @$core.pragma('dart2js:noInline')
-  static UUID getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UUID>(create);
-  static UUID? _defaultInstance;
-
-  @$pb.TagNumber(1)
-  $core.List<$core.int> get signature => $_getN(0);
-  @$pb.TagNumber(1)
-  set signature($core.List<$core.int> v) { $_setBytes(0, v); }
-  @$pb.TagNumber(1)
-  $core.bool hasSignature() => $_has(0);
-  @$pb.TagNumber(1)
-  void clearSignature() => clearField(1);
-
-  @$pb.TagNumber(2)
-  $core.String get value => $_getSZ(1);
-  @$pb.TagNumber(2)
-  set value($core.String v) { $_setString(1, v); }
-  @$pb.TagNumber(2)
-  $core.bool hasValue() => $_has(1);
-  @$pb.TagNumber(2)
-  void clearValue() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $fixnum.Int64 get timestamp => $_getI64(2);
-  @$pb.TagNumber(3)
-  set timestamp($fixnum.Int64 v) { $_setInt64(2, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasTimestamp() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearTimestamp() => clearField(3);
 }
 

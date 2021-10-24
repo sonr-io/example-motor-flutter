@@ -66,34 +66,24 @@ const ProgressEvent$json = const {
     const {'1': 'total', '3': 2, '4': 1, '5': 5, '10': 'total'},
     const {'1': 'progress', '3': 3, '4': 1, '5': 1, '10': 'progress'},
     const {'1': 'received', '3': 4, '4': 1, '5': 3, '10': 'received'},
+    const {'1': 'direction', '3': 5, '4': 1, '5': 14, '6': '.sonr.core.Direction', '10': 'direction'},
   ],
 };
 
 /// Descriptor for `ProgressEvent`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List progressEventDescriptor = $convert.base64Decode('Cg1Qcm9ncmVzc0V2ZW50EhgKB2N1cnJlbnQYASABKAVSB2N1cnJlbnQSFAoFdG90YWwYAiABKAVSBXRvdGFsEhoKCHByb2dyZXNzGAMgASgBUghwcm9ncmVzcxIaCghyZWNlaXZlZBgEIAEoA1IIcmVjZWl2ZWQ=');
+final $typed_data.Uint8List progressEventDescriptor = $convert.base64Decode('Cg1Qcm9ncmVzc0V2ZW50EhgKB2N1cnJlbnQYASABKAVSB2N1cnJlbnQSFAoFdG90YWwYAiABKAVSBXRvdGFsEhoKCHByb2dyZXNzGAMgASgBUghwcm9ncmVzcxIaCghyZWNlaXZlZBgEIAEoA1IIcmVjZWl2ZWQSMgoJZGlyZWN0aW9uGAUgASgOMhQuc29uci5jb3JlLkRpcmVjdGlvblIJZGlyZWN0aW9u');
 @$core.Deprecated('Use completeEventDescriptor instead')
 const CompleteEvent$json = const {
   '1': 'CompleteEvent',
   '2': const [
-    const {'1': 'direction', '3': 1, '4': 1, '5': 14, '6': '.sonr.api.CompleteEvent.Direction', '10': 'direction'},
+    const {'1': 'direction', '3': 1, '4': 1, '5': 14, '6': '.sonr.core.Direction', '10': 'direction'},
     const {'1': 'payload', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.Payload', '10': 'payload'},
     const {'1': 'from', '3': 3, '4': 1, '5': 11, '6': '.sonr.core.Peer', '10': 'from'},
     const {'1': 'to', '3': 4, '4': 1, '5': 11, '6': '.sonr.core.Peer', '10': 'to'},
     const {'1': 'createdAt', '3': 5, '4': 1, '5': 3, '10': 'createdAt'},
     const {'1': 'receivedAt', '3': 6, '4': 1, '5': 3, '10': 'receivedAt'},
   ],
-  '4': const [CompleteEvent_Direction$json],
-};
-
-@$core.Deprecated('Use completeEventDescriptor instead')
-const CompleteEvent_Direction$json = const {
-  '1': 'Direction',
-  '2': const [
-    const {'1': 'DEFAULT', '2': 0},
-    const {'1': 'INCOMING', '2': 1},
-    const {'1': 'OUTGOING', '2': 2},
-  ],
 };
 
 /// Descriptor for `CompleteEvent`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List completeEventDescriptor = $convert.base64Decode('Cg1Db21wbGV0ZUV2ZW50Ej8KCWRpcmVjdGlvbhgBIAEoDjIhLnNvbnIuYXBpLkNvbXBsZXRlRXZlbnQuRGlyZWN0aW9uUglkaXJlY3Rpb24SLAoHcGF5bG9hZBgCIAEoCzISLnNvbnIuY29yZS5QYXlsb2FkUgdwYXlsb2FkEiMKBGZyb20YAyABKAsyDy5zb25yLmNvcmUuUGVlclIEZnJvbRIfCgJ0bxgEIAEoCzIPLnNvbnIuY29yZS5QZWVyUgJ0bxIcCgljcmVhdGVkQXQYBSABKANSCWNyZWF0ZWRBdBIeCgpyZWNlaXZlZEF0GAYgASgDUgpyZWNlaXZlZEF0IjQKCURpcmVjdGlvbhILCgdERUZBVUxUEAASDAoISU5DT01JTkcQARIMCghPVVRHT0lORxAC');
+final $typed_data.Uint8List completeEventDescriptor = $convert.base64Decode('Cg1Db21wbGV0ZUV2ZW50EjIKCWRpcmVjdGlvbhgBIAEoDjIULnNvbnIuY29yZS5EaXJlY3Rpb25SCWRpcmVjdGlvbhIsCgdwYXlsb2FkGAIgASgLMhIuc29uci5jb3JlLlBheWxvYWRSB3BheWxvYWQSIwoEZnJvbRgDIAEoCzIPLnNvbnIuY29yZS5QZWVyUgRmcm9tEh8KAnRvGAQgASgLMg8uc29uci5jb3JlLlBlZXJSAnRvEhwKCWNyZWF0ZWRBdBgFIAEoA1IJY3JlYXRlZEF0Eh4KCnJlY2VpdmVkQXQYBiABKANSCnJlY2VpdmVkQXQ=');

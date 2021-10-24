@@ -161,7 +161,7 @@ class DesignTextField extends StatelessWidget {
 class SNameTextField extends StatelessWidget {
   final void Function(String value) onEditingComplete;
   final void Function(String value)? onChanged;
-  final hint = TextUtils.hintName;
+  final hint = TextUtils.hintFullName;
 
   SNameTextField({
     Key? key,
@@ -217,8 +217,13 @@ class SNameTextField extends StatelessWidget {
 }
 
 class TextUtils {
+  static String get hintSName {
+    final hintName = TextUtils.hintFullName;
+    return hintName.item1.toLowerCase().substring(0, 1) + hintName.item2.substring(0, 1).toUpperCase() + hintName.item2.substring(1);
+  }
+
   /// #### Returns Random Hint Name
-  static Tuple<String, String> get hintName {
+  static Tuple<String, String> get hintFullName {
     switch (Platform.operatingSystem) {
       case "android":
         return [

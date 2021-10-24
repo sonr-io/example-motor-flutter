@@ -1,20 +1,22 @@
 export 'controller.dart';
-import 'package:sonr_app/pages/home/button.dart';
+import 'package:sonr_app/modules/payload/payload.dart';
 import 'package:sonr_app/theme/theme.dart';
 
 import 'controller.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/pages/home/controller.dart';
-import 'nearby/nearby_row.dart';
+import 'nearby.dart';
 
 class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
+    controller.fetchData();
     // Return View
     return SonrScaffold(
       resizeToAvoidBottomInset: false,
       floatingAction: HomeFloatingBar(),
       appBar: AppBar(
+        centerTitle: false,
         toolbarHeight: 92,
         elevation: 0,
         backgroundColor: AppColors.neutrals1,
@@ -49,8 +51,7 @@ class HomePage extends GetView<HomeController> {
         physics: NeverScrollableScrollPhysics(),
         controller: controller.tabController,
         children: [
-          // DashboardView(key: ValueKey<HomeView>(HomeView.Dashboard)),
-          Container(),
+          HomeHistoryView(),
         ],
       )),
     );
@@ -136,5 +137,75 @@ class HomeBottomTabButton extends GetView<HomeController> {
                   ),
               currentIndex),
         ));
+  }
+}
+
+/// #### Home Tab Bar Navigation - Share Button
+class ShareButton extends StatelessWidget {
+  ShareButton() : super(key: GlobalKey());
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 24.0),
+      child: ObxValue<RxBool>(
+          (isPressed) => AnimatedScale(
+              duration: Duration(milliseconds: 150),
+              scale: isPressed.value ? 1.1 : 1,
+              child: Container(
+                width: 95,
+                height: 95,
+                child: GestureDetector(
+                  onTapDown: (details) => isPressed(true),
+                  onTapUp: (details) {
+                    isPressed(false);
+                    Future.delayed(
+                        150.milliseconds,
+                        () => Get.dialog(
+                              ComposerModal(),
+                              barrierDismissible: true,
+                              barrierColor: Colors.transparent,
+                              useSafeArea: false,
+                            ));
+                  },
+                  child: PolyContainer(
+                      radius: 24,
+                      rotate: 30,
+                      sides: 6,
+                      gradient: AppGradients.gradientPrimary,
+                      child: ShaderMask(
+                        blendMode: BlendMode.modulate,
+                        shaderCallback: (bounds) => AppGradients.gradientTeritary.createShader(bounds),
+                        child: Icon(
+                          SimpleIcons.Share,
+                          size: 34,
+                          color: Colors.white,
+                        ),
+                      )),
+                ),
+              )),
+          false.obs),
+    );
+  }
+}
+
+// #### Home History View is the body of Home Page
+class HomeHistoryView extends GetView<HomeController> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        margin: EdgeInsets.symmetric(horizontal: 16),
+        child: Obx(() => controller.history.length > 0
+            ? ListView.builder(
+                itemCount: controller.history.length,
+                itemBuilder: (context, index) => PayloadMultiCard(
+                  items: controller.history[index].items,
+                ),
+              )
+            : Container(
+                width: Get.width,
+                height: Get.height,
+                alignment: Alignment.center,
+                child: Text("No History yet.", style: AppTextStyles.bodyCaptionRegular),
+              )));
   }
 }

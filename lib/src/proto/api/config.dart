@@ -33,23 +33,42 @@ class Config {
   static Future<InitializeRequest_DeviceOptions> getDeviceOpts() async {
     // Get Default Directories
     final documentsPath = await getApplicationDocumentsDirectory();
-    final supportPath = await createFolderInAppDocDir('Support');
-    final databasePath = await createFolderInAppDocDir('Database');
-    final textilePath = await createFolderInAppDocDir('Textile');
-    final downloadsPath = await createFolderInAppDocDir('Downloads');
     final temporaryPath = await getTemporaryDirectory();
+    final supportPath = await getSupportDir();
     final deviceId = await getDeviceId();
 
     // Return Device Options
     return InitializeRequest_DeviceOptions(
-      cacheDir: temporaryPath.path,
-      documentsDir: documentsPath.path,
-      downloadsDir: downloadsPath,
-      databaseDir: databasePath,
+      tempDir: temporaryPath.path,
+      homeDir: documentsPath.path,
       supportDir: supportPath,
-      textileDir: textilePath,
       id: deviceId,
     );
+  }
+
+  static Future<String> getSupportDir() async {
+    var supportPath = "";
+    bool createNew = false;
+    try {
+      // Get Default Support Directory
+      final supportDir = await getApplicationSupportDirectory();
+
+      // Check if Directory Exists
+      if (supportDir.existsSync()) {
+        supportPath = supportDir.path;
+      } else {
+        createNew = true;
+      }
+    } catch (e) {
+      print(e);
+      createNew = true;
+    }
+
+    if (createNew) {
+      supportPath = await createFolderInAppDocDir('Support');
+    }
+
+    return supportPath;
   }
 
   /// Method Gets Connection Info

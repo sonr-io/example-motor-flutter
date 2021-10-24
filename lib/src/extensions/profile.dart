@@ -1,7 +1,3 @@
-
-import 'dart:typed_data';
-
-import 'package:flutter/widgets.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 import 'package:sonr_plugin/src/proto/proto.dart';
 
@@ -46,39 +42,12 @@ extension ProfileUtil on Profile {
   /// Returns Firstname **WITHOUT** `firstInitial`
   String get _lastnameWithoutInitial => this.lastName.substring(1).toLowerCase();
 
-  /// ### Method Returns Avatar as `Image.memory`
-  /// Provides same Parameters
-  Widget profileImage(
-          {Key? key,
-          Widget? placeholder,
-          double scale = 1.0,
-          double? width,
-          double? height,
-          Color? color,
-          BlendMode? colorBlendMode,
-          BoxFit? fit,
-          AlignmentGeometry alignment = Alignment.center,
-          ImageRepeat repeat = ImageRepeat.noRepeat,
-          bool isAntiAlias = false,
-          FilterQuality filterQuality = FilterQuality.low,
-          int? cacheWidth,
-          int? cacheHeight}) =>
-      this.hasPicture()
-          ? Image.memory(
-              Uint8List.fromList(this.picture),
-              key: key,
-              scale: scale,
-              width: width,
-              height: height,
-              color: color,
-              colorBlendMode: colorBlendMode,
-              fit: fit,
-              alignment: alignment,
-              repeat: repeat,
-              isAntiAlias: isAntiAlias,
-              filterQuality: filterQuality,
-              cacheWidth: cacheWidth,
-              cacheHeight: cacheHeight,
-            )
-          : placeholder ?? Container();
+  /// Returns SName in pretty Format
+  String prettySName() {
+    if (this.hasSName()) {
+      return this.sName + ".snr/";
+    } else {
+      return "test.snr/";
+    }
+  }
 }

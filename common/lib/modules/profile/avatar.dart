@@ -49,19 +49,21 @@ class ProfileAvatar extends StatelessWidget {
 
 /// #### PeerListItem for Remote View
 class PeerAvatar extends StatelessWidget {
+  final bool withPlatform;
+  final double size;
   final Peer peer;
-  PeerAvatar({required this.peer});
+  PeerAvatar({required this.peer, this.withPlatform = true, this.size = 64});
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 64,
-      height: 64,
+      width: size,
+      height: size,
       child: Stack(
         children: [
           Align(
             alignment: Alignment.center,
             child: Container(
-              margin: EdgeInsets.all(4),
+              margin: !withPlatform ? EdgeInsets.all(4) : EdgeInsets.zero,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
@@ -71,10 +73,12 @@ class PeerAvatar extends StatelessWidget {
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.topRight,
-            child: PlatformIcon(platform: peer.device.os),
-          ),
+          withPlatform
+              ? Align(
+                  alignment: Alignment.topRight,
+                  child: PlatformIcon(platform: peer.device.os),
+                )
+              : Container(),
         ],
       ),
     );

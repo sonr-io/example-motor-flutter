@@ -8,6 +8,18 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
+@$core.Deprecated('Use directionDescriptor instead')
+const Direction$json = const {
+  '1': 'Direction',
+  '2': const [
+    const {'1': 'DEFAULT', '2': 0},
+    const {'1': 'INCOMING', '2': 1},
+    const {'1': 'OUTGOING', '2': 2},
+  ],
+};
+
+/// Descriptor for `Direction`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List directionDescriptor = $convert.base64Decode('CglEaXJlY3Rpb24SCwoHREVGQVVMVBAAEgwKCElOQ09NSU5HEAESDAoIT1VUR09JTkcQAg==');
 @$core.Deprecated('Use fileItemDescriptor instead')
 const FileItem$json = const {
   '1': 'FileItem',
@@ -197,14 +209,13 @@ final $typed_data.Uint8List openGraphDescriptor = $convert.base64Decode('CglPcGV
 const Thumbnail$json = const {
   '1': 'Thumbnail',
   '2': const [
-    const {'1': 'size', '3': 1, '4': 1, '5': 3, '10': 'size'},
-    const {'1': 'buffer', '3': 2, '4': 1, '5': 12, '10': 'buffer'},
-    const {'1': 'mime', '3': 3, '4': 1, '5': 11, '6': '.sonr.core.MIME', '10': 'mime'},
+    const {'1': 'buffer', '3': 1, '4': 1, '5': 12, '10': 'buffer'},
+    const {'1': 'mime', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.MIME', '10': 'mime'},
   ],
 };
 
 /// Descriptor for `Thumbnail`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List thumbnailDescriptor = $convert.base64Decode('CglUaHVtYm5haWwSEgoEc2l6ZRgBIAEoA1IEc2l6ZRIWCgZidWZmZXIYAiABKAxSBmJ1ZmZlchIjCgRtaW1lGAMgASgLMg8uc29uci5jb3JlLk1JTUVSBG1pbWU=');
+final $typed_data.Uint8List thumbnailDescriptor = $convert.base64Decode('CglUaHVtYm5haWwSFgoGYnVmZmVyGAEgASgMUgZidWZmZXISIwoEbWltZRgCIAEoCzIPLnNvbnIuY29yZS5NSU1FUgRtaW1l');
 @$core.Deprecated('Use payloadDescriptor instead')
 const Payload$json = const {
   '1': 'Payload',
@@ -237,16 +248,29 @@ const Payload_Item$json = const {
 
 /// Descriptor for `Payload`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List payloadDescriptor = $convert.base64Decode('CgdQYXlsb2FkEi0KBWl0ZW1zGAEgAygLMhcuc29uci5jb3JlLlBheWxvYWQuSXRlbVIFaXRlbXMSKAoFb3duZXIYAiABKAsyEi5zb25yLmNvcmUuUHJvZmlsZVIFb3duZXISEgoEc2l6ZRgDIAEoA1IEc2l6ZRIcCgljcmVhdGVkQXQYBCABKANSCWNyZWF0ZWRBdBrNAgoESXRlbRIjCgRtaW1lGAEgASgLMg8uc29uci5jb3JlLk1JTUVSBG1pbWUSEgoEc2l6ZRgCIAEoA1IEc2l6ZRIpCgRmaWxlGAMgASgLMhMuc29uci5jb3JlLkZpbGVJdGVtSABSBGZpbGUSJgoDdXJsGAQgASgLMhIuc29uci5jb3JlLlVybEl0ZW1IAFIDdXJsEjIKB21lc3NhZ2UYBSABKAsyFi5zb25yLmNvcmUuTWVzc2FnZUl0ZW1IAFIHbWVzc2FnZRI0Cgl0aHVtYm5haWwYBiABKAsyFC5zb25yLmNvcmUuVGh1bWJuYWlsSAFSCXRodW1ibmFpbBI8CglvcGVuR3JhcGgYByABKAsyHC5zb25yLmNvcmUuT3BlbkdyYXBoLlByaW1hcnlIAVIJb3BlbkdyYXBoQgYKBGRhdGFCCQoHcHJldmlldw==');
-@$core.Deprecated('Use payloadItemListDescriptor instead')
-const PayloadItemList$json = const {
-  '1': 'PayloadItemList',
+@$core.Deprecated('Use payloadListDescriptor instead')
+const PayloadList$json = const {
+  '1': 'PayloadList',
   '2': const [
-    const {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.sonr.core.Payload.Item', '10': 'items'},
-    const {'1': 'mime', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.MIME', '10': 'mime'},
-    const {'1': 'size', '3': 3, '4': 1, '5': 3, '10': 'size'},
-    const {'1': 'lastModified', '3': 4, '4': 1, '5': 3, '10': 'lastModified'},
+    const {'1': 'payloads', '3': 1, '4': 3, '5': 11, '6': '.sonr.core.Payload', '10': 'payloads'},
+    const {'1': 'key', '3': 2, '4': 1, '5': 9, '10': 'key'},
+    const {'1': 'lastModified', '3': 3, '4': 1, '5': 3, '10': 'lastModified'},
   ],
 };
 
-/// Descriptor for `PayloadItemList`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List payloadItemListDescriptor = $convert.base64Decode('Cg9QYXlsb2FkSXRlbUxpc3QSLQoFaXRlbXMYASADKAsyFy5zb25yLmNvcmUuUGF5bG9hZC5JdGVtUgVpdGVtcxIjCgRtaW1lGAIgASgLMg8uc29uci5jb3JlLk1JTUVSBG1pbWUSEgoEc2l6ZRgDIAEoA1IEc2l6ZRIiCgxsYXN0TW9kaWZpZWQYBCABKANSDGxhc3RNb2RpZmllZA==');
+/// Descriptor for `PayloadList`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List payloadListDescriptor = $convert.base64Decode('CgtQYXlsb2FkTGlzdBIuCghwYXlsb2FkcxgBIAMoCzISLnNvbnIuY29yZS5QYXlsb2FkUghwYXlsb2FkcxIQCgNrZXkYAiABKAlSA2tleRIiCgxsYXN0TW9kaWZpZWQYAyABKANSDGxhc3RNb2RpZmllZA==');
+@$core.Deprecated('Use supplyItemDescriptor instead')
+const SupplyItem$json = const {
+  '1': 'SupplyItem',
+  '2': const [
+    const {'1': 'path', '3': 1, '4': 1, '5': 9, '10': 'path'},
+    const {'1': 'thumbnail', '3': 2, '4': 1, '5': 12, '9': 0, '10': 'thumbnail', '17': true},
+  ],
+  '8': const [
+    const {'1': '_thumbnail'},
+  ],
+};
+
+/// Descriptor for `SupplyItem`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List supplyItemDescriptor = $convert.base64Decode('CgpTdXBwbHlJdGVtEhIKBHBhdGgYASABKAlSBHBhdGgSIQoJdGh1bWJuYWlsGAIgASgMSABSCXRodW1ibmFpbIgBAUIMCgpfdGh1bWJuYWls');

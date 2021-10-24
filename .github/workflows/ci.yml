@@ -27,8 +27,8 @@ jobs:
       - name: Install Latest Android Binary
         run: |
             echo "Installing latest Android binary..."
-            gh release download --repo 'sonr-io/core' --pattern *_android.zip --dir ${{ github.workspace }}/plugin/android/libs
-            unzip ${{ github.workspace }}/plugin/android/libs/*_android.zip -d ${{ github.workspace }}/plugin/android/libs
+            gh release download --repo 'sonr-io/core' --pattern *_android.zip --dir ${{ github.workspace }}/android/libs
+            unzip ${{ github.workspace }}/android/libs/*_android.zip -d ${{ github.workspace }}/android/libs
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN }}
 
@@ -58,7 +58,7 @@ jobs:
             flutter pub get
             cider version ${{ github.event.client_payload.version }}
             cider bump build
-            cd ${{ github.workspace }} && touch .env
+            touch .env
             echo IP_KEY=${{ secrets.IP_KEY }} >> .env
             echo RAPID_KEY=${{ secrets.RAPID_KEY }} >> .env
             echo HS_KEY=${{ secrets.HS_KEY }} >> .env
@@ -69,6 +69,9 @@ jobs:
             echo INTERCOM_IOS_KEY=${{ secrets.INTERCOM_IOS_KEY }} >> .env
             echo INTERCOM_ANDROID_KEY=${{ secrets.INTERCOM_ANDROID_KEY }} >> .env
             cat .env
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN }}
+        working-directory: ${{ github.workspace }}/common
 
       # 7. Configure Android App
       - name: Configure Keystore
@@ -82,13 +85,13 @@ jobs:
           echo "storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> key.properties
           echo "keyAlias=upload" >> key.properties
           echo "keyPassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }}" >> key.properties
-        working-directory: android
+        working-directory: ${{ github.workspace }}/common/android
 
       # 8. Cache Build
       - name: Cache Android Build
         uses: actions/cache@v1
         with:
-          path: ${{ github.workspace }}/build
+          path: ${{ github.workspace }}/common/build
           key: ${{ runner.os }}-android-build
 
       # 9. Build Android App
@@ -99,6 +102,7 @@ jobs:
           ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
           ANDROID_KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
           ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        working-directory: ${{ github.workspace }}/common
 
       # 10. Setup Ruby, Bundler, and Gemfile dependencies
       - name: Setup Fastlane
@@ -114,7 +118,7 @@ jobs:
         timeout-minutes: 30
         with:
           lane: internal
-          subdirectory: android
+          subdirectory: ${{ github.workspace }}/common/android
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN }}
           KEYSTORE_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
@@ -138,8 +142,8 @@ jobs:
       - name: Install Latest iOS Binary
         run: |
           echo "Installing latest iOS binary..."
-          gh release download --repo 'sonr-io/core' --pattern *_ios.zip --dir ${{ github.workspace }}/plugin/ios/Frameworks
-          unzip ${{ github.workspace }}/plugin/ios/Frameworks/*_ios.zip -d ${{ github.workspace }}/plugin/ios/Frameworks
+          gh release download --repo 'sonr-io/core' --pattern *_ios.zip --dir ${{ github.workspace }}/ios/Frameworks
+          unzip ${{ github.workspace }}/ios/Frameworks/*_ios.zip -d ${{ github.workspace }}/ios/Frameworks
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN }}
 
@@ -169,7 +173,7 @@ jobs:
             flutter pub get
             cider version ${{ github.event.client_payload.version }}
             cider bump build
-            cd ${{ github.workspace }} && touch .env
+            touch .env
             echo IP_KEY=${{ secrets.IP_KEY }} >> .env
             echo RAPID_KEY=${{ secrets.RAPID_KEY }} >> .env
             echo HS_KEY=${{ secrets.HS_KEY }} >> .env
@@ -180,6 +184,7 @@ jobs:
             echo INTERCOM_IOS_KEY=${{ secrets.INTERCOM_IOS_KEY }} >> .env
             echo INTERCOM_ANDROID_KEY=${{ secrets.INTERCOM_ANDROID_KEY }} >> .env
             cat .env
+        working-directory: ${{ github.workspace }}/common
 
       # 8. Configure iOS App
       - name: Configure iOS Version
@@ -188,7 +193,7 @@ jobs:
           pod install
           agvtool new-version -all `cider version | cut -d'+' -f 2`
           agvtool new-marketing-version `cider version | cut -d'+' -f 1`
-        working-directory: ios
+        working-directory: ${{ github.workspace }}/ios
 
       # 8. Cache Build
       - name: Cache iOS Build
@@ -201,6 +206,7 @@ jobs:
       - name: Build iOS APP
         run: flutter build ios --release --no-codesign
         timeout-minutes: 45
+        working-directory: ${{ github.workspace }}/common
 
       # 10. Setup Ruby, Bundler, and Gemfile dependencies
       - name: Setup Fastlane
@@ -208,7 +214,7 @@ jobs:
         with:
           ruby-version: '2.6'
           bundler-cache: true
-          working-directory: ios
+          working-directory: ${{ github.workspace }}/common/ios
 
       # 11. Install SSH Key
       - name: Install SSH key
@@ -223,7 +229,7 @@ jobs:
         timeout-minutes: 30
         with:
           lane: beta
-          subdirectory: 'ios'
+          subdirectory: ${{ github.workspace }}/common/ios
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_GITHUB_TOKEN }}
           MATCH_PASSWORD: ${{ secrets.FASTLANE_MATCH_PASSWORD }}

@@ -6,11 +6,14 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:grpc/grpc.dart';
+import 'dart:typed_data';
+import 'dart:isolate';
 import 'src/src.dart';
 export 'package:path/path.dart';
 export 'package:path_provider/path_provider.dart';
 export 'package:open_file/open_file.dart';
 export 'package:get/get.dart';
+export 'package:file_picker/src/file_picker.dart';
 export 'src/src.dart';
 
 /// [RPC_HOST] is the address for Sonr RPC Node
@@ -34,15 +37,12 @@ class SonrService extends GetxService {
   static bool get isRegistered => Get.isRegistered<SonrService>();
 
   /// Recent Profiles is list of peers User interacts with
-  final recentProfiles = RxList<ProfileList>();
-
-  /// Status is the status of the Sonr RPC Server
-  //final status = Rx<Status>(Status.IDLE);
+  final recentProfiles = RxList<Profile>();
 
   // GRPC Streams
   final _decisionEvents = StreamController<DecisionEvent>();
   final _refreshEvents = StreamController<RefreshEvent>();
-  // final _mailboxEvents = StreamController<MailboxEvent>();
+  final _mailboxEvents = StreamController<MailboxEvent>();
   final _inviteEvents = StreamController<InviteEvent>();
   final _progressEvents = StreamController<ProgressEvent>();
   final _completeEvents = StreamController<CompleteEvent>();
@@ -59,6 +59,9 @@ class SonrService extends GetxService {
   /// ### Checks permissions and Returns GetxService
   /// Optional Params for: `Profile`, `Location`, and `Map<String, String>`
   Future<SonrService> init({Map<String, String>? vars}) async {
+    if (vars == null) {
+      print('[SonrService] No Environment Variables Provided');
+    }
     // Set Enviornment Variables from OS
     _enviornmentVariables = vars ?? <String, String>{};
     return this;
@@ -99,14 +102,14 @@ class SonrService extends GetxService {
           onError: (err) => print("[RPC Client] ERROR: Listening to onLobbyRefresh \n" + err.toString()),
         );
 
-    // // Handle Mail Messages
-    // _client.onMailboxMessage(Empty()).listen(
-    //   (value) {
-    //     _mailboxEvents.add(value);
-    //   },
-    //   onError: (err) => print("[RPC Client] ERROR: Listening to onMailboxMessage \n" + err.toString()),
-    //   cancelOnError: true,
-    // );
+    // Handle Mail Messages
+    _client.onMailboxMessage(Empty()).listen(
+      (value) {
+        _mailboxEvents.add(value);
+      },
+      onError: (err) => print("[RPC Client] ERROR: Listening to onMailboxMessage \n" + err.toString()),
+      cancelOnError: true,
+    );
 
     // Create Decision Stream
     _client.onTransferAccepted(Empty()).listen(
@@ -157,7 +160,7 @@ class SonrService extends GetxService {
     await _inviteEvents.close();
     await _progressEvents.close();
     await _refreshEvents.close();
-    //await _mailboxEvents.close();
+    await _mailboxEvents.close();
     await _channel.shutdown();
     await _actionChannel.invokeMethod('stop');
   }
@@ -174,10 +177,14 @@ class SonrService extends GetxService {
 
   /// [pick()] Presents a native dialog for selecting files
   /// Optionally can be supplied after pick
-  Future<List<String>> pick({bool supplyAfterPick = false, FileType type = FileType.any}) async {
+  Future<List<String>> pick({bool supplyAfterPick = true, Peer? peer, FileType type = FileType.any}) async {
     // Initialize
     List<String> adjPaths = [];
-    FilePickerResult? result = await FilePicker.platform.pickFiles(allowMultiple: true, type: type);
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      allowMultiple: true,
+      withData: true,
+      type: type,
+    );
 
     // Check if the result is valid
     if (result != null) {
@@ -191,15 +198,44 @@ class SonrService extends GetxService {
 
     // Check if we need to supply the result
     if (supplyAfterPick && adjPaths.length > 0) {
-      await supply(adjPaths);
+      final list = await newSupplyItemList(adjPaths);
+      final resp = await supply(list, peer: peer);
+      print(resp.toString());
     }
     return adjPaths;
   }
 
-  /// [supply(List<String>)] Supply a list of paths to the node.
+  /// [newSupplyItemList(List<String>)] creates a list of [SupplyRequest_Item]
+  /// from a list of paths
+  Future<List<SupplyItem>> newSupplyItemList(List<String>? paths) async {
+    if (paths != null) {
+      // Determine Thumbnail Size
+      var thumbnailSize = DEFAULT_THUMB_WIDTH;
+      if (paths.length > 4) {
+        final interval = (paths.length / 4).floor();
+        thumbnailSize = (DEFAULT_THUMB_WIDTH / interval).round();
+      }
+
+      // Initialize List
+      List<SupplyItem> items = [];
+      for (var i = 0; i < paths.length; i++) {
+        final buf = await fetchThumbnail(paths[i], width: thumbnailSize);
+        items.add(SupplyItem(path: paths[i], thumbnail: buf));
+      }
+      return items;
+    }
+    return [];
+  }
+
+  /// [supply(List<SupplyRequest_Item>)] Supply a list of paths to the node.
   /// Will be queued for a share.
-  Future<SupplyResponse> supply(List<String> paths, {Peer? peer}) async {
-    final supplyRequest = SupplyRequest(paths: paths, peer: peer);
+  Future<SupplyResponse> supply(List<SupplyItem> items, {Peer? peer}) async {
+    // Provide the request
+    final supplyRequest = SupplyRequest(
+      items: items,
+      peer: peer,
+      isPeerSupply: peer != null ? true : false,
+    );
     final resp = await _client.supply(supplyRequest);
     return resp;
   }
@@ -223,21 +259,21 @@ class SonrService extends GetxService {
     final resp = await _client.fetch(fetchRequest);
 
     // Check recents length and update
-    if (resp.recents.length > 0) {
+    if (resp.recents.profiles.length > 0) {
       // Initialize and Sort
-      final respLists = resp.recents.values.toList();
+      final respLists = resp.recents.profiles.toList();
       respLists.sort((a, b) => a.lastModified.compareTo(b.lastModified));
 
       // Add all profiles to list
-      recentProfiles(respLists);
+      recentProfiles(resp.recents.profiles);
       recentProfiles.refresh();
     }
     return resp;
   }
 
   /// [share(Peer)] Shares queued transfer with peer.
-  Future<ShareResponse> share(Peer peer) async {
-    final shareRequest = ShareRequest(peer: peer);
+  Future<ShareResponse> share(Peer peer, {List<String>? paths, MessageItem? message}) async {
+    final shareRequest = ShareRequest(peer: peer, items: await newSupplyItemList(paths), message: message);
     final resp = await _client.share(shareRequest);
     return resp;
   }
@@ -288,4 +324,20 @@ class SonrService extends GetxService {
       {Function? onError, void Function()? onDone, bool? cancelOnError}) {
     return _completeEvents.stream.listen(onData, onError: onError, onDone: onDone);
   }
+}
+
+Future<List<int>> fetchThumbnail(String path, {int width = DEFAULT_THUMB_WIDTH}) async {
+  var receivePort = ReceivePort();
+  await Isolate.spawn(
+      genThumb,
+      ThumbParams(
+        path: path,
+        sendPort: receivePort.sendPort,
+        width: width,
+      ));
+  var result = await receivePort.first as Uint8List?;
+  if (result == null) {
+    return [];
+  }
+  return result.toList();
 }

@@ -11,6 +11,10 @@ publish_to: none
 environment:
   sdk: '>=2.12.0 <3.0.0'
 
+secrets:
+  - name: SONR_SECRET
+    value: '<your secret>'
+
 # ** ================== **
 # **    DEPENDENCIES    **
 # ** ================== **
@@ -21,18 +25,15 @@ dependencies:
 
   # ** - User Defined - **
   # -- Management --
-  bip39: ^1.0.6
   intercom_flutter: ^5.0.2
   intl: ^0.17.0
+  shared_preferences: ^2.0.8
+  receive_sharing_intent: ^1.4.5
 
   # -- Data --
-  camerawesome: ^0.3.0+1
   photo_manager: ^1.3.1
   share_plus: ^2.1.4
   video_player: ^2.1.14
-
-  # -- Network --
-  receive_sharing_intent: ^1.4.5
 
   # -- Plugins --
   sonr_plugin:
@@ -40,13 +41,14 @@ dependencies:
 
   # -- UI/UX --
   animate_do: ^2.0.0
-  flutter_svg: ^0.22.0
+  date_field: ^2.1.2
   dots_indicator: ^2.0.0
+  flutter_svg: ^0.22.0
   lottie: ^1.1.0
+  onboarding: ^2.1.0
   pin_code_fields: ^7.3.0
   rive: ^0.7.28
   supercharged: ^2.0.0
-  onboarding: ^2.1.0
 
 flutter_test:
   sdk: flutter
@@ -83,7 +85,6 @@ flutter:
   # -- Media --
   assets:
     - assets/animations/
-    - assets/animations/permissions/
     - assets/fonts/
     - assets/icons/Communication/
     - assets/icons/DateTime/

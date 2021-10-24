@@ -25,6 +25,7 @@ class PrimaryButton extends StatelessWidget {
   final ButtonIconPosition iconPosition;
   final ButtonSize size;
   final Duration duration;
+  final MainAxisSize? mainAxisSize;
 
   final lightModeDecoration = BoxDecoration(
     color: AppColors.primaryLight,
@@ -46,6 +47,7 @@ class PrimaryButton extends StatelessWidget {
     this.iconPosition = ButtonIconPosition.Left,
     this.duration = const Duration(milliseconds: 450),
     this.size = ButtonSize.Default,
+    this.mainAxisSize,
   }) : super(key: key);
 
   @override
@@ -67,7 +69,8 @@ class PrimaryButton extends StatelessWidget {
                   decoration: Get.isDarkMode ? darkModeDecoration : lightModeDecoration,
                   padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
                   child: Row(
-                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: mainAxisSize ?? MainAxisSize.min,
                     textDirection: iconPosition == ButtonIconPosition.Left ? TextDirection.ltr : TextDirection.rtl,
                     children: [
                       Icon(
@@ -75,6 +78,7 @@ class PrimaryButton extends StatelessWidget {
                         size: iconData != null ? 16 : 0,
                         color: _ButtonUtility.buildIconColor(ButtonType.Primary, Get.isDarkMode),
                       ),
+                      SizedBox(width: iconData != null ? 8 : 0),
                       Text(
                         label ?? "Unknown",
                         style: _ButtonUtility.buildTextStyle(ButtonType.Primary, size, Get.isDarkMode),
@@ -163,6 +167,7 @@ class NeutralButton extends StatelessWidget {
   final ButtonIconPosition iconPosition;
   final ButtonSize size;
   final Duration duration;
+  final bool disabled;
 
   final lightModeDecoration = BoxDecoration(
     borderRadius: AppRadii.radiusButton,
@@ -188,6 +193,7 @@ class NeutralButton extends StatelessWidget {
     this.icon,
     this.iconPosition = ButtonIconPosition.Left,
     this.size = ButtonSize.Default,
+    this.disabled = false,
   }) : super(key: key);
 
   @override
@@ -200,7 +206,9 @@ class NeutralButton extends StatelessWidget {
             onTapUp: (details) async {
               pressed(false);
               await Future.delayed(duration);
-              onPressed();
+              if (!disabled) {
+                onPressed();
+              }
             },
             child: AnimatedScale(
                 scale: pressed.value ? 1.1 : 1.0,

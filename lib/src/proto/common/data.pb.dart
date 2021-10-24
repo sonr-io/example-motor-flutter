@@ -10,7 +10,7 @@ import 'dart:core' as $core;
 import 'package:fixnum/fixnum.dart' as $fixnum;
 import 'package:protobuf/protobuf.dart' as $pb;
 
-import 'core.pb.dart' as $0;
+import 'core.pb.dart' as $3;
 
 import 'data.pbenum.dart';
 
@@ -18,7 +18,7 @@ export 'data.pbenum.dart';
 
 class FileItem extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'FileItem', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
-    ..aOM<$0.MIME>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $0.MIME.create)
+    ..aOM<$3.MIME>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $3.MIME.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'name')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'path')
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'size')
@@ -29,7 +29,7 @@ class FileItem extends $pb.GeneratedMessage {
 
   FileItem._() : super();
   factory FileItem({
-    $0.MIME? mime,
+    $3.MIME? mime,
     $core.String? name,
     $core.String? path,
     $fixnum.Int64? size,
@@ -79,15 +79,15 @@ class FileItem extends $pb.GeneratedMessage {
   static FileItem? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.MIME get mime => $_getN(0);
+  $3.MIME get mime => $_getN(0);
   @$pb.TagNumber(1)
-  set mime($0.MIME v) { setField(1, v); }
+  set mime($3.MIME v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasMime() => $_has(0);
   @$pb.TagNumber(1)
   void clearMime() => clearField(1);
   @$pb.TagNumber(1)
-  $0.MIME ensureMime() => $_ensure(0);
+  $3.MIME ensureMime() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get name => $_getSZ(1);
@@ -139,7 +139,7 @@ class FileItem extends $pb.GeneratedMessage {
 
 class MessageItem extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'MessageItem', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
-    ..aOM<$0.MIME>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $0.MIME.create)
+    ..aOM<$3.MIME>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $3.MIME.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'subject')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'body')
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
@@ -149,7 +149,7 @@ class MessageItem extends $pb.GeneratedMessage {
 
   MessageItem._() : super();
   factory MessageItem({
-    $0.MIME? mime,
+    $3.MIME? mime,
     $core.String? subject,
     $core.String? body,
     $fixnum.Int64? createdAt,
@@ -195,15 +195,15 @@ class MessageItem extends $pb.GeneratedMessage {
   static MessageItem? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.MIME get mime => $_getN(0);
+  $3.MIME get mime => $_getN(0);
   @$pb.TagNumber(1)
-  set mime($0.MIME v) { setField(1, v); }
+  set mime($3.MIME v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasMime() => $_has(0);
   @$pb.TagNumber(1)
   void clearMime() => clearField(1);
   @$pb.TagNumber(1)
-  $0.MIME ensureMime() => $_ensure(0);
+  $3.MIME ensureMime() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get subject => $_getSZ(1);
@@ -238,7 +238,7 @@ class MessageItem extends $pb.GeneratedMessage {
 
 class UrlItem extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'UrlItem', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
-    ..aOM<$0.MIME>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $0.MIME.create)
+    ..aOM<$3.MIME>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $3.MIME.create)
     ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'link')
     ..aOS(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'title')
     ..aOS(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'site')
@@ -250,7 +250,7 @@ class UrlItem extends $pb.GeneratedMessage {
 
   UrlItem._() : super();
   factory UrlItem({
-    $0.MIME? mime,
+    $3.MIME? mime,
     $core.String? link,
     $core.String? title,
     $core.String? site,
@@ -304,15 +304,15 @@ class UrlItem extends $pb.GeneratedMessage {
   static UrlItem? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $0.MIME get mime => $_getN(0);
+  $3.MIME get mime => $_getN(0);
   @$pb.TagNumber(1)
-  set mime($0.MIME v) { setField(1, v); }
+  set mime($3.MIME v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasMime() => $_has(0);
   @$pb.TagNumber(1)
   void clearMime() => clearField(1);
   @$pb.TagNumber(1)
-  $0.MIME ensureMime() => $_ensure(0);
+  $3.MIME ensureMime() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $core.String get link => $_getSZ(1);
@@ -1424,22 +1424,17 @@ class OpenGraph extends $pb.GeneratedMessage {
 
 class Thumbnail extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Thumbnail', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
-    ..aInt64(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'size')
-    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'buffer', $pb.PbFieldType.OY)
-    ..aOM<$0.MIME>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $0.MIME.create)
+    ..a<$core.List<$core.int>>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'buffer', $pb.PbFieldType.OY)
+    ..aOM<$3.MIME>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $3.MIME.create)
     ..hasRequiredFields = false
   ;
 
   Thumbnail._() : super();
   factory Thumbnail({
-    $fixnum.Int64? size,
     $core.List<$core.int>? buffer,
-    $0.MIME? mime,
+    $3.MIME? mime,
   }) {
     final _result = create();
-    if (size != null) {
-      _result.size = size;
-    }
     if (buffer != null) {
       _result.buffer = buffer;
     }
@@ -1470,33 +1465,24 @@ class Thumbnail extends $pb.GeneratedMessage {
   static Thumbnail? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $fixnum.Int64 get size => $_getI64(0);
+  $core.List<$core.int> get buffer => $_getN(0);
   @$pb.TagNumber(1)
-  set size($fixnum.Int64 v) { $_setInt64(0, v); }
+  set buffer($core.List<$core.int> v) { $_setBytes(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasSize() => $_has(0);
+  $core.bool hasBuffer() => $_has(0);
   @$pb.TagNumber(1)
-  void clearSize() => clearField(1);
+  void clearBuffer() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.List<$core.int> get buffer => $_getN(1);
+  $3.MIME get mime => $_getN(1);
   @$pb.TagNumber(2)
-  set buffer($core.List<$core.int> v) { $_setBytes(1, v); }
+  set mime($3.MIME v) { setField(2, v); }
   @$pb.TagNumber(2)
-  $core.bool hasBuffer() => $_has(1);
+  $core.bool hasMime() => $_has(1);
   @$pb.TagNumber(2)
-  void clearBuffer() => clearField(2);
-
-  @$pb.TagNumber(3)
-  $0.MIME get mime => $_getN(2);
-  @$pb.TagNumber(3)
-  set mime($0.MIME v) { setField(3, v); }
-  @$pb.TagNumber(3)
-  $core.bool hasMime() => $_has(2);
-  @$pb.TagNumber(3)
-  void clearMime() => clearField(3);
-  @$pb.TagNumber(3)
-  $0.MIME ensureMime() => $_ensure(2);
+  void clearMime() => clearField(2);
+  @$pb.TagNumber(2)
+  $3.MIME ensureMime() => $_ensure(1);
 }
 
 enum Payload_Item_Data {
@@ -1527,7 +1513,7 @@ class Payload_Item extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Payload.Item', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
     ..oo(0, [3, 4, 5])
     ..oo(1, [6, 7])
-    ..aOM<$0.MIME>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $0.MIME.create)
+    ..aOM<$3.MIME>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $3.MIME.create)
     ..aInt64(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'size')
     ..aOM<FileItem>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'file', subBuilder: FileItem.create)
     ..aOM<UrlItem>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'url', subBuilder: UrlItem.create)
@@ -1539,7 +1525,7 @@ class Payload_Item extends $pb.GeneratedMessage {
 
   Payload_Item._() : super();
   factory Payload_Item({
-    $0.MIME? mime,
+    $3.MIME? mime,
     $fixnum.Int64? size,
     FileItem? file,
     UrlItem? url,
@@ -1599,15 +1585,15 @@ class Payload_Item extends $pb.GeneratedMessage {
   void clearPreview() => clearField($_whichOneof(1));
 
   @$pb.TagNumber(1)
-  $0.MIME get mime => $_getN(0);
+  $3.MIME get mime => $_getN(0);
   @$pb.TagNumber(1)
-  set mime($0.MIME v) { setField(1, v); }
+  set mime($3.MIME v) { setField(1, v); }
   @$pb.TagNumber(1)
   $core.bool hasMime() => $_has(0);
   @$pb.TagNumber(1)
   void clearMime() => clearField(1);
   @$pb.TagNumber(1)
-  $0.MIME ensureMime() => $_ensure(0);
+  $3.MIME ensureMime() => $_ensure(0);
 
   @$pb.TagNumber(2)
   $fixnum.Int64 get size => $_getI64(1);
@@ -1677,7 +1663,7 @@ class Payload_Item extends $pb.GeneratedMessage {
 class Payload extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'Payload', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
     ..pc<Payload_Item>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Payload_Item.create)
-    ..aOM<$0.Profile>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner', subBuilder: $0.Profile.create)
+    ..aOM<$3.Profile>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'owner', subBuilder: $3.Profile.create)
     ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'size')
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
     ..hasRequiredFields = false
@@ -1686,7 +1672,7 @@ class Payload extends $pb.GeneratedMessage {
   Payload._() : super();
   factory Payload({
     $core.Iterable<Payload_Item>? items,
-    $0.Profile? owner,
+    $3.Profile? owner,
     $fixnum.Int64? size,
     $fixnum.Int64? createdAt,
   }) {
@@ -1730,15 +1716,15 @@ class Payload extends $pb.GeneratedMessage {
   $core.List<Payload_Item> get items => $_getList(0);
 
   @$pb.TagNumber(2)
-  $0.Profile get owner => $_getN(1);
+  $3.Profile get owner => $_getN(1);
   @$pb.TagNumber(2)
-  set owner($0.Profile v) { setField(2, v); }
+  set owner($3.Profile v) { setField(2, v); }
   @$pb.TagNumber(2)
   $core.bool hasOwner() => $_has(1);
   @$pb.TagNumber(2)
   void clearOwner() => clearField(2);
   @$pb.TagNumber(2)
-  $0.Profile ensureOwner() => $_ensure(1);
+  $3.Profile ensureOwner() => $_ensure(1);
 
   @$pb.TagNumber(3)
   $fixnum.Int64 get size => $_getI64(2);
@@ -1759,88 +1745,133 @@ class Payload extends $pb.GeneratedMessage {
   void clearCreatedAt() => clearField(4);
 }
 
-class PayloadItemList extends $pb.GeneratedMessage {
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PayloadItemList', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
-    ..pc<Payload_Item>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'items', $pb.PbFieldType.PM, subBuilder: Payload_Item.create)
-    ..aOM<$0.MIME>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'mime', subBuilder: $0.MIME.create)
-    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'size')
-    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastModified', protoName: 'lastModified')
+class PayloadList extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'PayloadList', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
+    ..pc<Payload>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'payloads', $pb.PbFieldType.PM, subBuilder: Payload.create)
+    ..aOS(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'key')
+    ..aInt64(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'lastModified', protoName: 'lastModified')
     ..hasRequiredFields = false
   ;
 
-  PayloadItemList._() : super();
-  factory PayloadItemList({
-    $core.Iterable<Payload_Item>? items,
-    $0.MIME? mime,
-    $fixnum.Int64? size,
+  PayloadList._() : super();
+  factory PayloadList({
+    $core.Iterable<Payload>? payloads,
+    $core.String? key,
     $fixnum.Int64? lastModified,
   }) {
     final _result = create();
-    if (items != null) {
-      _result.items.addAll(items);
+    if (payloads != null) {
+      _result.payloads.addAll(payloads);
     }
-    if (mime != null) {
-      _result.mime = mime;
-    }
-    if (size != null) {
-      _result.size = size;
+    if (key != null) {
+      _result.key = key;
     }
     if (lastModified != null) {
       _result.lastModified = lastModified;
     }
     return _result;
   }
-  factory PayloadItemList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory PayloadItemList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  factory PayloadList.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory PayloadList.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  PayloadItemList clone() => PayloadItemList()..mergeFromMessage(this);
+  PayloadList clone() => PayloadList()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  PayloadItemList copyWith(void Function(PayloadItemList) updates) => super.copyWith((message) => updates(message as PayloadItemList)) as PayloadItemList; // ignore: deprecated_member_use
+  PayloadList copyWith(void Function(PayloadList) updates) => super.copyWith((message) => updates(message as PayloadList)) as PayloadList; // ignore: deprecated_member_use
   $pb.BuilderInfo get info_ => _i;
   @$core.pragma('dart2js:noInline')
-  static PayloadItemList create() => PayloadItemList._();
-  PayloadItemList createEmptyInstance() => create();
-  static $pb.PbList<PayloadItemList> createRepeated() => $pb.PbList<PayloadItemList>();
+  static PayloadList create() => PayloadList._();
+  PayloadList createEmptyInstance() => create();
+  static $pb.PbList<PayloadList> createRepeated() => $pb.PbList<PayloadList>();
   @$core.pragma('dart2js:noInline')
-  static PayloadItemList getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PayloadItemList>(create);
-  static PayloadItemList? _defaultInstance;
+  static PayloadList getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<PayloadList>(create);
+  static PayloadList? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<Payload_Item> get items => $_getList(0);
+  $core.List<Payload> get payloads => $_getList(0);
 
   @$pb.TagNumber(2)
-  $0.MIME get mime => $_getN(1);
+  $core.String get key => $_getSZ(1);
   @$pb.TagNumber(2)
-  set mime($0.MIME v) { setField(2, v); }
+  set key($core.String v) { $_setString(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasMime() => $_has(1);
+  $core.bool hasKey() => $_has(1);
   @$pb.TagNumber(2)
-  void clearMime() => clearField(2);
-  @$pb.TagNumber(2)
-  $0.MIME ensureMime() => $_ensure(1);
+  void clearKey() => clearField(2);
 
   @$pb.TagNumber(3)
-  $fixnum.Int64 get size => $_getI64(2);
+  $fixnum.Int64 get lastModified => $_getI64(2);
   @$pb.TagNumber(3)
-  set size($fixnum.Int64 v) { $_setInt64(2, v); }
+  set lastModified($fixnum.Int64 v) { $_setInt64(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasSize() => $_has(2);
+  $core.bool hasLastModified() => $_has(2);
   @$pb.TagNumber(3)
-  void clearSize() => clearField(3);
+  void clearLastModified() => clearField(3);
+}
 
-  @$pb.TagNumber(4)
-  $fixnum.Int64 get lastModified => $_getI64(3);
-  @$pb.TagNumber(4)
-  set lastModified($fixnum.Int64 v) { $_setInt64(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasLastModified() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearLastModified() => clearField(4);
+class SupplyItem extends $pb.GeneratedMessage {
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'SupplyItem', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.core'), createEmptyInstance: create)
+    ..aOS(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'path')
+    ..a<$core.List<$core.int>>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'thumbnail', $pb.PbFieldType.OY)
+    ..hasRequiredFields = false
+  ;
+
+  SupplyItem._() : super();
+  factory SupplyItem({
+    $core.String? path,
+    $core.List<$core.int>? thumbnail,
+  }) {
+    final _result = create();
+    if (path != null) {
+      _result.path = path;
+    }
+    if (thumbnail != null) {
+      _result.thumbnail = thumbnail;
+    }
+    return _result;
+  }
+  factory SupplyItem.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory SupplyItem.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  SupplyItem clone() => SupplyItem()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  SupplyItem copyWith(void Function(SupplyItem) updates) => super.copyWith((message) => updates(message as SupplyItem)) as SupplyItem; // ignore: deprecated_member_use
+  $pb.BuilderInfo get info_ => _i;
+  @$core.pragma('dart2js:noInline')
+  static SupplyItem create() => SupplyItem._();
+  SupplyItem createEmptyInstance() => create();
+  static $pb.PbList<SupplyItem> createRepeated() => $pb.PbList<SupplyItem>();
+  @$core.pragma('dart2js:noInline')
+  static SupplyItem getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<SupplyItem>(create);
+  static SupplyItem? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get path => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set path($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasPath() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearPath() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.List<$core.int> get thumbnail => $_getN(1);
+  @$pb.TagNumber(2)
+  set thumbnail($core.List<$core.int> v) { $_setBytes(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasThumbnail() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearThumbnail() => clearField(2);
 }
 

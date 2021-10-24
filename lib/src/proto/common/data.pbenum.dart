@@ -9,6 +9,23 @@
 import 'dart:core' as $core;
 import 'package:protobuf/protobuf.dart' as $pb;
 
+class Direction extends $pb.ProtobufEnum {
+  static const Direction DEFAULT = Direction._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'DEFAULT');
+  static const Direction INCOMING = Direction._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'INCOMING');
+  static const Direction OUTGOING = Direction._(2, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'OUTGOING');
+
+  static const $core.List<Direction> values = <Direction> [
+    DEFAULT,
+    INCOMING,
+    OUTGOING,
+  ];
+
+  static final $core.Map<$core.int, Direction> _byValue = $pb.ProtobufEnum.initByValue(values);
+  static Direction? valueOf($core.int value) => _byValue[value];
+
+  const Direction._($core.int v, $core.String n) : super(v, n);
+}
+
 class OpenGraph_Type extends $pb.ProtobufEnum {
   static const OpenGraph_Type IMAGE = OpenGraph_Type._(0, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'IMAGE');
   static const OpenGraph_Type VIDEO = OpenGraph_Type._(1, const $core.bool.fromEnvironment('protobuf.omit_enum_names') ? '' : 'VIDEO');
