@@ -11,9 +11,11 @@ publish_to: none
 environment:
   sdk: '>=2.12.0 <3.0.0'
 
-secrets:
-  - name: SONR_SECRET
-    value: '<your secret>'
+scripts:
+  build: sh ../.github/scripts/build.sh
+  clean: sh ../.github/scripts/clean.sh
+  inject: define_env -f <(doppler secrets download --no-file --format=env --config dev --project api) --no-generate --no-print -c
+  update: sh ../.github/scripts/update.sh
 
 # ** ================== **
 # **    DEPENDENCIES    **
