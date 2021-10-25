@@ -53,29 +53,29 @@ class ClientServiceClient extends $grpc.Client {
           '/sonr.node.ClientService/OnMailboxMessage',
           ($1.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $2.MailboxEvent.fromBuffer(value));
-  static final _$onTransferAccepted =
+  static final _$onTransmitAccepted =
       $grpc.ClientMethod<$1.Empty, $2.DecisionEvent>(
-          '/sonr.node.ClientService/OnTransferAccepted',
+          '/sonr.node.ClientService/OnTransmitAccepted',
           ($1.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $2.DecisionEvent.fromBuffer(value));
-  static final _$onTransferDeclined =
+  static final _$onTransmitDeclined =
       $grpc.ClientMethod<$1.Empty, $2.DecisionEvent>(
-          '/sonr.node.ClientService/OnTransferDeclined',
+          '/sonr.node.ClientService/OnTransmitDeclined',
           ($1.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $2.DecisionEvent.fromBuffer(value));
-  static final _$onTransferInvite =
+  static final _$onTransmitInvite =
       $grpc.ClientMethod<$1.Empty, $2.InviteEvent>(
-          '/sonr.node.ClientService/OnTransferInvite',
+          '/sonr.node.ClientService/OnTransmitInvite',
           ($1.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $2.InviteEvent.fromBuffer(value));
-  static final _$onTransferProgress =
+  static final _$onTransmitProgress =
       $grpc.ClientMethod<$1.Empty, $2.ProgressEvent>(
-          '/sonr.node.ClientService/OnTransferProgress',
+          '/sonr.node.ClientService/OnTransmitProgress',
           ($1.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $2.ProgressEvent.fromBuffer(value));
-  static final _$onTransferComplete =
+  static final _$onTransmitComplete =
       $grpc.ClientMethod<$1.Empty, $2.CompleteEvent>(
-          '/sonr.node.ClientService/OnTransferComplete',
+          '/sonr.node.ClientService/OnTransmitComplete',
           ($1.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $2.CompleteEvent.fromBuffer(value));
 
@@ -128,38 +128,38 @@ class ClientServiceClient extends $grpc.Client {
         options: options);
   }
 
-  $grpc.ResponseStream<$2.DecisionEvent> onTransferAccepted($1.Empty request,
+  $grpc.ResponseStream<$2.DecisionEvent> onTransmitAccepted($1.Empty request,
       {$grpc.CallOptions? options}) {
     return $createStreamingCall(
-        _$onTransferAccepted, $async.Stream.fromIterable([request]),
+        _$onTransmitAccepted, $async.Stream.fromIterable([request]),
         options: options);
   }
 
-  $grpc.ResponseStream<$2.DecisionEvent> onTransferDeclined($1.Empty request,
+  $grpc.ResponseStream<$2.DecisionEvent> onTransmitDeclined($1.Empty request,
       {$grpc.CallOptions? options}) {
     return $createStreamingCall(
-        _$onTransferDeclined, $async.Stream.fromIterable([request]),
+        _$onTransmitDeclined, $async.Stream.fromIterable([request]),
         options: options);
   }
 
-  $grpc.ResponseStream<$2.InviteEvent> onTransferInvite($1.Empty request,
+  $grpc.ResponseStream<$2.InviteEvent> onTransmitInvite($1.Empty request,
       {$grpc.CallOptions? options}) {
     return $createStreamingCall(
-        _$onTransferInvite, $async.Stream.fromIterable([request]),
+        _$onTransmitInvite, $async.Stream.fromIterable([request]),
         options: options);
   }
 
-  $grpc.ResponseStream<$2.ProgressEvent> onTransferProgress($1.Empty request,
+  $grpc.ResponseStream<$2.ProgressEvent> onTransmitProgress($1.Empty request,
       {$grpc.CallOptions? options}) {
     return $createStreamingCall(
-        _$onTransferProgress, $async.Stream.fromIterable([request]),
+        _$onTransmitProgress, $async.Stream.fromIterable([request]),
         options: options);
   }
 
-  $grpc.ResponseStream<$2.CompleteEvent> onTransferComplete($1.Empty request,
+  $grpc.ResponseStream<$2.CompleteEvent> onTransmitComplete($1.Empty request,
       {$grpc.CallOptions? options}) {
     return $createStreamingCall(
-        _$onTransferComplete, $async.Stream.fromIterable([request]),
+        _$onTransmitComplete, $async.Stream.fromIterable([request]),
         options: options);
   }
 }
@@ -225,36 +225,36 @@ abstract class ClientServiceBase extends $grpc.Service {
         ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
         ($2.MailboxEvent value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.Empty, $2.DecisionEvent>(
-        'OnTransferAccepted',
-        onTransferAccepted_Pre,
+        'OnTransmitAccepted',
+        onTransmitAccepted_Pre,
         false,
         true,
         ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
         ($2.DecisionEvent value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.Empty, $2.DecisionEvent>(
-        'OnTransferDeclined',
-        onTransferDeclined_Pre,
+        'OnTransmitDeclined',
+        onTransmitDeclined_Pre,
         false,
         true,
         ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
         ($2.DecisionEvent value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.Empty, $2.InviteEvent>(
-        'OnTransferInvite',
-        onTransferInvite_Pre,
+        'OnTransmitInvite',
+        onTransmitInvite_Pre,
         false,
         true,
         ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
         ($2.InviteEvent value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.Empty, $2.ProgressEvent>(
-        'OnTransferProgress',
-        onTransferProgress_Pre,
+        'OnTransmitProgress',
+        onTransmitProgress_Pre,
         false,
         true,
         ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
         ($2.ProgressEvent value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$1.Empty, $2.CompleteEvent>(
-        'OnTransferComplete',
-        onTransferComplete_Pre,
+        'OnTransmitComplete',
+        onTransmitComplete_Pre,
         false,
         true,
         ($core.List<$core.int> value) => $1.Empty.fromBuffer(value),
@@ -301,29 +301,29 @@ abstract class ClientServiceBase extends $grpc.Service {
     yield* onMailboxMessage(call, await request);
   }
 
-  $async.Stream<$2.DecisionEvent> onTransferAccepted_Pre(
+  $async.Stream<$2.DecisionEvent> onTransmitAccepted_Pre(
       $grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
-    yield* onTransferAccepted(call, await request);
+    yield* onTransmitAccepted(call, await request);
   }
 
-  $async.Stream<$2.DecisionEvent> onTransferDeclined_Pre(
+  $async.Stream<$2.DecisionEvent> onTransmitDeclined_Pre(
       $grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
-    yield* onTransferDeclined(call, await request);
+    yield* onTransmitDeclined(call, await request);
   }
 
-  $async.Stream<$2.InviteEvent> onTransferInvite_Pre(
+  $async.Stream<$2.InviteEvent> onTransmitInvite_Pre(
       $grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
-    yield* onTransferInvite(call, await request);
+    yield* onTransmitInvite(call, await request);
   }
 
-  $async.Stream<$2.ProgressEvent> onTransferProgress_Pre(
+  $async.Stream<$2.ProgressEvent> onTransmitProgress_Pre(
       $grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
-    yield* onTransferProgress(call, await request);
+    yield* onTransmitProgress(call, await request);
   }
 
-  $async.Stream<$2.CompleteEvent> onTransferComplete_Pre(
+  $async.Stream<$2.CompleteEvent> onTransmitComplete_Pre(
       $grpc.ServiceCall call, $async.Future<$1.Empty> request) async* {
-    yield* onTransferComplete(call, await request);
+    yield* onTransmitComplete(call, await request);
   }
 
   $async.Future<$0.SupplyResponse> supply(
@@ -342,14 +342,14 @@ abstract class ClientServiceBase extends $grpc.Service {
       $grpc.ServiceCall call, $1.Empty request);
   $async.Stream<$2.MailboxEvent> onMailboxMessage(
       $grpc.ServiceCall call, $1.Empty request);
-  $async.Stream<$2.DecisionEvent> onTransferAccepted(
+  $async.Stream<$2.DecisionEvent> onTransmitAccepted(
       $grpc.ServiceCall call, $1.Empty request);
-  $async.Stream<$2.DecisionEvent> onTransferDeclined(
+  $async.Stream<$2.DecisionEvent> onTransmitDeclined(
       $grpc.ServiceCall call, $1.Empty request);
-  $async.Stream<$2.InviteEvent> onTransferInvite(
+  $async.Stream<$2.InviteEvent> onTransmitInvite(
       $grpc.ServiceCall call, $1.Empty request);
-  $async.Stream<$2.ProgressEvent> onTransferProgress(
+  $async.Stream<$2.ProgressEvent> onTransmitProgress(
       $grpc.ServiceCall call, $1.Empty request);
-  $async.Stream<$2.CompleteEvent> onTransferComplete(
+  $async.Stream<$2.CompleteEvent> onTransmitComplete(
       $grpc.ServiceCall call, $1.Empty request);
 }

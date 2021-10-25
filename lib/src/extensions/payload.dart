@@ -107,9 +107,12 @@ void genThumb(ThumbParams param) async {
       param.sendPort.send(null);
     }
   } else if (param.isVideo) {
-    VideoCompress.getByteThumbnail(param.path, quality: 75).then((value) {
-      param.sendPort.send(value);
-    });
+    try {
+      var thumbnail = await VideoCompress.getByteThumbnail(param.path, quality: 75);
+      param.sendPort.send(thumbnail);
+    } catch (e) {
+      param.sendPort.send(null);
+    }
   } else {
     param.sendPort.send(null);
   }

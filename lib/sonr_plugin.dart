@@ -112,43 +112,43 @@ class SonrService extends GetxService {
     );
 
     // Create Decision Stream
-    _client.onTransferAccepted(Empty()).listen(
+    _client.onTransmitAccepted(Empty()).listen(
       (value) {
         _decisionEvents.add(value);
       },
-      onError: (err) => print("[RPC Client] ERROR: Listening to onTransferAccepted \n" + err.toString()),
+      onError: (err) => print("[RPC Client] ERROR: Listening to onTransmitAccepted \n" + err.toString()),
     );
 
     // Create Decision Stream
-    _client.onTransferDeclined(Empty()).listen(
+    _client.onTransmitDeclined(Empty()).listen(
       (value) {
         _decisionEvents.add(value);
       },
-      onError: (err) => print("[RPC Client] ERROR: Listening to onTransferDeclined \n" + err.toString()),
+      onError: (err) => print("[RPC Client] ERROR: Listening to onTransmitDeclined \n" + err.toString()),
     );
 
     // Create Invite Stream
-    _client.onTransferInvite(Empty()).listen(
+    _client.onTransmitInvite(Empty()).listen(
       (value) {
         _inviteEvents.add(value);
       },
-      onError: (err) => print("[RPC Client] ERROR: Listening to onTransferInvite \n" + err.toString()),
+      onError: (err) => print("[RPC Client] ERROR: Listening to onTransmitInvite \n" + err.toString()),
     );
 
     // Create Progress Stream
-    _client.onTransferProgress(Empty()).listen(
+    _client.onTransmitProgress(Empty()).listen(
       (value) {
         _progressEvents.add(value);
       },
-      onError: (err) => print("[RPC Client] ERROR: Listening to onTransferProgress \n" + err.toString()),
+      onError: (err) => print("[RPC Client] ERROR: Listening to onTransmitProgress \n" + err.toString()),
     );
 
     // Create Complete Stream
-    _client.onTransferComplete(Empty()).listen(
+    _client.onTransmitComplete(Empty()).listen(
       (value) {
         _completeEvents.add(value);
       },
-      onError: (err) => print("[RPC Client] ERROR: Listening to onTransferComplete \n" + err.toString()),
+      onError: (err) => print("[RPC Client] ERROR: Listening to onTransmitComplete \n" + err.toString()),
     );
     // status(Status.ACTIVE);
   }
