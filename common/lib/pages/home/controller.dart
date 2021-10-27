@@ -112,6 +112,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   final localPeersStatus = <Peer, PeerStatus>{}.obs;
   final history = <Payload>[].obs;
   final recents = <Profile>[].obs;
+  final isProgressActive = false.obs;
 
   // Propeties
   final query = "".obs;
@@ -155,8 +156,8 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   void onClose() {
     _completeSubscription.cancel();
     _inviteSubscription.cancel();
-    _progressSubscription.cancel();
     _refreshSubscription.cancel();
+    _progressSubscription.cancel();
     super.onClose();
   }
 
@@ -230,31 +231,24 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
   }
 
   void _handleProgress(ProgressEvent event) {
-    if (event.direction == Direction.INCOMING) {
-      progressController.animateTo(event.progress);
+    if (!isProgressActive.value) {
       Get.snackbar(
-        "Receiving",
-        "File",
+        event.snackTitle,
+        event.snackMessage,
+        icon: Icon(event.snackIcon),
         showProgressIndicator: true,
         snackPosition: SnackPosition.BOTTOM,
         dismissDirection: SnackDismissDirection.HORIZONTAL,
         progressIndicatorController: progressController,
       );
-    } else {
-      progressController.animateTo(event.progress);
-      Get.snackbar(
-        "Sharing",
-        "File",
-        showProgressIndicator: true,
-        snackPosition: SnackPosition.BOTTOM,
-        dismissDirection: SnackDismissDirection.HORIZONTAL,
-        progressIndicatorController: progressController,
-      );
+      isProgressActive(true);
     }
-    print("Current Progress: ${(event.progress * 100).roundToDouble()}%");
+    progressController.animateTo(event.progress);
   }
 
   void _handleComplete(CompleteEvent event) async {
+    isProgressActive(false);
+    progressController.reset();
     if (event.direction == Direction.OUTGOING) {
       localPeersStatus[event.to] = PeerStatus.COMPLETED;
     }
@@ -284,6 +278,32 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
 
     // Update Peer-Status Map
     localPeersStatus.refresh();
+  }
+}
+
+extension ProgressEventUtils on ProgressEvent {
+  String get snackTitle {
+    if (direction == Direction.INCOMING) {
+      return "Receiving";
+    } else {
+      return "Sharing";
+    }
+  }
+
+  String get snackMessage {
+    if (direction == Direction.INCOMING) {
+      return "${this.current} of ${this.total}";
+    } else {
+      return "${this.current} of ${this.total}";
+    }
+  }
+
+  IconData get snackIcon {
+    if (direction == Direction.INCOMING) {
+      return Icons.file_download;
+    } else {
+      return Icons.file_upload;
+    }
   }
 }
 

@@ -11,6 +11,7 @@ extension ListIntUtils on List<int> {
 }
 
 extension ListUtils<T> on List<T> {
+  /// [random()] returns a random item from this list
   random() {
     final rand = Random();
     return this[rand.nextInt(this.length)];
@@ -82,6 +83,3 @@ extension TextStyleStringUtils on String {
     return width;
   }
 }
-
-
-
