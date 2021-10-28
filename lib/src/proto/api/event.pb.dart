@@ -351,8 +351,8 @@ class MailboxEvent extends $pb.GeneratedMessage {
 
 class ProgressEvent extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ProgressEvent', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'current', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'total', $pb.PbFieldType.O3)
+    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'index', $pb.PbFieldType.O3)
+    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'count', $pb.PbFieldType.O3)
     ..a<$core.double>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'progress', $pb.PbFieldType.OD)
     ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'received')
     ..e<$4.Direction>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'direction', $pb.PbFieldType.OE, defaultOrMaker: $4.Direction.DEFAULT, valueOf: $4.Direction.valueOf, enumValues: $4.Direction.values)
@@ -361,18 +361,18 @@ class ProgressEvent extends $pb.GeneratedMessage {
 
   ProgressEvent._() : super();
   factory ProgressEvent({
-    $core.int? current,
-    $core.int? total,
+    $core.int? index,
+    $core.int? count,
     $core.double? progress,
     $fixnum.Int64? received,
     $4.Direction? direction,
   }) {
     final _result = create();
-    if (current != null) {
-      _result.current = current;
+    if (index != null) {
+      _result.index = index;
     }
-    if (total != null) {
-      _result.total = total;
+    if (count != null) {
+      _result.count = count;
     }
     if (progress != null) {
       _result.progress = progress;
@@ -407,22 +407,22 @@ class ProgressEvent extends $pb.GeneratedMessage {
   static ProgressEvent? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.int get current => $_getIZ(0);
+  $core.int get index => $_getIZ(0);
   @$pb.TagNumber(1)
-  set current($core.int v) { $_setSignedInt32(0, v); }
+  set index($core.int v) { $_setSignedInt32(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasCurrent() => $_has(0);
+  $core.bool hasIndex() => $_has(0);
   @$pb.TagNumber(1)
-  void clearCurrent() => clearField(1);
+  void clearIndex() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.int get total => $_getIZ(1);
+  $core.int get count => $_getIZ(1);
   @$pb.TagNumber(2)
-  set total($core.int v) { $_setSignedInt32(1, v); }
+  set count($core.int v) { $_setSignedInt32(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasTotal() => $_has(1);
+  $core.bool hasCount() => $_has(1);
   @$pb.TagNumber(2)
-  void clearTotal() => clearField(2);
+  void clearCount() => clearField(2);
 
   @$pb.TagNumber(3)
   $core.double get progress => $_getN(2);

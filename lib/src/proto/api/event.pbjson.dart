@@ -62,8 +62,8 @@ final $typed_data.Uint8List mailboxEventDescriptor = $convert.base64Decode('CgxN
 const ProgressEvent$json = const {
   '1': 'ProgressEvent',
   '2': const [
-    const {'1': 'current', '3': 1, '4': 1, '5': 5, '10': 'current'},
-    const {'1': 'total', '3': 2, '4': 1, '5': 5, '10': 'total'},
+    const {'1': 'index', '3': 1, '4': 1, '5': 5, '10': 'index'},
+    const {'1': 'count', '3': 2, '4': 1, '5': 5, '10': 'count'},
     const {'1': 'progress', '3': 3, '4': 1, '5': 1, '10': 'progress'},
     const {'1': 'received', '3': 4, '4': 1, '5': 3, '10': 'received'},
     const {'1': 'direction', '3': 5, '4': 1, '5': 14, '6': '.sonr.core.Direction', '10': 'direction'},
@@ -71,7 +71,7 @@ const ProgressEvent$json = const {
 };
 
 /// Descriptor for `ProgressEvent`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List progressEventDescriptor = $convert.base64Decode('Cg1Qcm9ncmVzc0V2ZW50EhgKB2N1cnJlbnQYASABKAVSB2N1cnJlbnQSFAoFdG90YWwYAiABKAVSBXRvdGFsEhoKCHByb2dyZXNzGAMgASgBUghwcm9ncmVzcxIaCghyZWNlaXZlZBgEIAEoA1IIcmVjZWl2ZWQSMgoJZGlyZWN0aW9uGAUgASgOMhQuc29uci5jb3JlLkRpcmVjdGlvblIJZGlyZWN0aW9u');
+final $typed_data.Uint8List progressEventDescriptor = $convert.base64Decode('Cg1Qcm9ncmVzc0V2ZW50EhQKBWluZGV4GAEgASgFUgVpbmRleBIUCgVjb3VudBgCIAEoBVIFY291bnQSGgoIcHJvZ3Jlc3MYAyABKAFSCHByb2dyZXNzEhoKCHJlY2VpdmVkGAQgASgDUghyZWNlaXZlZBIyCglkaXJlY3Rpb24YBSABKA4yFC5zb25yLmNvcmUuRGlyZWN0aW9uUglkaXJlY3Rpb24=');
 @$core.Deprecated('Use completeEventDescriptor instead')
 const CompleteEvent$json = const {
   '1': 'CompleteEvent',

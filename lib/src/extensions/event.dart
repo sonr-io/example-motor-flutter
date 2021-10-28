@@ -3,9 +3,9 @@ import 'package:sonr_plugin/sonr_plugin.dart';
 
 extension ProgressEventUtils on ProgressEvent {
   double adjustedValue() {
-    if (this.total > 1) {
-      final adj = (this.current + 1) * this.progress;
-      return adj / this.total;
+    if (this.count > 1) {
+      final adj = (this.index + 1) * this.progress;
+      return adj / this.count;
     }
     return this.progress;
   }
@@ -14,15 +14,15 @@ extension ProgressEventUtils on ProgressEvent {
     if (direction == Direction.INCOMING) {
       return "Receiving";
     } else {
-      return "Sharing";
+      return "Sending";
     }
   }
 
   String get snackMessage {
     if (direction == Direction.INCOMING) {
-      return "${this.current} of ${this.total}";
+      return "${this.index} of ${this.count}";
     } else {
-      return "${this.current} of ${this.total}";
+      return "${this.index} of ${this.count}";
     }
   }
 
