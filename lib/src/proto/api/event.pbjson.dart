@@ -82,8 +82,20 @@ const CompleteEvent$json = const {
     const {'1': 'to', '3': 4, '4': 1, '5': 11, '6': '.sonr.core.Peer', '10': 'to'},
     const {'1': 'createdAt', '3': 5, '4': 1, '5': 3, '10': 'createdAt'},
     const {'1': 'receivedAt', '3': 6, '4': 1, '5': 3, '10': 'receivedAt'},
+    const {'1': 'success', '3': 7, '4': 3, '5': 11, '6': '.sonr.api.CompleteEvent.SuccessEntry', '10': 'success'},
   ],
+  '3': const [CompleteEvent_SuccessEntry$json],
+};
+
+@$core.Deprecated('Use completeEventDescriptor instead')
+const CompleteEvent_SuccessEntry$json = const {
+  '1': 'SuccessEntry',
+  '2': const [
+    const {'1': 'key', '3': 1, '4': 1, '5': 5, '10': 'key'},
+    const {'1': 'value', '3': 2, '4': 1, '5': 8, '10': 'value'},
+  ],
+  '7': const {'7': true},
 };
 
 /// Descriptor for `CompleteEvent`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List completeEventDescriptor = $convert.base64Decode('Cg1Db21wbGV0ZUV2ZW50EjIKCWRpcmVjdGlvbhgBIAEoDjIULnNvbnIuY29yZS5EaXJlY3Rpb25SCWRpcmVjdGlvbhIsCgdwYXlsb2FkGAIgASgLMhIuc29uci5jb3JlLlBheWxvYWRSB3BheWxvYWQSIwoEZnJvbRgDIAEoCzIPLnNvbnIuY29yZS5QZWVyUgRmcm9tEh8KAnRvGAQgASgLMg8uc29uci5jb3JlLlBlZXJSAnRvEhwKCWNyZWF0ZWRBdBgFIAEoA1IJY3JlYXRlZEF0Eh4KCnJlY2VpdmVkQXQYBiABKANSCnJlY2VpdmVkQXQ=');
+final $typed_data.Uint8List completeEventDescriptor = $convert.base64Decode('Cg1Db21wbGV0ZUV2ZW50EjIKCWRpcmVjdGlvbhgBIAEoDjIULnNvbnIuY29yZS5EaXJlY3Rpb25SCWRpcmVjdGlvbhIsCgdwYXlsb2FkGAIgASgLMhIuc29uci5jb3JlLlBheWxvYWRSB3BheWxvYWQSIwoEZnJvbRgDIAEoCzIPLnNvbnIuY29yZS5QZWVyUgRmcm9tEh8KAnRvGAQgASgLMg8uc29uci5jb3JlLlBlZXJSAnRvEhwKCWNyZWF0ZWRBdBgFIAEoA1IJY3JlYXRlZEF0Eh4KCnJlY2VpdmVkQXQYBiABKANSCnJlY2VpdmVkQXQSPgoHc3VjY2VzcxgHIAMoCzIkLnNvbnIuYXBpLkNvbXBsZXRlRXZlbnQuU3VjY2Vzc0VudHJ5UgdzdWNjZXNzGjoKDFN1Y2Nlc3NFbnRyeRIQCgNrZXkYASABKAVSA2tleRIUCgV2YWx1ZRgCIAEoCFIFdmFsdWU6AjgB');

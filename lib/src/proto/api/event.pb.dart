@@ -460,6 +460,7 @@ class CompleteEvent extends $pb.GeneratedMessage {
     ..aOM<$3.Peer>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'to', subBuilder: $3.Peer.create)
     ..aInt64(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'createdAt', protoName: 'createdAt')
     ..aInt64(6, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'receivedAt', protoName: 'receivedAt')
+    ..m<$core.int, $core.bool>(7, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'success', entryClassName: 'CompleteEvent.SuccessEntry', keyFieldType: $pb.PbFieldType.O3, valueFieldType: $pb.PbFieldType.OB, packageName: const $pb.PackageName('sonr.api'))
     ..hasRequiredFields = false
   ;
 
@@ -471,6 +472,7 @@ class CompleteEvent extends $pb.GeneratedMessage {
     $3.Peer? to,
     $fixnum.Int64? createdAt,
     $fixnum.Int64? receivedAt,
+    $core.Map<$core.int, $core.bool>? success,
   }) {
     final _result = create();
     if (direction != null) {
@@ -490,6 +492,9 @@ class CompleteEvent extends $pb.GeneratedMessage {
     }
     if (receivedAt != null) {
       _result.receivedAt = receivedAt;
+    }
+    if (success != null) {
+      _result.success.addAll(success);
     }
     return _result;
   }
@@ -573,5 +578,8 @@ class CompleteEvent extends $pb.GeneratedMessage {
   $core.bool hasReceivedAt() => $_has(5);
   @$pb.TagNumber(6)
   void clearReceivedAt() => clearField(6);
+
+  @$pb.TagNumber(7)
+  $core.Map<$core.int, $core.bool> get success => $_getMap(6);
 }
 

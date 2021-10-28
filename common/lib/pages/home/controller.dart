@@ -240,6 +240,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
         snackPosition: SnackPosition.BOTTOM,
         dismissDirection: SnackDismissDirection.HORIZONTAL,
         progressIndicatorController: progressController,
+        snackStyle: SnackStyle.GROUNDED,
       );
       isProgressActive(true);
     }
@@ -251,16 +252,13 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     progressController.reset();
     if (event.direction == Direction.OUTGOING) {
       localPeersStatus[event.to] = PeerStatus.COMPLETED;
+    } else {
+      Get.dialog(
+        CompleteModal(
+          event: event,
+        ),
+      );
     }
-    Get.snackbar(
-      event.snackTitle,
-      event.snackMessage,
-      duration: event.snackDuration,
-      icon: event.snackIcon,
-      backgroundColor: AppColors.primary4,
-      onTap: (snack) => OpenFile.open(event.payload.items[0].file.path),
-    );
-    await fetchData();
   }
 
   void _handleRefresh(RefreshEvent event) {
