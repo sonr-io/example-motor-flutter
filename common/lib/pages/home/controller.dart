@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:sonr_app/components/components.dart';
 import 'package:sonr_app/style/style.dart';
-import 'package:sonr_app/theme/theme.dart';
 import 'home.dart';
 
 enum HomeView { Dashboard, Personal, Explorer, Search }
@@ -238,13 +237,13 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
         icon: Icon(event.snackIcon),
         showProgressIndicator: true,
         snackPosition: SnackPosition.BOTTOM,
-        dismissDirection: SnackDismissDirection.HORIZONTAL,
         progressIndicatorController: progressController,
         snackStyle: SnackStyle.GROUNDED,
+        duration: null,
       );
       isProgressActive(true);
     }
-    progressController.animateTo(event.progress);
+    progressController.animateTo(event.adjustedValue());
   }
 
   void _handleComplete(CompleteEvent event) async {
@@ -277,58 +276,4 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     // Update Peer-Status Map
     localPeersStatus.refresh();
   }
-}
-
-extension ProgressEventUtils on ProgressEvent {
-  String get snackTitle {
-    if (direction == Direction.INCOMING) {
-      return "Receiving";
-    } else {
-      return "Sharing";
-    }
-  }
-
-  String get snackMessage {
-    if (direction == Direction.INCOMING) {
-      return "${this.current} of ${this.total}";
-    } else {
-      return "${this.current} of ${this.total}";
-    }
-  }
-
-  IconData get snackIcon {
-    if (direction == Direction.INCOMING) {
-      return Icons.file_download;
-    } else {
-      return Icons.file_upload;
-    }
-  }
-}
-
-extension CompleteEventUtils on CompleteEvent {
-  String get snackTitle {
-    if (this.direction == Direction.INCOMING) {
-      return "Completed Receive!";
-    } else {
-      return "Completed Share!";
-    }
-  }
-
-  String get snackMessage {
-    if (this.direction == Direction.INCOMING) {
-      return "Received ${this.payload.items.length} File(s) of ${this.payload.prettySize()} total size.";
-    } else {
-      return "Sent ${this.payload.items.length} File(s) of ${this.payload.prettySize()} total size.";
-    }
-  }
-
-  Duration get snackDuration {
-    if (this.direction == Direction.INCOMING) {
-      return 3.seconds;
-    } else {
-      return 1.seconds;
-    }
-  }
-
-  Widget get snackIcon => Icon(SimpleIcons.Check, color: AppColors.neutrals8);
 }
