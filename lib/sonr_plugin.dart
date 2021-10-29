@@ -51,7 +51,7 @@ class SonrService extends GetxService {
   Map<String, String>? _enviornmentVariables;
 
   // GRPC Service Client
-  late ClientServiceClient _client;
+  late MotorServiceClient _client;
 
   // GRPC Event Channel
   late ClientChannel _channel;
@@ -94,7 +94,7 @@ class SonrService extends GetxService {
         ));
 
     // Create a client stub
-    _client = ClientServiceClient(_channel);
+    _client = MotorServiceClient(_channel);
 
     // Handle Lobby Refresh
     _client.onLobbyRefresh(Empty()).listen(

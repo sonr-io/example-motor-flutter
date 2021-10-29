@@ -8,4 +8,4 @@ export 'common/data.pb.dart';
 export 'common/file.dart';
 export 'common/tuple.dart';
 
-export 'node/client.pbgrpc.dart';
+export 'node/motor.pbgrpc.dart';
