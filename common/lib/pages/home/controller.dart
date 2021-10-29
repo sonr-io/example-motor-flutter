@@ -146,7 +146,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     // Handle Tab Controller
     tabController = TabController(vsync: this, length: 1);
     scrollController = ScrollController(keepScrollOffset: false);
-    progressController = AnimationController(vsync: this, lowerBound: 0, upperBound: 1, duration: Duration(milliseconds: 500));
+    progressController = AnimationController(vsync: this, lowerBound: 0, upperBound: 1, duration: Duration(seconds: 20));
     // Initialize
     super.onInit();
   }
@@ -248,16 +248,14 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
 
   void _handleComplete(CompleteEvent event) async {
     isProgressActive(false);
-    progressController.reset();
     if (event.direction == Direction.OUTGOING) {
       localPeersStatus[event.to] = PeerStatus.COMPLETED;
-    } else {
-      Get.dialog(
-        CompleteModal(
-          event: event,
-        ),
-      );
-    }
+    } else {}
+    Get.dialog(
+      CompleteModal(
+        event: event,
+      ),
+    );
   }
 
   void _handleRefresh(RefreshEvent event) {
