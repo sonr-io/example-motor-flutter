@@ -146,7 +146,7 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     // Handle Tab Controller
     tabController = TabController(vsync: this, length: 1);
     scrollController = ScrollController(keepScrollOffset: false);
-    progressController = AnimationController(vsync: this, lowerBound: 0, upperBound: 1, duration: Duration(seconds: 20));
+    progressController = AnimationController(vsync: this, lowerBound: 0, upperBound: 1, duration: Duration(milliseconds: 50));
     // Initialize
     super.onInit();
   }
