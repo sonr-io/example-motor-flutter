@@ -15,71 +15,71 @@ import 'motor.pb.dart' as $1;
 import '../api/event.pb.dart' as $2;
 export 'motor.pb.dart';
 
-class MotorServiceClient extends $grpc.Client {
+class MotorStubClient extends $grpc.Client {
   static final _$supply =
       $grpc.ClientMethod<$0.SupplyRequest, $0.SupplyResponse>(
-          '/sonr.node.MotorService/Supply',
+          '/sonr.node.MotorStub/Supply',
           ($0.SupplyRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.SupplyResponse.fromBuffer(value));
   static final _$edit = $grpc.ClientMethod<$0.EditRequest, $0.EditResponse>(
-      '/sonr.node.MotorService/Edit',
+      '/sonr.node.MotorStub/Edit',
       ($0.EditRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.EditResponse.fromBuffer(value));
   static final _$fetch = $grpc.ClientMethod<$0.FetchRequest, $0.FetchResponse>(
-      '/sonr.node.MotorService/Fetch',
+      '/sonr.node.MotorStub/Fetch',
       ($0.FetchRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.FetchResponse.fromBuffer(value));
   static final _$share = $grpc.ClientMethod<$0.ShareRequest, $0.ShareResponse>(
-      '/sonr.node.MotorService/Share',
+      '/sonr.node.MotorStub/Share',
       ($0.ShareRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.ShareResponse.fromBuffer(value));
   static final _$respond =
       $grpc.ClientMethod<$0.RespondRequest, $0.RespondResponse>(
-          '/sonr.node.MotorService/Respond',
+          '/sonr.node.MotorStub/Respond',
           ($0.RespondRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.RespondResponse.fromBuffer(value));
   static final _$search =
       $grpc.ClientMethod<$0.SearchRequest, $0.SearchResponse>(
-          '/sonr.node.MotorService/Search',
+          '/sonr.node.MotorStub/Search',
           ($0.SearchRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $0.SearchResponse.fromBuffer(value));
   static final _$onLobbyRefresh = $grpc.ClientMethod<$1.Empty, $2.RefreshEvent>(
-      '/sonr.node.MotorService/OnLobbyRefresh',
+      '/sonr.node.MotorStub/OnLobbyRefresh',
       ($1.Empty value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $2.RefreshEvent.fromBuffer(value));
   static final _$onMailboxMessage =
       $grpc.ClientMethod<$1.Empty, $2.MailboxEvent>(
-          '/sonr.node.MotorService/OnMailboxMessage',
+          '/sonr.node.MotorStub/OnMailboxMessage',
           ($1.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $2.MailboxEvent.fromBuffer(value));
   static final _$onTransmitAccepted =
       $grpc.ClientMethod<$1.Empty, $2.DecisionEvent>(
-          '/sonr.node.MotorService/OnTransmitAccepted',
+          '/sonr.node.MotorStub/OnTransmitAccepted',
           ($1.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $2.DecisionEvent.fromBuffer(value));
   static final _$onTransmitDeclined =
       $grpc.ClientMethod<$1.Empty, $2.DecisionEvent>(
-          '/sonr.node.MotorService/OnTransmitDeclined',
+          '/sonr.node.MotorStub/OnTransmitDeclined',
           ($1.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $2.DecisionEvent.fromBuffer(value));
   static final _$onTransmitInvite =
       $grpc.ClientMethod<$1.Empty, $2.InviteEvent>(
-          '/sonr.node.MotorService/OnTransmitInvite',
+          '/sonr.node.MotorStub/OnTransmitInvite',
           ($1.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $2.InviteEvent.fromBuffer(value));
   static final _$onTransmitProgress =
       $grpc.ClientMethod<$1.Empty, $2.ProgressEvent>(
-          '/sonr.node.MotorService/OnTransmitProgress',
+          '/sonr.node.MotorStub/OnTransmitProgress',
           ($1.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $2.ProgressEvent.fromBuffer(value));
   static final _$onTransmitComplete =
       $grpc.ClientMethod<$1.Empty, $2.CompleteEvent>(
-          '/sonr.node.MotorService/OnTransmitComplete',
+          '/sonr.node.MotorStub/OnTransmitComplete',
           ($1.Empty value) => value.writeToBuffer(),
           ($core.List<$core.int> value) => $2.CompleteEvent.fromBuffer(value));
 
-  MotorServiceClient($grpc.ClientChannel channel,
+  MotorStubClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
@@ -164,10 +164,10 @@ class MotorServiceClient extends $grpc.Client {
   }
 }
 
-abstract class MotorServiceBase extends $grpc.Service {
-  $core.String get $name => 'sonr.node.MotorService';
+abstract class MotorStubServiceBase extends $grpc.Service {
+  $core.String get $name => 'sonr.node.MotorStub';
 
-  MotorServiceBase() {
+  MotorStubServiceBase() {
     $addMethod($grpc.ServiceMethod<$0.SupplyRequest, $0.SupplyResponse>(
         'Supply',
         supply_Pre,

@@ -1,5 +1,3 @@
-import 'package:intercom_flutter/intercom_flutter.dart';
-
 /// #### Asset Sound Types
 enum Sound {
   Confirmed,
@@ -55,25 +53,4 @@ extension Sounds on Sound {
 
   /// Return Enum Value as String without Prefix
   String get name => this.toString().substring(this.toString().indexOf('.') + 1);
-}
-
-// @ Intercom Carousel Option
-enum IntercomCarousel {
-  /// Software Update v0.9.4
-  Update94,
-}
-
-extension IntercomCarouselUtils on IntercomCarousel {
-  /// Returns Carousel ID by Option
-  String get id {
-    switch (this) {
-      case IntercomCarousel.Update94:
-        return '20299209';
-    }
-  }
-
-  /// Method Displays Intercom Carousel
-  Future<void> show() async {
-    await Intercom.displayCarousel(this.id);
-  }
 }

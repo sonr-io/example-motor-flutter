@@ -26,15 +26,13 @@ dependencies:
     sdk: flutter
 
   # ** - User Defined - **
-  # -- Management --
-  intercom_flutter: ^5.0.2
-  intl: ^0.17.0
-  shared_preferences: ^2.0.8
-  receive_sharing_intent: ^1.4.5
 
   # -- Data --
+  intl: ^0.17.0
   photo_manager: ^1.3.1
+  receive_sharing_intent: ^1.4.5
   share_plus: ^2.1.4
+  shared_preferences: ^2.0.8
   video_player: ^2.1.14
 
   # -- Plugins --

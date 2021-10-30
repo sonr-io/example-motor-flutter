@@ -13,25 +13,25 @@ import 'package:grpc/service_api.dart' as $grpc;
 import '../api/call.pb.dart' as $0;
 export 'highway.pb.dart';
 
-class HighwayServiceClient extends $grpc.Client {
+class HighwayStubClient extends $grpc.Client {
   static final _$authenticate =
       $grpc.ClientMethod<$0.AuthenticateRequest, $0.AuthenticateResponse>(
-          '/sonr.node.HighwayService/Authenticate',
+          '/sonr.node.HighwayStub/Authenticate',
           ($0.AuthenticateRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.AuthenticateResponse.fromBuffer(value));
   static final _$link = $grpc.ClientMethod<$0.LinkRequest, $0.LinkResponse>(
-      '/sonr.node.HighwayService/Link',
+      '/sonr.node.HighwayStub/Link',
       ($0.LinkRequest value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.LinkResponse.fromBuffer(value));
   static final _$register =
       $grpc.ClientMethod<$0.RegisterRequest, $0.RegisterResponse>(
-          '/sonr.node.HighwayService/Register',
+          '/sonr.node.HighwayStub/Register',
           ($0.RegisterRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
               $0.RegisterResponse.fromBuffer(value));
 
-  HighwayServiceClient($grpc.ClientChannel channel,
+  HighwayStubClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
@@ -53,10 +53,10 @@ class HighwayServiceClient extends $grpc.Client {
   }
 }
 
-abstract class HighwayServiceBase extends $grpc.Service {
-  $core.String get $name => 'sonr.node.HighwayService';
+abstract class HighwayStubServiceBase extends $grpc.Service {
+  $core.String get $name => 'sonr.node.HighwayStub';
 
-  HighwayServiceBase() {
+  HighwayStubServiceBase() {
     $addMethod(
         $grpc.ServiceMethod<$0.AuthenticateRequest, $0.AuthenticateResponse>(
             'Authenticate',
