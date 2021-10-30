@@ -14,12 +14,12 @@ import '../api/call.pb.dart' as $0;
 export 'highway.pb.dart';
 
 class HighwayServiceClient extends $grpc.Client {
-  static final _$authorize =
-      $grpc.ClientMethod<$0.AuthorizeRequest, $0.AuthorizeResponse>(
-          '/sonr.node.HighwayService/Authorize',
-          ($0.AuthorizeRequest value) => value.writeToBuffer(),
+  static final _$authenticate =
+      $grpc.ClientMethod<$0.AuthenticateRequest, $0.AuthenticateResponse>(
+          '/sonr.node.HighwayService/Authenticate',
+          ($0.AuthenticateRequest value) => value.writeToBuffer(),
           ($core.List<$core.int> value) =>
-              $0.AuthorizeResponse.fromBuffer(value));
+              $0.AuthenticateResponse.fromBuffer(value));
   static final _$link = $grpc.ClientMethod<$0.LinkRequest, $0.LinkResponse>(
       '/sonr.node.HighwayService/Link',
       ($0.LinkRequest value) => value.writeToBuffer(),
@@ -36,10 +36,10 @@ class HighwayServiceClient extends $grpc.Client {
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
 
-  $grpc.ResponseFuture<$0.AuthorizeResponse> authorize(
-      $0.AuthorizeRequest request,
+  $grpc.ResponseFuture<$0.AuthenticateResponse> authenticate(
+      $0.AuthenticateRequest request,
       {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$authorize, request, options: options);
+    return $createUnaryCall(_$authenticate, request, options: options);
   }
 
   $grpc.ResponseFuture<$0.LinkResponse> link($0.LinkRequest request,
@@ -57,13 +57,15 @@ abstract class HighwayServiceBase extends $grpc.Service {
   $core.String get $name => 'sonr.node.HighwayService';
 
   HighwayServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.AuthorizeRequest, $0.AuthorizeResponse>(
-        'Authorize',
-        authorize_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $0.AuthorizeRequest.fromBuffer(value),
-        ($0.AuthorizeResponse value) => value.writeToBuffer()));
+    $addMethod(
+        $grpc.ServiceMethod<$0.AuthenticateRequest, $0.AuthenticateResponse>(
+            'Authenticate',
+            authenticate_Pre,
+            false,
+            false,
+            ($core.List<$core.int> value) =>
+                $0.AuthenticateRequest.fromBuffer(value),
+            ($0.AuthenticateResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.LinkRequest, $0.LinkResponse>(
         'Link',
         link_Pre,
@@ -80,9 +82,10 @@ abstract class HighwayServiceBase extends $grpc.Service {
         ($0.RegisterResponse value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.AuthorizeResponse> authorize_Pre($grpc.ServiceCall call,
-      $async.Future<$0.AuthorizeRequest> request) async {
-    return authorize(call, await request);
+  $async.Future<$0.AuthenticateResponse> authenticate_Pre(
+      $grpc.ServiceCall call,
+      $async.Future<$0.AuthenticateRequest> request) async {
+    return authenticate(call, await request);
   }
 
   $async.Future<$0.LinkResponse> link_Pre(
@@ -95,8 +98,8 @@ abstract class HighwayServiceBase extends $grpc.Service {
     return register(call, await request);
   }
 
-  $async.Future<$0.AuthorizeResponse> authorize(
-      $grpc.ServiceCall call, $0.AuthorizeRequest request);
+  $async.Future<$0.AuthenticateResponse> authenticate(
+      $grpc.ServiceCall call, $0.AuthenticateRequest request);
   $async.Future<$0.LinkResponse> link(
       $grpc.ServiceCall call, $0.LinkRequest request);
   $async.Future<$0.RegisterResponse> register(

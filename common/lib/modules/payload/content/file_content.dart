@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:sonr_app/components/general/button.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 import 'package:video_player/video_player.dart';

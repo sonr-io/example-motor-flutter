@@ -1,7 +1,5 @@
-import 'package:sonr_app/components/components.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
-
 import 'controller.dart';
 
 class NearbyRow extends GetView<HomeController> implements PreferredSizeWidget {

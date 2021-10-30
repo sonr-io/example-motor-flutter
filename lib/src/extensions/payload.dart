@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'dart:isolate';
-import 'package:sonr_plugin/src/proto/proto.dart';
 import '../../sonr_plugin.dart';
 import 'package:video_compress/video_compress.dart';
 

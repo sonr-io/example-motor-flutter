@@ -3,7 +3,6 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:intl/intl.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
-import 'modals.dart';
 
 class CompleteModal extends StatelessWidget {
   final CompleteEvent event;

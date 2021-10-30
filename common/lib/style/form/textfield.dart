@@ -1,10 +1,6 @@
 import 'dart:io';
-import 'dart:ui';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
-import 'package:sonr_plugin/sonr_plugin.dart';
 
 enum TextInputValidStatus { None, Valid, Invalid }
 

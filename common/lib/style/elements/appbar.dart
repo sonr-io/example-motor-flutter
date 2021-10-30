@@ -1,7 +1,4 @@
-import 'dart:ui';
 import 'package:sonr_app/theme/theme.dart';
-import 'package:sonr_plugin/sonr_plugin.dart';
-
 import '../style.dart';
 
 /// #### Home Screen Header

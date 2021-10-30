@@ -1,9 +1,7 @@
 import 'dart:io';
 
 import 'package:sonr_app/style/style.dart';
-import 'package:sonr_app/data/data.dart';
 import 'package:sonr_app/theme/theme.dart';
-import 'package:sonr_plugin/sonr_plugin.dart';
 
 // ** ─── Snackbar Arguments ────────────────────────────────────────────────────────
 /// Class to Provide Snackbar Properties to AppRoute

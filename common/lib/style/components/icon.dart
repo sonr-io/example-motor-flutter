@@ -1,8 +1,4 @@
-import 'dart:ui';
-import 'package:flutter/material.dart';
 import 'package:sonr_app/theme/theme.dart';
-import 'package:sonr_plugin/sonr_plugin.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sonr_app/style/style.dart';
 
 extension IntricateIconUtils on ComplexIcons {

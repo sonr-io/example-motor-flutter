@@ -1,7 +1,5 @@
 import 'dart:math';
-
 import 'package:sonr_app/style/style.dart';
-import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// #### Standardized Uniform Scaffold
 class SonrScaffold extends StatelessWidget {

@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:sonr_app/components/components.dart';
 import 'package:sonr_app/style/style.dart';
 import 'home.dart';
 
