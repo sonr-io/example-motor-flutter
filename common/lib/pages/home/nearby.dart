@@ -46,7 +46,7 @@ class NearbyRow extends GetView<HomeController> implements PreferredSizeWidget {
                         onTap: () => Get.to(NearbyList()),
                         onLongPress: () async {
                           final result = await SonrService.to.pick(
-                            supplyAfterPick: true,
+                            shareAfterPick: true,
                             type: FileType.media,
                             peer: controller.localPeers[index],
                           );
@@ -113,7 +113,14 @@ class NearbyList extends GetView<HomeController> {
                 return PeerListItem(
                   peer: controller.localPeers[index],
                   withInviteButton: true,
-                  onTap: () => controller.shareToPeer(controller.localPeers[index]),
+                  onTap: () async {
+                    final result = await SonrService.to.pick(
+                      shareAfterPick: true,
+                      type: FileType.media,
+                      peer: controller.localPeers[index],
+                    );
+                    print(result.toString());
+                  },
                 );
               })
           : _buildEmpty()),

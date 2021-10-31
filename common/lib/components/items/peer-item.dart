@@ -16,7 +16,7 @@ class PeerCardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        SonrService.to.share(peer);
+        SonrService.to.pick(shareAfterPick: true, peer: peer);
       },
       child: BoxContainer(
           constraints: BoxConstraints.tight(Size(K_CARD_WIDTH, K_CARD_HEIGHT)),
@@ -109,7 +109,7 @@ class PeerListItem extends StatelessWidget {
       subtitle: Text(peer.profile.prettySName(), style: AppTextStyles.bodyCaptionRegular),
       trailing: withInviteButton
           ? Obx(() => NeutralButton(
-                onPressed: () => SonrService.to.share(peer),
+                onPressed: () => SonrService.to.pick(shareAfterPick: true, peer: peer),
                 label: _buildButtonLabel(Get.find<HomeController>().statusForPeer(peer)),
               ))
           : null,

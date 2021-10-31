@@ -2,14 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sonr_plugin/sonr_plugin.dart';
 
 extension ProgressEventUtils on ProgressEvent {
-  double adjustedValue() {
-    if (this.count > 1) {
-      final adj = (this.index + 1) * this.progress;
-      return adj / this.count;
-    }
-    return this.progress;
-  }
-
   String get snackTitle {
     if (direction == Direction.INCOMING) {
       return "Receiving";
@@ -20,9 +12,9 @@ extension ProgressEventUtils on ProgressEvent {
 
   String get snackMessage {
     if (direction == Direction.INCOMING) {
-      return "${this.index} of ${this.count}";
+      return "${this.current} of ${this.total}";
     } else {
-      return "${this.index} of ${this.count}";
+      return "${this.current} of ${this.total}";
     }
   }
 

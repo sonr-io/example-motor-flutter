@@ -16,11 +16,6 @@ import '../api/event.pb.dart' as $2;
 export 'motor.pb.dart';
 
 class MotorStubClient extends $grpc.Client {
-  static final _$supply =
-      $grpc.ClientMethod<$0.SupplyRequest, $0.SupplyResponse>(
-          '/sonr.node.MotorStub/Supply',
-          ($0.SupplyRequest value) => value.writeToBuffer(),
-          ($core.List<$core.int> value) => $0.SupplyResponse.fromBuffer(value));
   static final _$edit = $grpc.ClientMethod<$0.EditRequest, $0.EditResponse>(
       '/sonr.node.MotorStub/Edit',
       ($0.EditRequest value) => value.writeToBuffer(),
@@ -83,11 +78,6 @@ class MotorStubClient extends $grpc.Client {
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
-
-  $grpc.ResponseFuture<$0.SupplyResponse> supply($0.SupplyRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$supply, request, options: options);
-  }
 
   $grpc.ResponseFuture<$0.EditResponse> edit($0.EditRequest request,
       {$grpc.CallOptions? options}) {
@@ -168,13 +158,6 @@ abstract class MotorStubServiceBase extends $grpc.Service {
   $core.String get $name => 'sonr.node.MotorStub';
 
   MotorStubServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.SupplyRequest, $0.SupplyResponse>(
-        'Supply',
-        supply_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $0.SupplyRequest.fromBuffer(value),
-        ($0.SupplyResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.EditRequest, $0.EditResponse>(
         'Edit',
         edit_Pre,
@@ -261,11 +244,6 @@ abstract class MotorStubServiceBase extends $grpc.Service {
         ($2.CompleteEvent value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.SupplyResponse> supply_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.SupplyRequest> request) async {
-    return supply(call, await request);
-  }
-
   $async.Future<$0.EditResponse> edit_Pre(
       $grpc.ServiceCall call, $async.Future<$0.EditRequest> request) async {
     return edit(call, await request);
@@ -326,8 +304,6 @@ abstract class MotorStubServiceBase extends $grpc.Service {
     yield* onTransmitComplete(call, await request);
   }
 
-  $async.Future<$0.SupplyResponse> supply(
-      $grpc.ServiceCall call, $0.SupplyRequest request);
   $async.Future<$0.EditResponse> edit(
       $grpc.ServiceCall call, $0.EditRequest request);
   $async.Future<$0.FetchResponse> fetch(

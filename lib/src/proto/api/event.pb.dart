@@ -351,34 +351,34 @@ class MailboxEvent extends $pb.GeneratedMessage {
 
 class ProgressEvent extends $pb.GeneratedMessage {
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'ProgressEvent', package: const $pb.PackageName(const $core.bool.fromEnvironment('protobuf.omit_message_names') ? '' : 'sonr.api'), createEmptyInstance: create)
-    ..a<$core.int>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'index', $pb.PbFieldType.O3)
-    ..a<$core.int>(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'count', $pb.PbFieldType.O3)
-    ..a<$core.double>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'progress', $pb.PbFieldType.OD)
-    ..aInt64(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'received')
+    ..a<$core.double>(1, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'progress', $pb.PbFieldType.OD)
+    ..aInt64(2, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'received')
+    ..a<$core.int>(3, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'current', $pb.PbFieldType.O3)
+    ..a<$core.int>(4, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'total', $pb.PbFieldType.O3)
     ..e<$4.Direction>(5, const $core.bool.fromEnvironment('protobuf.omit_field_names') ? '' : 'direction', $pb.PbFieldType.OE, defaultOrMaker: $4.Direction.DEFAULT, valueOf: $4.Direction.valueOf, enumValues: $4.Direction.values)
     ..hasRequiredFields = false
   ;
 
   ProgressEvent._() : super();
   factory ProgressEvent({
-    $core.int? index,
-    $core.int? count,
     $core.double? progress,
     $fixnum.Int64? received,
+    $core.int? current,
+    $core.int? total,
     $4.Direction? direction,
   }) {
     final _result = create();
-    if (index != null) {
-      _result.index = index;
-    }
-    if (count != null) {
-      _result.count = count;
-    }
     if (progress != null) {
       _result.progress = progress;
     }
     if (received != null) {
       _result.received = received;
+    }
+    if (current != null) {
+      _result.current = current;
+    }
+    if (total != null) {
+      _result.total = total;
     }
     if (direction != null) {
       _result.direction = direction;
@@ -407,40 +407,40 @@ class ProgressEvent extends $pb.GeneratedMessage {
   static ProgressEvent? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.int get index => $_getIZ(0);
+  $core.double get progress => $_getN(0);
   @$pb.TagNumber(1)
-  set index($core.int v) { $_setSignedInt32(0, v); }
+  set progress($core.double v) { $_setDouble(0, v); }
   @$pb.TagNumber(1)
-  $core.bool hasIndex() => $_has(0);
+  $core.bool hasProgress() => $_has(0);
   @$pb.TagNumber(1)
-  void clearIndex() => clearField(1);
+  void clearProgress() => clearField(1);
 
   @$pb.TagNumber(2)
-  $core.int get count => $_getIZ(1);
+  $fixnum.Int64 get received => $_getI64(1);
   @$pb.TagNumber(2)
-  set count($core.int v) { $_setSignedInt32(1, v); }
+  set received($fixnum.Int64 v) { $_setInt64(1, v); }
   @$pb.TagNumber(2)
-  $core.bool hasCount() => $_has(1);
+  $core.bool hasReceived() => $_has(1);
   @$pb.TagNumber(2)
-  void clearCount() => clearField(2);
+  void clearReceived() => clearField(2);
 
   @$pb.TagNumber(3)
-  $core.double get progress => $_getN(2);
+  $core.int get current => $_getIZ(2);
   @$pb.TagNumber(3)
-  set progress($core.double v) { $_setDouble(2, v); }
+  set current($core.int v) { $_setSignedInt32(2, v); }
   @$pb.TagNumber(3)
-  $core.bool hasProgress() => $_has(2);
+  $core.bool hasCurrent() => $_has(2);
   @$pb.TagNumber(3)
-  void clearProgress() => clearField(3);
+  void clearCurrent() => clearField(3);
 
   @$pb.TagNumber(4)
-  $fixnum.Int64 get received => $_getI64(3);
+  $core.int get total => $_getIZ(3);
   @$pb.TagNumber(4)
-  set received($fixnum.Int64 v) { $_setInt64(3, v); }
+  set total($core.int v) { $_setSignedInt32(3, v); }
   @$pb.TagNumber(4)
-  $core.bool hasReceived() => $_has(3);
+  $core.bool hasTotal() => $_has(3);
   @$pb.TagNumber(4)
-  void clearReceived() => clearField(4);
+  void clearTotal() => clearField(4);
 
   @$pb.TagNumber(5)
   $4.Direction get direction => $_getN(4);

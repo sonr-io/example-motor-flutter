@@ -209,16 +209,6 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     return localPeersStatus[p];
   }
 
-  /// #### Share to Peer
-  void shareToPeer(Peer peer) async {
-    // Update Peer status
-    localPeersStatus[peer] = PeerStatus.PENDING;
-
-    // Invite Peer from Service
-    final resp = await SonrService.to.share(peer);
-    print(resp.toString());
-  }
-
   void _handleInvite(InviteEvent event) {
     Get.dialog(
       InviteModal(event: event),
@@ -242,19 +232,20 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
       );
       isProgressActive(true);
     }
-    progressController.animateTo(event.adjustedValue());
+    progressController.animateTo(event.progress);
   }
 
   void _handleComplete(CompleteEvent event) async {
     isProgressActive(false);
     if (event.direction == Direction.OUTGOING) {
       localPeersStatus[event.to] = PeerStatus.COMPLETED;
-    } else {}
-    Get.dialog(
-      CompleteModal(
-        event: event,
-      ),
-    );
+    } else {
+      Get.dialog(
+        CompleteModal(
+          event: event,
+        ),
+      );
+    }
   }
 
   void _handleRefresh(RefreshEvent event) {
