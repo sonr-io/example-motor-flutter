@@ -61,7 +61,7 @@ class SnackArgs {
     return SnackArgs(
         title: "Cancelled.",
         message: message,
-        icon: SimpleIcons.Stop.white,
+        icon: SiliconsLine.stop.white,
         backgroundColor: Colors.yellow,
         duration: 2600.milliseconds,
         shouldIconPulse: false,
@@ -74,7 +74,7 @@ class SnackArgs {
     return SnackArgs(
       title: "Error",
       message: message,
-      icon: SimpleIcons.Caution.white,
+      icon: SiliconsLine.warning.white,
       backgroundColor: Colors.red,
       duration: 2600.milliseconds,
       shouldIconPulse: false,
@@ -87,7 +87,7 @@ class SnackArgs {
     return SnackArgs(
       title: "Uh Oh!",
       message: message,
-      icon: SimpleIcons.Warning.white,
+      icon: SiliconsLine.warning.white,
       backgroundColor: Colors.orange[900],
       duration: 2600.milliseconds,
       shouldIconPulse: false,
@@ -101,7 +101,7 @@ class SnackArgs {
     return SnackArgs(
       title: isLast ? "Almost There!" : ['Wait!', 'Hold Up!', "Uh Oh!"].random(),
       message: message,
-      icon: SimpleIcons.Warning.white,
+      icon: SiliconsLine.warning.white,
       backgroundColor: AppColors.primary3,
       duration: 2600.milliseconds,
       shouldIconPulse: false,
@@ -119,7 +119,7 @@ class SnackArgs {
       title: "Success!",
       onTap: onTap,
       message: message,
-      icon: SimpleIcons.Success.white,
+      icon: SiliconsLine.check_all.white,
       backgroundColor: Colors.green,
       duration: 2600.milliseconds,
       shouldIconPulse: true,

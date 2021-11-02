@@ -1,3 +1,4 @@
+
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 
@@ -332,7 +333,7 @@ class CircleButton extends StatelessWidget {
                     padding: EdgeInsets.all(size.allPadding),
                     child: Center(
                       child: Icon(
-                        iconData ?? SimpleIcons.Play,
+                        iconData ?? SiliconsSolid.play_circled,
                         size: size.iconSize,
                         color: size.buildIconColor(Get.isDarkMode),
                       ),

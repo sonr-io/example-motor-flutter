@@ -67,7 +67,7 @@ class _NamePage extends GetView<RegisterController> {
                                 controller.sName("");
                                 controller.sName.refresh();
                               },
-                              iconData: SimpleIcons.Clear)
+                              iconData: SiliconsLine.undo)
                           : Container(),
                     ))
               ],
@@ -132,7 +132,7 @@ class _BackupCodeView extends GetView<RegisterController> {
                 onLongPress: () {
                   Clipboard.setData(ClipboardData(text: controller.mnemonic.value));
                   AppRoute.snack(SnackArgs.alert(
-                      title: "Copied!", message: "Backup Code copied to clipboard", icon: Icon(SimpleIcons.Copy, color: Colors.white)));
+                      title: "Copied!", message: "Backup Code copied to clipboard", icon: Icon(SiliconsLine.copy, color: Colors.white)));
                 },
                 child: BoxContainer(
                   padding: EdgeInsets.all(24),
@@ -142,7 +142,7 @@ class _BackupCodeView extends GetView<RegisterController> {
                         alignment: Alignment.topRight,
                         child: CircleButton(
                           size: CircleButtonSize.Small,
-                          iconData: SimpleIcons.Info,
+                          iconData: SiliconsLine.info,
                           onPressed: () {
                             AppRoute.alert(
                                 title: "About Code",

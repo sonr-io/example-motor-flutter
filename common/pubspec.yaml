@@ -15,6 +15,7 @@ scripts:
   build: sh ../.github/scripts/build.sh
   clean: sh ../.github/scripts/clean.sh
   inject: define_env -f <(doppler secrets download --no-file --format=env --config dev --project api) --no-generate --no-print -c
+  setup: sh ../.github/scripts/setup.sh
   update: sh ../.github/scripts/update.sh
 
 # ** ================== **
@@ -74,28 +75,18 @@ flutter:
         - asset: assets/fonts/Poppins-SemiBold.ttf
           weight: 600
 
-    - family: SonrIcons
+    - family: SiliconsLine
       fonts:
-        - asset: assets/fonts/Sonricons.ttf
+        - asset: assets/fonts/Silicons-Line.ttf
 
-    - family: SonrNavIcons
+    - family: SiliconsSolid
       fonts:
-        - asset: assets/fonts/SonrNavIcons.ttf
+        - asset: assets/fonts/Silicons-Solid.ttf
 
   # -- Media --
   assets:
     - assets/animations/
     - assets/fonts/
-    - assets/icons/Communication/
-    - assets/icons/DateTime/
-    - assets/icons/Design/
-    - assets/icons/Device/
-    - assets/icons/FileSystem/
-    - assets/icons/Formatting/
-    - assets/icons/MediaControl/
-    - assets/icons/Navigation/
-    - assets/icons/SocialMedia/
-    - assets/icons/UI/
     - assets/images/logos/
     - assets/images/onboarding/
     - assets/images/illustrations/

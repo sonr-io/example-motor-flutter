@@ -41,7 +41,7 @@ class GeneralModal extends StatelessWidget {
                     ),
                     CircleButton(
                       onPressed: () => closeModal(),
-                      iconData: SimpleIcons.Close,
+                      iconData: SiliconsLine.close,
                       size: CircleButtonSize.Small,
                     ),
                   ],

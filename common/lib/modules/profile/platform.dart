@@ -22,17 +22,17 @@ class PlatformIcon extends StatelessWidget {
   IconData get platformIconData {
     switch (this.platform) {
       case "android":
-        return SimpleIcons.Android;
+        return SiliconsSolid.android;
       case "ios":
-        return SimpleIcons.Apple;
+        return SiliconsSolid.apple;
       case "darwin":
-        return SimpleIcons.Apple;
+        return SiliconsSolid.apple;
       case "linux":
-        return SimpleIcons.LinuxDesktop;
+        return SiliconsSolid.laptop;
       case "windows":
-        return SimpleIcons.Windows;
+        return SiliconsSolid.laptop;
       default:
-        return SimpleIcons.Check;
+        return SiliconsSolid.check;
     }
   }
 

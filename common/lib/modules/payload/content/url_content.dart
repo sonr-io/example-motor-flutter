@@ -1,4 +1,5 @@
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 
 class UrlItemContent extends StatelessWidget {
   /// URLLink Data
@@ -48,7 +49,7 @@ class UrlItemContent extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: 6),
               child: Row(children: [
                 // URL Icon
-                Padding(padding: const EdgeInsets.only(left: 14.0, right: 8), child: SimpleIcons.Link.gradient()),
+                Padding(padding: const EdgeInsets.only(left: 14.0, right: 8), child: SiliconsSolid.link.gradient()),
 
                 // Link Preview
                 Container(

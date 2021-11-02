@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:sonr_app/style/style.dart';
+import 'package:sonr_app/theme/theme.dart';
 import 'home.dart';
 
 enum HomeView { Dashboard, Personal, Explorer, Search }
@@ -56,9 +57,9 @@ extension HomeViewUtils on HomeView {
   IconData iconData(bool isSelected) {
     switch (this) {
       case HomeView.Dashboard:
-        return isSelected ? SimpleIcons.HomeActive : SimpleIcons.HomeInactive;
+        return isSelected ? SiliconsSolid.home : SiliconsLine.home;
       case HomeView.Personal:
-        return isSelected ? SimpleIcons.PersonalActive : SimpleIcons.PersonalInactive;
+        return isSelected ? SiliconsSolid.person : SiliconsLine.person;
       default:
         return Icons.deck;
     }

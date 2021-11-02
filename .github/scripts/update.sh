@@ -4,6 +4,13 @@ SCRIPTDIR=$(dirname "$0")
 cd ${SCRIPTDIR}/../../
 ROOT_DIR=$(pwd)
 PROJECT_DIR=${ROOT_DIR}/common
+ASSETS_DIR=${PROJECT_DIR}/assets
+LINE_ICONS_DIR=${PROJECT_DIR}/assets/icons/line
+SOLID_ICONS_DIR=${PROJECT_DIR}/assets/icons/solid
+OUT_FONT_LINE=${PROJECT_DIR}/assets/fonts/Silicons-Line.ttf
+OUT_FONT_SOLID=${PROJECT_DIR}/assets/fonts/Silicons-Solid.ttf
+OUT_FLUTTER_LINE=${PROJECT_DIR}/lib/theme/icons_line.dart
+OUT_FLUTTER_SOLID=${PROJECT_DIR}/lib/theme/icons_solid.dart
 IOS_FRAMEWORK_DIR=${ROOT_DIR}/ios/Frameworks
 ANDROID_FRAMEWORK_DIR=${ROOT_DIR}/android/libs
 PROTO_DIR=${ROOT_DIR}/lib/src
@@ -13,6 +20,12 @@ PROTO_LIST=${PROTO_STG_DIR}/proto/**/*.proto
 echo "Cleaning Directories..."
 rm -rf ${IOS_FRAMEWORK_DIR}/Core.xcframework
 rm -rf ${ANDROID_FRAMEWORK_DIR}/io.sonr.core.aar
+echo "\n"
+
+echo "Compiling Icon Fonts..."
+icon_font_generator --from=${LINE_ICONS_DIR} --class-name=SiliconsLine --out-font=${OUT_FONT_LINE} --out-flutter=${OUT_FLUTTER_LINE}
+
+icon_font_generator --from=${SOLID_ICONS_DIR} --class-name=SiliconsSolid --out-font=${OUT_FONT_SOLID} --out-flutter=${OUT_FLUTTER_SOLID}
 echo "\n"
 
 echo "Downloading Release Asset (proto)..."

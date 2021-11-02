@@ -9,6 +9,7 @@ scripts:
   build: sh .github/scripts/build.sh
   clean: sh .github/scripts/clean.sh
   inject: define_env -f <(doppler secrets download --no-file --format=env --config dev --project api) --no-generate --no-print -c
+  setup: sh .github/scripts/setup.sh
   update: sh .github/scripts/update.sh
 
 environment:

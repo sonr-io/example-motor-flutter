@@ -63,7 +63,7 @@ class _PeerMainCard extends StatelessWidget {
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: SimpleIcons.MoreVertical.icon(color: Get.theme.hintColor, size: 24),
+                  child: SiliconsLine.more_vertical.icon(color: Get.theme.hintColor, size: 24),
                 ),
               )),
 

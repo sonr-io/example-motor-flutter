@@ -1,4 +1,5 @@
 export 'controller.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:sonr_app/modules/payload/payload.dart';
 import 'package:sonr_app/theme/theme.dart';
 
@@ -37,7 +38,7 @@ class HomePage extends GetView<HomeController> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
-              icon: Get.isDarkMode ? SimpleIcons.Menu.white : SimpleIcons.Menu.white,
+              icon: Get.isDarkMode ? SiliconsLine.menu.white : SiliconsLine.menu.white,
               onPressed: () {
                 controller.edit();
               },
@@ -176,7 +177,7 @@ class ShareButton extends StatelessWidget {
                         blendMode: BlendMode.modulate,
                         shaderCallback: (bounds) => AppGradients.gradientTeritary.createShader(bounds),
                         child: Icon(
-                          SimpleIcons.Share,
+                          SiliconsSolid.share,
                           size: 34,
                           color: Colors.white,
                         ),

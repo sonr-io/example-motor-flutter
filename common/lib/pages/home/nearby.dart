@@ -100,7 +100,7 @@ class NearbyList extends GetView<HomeController> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
-              icon: Get.isDarkMode ? SimpleIcons.Menu.white : SimpleIcons.Menu.white,
+              icon: Get.isDarkMode ? SiliconsLine.menu.white : SiliconsLine.menu.white,
               onPressed: () {},
             ),
           )

@@ -130,7 +130,7 @@ class DetailAppBar extends StatelessWidget implements PreferredSizeWidget {
             centerMiddle: false,
             leading: AppBarButton(
               onPressed: onPressed,
-              iconData: isClose ? SimpleIcons.Close : SimpleIcons.Back,
+              iconData: isClose ? SiliconsLine.close : SiliconsLine.arrow_backward,
             ),
             trailing: _buildTrailing(),
             middle: Text(

@@ -19,7 +19,7 @@ class CardFooterOverlayExport extends StatelessWidget {
       child: Column(
         children: [
           ListTile(
-            trailing: CircleButton(onPressed: () {}, iconData: SimpleIcons.Forward),
+            trailing: CircleButton(onPressed: () {}, iconData: SiliconsLine.arrow_forward),
             title: Text("Album", style: AppTextStyles.headingTitleBold),
             subtitle: Container(
               height: 44,
