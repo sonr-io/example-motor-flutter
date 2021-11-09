@@ -28,9 +28,9 @@ class PlatformIcon extends StatelessWidget {
       case "darwin":
         return SiliconsSolid.apple;
       case "linux":
-        return SiliconsSolid.laptop;
+        return SiliconsSolid.penguin;
       case "windows":
-        return SiliconsSolid.laptop;
+        return SiliconsSolid.window;
       default:
         return SiliconsSolid.check;
     }
