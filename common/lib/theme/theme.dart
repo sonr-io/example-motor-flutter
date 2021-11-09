@@ -5,6 +5,8 @@ export 'gradients.dart';
 export 'radii.dart';
 export 'shadows.dart';
 export 'text_styles.dart';
+export 'icons_line.dart';
+export 'icons_solid.dart';
 
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';

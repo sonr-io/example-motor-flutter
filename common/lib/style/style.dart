@@ -3,8 +3,7 @@ export 'package:animate_do/animate_do.dart';
 export 'package:sonr_plugin/sonr_plugin.dart';
 export 'package:sonr_app/data/data.dart';
 export '../components/components.dart';
-export 'icons/icons.dart';
-
+export 'package:flutter/material.dart';
 // Theme Components
 export 'components/container.dart';
 export 'components/icon.dart';
@@ -25,3 +24,4 @@ export 'form/tabs.dart';
 
 // Theme Data
 export '../theme/utils.dart';
+export 'package:flutter/services.dart';

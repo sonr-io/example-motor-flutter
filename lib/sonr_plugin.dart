@@ -51,7 +51,7 @@ class SonrService extends GetxService {
   Map<String, String>? _enviornmentVariables;
 
   // GRPC Service Client
-  late ClientServiceClient _client;
+  late MotorStubClient _client;
 
   // GRPC Event Channel
   late ClientChannel _channel;
@@ -94,7 +94,7 @@ class SonrService extends GetxService {
         ));
 
     // Create a client stub
-    _client = ClientServiceClient(_channel);
+    _client = MotorStubClient(_channel);
 
     // Handle Lobby Refresh
     _client.onLobbyRefresh(Empty()).listen(
@@ -177,7 +177,7 @@ class SonrService extends GetxService {
 
   /// [pick()] Presents a native dialog for selecting files
   /// Optionally can be supplied after pick
-  Future<List<String>> pick({bool supplyAfterPick = true, Peer? peer, FileType type = FileType.any}) async {
+  Future<List<String>> pick({bool shareAfterPick = true, Peer? peer, FileType type = FileType.any}) async {
     // Initialize
     List<String> adjPaths = [];
     FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -197,9 +197,9 @@ class SonrService extends GetxService {
     }
 
     // Check if we need to supply the result
-    if (supplyAfterPick && adjPaths.length > 0) {
+    if (shareAfterPick && adjPaths.length > 0) {
       final list = await newSupplyItemList(adjPaths);
-      final resp = await supply(list, peer: peer);
+      final resp = await share(peer, list);
       print(resp.toString());
     }
     return adjPaths;
@@ -225,19 +225,6 @@ class SonrService extends GetxService {
       return items;
     }
     return [];
-  }
-
-  /// [supply(List<SupplyRequest_Item>)] Supply a list of paths to the node.
-  /// Will be queued for a share.
-  Future<SupplyResponse> supply(List<SupplyItem> items, {Peer? peer}) async {
-    // Provide the request
-    final supplyRequest = SupplyRequest(
-      items: items,
-      peer: peer,
-      isPeerSupply: peer != null ? true : false,
-    );
-    final resp = await _client.supply(supplyRequest);
-    return resp;
   }
 
   /// [edit(Profile)] Edits the profile of the node.
@@ -272,8 +259,8 @@ class SonrService extends GetxService {
   }
 
   /// [share(Peer)] Shares queued transfer with peer.
-  Future<ShareResponse> share(Peer peer, {List<String>? paths, MessageItem? message}) async {
-    final shareRequest = ShareRequest(peer: peer, items: await newSupplyItemList(paths), message: message);
+  Future<ShareResponse> share(Peer? peer, List<SupplyItem>? items, {MessageItem? message}) async {
+    final shareRequest = ShareRequest(peer: peer, items: items, message: message);
     final resp = await _client.share(shareRequest);
     return resp;
   }

@@ -1,8 +1,6 @@
 import 'dart:async';
-import 'package:sonr_app/components/components.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
-import 'home.dart';
 
 enum HomeView { Dashboard, Personal, Explorer, Search }
 
@@ -20,72 +18,28 @@ extension HomeViewUtils on HomeView {
   /// #### Method Checks for Search View
   bool get isSearch => this == HomeView.Search;
 
-  /// #### Method Checks if View is For Mobile Screen
-  bool get isMobileView => this.isDashboard || this.isPersonal || this.isSearch;
-
-  /// #### Method Checks if View is For Desktop Screen
-  bool get isDesktopView => !this.isMobileView;
-
-  /// #### Method Returns this Views Name
-  String get name => this.toString().substring(this.toString().indexOf('.') + 1);
-
-  /// #### Get Title From View Type
-  String get title => this.isDashboard ? "Welcome" : this.name;
-
   /// #### Get AppBar Padding from View Type
   EdgeInsets get paddingAppbar => this.isDashboard ? EdgeInsets.only(top: 68) : EdgeInsets.zero;
 
   /// #### Get Icon Padding from View Type
-  EdgeInsets get paddingIcon => this.isMobileView
-      ? EdgeInsets.only(
-          top: 8.0,
-          bottom: 8,
-          left: this.isDashboard ? 16 : 8,
-          right: this.isPersonal ? 16 : 8,
-        )
-      : EdgeInsets.zero;
-
-  /// ### isIndex(`int`) → `bool`
-  /// - Method Checks if Given Index is Views Index
-  bool isIndex(int i) => this.index == i;
-
-  /// ### isNotIndex(`int`) → `bool`
-  /// - Method Checks if Given Index is NOT Views Index
-  bool isNotIndex(int i) => this.index != i;
+  EdgeInsets get paddingIcon => EdgeInsets.only(
+        top: 8.0,
+        bottom: 8,
+        left: this.isDashboard ? 16 : 8,
+        right: this.isPersonal ? 16 : 8,
+      );
 
   /// ### iconData(`bool`) → `IconData`
   /// - Method Builds and Returns IconData for View Type
   IconData iconData(bool isSelected) {
     switch (this) {
       case HomeView.Dashboard:
-        return isSelected ? SimpleIcons.HomeActive : SimpleIcons.HomeInactive;
+        return isSelected ? SiliconsLine.home : SiliconsLine.home;
       case HomeView.Personal:
-        return isSelected ? SimpleIcons.PersonalActive : SimpleIcons.PersonalInactive;
+        return isSelected ? SiliconsLine.person : SiliconsLine.person;
       default:
         return Icons.deck;
     }
-  }
-
-  /// ### showcaseItem(`Widget`) → `Widget`
-  /// - Method Builds ShowcaseItem by View Type
-  Widget showcaseItem() {
-    if (this.isDashboard) {
-      return this.tabButton();
-    } else if (this.isPersonal) {
-      return this.tabButton();
-    } else {
-      return this.tabButton();
-    }
-  }
-
-  /// ### tabButton(`Widget`) → `Widget`
-  /// - Method Builds ShowcaseItem by View Type
-  Widget tabButton() {
-    return HomeBottomTabButton(
-      this,
-      Get.find<HomeController>().setBottomIndex,
-      Get.find<HomeController>().view,
-    );
   }
 
   /// ### scale(`bool`) → `double`
@@ -147,7 +101,13 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     // Handle Tab Controller
     tabController = TabController(vsync: this, length: 1);
     scrollController = ScrollController(keepScrollOffset: false);
-    progressController = AnimationController(vsync: this, lowerBound: 0, upperBound: 1, duration: Duration(milliseconds: 500));
+    progressController = AnimationController(
+      vsync: this,
+      lowerBound: 0,
+      upperBound: 1,
+      duration: Duration(milliseconds: 50),
+      animationBehavior: AnimationBehavior.preserve,
+    );
     // Initialize
     super.onInit();
   }
@@ -195,30 +155,9 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     }
   }
 
-  /// #### Update Bottom Bar Index
-  void setBottomIndex(int newIndex) {
-    // Check if Bottom Index is different
-    if (view.value.isNotIndex(newIndex)) {
-      // Change Index
-      tabController.animateTo(newIndex);
-      // Set Page
-      view(HomeView.values[newIndex]);
-    }
-  }
-
   /// #### Return PeerStatus by Peer from Map
   PeerStatus? statusForPeer(Peer p) {
     return localPeersStatus[p];
-  }
-
-  /// #### Share to Peer
-  void shareToPeer(Peer peer) async {
-    // Update Peer status
-    localPeersStatus[peer] = PeerStatus.PENDING;
-
-    // Invite Peer from Service
-    final resp = await SonrService.to.share(peer);
-    print(resp.toString());
   }
 
   void _handleInvite(InviteEvent event) {
@@ -238,8 +177,8 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
         icon: Icon(event.snackIcon),
         showProgressIndicator: true,
         snackPosition: SnackPosition.BOTTOM,
-        dismissDirection: SnackDismissDirection.HORIZONTAL,
         progressIndicatorController: progressController,
+        duration: null,
       );
       isProgressActive(true);
     }
@@ -248,19 +187,16 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
 
   void _handleComplete(CompleteEvent event) async {
     isProgressActive(false);
-    progressController.reset();
     if (event.direction == Direction.OUTGOING) {
       localPeersStatus[event.to] = PeerStatus.COMPLETED;
+    } else {
+      Get.dialog(
+        CompleteModal(
+          event: event,
+        ),
+      );
     }
-    Get.snackbar(
-      event.snackTitle,
-      event.snackMessage,
-      duration: event.snackDuration,
-      icon: event.snackIcon,
-      backgroundColor: AppColors.primary4,
-      onTap: (snack) => OpenFile.open(event.payload.items[0].file.path),
-    );
-    await fetchData();
+    print(event.results.toString());
   }
 
   void _handleRefresh(RefreshEvent event) {
@@ -279,58 +215,4 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     // Update Peer-Status Map
     localPeersStatus.refresh();
   }
-}
-
-extension ProgressEventUtils on ProgressEvent {
-  String get snackTitle {
-    if (direction == Direction.INCOMING) {
-      return "Receiving";
-    } else {
-      return "Sharing";
-    }
-  }
-
-  String get snackMessage {
-    if (direction == Direction.INCOMING) {
-      return "${this.current} of ${this.total}";
-    } else {
-      return "${this.current} of ${this.total}";
-    }
-  }
-
-  IconData get snackIcon {
-    if (direction == Direction.INCOMING) {
-      return Icons.file_download;
-    } else {
-      return Icons.file_upload;
-    }
-  }
-}
-
-extension CompleteEventUtils on CompleteEvent {
-  String get snackTitle {
-    if (this.direction == Direction.INCOMING) {
-      return "Completed Receive!";
-    } else {
-      return "Completed Share!";
-    }
-  }
-
-  String get snackMessage {
-    if (this.direction == Direction.INCOMING) {
-      return "Received ${this.payload.items.length} File(s) of ${this.payload.prettySize()} total size.";
-    } else {
-      return "Sent ${this.payload.items.length} File(s) of ${this.payload.prettySize()} total size.";
-    }
-  }
-
-  Duration get snackDuration {
-    if (this.direction == Direction.INCOMING) {
-      return 3.seconds;
-    } else {
-      return 1.seconds;
-    }
-  }
-
-  Widget get snackIcon => Icon(SimpleIcons.Check, color: AppColors.neutrals8);
 }

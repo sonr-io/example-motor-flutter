@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:sonr_app/style/style.dart';
 
 class AppColors {

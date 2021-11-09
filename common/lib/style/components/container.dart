@@ -1,6 +1,5 @@
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
-import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// ### BoxContainer
 /// Builds **Rounded Square** Neumorphic Shape Container.
@@ -207,4 +206,3 @@ class PolyContainer extends StatelessWidget {
     );
   }
 }
- 

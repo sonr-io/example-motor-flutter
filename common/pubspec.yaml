@@ -15,6 +15,7 @@ scripts:
   build: sh ../.github/scripts/build.sh
   clean: sh ../.github/scripts/clean.sh
   inject: define_env -f <(doppler secrets download --no-file --format=env --config dev --project api) --no-generate --no-print -c
+  setup: sh ../.github/scripts/setup.sh
   update: sh ../.github/scripts/update.sh
 
 # ** ================== **
@@ -26,15 +27,13 @@ dependencies:
     sdk: flutter
 
   # ** - User Defined - **
-  # -- Management --
-  intercom_flutter: ^5.0.2
-  intl: ^0.17.0
-  shared_preferences: ^2.0.8
-  receive_sharing_intent: ^1.4.5
 
   # -- Data --
+  intl: ^0.17.0
   photo_manager: ^1.3.1
+  receive_sharing_intent: ^1.4.5
   share_plus: ^2.1.4
+  shared_preferences: ^2.0.8
   video_player: ^2.1.14
 
   # -- Plugins --
@@ -76,28 +75,18 @@ flutter:
         - asset: assets/fonts/Poppins-SemiBold.ttf
           weight: 600
 
-    - family: SonrIcons
+    - family: SiliconsLine
       fonts:
-        - asset: assets/fonts/Sonricons.ttf
+        - asset: assets/fonts/Silicons-Line.ttf
 
-    - family: SonrNavIcons
+    - family: SiliconsSolid
       fonts:
-        - asset: assets/fonts/SonrNavIcons.ttf
+        - asset: assets/fonts/Silicons-Solid.ttf
 
   # -- Media --
   assets:
     - assets/animations/
     - assets/fonts/
-    - assets/icons/Communication/
-    - assets/icons/DateTime/
-    - assets/icons/Design/
-    - assets/icons/Device/
-    - assets/icons/FileSystem/
-    - assets/icons/Formatting/
-    - assets/icons/MediaControl/
-    - assets/icons/Navigation/
-    - assets/icons/SocialMedia/
-    - assets/icons/UI/
     - assets/images/logos/
     - assets/images/onboarding/
     - assets/images/illustrations/

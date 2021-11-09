@@ -1,10 +1,6 @@
 import 'dart:math';
 import 'dart:ui';
-import 'package:animate_do/animate_do.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:sonr_app/theme/theme.dart';
-import 'package:sonr_plugin/sonr_plugin.dart';
 import '../style.dart';
 
 /// #### Arrow Painter for Dropdown

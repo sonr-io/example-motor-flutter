@@ -2,7 +2,6 @@ import 'package:intl/intl.dart';
 import 'package:sonr_app/modules/profile/profile.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
-import 'package:sonr_plugin/sonr_plugin.dart';
 
 class NotificationListItem extends StatelessWidget {
   final Profile profile;

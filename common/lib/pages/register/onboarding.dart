@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:onboarding/onboarding.dart';
 import 'package:sonr_app/style/style.dart';
-import 'package:flutter/widgets.dart';
 import 'package:sonr_app/theme/theme.dart';
 
 class OnboardingPage extends StatelessWidget {

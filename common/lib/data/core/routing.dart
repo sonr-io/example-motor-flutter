@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'package:get/get.dart';
-import 'package:sonr_app/pages/details/details.dart';
 import 'package:sonr_app/pages/home/home.dart';
 import 'package:sonr_app/pages/register/onboarding.dart';
 import 'package:sonr_app/pages/register/register.dart';

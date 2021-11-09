@@ -1,6 +1,5 @@
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
-import 'package:sonr_plugin/sonr_plugin.dart';
 import 'package:sonr_app/modules/profile/profile.dart';
 import 'package:sonr_app/pages/home/controller.dart';
 
@@ -17,7 +16,7 @@ class PeerCardView extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        SonrService.to.share(peer);
+        SonrService.to.pick(shareAfterPick: true, peer: peer);
       },
       child: BoxContainer(
           constraints: BoxConstraints.tight(Size(K_CARD_WIDTH, K_CARD_HEIGHT)),
@@ -64,7 +63,7 @@ class _PeerMainCard extends StatelessWidget {
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(4.0),
-                  child: SimpleIcons.MoreVertical.icon(color: Get.theme.hintColor, size: 24),
+                  child: SiliconsLine.more_vertical.icon(color: Get.theme.hintColor, size: 24),
                 ),
               )),
 
@@ -110,7 +109,7 @@ class PeerListItem extends StatelessWidget {
       subtitle: Text(peer.profile.prettySName(), style: AppTextStyles.bodyCaptionRegular),
       trailing: withInviteButton
           ? Obx(() => NeutralButton(
-                onPressed: () => SonrService.to.share(peer),
+                onPressed: () => SonrService.to.pick(shareAfterPick: true, peer: peer),
                 label: _buildButtonLabel(Get.find<HomeController>().statusForPeer(peer)),
               ))
           : null,

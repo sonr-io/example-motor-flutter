@@ -1,6 +1,5 @@
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
-import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// Option Displayed in Checklist
 class ChecklistOption {
@@ -23,12 +22,12 @@ class ChecklistOption {
         clipBehavior: Clip.none,
         alignment: Alignment.center,
         children: [
-          SimpleIcons.CheckboxActive.icon(color: Get.theme.focusColor, size: 24),
-          SimpleIcons.Check.icon(color: Get.theme.cardColor, size: 32)
+          SiliconsLine.checkbox_unchecked.icon(color: Get.theme.focusColor, size: 24),
+          SiliconsLine.checkbox.icon(color: Get.theme.cardColor, size: 32)
         ],
       );
     } else {
-      return SimpleIcons.CheckboxInactive.icon(
+      return SiliconsLine.checkbox_unchecked.icon(
         color: Get.theme.focusColor,
         size: 32,
       );

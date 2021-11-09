@@ -1,6 +1,4 @@
 import 'dart:io';
-
-import 'package:sonr_app/components/general/button.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
 import 'package:video_player/video_player.dart';
@@ -57,11 +55,11 @@ class DefaultFileBox extends StatelessWidget {
               Container(
                 width: double.infinity,
                 height: 200,
-                child: _buildFileIcon(item.mime),
+                child: Icon(item.mime.type.iconData, size: 100),
               ),
               SizedBox(height: 12),
               NeutralButton(
-                icon: SimpleIcons.Open,
+                icon: SiliconsSolid.open,
                 label: 'Open File',
                 onPressed: () {
                   OpenFile.open(item.path);
@@ -70,51 +68,6 @@ class DefaultFileBox extends StatelessWidget {
             ],
           ),
         ));
-  }
-
-  Widget _buildFileIcon(MIME mime) {
-    MIME_Type type = mime.type;
-    String ext = mime.subtype;
-
-    if (type == MIME_Type.IMAGE) {
-      return ComplexIcons.ViralPost.dots(
-        color: Get.isDarkMode ? AppColors.neutrals1 : AppColors.neutrals7,
-      );
-    } else if (type == MIME_Type.VIDEO) {
-      return ComplexIcons.Video.dots(
-        color: Get.isDarkMode ? AppColors.neutrals1 : AppColors.neutrals7,
-      );
-    } else if (type == MIME_Type.AUDIO) {
-      return ComplexIcons.Clip.dots(
-        color: Get.isDarkMode ? AppColors.neutrals1 : AppColors.neutrals7,
-      );
-    } else if (type == MIME_Type.TEXT) {
-      return ComplexIcons.Document.dots(
-        color: Get.isDarkMode ? AppColors.neutrals1 : AppColors.neutrals7,
-      );
-    } else if (type == MIME_Type.DOCUMENT) {
-      if (ext == 'pdf') {
-        return ComplexIcons.PdfDocument.dots(
-          color: Get.isDarkMode ? AppColors.neutrals1 : AppColors.neutrals7,
-        );
-      } else if (ext == 'ppt') {
-        return ComplexIcons.PowerpointDocument.dots(
-          color: Get.isDarkMode ? AppColors.neutrals1 : AppColors.neutrals7,
-        );
-      } else if (ext == 'xls') {
-        return ComplexIcons.ExcelDocument.dots(
-          color: Get.isDarkMode ? AppColors.neutrals1 : AppColors.neutrals7,
-        );
-      } else {
-        return ComplexIcons.LockedFolder.dots(
-          color: AppColors.neutrals1,
-        );
-      }
-    } else {
-      return ComplexIcons.Document.dots(
-        color: Get.isDarkMode ? AppColors.neutrals1 : AppColors.neutrals7,
-      );
-    }
   }
 }
 

@@ -8,9 +8,9 @@
 import 'dart:core' as $core;
 import 'dart:convert' as $convert;
 import 'dart:typed_data' as $typed_data;
-@$core.Deprecated('Use authorizeRequestDescriptor instead')
-const AuthorizeRequest$json = const {
-  '1': 'AuthorizeRequest',
+@$core.Deprecated('Use authenticateRequestDescriptor instead')
+const AuthenticateRequest$json = const {
+  '1': 'AuthenticateRequest',
   '2': const [
     const {'1': 'sName', '3': 1, '4': 1, '5': 9, '10': 'sName'},
     const {'1': 'mnemonic', '3': 2, '4': 1, '5': 9, '10': 'mnemonic'},
@@ -18,21 +18,21 @@ const AuthorizeRequest$json = const {
   ],
 };
 
-/// Descriptor for `AuthorizeRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List authorizeRequestDescriptor = $convert.base64Decode('ChBBdXRob3JpemVSZXF1ZXN0EhQKBXNOYW1lGAEgASgJUgVzTmFtZRIaCghtbmVtb25pYxgCIAEoCVIIbW5lbW9uaWMSGgoIZGV2aWNlSWQYAyABKAlSCGRldmljZUlk');
-@$core.Deprecated('Use authorizeResponseDescriptor instead')
-const AuthorizeResponse$json = const {
-  '1': 'AuthorizeResponse',
+/// Descriptor for `AuthenticateRequest`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List authenticateRequestDescriptor = $convert.base64Decode('ChNBdXRoZW50aWNhdGVSZXF1ZXN0EhQKBXNOYW1lGAEgASgJUgVzTmFtZRIaCghtbmVtb25pYxgCIAEoCVIIbW5lbW9uaWMSGgoIZGV2aWNlSWQYAyABKAlSCGRldmljZUlk');
+@$core.Deprecated('Use authenticateResponseDescriptor instead')
+const AuthenticateResponse$json = const {
+  '1': 'AuthenticateResponse',
   '2': const [
     const {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
     const {'1': 'error', '3': 2, '4': 1, '5': 9, '10': 'error'},
-    const {'1': 'records', '3': 3, '4': 3, '5': 11, '6': '.sonr.api.AuthorizeResponse.RecordsEntry', '10': 'records'},
+    const {'1': 'records', '3': 3, '4': 3, '5': 11, '6': '.sonr.api.AuthenticateResponse.RecordsEntry', '10': 'records'},
   ],
-  '3': const [AuthorizeResponse_RecordsEntry$json],
+  '3': const [AuthenticateResponse_RecordsEntry$json],
 };
 
-@$core.Deprecated('Use authorizeResponseDescriptor instead')
-const AuthorizeResponse_RecordsEntry$json = const {
+@$core.Deprecated('Use authenticateResponseDescriptor instead')
+const AuthenticateResponse_RecordsEntry$json = const {
   '1': 'RecordsEntry',
   '2': const [
     const {'1': 'key', '3': 1, '4': 1, '5': 9, '10': 'key'},
@@ -41,8 +41,8 @@ const AuthorizeResponse_RecordsEntry$json = const {
   '7': const {'7': true},
 };
 
-/// Descriptor for `AuthorizeResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List authorizeResponseDescriptor = $convert.base64Decode('ChFBdXRob3JpemVSZXNwb25zZRIYCgdzdWNjZXNzGAEgASgIUgdzdWNjZXNzEhQKBWVycm9yGAIgASgJUgVlcnJvchJCCgdyZWNvcmRzGAMgAygLMiguc29uci5hcGkuQXV0aG9yaXplUmVzcG9uc2UuUmVjb3Jkc0VudHJ5UgdyZWNvcmRzGjoKDFJlY29yZHNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgB');
+/// Descriptor for `AuthenticateResponse`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List authenticateResponseDescriptor = $convert.base64Decode('ChRBdXRoZW50aWNhdGVSZXNwb25zZRIYCgdzdWNjZXNzGAEgASgIUgdzdWNjZXNzEhQKBWVycm9yGAIgASgJUgVlcnJvchJFCgdyZWNvcmRzGAMgAygLMisuc29uci5hcGkuQXV0aGVudGljYXRlUmVzcG9uc2UuUmVjb3Jkc0VudHJ5UgdyZWNvcmRzGjoKDFJlY29yZHNFbnRyeRIQCgNrZXkYASABKAlSA2tleRIUCgV2YWx1ZRgCIAEoCVIFdmFsdWU6AjgB');
 @$core.Deprecated('Use initializeRequestDescriptor instead')
 const InitializeRequest$json = const {
   '1': 'InitializeRequest',
@@ -171,32 +171,6 @@ const InitializeResponse_UserStatus$json = const {
 
 /// Descriptor for `InitializeResponse`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List initializeResponseDescriptor = $convert.base64Decode('ChJJbml0aWFsaXplUmVzcG9uc2USGAoHc3VjY2VzcxgBIAEoCFIHc3VjY2VzcxIUCgVlcnJvchgCIAEoCVIFZXJyb3ISLAoHcHJvZmlsZRgDIAEoCzISLnNvbnIuY29yZS5Qcm9maWxlUgdwcm9maWxlEkMKB3JlY2VudHMYBCADKAsyKS5zb25yLmFwaS5Jbml0aWFsaXplUmVzcG9uc2UuUmVjZW50c0VudHJ5UgdyZWNlbnRzEkMKB2hpc3RvcnkYBSADKAsyKS5zb25yLmFwaS5Jbml0aWFsaXplUmVzcG9uc2UuSGlzdG9yeUVudHJ5UgdoaXN0b3J5EkcKCnVzZXJTdGF0dXMYBiABKA4yJy5zb25yLmFwaS5Jbml0aWFsaXplUmVzcG9uc2UuVXNlclN0YXR1c1IKdXNlclN0YXR1cxpSCgxSZWNlbnRzRW50cnkSEAoDa2V5GAEgASgJUgNrZXkSLAoFdmFsdWUYAiABKAsyFi5zb25yLmNvcmUuUHJvZmlsZUxpc3RSBXZhbHVlOgI4ARpSCgxIaXN0b3J5RW50cnkSEAoDa2V5GAEgASgJUgNrZXkSLAoFdmFsdWUYAiABKAsyFi5zb25yLmNvcmUuUGF5bG9hZExpc3RSBXZhbHVlOgI4ASIkCgpVc2VyU3RhdHVzEg0KCVJFVFVSTklORxAAEgcKA05FVxAB');
-@$core.Deprecated('Use supplyRequestDescriptor instead')
-const SupplyRequest$json = const {
-  '1': 'SupplyRequest',
-  '2': const [
-    const {'1': 'items', '3': 1, '4': 3, '5': 11, '6': '.sonr.core.SupplyItem', '10': 'items'},
-    const {'1': 'peer', '3': 2, '4': 1, '5': 11, '6': '.sonr.core.Peer', '9': 0, '10': 'peer', '17': true},
-    const {'1': 'isPeerSupply', '3': 3, '4': 1, '5': 8, '10': 'isPeerSupply'},
-  ],
-  '8': const [
-    const {'1': '_peer'},
-  ],
-};
-
-/// Descriptor for `SupplyRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List supplyRequestDescriptor = $convert.base64Decode('Cg1TdXBwbHlSZXF1ZXN0EisKBWl0ZW1zGAEgAygLMhUuc29uci5jb3JlLlN1cHBseUl0ZW1SBWl0ZW1zEigKBHBlZXIYAiABKAsyDy5zb25yLmNvcmUuUGVlckgAUgRwZWVyiAEBEiIKDGlzUGVlclN1cHBseRgDIAEoCFIMaXNQZWVyU3VwcGx5QgcKBV9wZWVy');
-@$core.Deprecated('Use supplyResponseDescriptor instead')
-const SupplyResponse$json = const {
-  '1': 'SupplyResponse',
-  '2': const [
-    const {'1': 'success', '3': 1, '4': 1, '5': 8, '10': 'success'},
-    const {'1': 'error', '3': 2, '4': 1, '5': 9, '10': 'error'},
-  ],
-};
-
-/// Descriptor for `SupplyResponse`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List supplyResponseDescriptor = $convert.base64Decode('Cg5TdXBwbHlSZXNwb25zZRIYCgdzdWNjZXNzGAEgASgIUgdzdWNjZXNzEhQKBWVycm9yGAIgASgJUgVlcnJvcg==');
 @$core.Deprecated('Use editRequestDescriptor instead')
 const EditRequest$json = const {
   '1': 'EditRequest',
@@ -360,11 +334,12 @@ const RegisterRequest$json = const {
     const {'1': 'sName', '3': 1, '4': 1, '5': 9, '10': 'sName'},
     const {'1': 'prefix', '3': 2, '4': 1, '5': 9, '10': 'prefix'},
     const {'1': 'fingerprint', '3': 3, '4': 1, '5': 9, '10': 'fingerprint'},
+    const {'1': 'publicKey', '3': 4, '4': 1, '5': 9, '10': 'publicKey'},
   ],
 };
 
 /// Descriptor for `RegisterRequest`. Decode as a `google.protobuf.DescriptorProto`.
-final $typed_data.Uint8List registerRequestDescriptor = $convert.base64Decode('Cg9SZWdpc3RlclJlcXVlc3QSFAoFc05hbWUYASABKAlSBXNOYW1lEhYKBnByZWZpeBgCIAEoCVIGcHJlZml4EiAKC2ZpbmdlcnByaW50GAMgASgJUgtmaW5nZXJwcmludA==');
+final $typed_data.Uint8List registerRequestDescriptor = $convert.base64Decode('Cg9SZWdpc3RlclJlcXVlc3QSFAoFc05hbWUYASABKAlSBXNOYW1lEhYKBnByZWZpeBgCIAEoCVIGcHJlZml4EiAKC2ZpbmdlcnByaW50GAMgASgJUgtmaW5nZXJwcmludBIcCglwdWJsaWNLZXkYBCABKAlSCXB1YmxpY0tleQ==');
 @$core.Deprecated('Use registerResponseDescriptor instead')
 const RegisterResponse$json = const {
   '1': 'RegisterResponse',

@@ -1,8 +1,7 @@
 import 'dart:io';
-
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/pages/register/register.dart';
-import 'package:sonr_plugin/sonr_plugin.dart';
+
 
 class PermissionsView extends GetView<RegisterController> {
   @override

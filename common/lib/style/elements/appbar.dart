@@ -1,7 +1,4 @@
-import 'dart:ui';
 import 'package:sonr_app/theme/theme.dart';
-import 'package:sonr_plugin/sonr_plugin.dart';
-
 import '../style.dart';
 
 /// #### Home Screen Header
@@ -133,7 +130,7 @@ class DetailAppBar extends StatelessWidget implements PreferredSizeWidget {
             centerMiddle: false,
             leading: AppBarButton(
               onPressed: onPressed,
-              iconData: isClose ? SimpleIcons.Close : SimpleIcons.Back,
+              iconData: isClose ? SiliconsLine.close : SiliconsLine.arrow_backward,
             ),
             trailing: _buildTrailing(),
             middle: Text(

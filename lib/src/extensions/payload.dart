@@ -1,6 +1,5 @@
 import 'dart:io';
 import 'dart:isolate';
-import 'package:sonr_plugin/src/proto/proto.dart';
 import '../../sonr_plugin.dart';
 import 'package:video_compress/video_compress.dart';
 
@@ -9,6 +8,33 @@ const DEFAULT_THUMB_WIDTH = 240;
 const VIDEO_FILE_EXTS = ['WEBM', 'MPG', 'MP4', 'AVI', 'MOV', 'M4V', '3GP', '3G2'];
 
 const IMAGE_FILE_EXTS = ['JPG', 'JPEG', 'PNG', 'GIF', 'BMP'];
+
+enum Payload_Type {
+  SINGLE_ITEM,
+  MEDIA_COLLECTION,
+  PHOTO_COLLECTION,
+  VIDEO_COLLECTION,
+  AUDIO_COLLECTION,
+  TEXT_COLLECTION,
+  DOCS_COLLECTION,
+  MIXED_COLLECTION,
+  URL_COLLECTION
+}
+
+extension PayloadTypeUtils on Payload_Type {
+  String get name => this.toString().split('.').last;
+
+  String prettyName() {
+    return this.name.split('_').map((s) => s.toLowerCase()).join(' ');
+  }
+
+  bool isMedia() {
+    return this == Payload_Type.PHOTO_COLLECTION ||
+        this == Payload_Type.MEDIA_COLLECTION ||
+        this == Payload_Type.VIDEO_COLLECTION ||
+        this == Payload_Type.AUDIO_COLLECTION;
+  }
+}
 
 extension PayloadUtils on Payload {
   /// A method returns a human readable string representing a file _size
@@ -73,6 +99,51 @@ extension PayloadUtils on Payload {
       return '${r.toStringAsFixed(round)} PB';
     }
   }
+
+  Payload_Type get type {
+    if (items.length == 1) {
+      return Payload_Type.SINGLE_ITEM;
+    }
+    var types = <Payload_Type>[];
+    // Iterate through Items
+    for (Payload_Item item in this.items) {
+      if (types.any((element) => item.type == element)) {
+        continue;
+      }
+      types.add(item.type);
+    }
+
+    // If all items are of the same type, return that type
+    if (types.length == 1) {
+      return types.first;
+    }
+    // If all items are either audio, video, or photo, return media
+    if (types.every((element) => element.isMedia())) {
+      return Payload_Type.MEDIA_COLLECTION;
+    }
+    return Payload_Type.MIXED_COLLECTION;
+  }
+}
+
+extension PayloadItemUtils on Payload_Item {
+  Payload_Type get type {
+    switch (this.mime.type) {
+      case MIME_Type.AUDIO:
+        return Payload_Type.AUDIO_COLLECTION;
+      case MIME_Type.VIDEO:
+        return Payload_Type.VIDEO_COLLECTION;
+      case MIME_Type.IMAGE:
+        return Payload_Type.PHOTO_COLLECTION;
+      case MIME_Type.DOCUMENT:
+        return Payload_Type.DOCS_COLLECTION;
+      case MIME_Type.TEXT:
+        return Payload_Type.TEXT_COLLECTION;
+      case MIME_Type.URL:
+        return Payload_Type.URL_COLLECTION;
+      default:
+        return Payload_Type.SINGLE_ITEM;
+    }
+  }
 }
 
 class ThumbParams {
@@ -85,9 +156,8 @@ class ThumbParams {
   late String name;
 
   ThumbParams({required this.path, required this.sendPort, required this.width}) {
-    final parts = path.split(".");
-    this.ext = parts[parts.length - 1];
-    this.name = parts[0];
+    this.ext = extension(path);
+    this.name = basename(path);
     this.isVideo = VIDEO_FILE_EXTS.contains(ext.toUpperCase());
     this.file = File(path);
   }

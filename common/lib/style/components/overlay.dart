@@ -1,7 +1,5 @@
-import 'package:sonr_app/data/models/animation.dart';
 import 'package:sonr_app/style/style.dart';
 import 'package:sonr_app/theme/theme.dart';
-import 'package:sonr_plugin/sonr_plugin.dart';
 
 /// #### Class Builds Alert View Widget for Overlay ** //
 class AlertOverlay extends StatelessWidget {
@@ -40,7 +38,7 @@ class AlertOverlay extends StatelessWidget {
                         hasDecided(true);
                         Future.delayed(250.milliseconds, () => Get.back());
                       },
-                      iconData: SimpleIcons.Check,
+                      iconData: SiliconsLine.check,
                       label: buttonText,
                     ),
                   ]),
@@ -181,7 +179,7 @@ class QuestionOverlay extends StatelessWidget {
                           hasDecided(true);
                           Future.delayed(250.milliseconds, () => onDecision(true));
                         },
-                        iconData: SimpleIcons.Check,
+                        iconData: SiliconsLine.check,
                         label: acceptTitle,
                       ),
                     ]),

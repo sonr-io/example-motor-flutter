@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:sonr_app/data/models/animation.dart';
 import '../style.dart';
 import 'package:rive/rive.dart' hide LinearGradient, RadialGradient;
 import 'package:lottie/lottie.dart';
