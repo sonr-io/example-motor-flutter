@@ -1,7 +1,7 @@
-export 'api/call.pb.dart';
-export 'api/location.dart';
-export 'api/event.pb.dart';
-export 'api/config.dart';
+export 'node/api.pb.dart';
+export 'node/location.dart';
+export 'node/event.pb.dart';
+export 'node/config.dart';
 
 export 'common/core.pb.dart';
 export 'common/data.pb.dart';

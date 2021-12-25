@@ -1,7 +1,6 @@
 library sonr_plugin;
 
 import 'dart:async';
-import 'package:fixnum/fixnum.dart' as fixnum;
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -225,37 +224,6 @@ class SonrService extends GetxService {
       return items;
     }
     return [];
-  }
-
-  /// [edit(Profile)] Edits the profile of the node.
-  Future<EditResponse> edit(Profile profile) async {
-    // Handle Profile Edits
-    if (!profile.hasLastModified()) {
-      profile.lastModified = fixnum.Int64(DateTime.now().millisecondsSinceEpoch * 1000);
-    }
-
-    // Send Request
-    final editRequest = EditRequest(profile: profile);
-    final resp = await _client.edit(editRequest);
-    return resp;
-  }
-
-  /// [fetch(FetchRequest_Key)] Retreives properties from in memory store
-  Future<FetchResponse> fetch({required FetchRequest_Key key}) async {
-    final fetchRequest = FetchRequest(key: key);
-    final resp = await _client.fetch(fetchRequest);
-
-    // Check recents length and update
-    if (resp.recents.profiles.length > 0) {
-      // Initialize and Sort
-      final respLists = resp.recents.profiles.toList();
-      respLists.sort((a, b) => a.lastModified.compareTo(b.lastModified));
-
-      // Add all profiles to list
-      recentProfiles(resp.recents.profiles);
-      recentProfiles.refresh();
-    }
-    return resp;
   }
 
   /// [share(Peer)] Shares queued transfer with peer.

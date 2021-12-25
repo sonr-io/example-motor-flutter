@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:app_settings/app_settings.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:sonr_plugin/src/proto/api/location.dart';
+import 'package:sonr_plugin/src/proto/node/location.dart';
 
 enum Permissions {
   /// Phone Camera Access

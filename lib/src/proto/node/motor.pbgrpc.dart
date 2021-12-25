@@ -10,20 +10,12 @@ import 'dart:async' as $async;
 import 'dart:core' as $core;
 
 import 'package:grpc/service_api.dart' as $grpc;
-import '../api/call.pb.dart' as $0;
+import 'api.pb.dart' as $0;
 import 'motor.pb.dart' as $1;
-import '../api/event.pb.dart' as $2;
+import 'event.pb.dart' as $2;
 export 'motor.pb.dart';
 
 class MotorStubClient extends $grpc.Client {
-  static final _$edit = $grpc.ClientMethod<$0.EditRequest, $0.EditResponse>(
-      '/sonr.node.MotorStub/Edit',
-      ($0.EditRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.EditResponse.fromBuffer(value));
-  static final _$fetch = $grpc.ClientMethod<$0.FetchRequest, $0.FetchResponse>(
-      '/sonr.node.MotorStub/Fetch',
-      ($0.FetchRequest value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.FetchResponse.fromBuffer(value));
   static final _$share = $grpc.ClientMethod<$0.ShareRequest, $0.ShareResponse>(
       '/sonr.node.MotorStub/Share',
       ($0.ShareRequest value) => value.writeToBuffer(),
@@ -78,16 +70,6 @@ class MotorStubClient extends $grpc.Client {
       {$grpc.CallOptions? options,
       $core.Iterable<$grpc.ClientInterceptor>? interceptors})
       : super(channel, options: options, interceptors: interceptors);
-
-  $grpc.ResponseFuture<$0.EditResponse> edit($0.EditRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$edit, request, options: options);
-  }
-
-  $grpc.ResponseFuture<$0.FetchResponse> fetch($0.FetchRequest request,
-      {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$fetch, request, options: options);
-  }
 
   $grpc.ResponseFuture<$0.ShareResponse> share($0.ShareRequest request,
       {$grpc.CallOptions? options}) {
@@ -158,20 +140,6 @@ abstract class MotorStubServiceBase extends $grpc.Service {
   $core.String get $name => 'sonr.node.MotorStub';
 
   MotorStubServiceBase() {
-    $addMethod($grpc.ServiceMethod<$0.EditRequest, $0.EditResponse>(
-        'Edit',
-        edit_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $0.EditRequest.fromBuffer(value),
-        ($0.EditResponse value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.FetchRequest, $0.FetchResponse>(
-        'Fetch',
-        fetch_Pre,
-        false,
-        false,
-        ($core.List<$core.int> value) => $0.FetchRequest.fromBuffer(value),
-        ($0.FetchResponse value) => value.writeToBuffer()));
     $addMethod($grpc.ServiceMethod<$0.ShareRequest, $0.ShareResponse>(
         'Share',
         share_Pre,
@@ -244,16 +212,6 @@ abstract class MotorStubServiceBase extends $grpc.Service {
         ($2.CompleteEvent value) => value.writeToBuffer()));
   }
 
-  $async.Future<$0.EditResponse> edit_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.EditRequest> request) async {
-    return edit(call, await request);
-  }
-
-  $async.Future<$0.FetchResponse> fetch_Pre(
-      $grpc.ServiceCall call, $async.Future<$0.FetchRequest> request) async {
-    return fetch(call, await request);
-  }
-
   $async.Future<$0.ShareResponse> share_Pre(
       $grpc.ServiceCall call, $async.Future<$0.ShareRequest> request) async {
     return share(call, await request);
@@ -304,10 +262,6 @@ abstract class MotorStubServiceBase extends $grpc.Service {
     yield* onTransmitComplete(call, await request);
   }
 
-  $async.Future<$0.EditResponse> edit(
-      $grpc.ServiceCall call, $0.EditRequest request);
-  $async.Future<$0.FetchResponse> fetch(
-      $grpc.ServiceCall call, $0.FetchRequest request);
   $async.Future<$0.ShareResponse> share(
       $grpc.ServiceCall call, $0.ShareRequest request);
   $async.Future<$0.RespondResponse> respond(
