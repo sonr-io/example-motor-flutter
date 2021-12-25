@@ -10,7 +10,6 @@ import 'package:sonr_app/pages/home/controller.dart';
 class HomePage extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
-    controller.fetchData();
     // Return View
     return SonrScaffold(
       resizeToAvoidBottomInset: false,

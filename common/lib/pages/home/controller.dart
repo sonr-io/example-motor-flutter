@@ -95,8 +95,6 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     _refreshSubscription = SonrService.to.onRefresh(_handleRefresh);
     _progressSubscription = SonrService.to.onProgress(_handleProgress);
 
-    // Connect to Network
-    fetchData();
 
     // Handle Tab Controller
     tabController = TabController(vsync: this, length: 1);
@@ -119,15 +117,6 @@ class HomeController extends GetxController with SingleGetTickerProviderMixin {
     _refreshSubscription.cancel();
     _progressSubscription.cancel();
     super.onClose();
-  }
-
-  Future<void> fetchData() async {
-    final resp = await SonrService.to.fetch(key: FetchRequest_Key.ALL);
-    history(resp.history.payloads);
-    recents(resp.recents.profiles);
-    history.refresh();
-    recents.refresh();
-    print(resp.toString());
   }
 
   Future<void> edit() async {

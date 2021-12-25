@@ -75,8 +75,12 @@ class SplashPage extends StatelessWidget {
       sName: hint.item1[0] + hint.item2,
     );
 
-    final loc = await LocationUtil.current(requestIfNoPermission: false);
-    await SonrService.to.start(location: loc, profile: profile);
+    await SonrService.to.start(
+        location: Location(
+          latitude: 0,
+          longitude: 0,
+        ),
+        profile: profile);
 
     // All Valid
     if (await Permissions.Location.isGranted) {
